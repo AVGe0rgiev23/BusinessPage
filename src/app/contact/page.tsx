@@ -14,10 +14,8 @@ const description =
 export const metadata: Metadata = {
   title,
   description,
-  openGraph: {
-    title,
-    description,
-    type: "website",
+  alternates: {
+    canonical: "/contact",
   },
 };
 
