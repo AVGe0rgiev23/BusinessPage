@@ -5,6 +5,7 @@ import { Section } from "@/components/layout/section";
 import { Reveal } from "@/components/motion/reveal";
 import { Button } from "@/components/ui/button";
 import { LinkedinIcon } from "@/components/icons/brand-icons";
+import { linkedinUrl } from "@/lib/site-config";
 
 const focusRing =
   "outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-bg";
@@ -34,10 +35,9 @@ export function Connect() {
           <div className="mt-9 flex justify-center">
             <Button
               variant="outline"
-              /* TODO: point href at the real LinkedIn URL, then restore
-                 target="_blank" rel="noopener noreferrer" (omitted while this is
-                 a placeholder so it can't open a blank duplicate tab). */
-              render={<a href="#" />}
+              render={
+                <a href={linkedinUrl} target="_blank" rel="noopener noreferrer" />
+              }
               className={`group h-12 rounded-full border-border px-7 text-base text-text-primary hover:border-border-hover hover:bg-bg-elevated ${focusRing}`}
             >
               <LinkedinIcon className="size-5" aria-hidden="true" />

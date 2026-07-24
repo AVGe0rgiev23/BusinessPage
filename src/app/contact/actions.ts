@@ -1,12 +1,20 @@
 "use server";
 
+import { Resend } from "resend";
+
 /**
  * Contact form Server Action.
  *
- * Validates the submission on the server (never trust the client) and returns a
- * typed result. It intentionally does NOT deliver the message anywhere yet — see
- * the prominent TODO below before shipping to production.
+ * Validates the submission on the server (never trust the client), then delivers
+ * it by email via Resend. Currently running in Resend "sandbox" mode (no verified
+ * sending domain), so mail is sent from the shared `onboarding@resend.dev`
+ * address and can only be delivered to the email on the Resend account itself —
+ * see CONTACT_INBOX below. Once a real sending domain is verified with Resend,
+ * switch RESEND_FROM to an address on that domain.
  */
+
+const RESEND_FROM = "AGility <onboarding@resend.dev>";
+const CONTACT_INBOX = "avgeorgiev25@gmail.com";
 
 export type ContactFieldErrors = {
   name?: string;
@@ -90,12 +98,34 @@ export async function submitContactForm(
     };
   }
 
-  // `submission` is now validated and ready to be delivered.
-  //
-  // TODO: wire real email/CRM delivery (e.g. Resend / SMTP / webhook) — currently
-  // validates and returns success without sending. When wiring delivery, send
-  // `submission` here and return `{ ok: false, formError, fieldErrors: {} }` if
-  // the provider call fails so the user can retry.
+  // `submission` is validated — deliver it via Resend. Plain-text body only, so
+  // there's no HTML-injection surface from user-supplied fields.
+  const resend = new Resend(process.env.RESEND_API_KEY);
+
+  const { error } = await resend.emails.send({
+    from: RESEND_FROM,
+    to: CONTACT_INBOX,
+    replyTo: submission.email,
+    subject: `New contact form message from ${submission.name}`,
+    text: [
+      `Name: ${submission.name}`,
+      `Email: ${submission.email}`,
+      submission.company ? `Company: ${submission.company}` : null,
+      "",
+      submission.message,
+    ]
+      .filter((line) => line !== null)
+      .join("\n"),
+  });
+
+  if (error) {
+    return {
+      ok: false,
+      formError:
+        "Something went wrong sending your message. Please try again, or email us directly.",
+      fieldErrors: {},
+    };
+  }
 
   return { ok: true };
 }

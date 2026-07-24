@@ -94,7 +94,11 @@ export function CtaBand({
               <Button
                 render={
                   primaryIsExternal ? (
-                    <a href={primary.href} />
+                    <a
+                      href={primary.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    />
                   ) : (
                     <Link href={primary.href} />
                   )

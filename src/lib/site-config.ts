@@ -20,3 +20,14 @@ export const siteTitle = "AGility — Custom Software & AI Automation";
 
 export const siteDescription =
   "Custom software and AI automation for growing businesses — reclaim the hours lost to repetitive work, cut operating costs, and own the software you run on.";
+
+/** Contact + social links. Real values — not placeholders. */
+export const contactEmail =
+  process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "avgeorgiev25@gmail.com";
+
+export const githubUrl = "https://github.com/AVGe0rgiev23";
+
+export const linkedinUrl =
+  "https://www.linkedin.com/in/alex-georgiev-028741417";
+
+export const calendlyUrl = "https://calendly.com/avgeorgiev25/30min";

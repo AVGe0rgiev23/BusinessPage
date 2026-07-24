@@ -1,12 +1,10 @@
 import Link from "next/link";
 
 import { focusRing } from "@/lib/utils";
+import { calendlyUrl } from "@/lib/site-config";
 import { CtaBand } from "@/components/layout/cta-band";
 
-// TODO: replace "#" with the real Calendly/scheduling URL — when it's a real
-// external link, also add target="_blank" + rel="noopener noreferrer" to the
-// booking buttons below (and to the one in the page header).
-export const CALENDLY_URL = "#";
+export const CALENDLY_URL = calendlyUrl;
 
 export function BookingCta() {
   return (

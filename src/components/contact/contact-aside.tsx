@@ -3,18 +3,10 @@ import { ArrowRight, CalendarClock, Clock, Mail, ShieldCheck } from "lucide-reac
 
 import { cn } from "@/lib/utils";
 import { LinkedinIcon } from "@/components/icons/brand-icons";
+import { contactEmail, linkedinUrl } from "@/lib/site-config";
 
 const focusRing =
   "outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-bg";
-
-// TODO: replace with your real contact inbox. Reads NEXT_PUBLIC_CONTACT_EMAIL when
-// set at build/runtime; otherwise falls back to this clearly-placeholder address
-// (an `.example` domain — NOT a real, monitored inbox).
-const CONTACT_EMAIL =
-  process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "hello@your-domain.example";
-
-// TODO: replace "#" with the real AGility LinkedIn company URL (then it opens the profile).
-const LINKEDIN_URL = "#";
 
 const reassurances = [
   { icon: Clock, label: "Replies within one business day" },
@@ -64,7 +56,7 @@ export function ContactAside() {
       <ul className="mt-4 grid gap-3">
         <li>
           <a
-            href={`mailto:${CONTACT_EMAIL}`}
+            href={`mailto:${contactEmail}`}
             className={cn(
               "group flex items-center gap-4 rounded-xl border border-border bg-bg p-4 transition-colors hover:border-border-hover hover:bg-bg-elevated",
               focusRing
@@ -78,14 +70,16 @@ export function ContactAside() {
                 Email us
               </span>
               <span className="block truncate text-small text-text-secondary">
-                {CONTACT_EMAIL}
+                {contactEmail}
               </span>
             </span>
           </a>
         </li>
         <li>
           <a
-            href={LINKEDIN_URL}
+            href={linkedinUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className={cn(
               "group flex items-center gap-4 rounded-xl border border-border bg-bg p-4 transition-colors hover:border-border-hover hover:bg-bg-elevated",
               focusRing

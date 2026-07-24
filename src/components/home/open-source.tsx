@@ -5,6 +5,7 @@ import { Section } from "@/components/layout/section";
 import { Reveal } from "@/components/motion/reveal";
 import { Button } from "@/components/ui/button";
 import { GithubIcon } from "@/components/icons/brand-icons";
+import { githubUrl } from "@/lib/site-config";
 
 const focusRing =
   "outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-bg";
@@ -66,10 +67,13 @@ export function OpenSource() {
                   })}
                 </ul>
                 <Button
-                  /* TODO: point href at the real GitHub URL, then restore
-                     target="_blank" rel="noopener noreferrer" (omitted while
-                     this is a placeholder so it can't open a blank duplicate tab). */
-                  render={<a href="#" />}
+                  render={
+                    <a
+                      href={githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    />
+                  }
                   className={`group mt-9 h-12 rounded-full px-7 text-base hover:bg-accent-hover ${focusRing}`}
                 >
                   <GithubIcon className="size-5" aria-hidden="true" />

@@ -35,7 +35,9 @@ export default function BookPage() {
       >
         <div className="flex flex-col items-center gap-6">
           <Button
-            render={<a href={CALENDLY_URL} />}
+            render={
+              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" />
+            }
             className={cn(
               "h-12 rounded-full px-7 text-base hover:bg-accent-hover",
               focusRing

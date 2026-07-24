@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { Container } from "@/components/layout/container";
 import { GithubIcon, LinkedinIcon } from "@/components/icons/brand-icons";
+import { githubUrl, linkedinUrl } from "@/lib/site-config";
 
 const FOOTER_SECTIONS = [
   {
@@ -53,16 +54,19 @@ export function Footer() {
               you run on.
             </p>
             <div className="mt-6 flex items-center gap-3">
-              {/* TODO: replace with real GitHub/LinkedIn URLs */}
               <a
-                href="#"
+                href={githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="AGility on GitHub"
                 className={`inline-flex size-9 items-center justify-center rounded-md border border-border text-text-secondary transition-colors hover:border-border-hover hover:text-text-primary ${focusRing}`}
               >
                 <GithubIcon className="size-5" aria-hidden="true" />
               </a>
               <a
-                href="#"
+                href={linkedinUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="AGility on LinkedIn"
                 className={`inline-flex size-9 items-center justify-center rounded-md border border-border text-text-secondary transition-colors hover:border-border-hover hover:text-text-primary ${focusRing}`}
               >
