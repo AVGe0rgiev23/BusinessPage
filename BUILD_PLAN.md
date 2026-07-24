@@ -33,7 +33,9 @@ A premium marketing site for **AGility**, a custom software/AI engineering compa
 ## Progress log
 
 - **2026-07-24 — Phase 0 complete.** Design-system foundation landed (commit `e8c2cba`): Electric Indigo dark-only token system in `globals.css`, shadcn/ui (on **Base UI**, see note below), and shared `Container`/`Section`/`Nav`/`Footer` primitives wired into `layout.tsx`. Real metadata + OpenGraph + `icon.svg` monogram favicon. `pnpm lint` and `pnpm build` both pass clean (independently re-verified). Repo connected to GitHub (`origin` → `AVGe0rgiev23/BusinessPage`) and pushed.
-- **2026-07-24 — Phase 1 started.** Building the flagship Home page on Opus.
+- **2026-07-24 — Phase 1 complete.** Flagship Home page built on Opus (commit `ded3aef`): 12 sections (hero → problem → outcomes → services preview → why-custom → process preview → technology → why-AGility → open-source/GitHub → connect/LinkedIn → FAQ preview → closing CTA), composed under one `<main>` with a reusable `<Reveal>` scroll-motion primitive (server sections + thin client wrapper; `/` prerenders fully static). Independent review+fix pass on Opus (commit `d3fcb75`) fixed footer contrast (AA), placeholder-link `target="_blank"` UX bug, and minor a11y/cleanliness items; verdict: clears the "venture-backed product company" bar. `lint`/`build` clean. Pushed.
+- **Deferred to human/visual judgment (revisit before deploy):** live-browser check of reveal motion feel + reduced-motion, marginal accent/eyebrow contrast on a real dark monitor, overall section pacing (12 sections is long — watch Outcomes vs Why-AGility redundancy), and the `why-custom` sticky column across breakpoints.
+- **2026-07-24 — Phase 2 next.** Build the remaining 8 routes.
 
 ### Environment notes for all downstream work (important)
 - **shadcn is configured on Base UI (`@base-ui/react`), NOT Radix.** Component polymorphism uses the `render={<Link .../>}` prop, **not** Radix's `asChild`. Follow the existing `Nav`/`Button` usage as the reference.
