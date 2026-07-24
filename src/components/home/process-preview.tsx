@@ -72,7 +72,7 @@ export function ProcessPreview() {
                     </span>
                     <span
                       aria-hidden="true"
-                      className="font-mono text-small text-text-muted"
+                      className="font-mono text-small text-text-secondary"
                     >
                       0{i + 1}
                     </span>

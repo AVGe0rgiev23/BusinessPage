@@ -69,7 +69,7 @@ export function Outcomes() {
             const Icon = outcome.icon;
             return (
               <Reveal key={outcome.title} delay={(i % 3) * 0.08}>
-                <li className="group h-full rounded-2xl border border-border bg-bg-surface p-6 transition-colors hover:border-border-hover">
+                <li className="h-full rounded-2xl border border-border bg-bg-surface p-6 transition-colors hover:border-border-hover">
                   <span className="inline-flex size-11 items-center justify-center rounded-xl bg-accent-subtle text-accent">
                     <Icon className="size-5" aria-hidden="true" />
                   </span>

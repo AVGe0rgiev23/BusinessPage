@@ -34,10 +34,10 @@ export function Connect() {
           <div className="mt-9 flex justify-center">
             <Button
               variant="outline"
-              /* TODO: real LinkedIn URL */
-              render={
-                <a href="#" target="_blank" rel="noopener noreferrer" />
-              }
+              /* TODO: point href at the real LinkedIn URL, then restore
+                 target="_blank" rel="noopener noreferrer" (omitted while this is
+                 a placeholder so it can't open a blank duplicate tab). */
+              render={<a href="#" />}
               className={`group h-12 rounded-full border-border px-7 text-base text-text-primary hover:border-border-hover hover:bg-bg-elevated ${focusRing}`}
             >
               <LinkedinIcon className="size-5" aria-hidden="true" />

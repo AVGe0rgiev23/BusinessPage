@@ -75,7 +75,7 @@ export function Footer() {
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
             {FOOTER_SECTIONS.map((section) => (
               <div key={section.title}>
-                <h2 className="text-eyebrow font-mono uppercase text-text-muted">
+                <h2 className="text-eyebrow font-mono uppercase text-text-secondary">
                   {section.title}
                 </h2>
                 <ul className="mt-4 flex flex-col gap-3">
@@ -96,7 +96,7 @@ export function Footer() {
         </div>
 
         <div className="mt-12 border-t border-border pt-8">
-          <p className="text-small text-text-muted">
+          <p className="text-small text-text-secondary">
             &copy; {year} AGility. All rights reserved.
           </p>
         </div>

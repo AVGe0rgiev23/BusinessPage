@@ -87,7 +87,10 @@ export function Hero() {
             className={`group h-12 rounded-full px-7 text-base hover:bg-accent-hover ${focusRing}`}
           >
             Book a consultation
-            <ArrowRight className="transition-transform group-hover/button:translate-x-0.5" />
+            <ArrowRight
+              aria-hidden="true"
+              className="transition-transform group-hover/button:translate-x-0.5"
+            />
           </Button>
           <Button
             variant="outline"

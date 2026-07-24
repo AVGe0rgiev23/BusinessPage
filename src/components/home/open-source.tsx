@@ -66,14 +66,10 @@ export function OpenSource() {
                   })}
                 </ul>
                 <Button
-                  /* TODO: real GitHub URL */
-                  render={
-                    <a
-                      href="#"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    />
-                  }
+                  /* TODO: point href at the real GitHub URL, then restore
+                     target="_blank" rel="noopener noreferrer" (omitted while
+                     this is a placeholder so it can't open a blank duplicate tab). */
+                  render={<a href="#" />}
                   className={`group mt-9 h-12 rounded-full px-7 text-base hover:bg-accent-hover ${focusRing}`}
                 >
                   <GithubIcon className="size-5" aria-hidden="true" />
