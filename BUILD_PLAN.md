@@ -30,14 +30,27 @@ A premium marketing site for **AGility**, a custom software/AI engineering compa
 | Components | shadcn/ui (CLI-installed, not MCP — no shadcn/React Bits MCP server is configured in this environment, so premium components are either pulled via the shadcn CLI's URL-registry mechanism where reachable, or hand-built with Framer Motion). |
 | Research inputs | Linear, Vercel, OpenAI, Anthropic, Stripe, Cursor, Arc, Resend, Clerk, Raycast — synthesized, not copied. |
 
+## Progress log
+
+- **2026-07-24 — Phase 0 complete.** Design-system foundation landed (commit `e8c2cba`): Electric Indigo dark-only token system in `globals.css`, shadcn/ui (on **Base UI**, see note below), and shared `Container`/`Section`/`Nav`/`Footer` primitives wired into `layout.tsx`. Real metadata + OpenGraph + `icon.svg` monogram favicon. `pnpm lint` and `pnpm build` both pass clean (independently re-verified). Repo connected to GitHub (`origin` → `AVGe0rgiev23/BusinessPage`) and pushed.
+- **2026-07-24 — Phase 1 started.** Building the flagship Home page on Opus.
+
+### Environment notes for all downstream work (important)
+- **shadcn is configured on Base UI (`@base-ui/react`), NOT Radix.** Component polymorphism uses the `render={<Link .../>}` prop, **not** Radix's `asChild`. Follow the existing `Nav`/`Button` usage as the reference.
+- **`lucide-react@1.26.0` dropped brand icons** — GitHub/LinkedIn glyphs live in `src/components/icons/brand-icons.tsx` (inline Simple Icons SVG). Don't import `Github`/`Linkedin` from lucide; they don't exist.
+- **Dark-only brand:** no `.dark` class, no light mode. Don't add `dark:` variants — they never activate.
+- **Layout owns no `<main>`** — each page renders its own single `<main>` landmark (avoids double-`main` a11y violation).
+- **Available Tailwind utilities:** `bg-bg` / `bg-bg-surface` / `bg-bg-elevated`; `text-text-primary` / `-secondary` / `-muted`; `border-border` / `border-border-hover`; `bg-accent` / `hover:bg-accent-hover` / `bg-accent-active` / `bg-accent-subtle`; `text-accent-foreground`. Type tokens: `text-display` / `text-h1` / `text-h2` / `text-h3` / `text-body-lg` / `text-body` / `text-small` / `text-eyebrow` (pair eyebrow with `uppercase font-mono`). Use `Section` for vertical rhythm and `Container` for gutters.
+
 ## Current state
 
 ### Done
 - Healthy Next.js 16.2.11 + React 19.2.4 + Tailwind v4 + TypeScript scaffold, pnpm-managed, `install`/`lint`/`build` all verified passing.
 - Positioning, structure, and design decisions locked (this document).
+- **Phase 0 foundation** — design tokens, shadcn/ui, Nav/Footer/Container/Section primitives, metadata, favicon. Committed + pushed to GitHub.
 
 ### Not done yet (the actual build)
-Everything below `src/app/` is still default boilerplate. Full build required.
+Pages under `src/app/` beyond the placeholder Home are not built. Nav links to `/services`, `/process`, `/about`, `/technologies`, `/work`, `/faq`, `/contact`, `/book` currently 404 until Phase 1/2 build them.
 
 ## Implementation plan
 
