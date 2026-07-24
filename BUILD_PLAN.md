@@ -35,7 +35,19 @@ A premium marketing site for **AGility**, a custom software/AI engineering compa
 - **2026-07-24 — Phase 0 complete.** Design-system foundation landed (commit `e8c2cba`): Electric Indigo dark-only token system in `globals.css`, shadcn/ui (on **Base UI**, see note below), and shared `Container`/`Section`/`Nav`/`Footer` primitives wired into `layout.tsx`. Real metadata + OpenGraph + `icon.svg` monogram favicon. `pnpm lint` and `pnpm build` both pass clean (independently re-verified). Repo connected to GitHub (`origin` → `AVGe0rgiev23/BusinessPage`) and pushed.
 - **2026-07-24 — Phase 1 complete.** Flagship Home page built on Opus (commit `ded3aef`): 12 sections (hero → problem → outcomes → services preview → why-custom → process preview → technology → why-AGility → open-source/GitHub → connect/LinkedIn → FAQ preview → closing CTA), composed under one `<main>` with a reusable `<Reveal>` scroll-motion primitive (server sections + thin client wrapper; `/` prerenders fully static). Independent review+fix pass on Opus (commit `d3fcb75`) fixed footer contrast (AA), placeholder-link `target="_blank"` UX bug, and minor a11y/cleanliness items; verdict: clears the "venture-backed product company" bar. `lint`/`build` clean. Pushed.
 - **Deferred to human/visual judgment (revisit before deploy):** live-browser check of reveal motion feel + reduced-motion, marginal accent/eyebrow contrast on a real dark monitor, overall section pacing (12 sections is long — watch Outcomes vs Why-AGility redundancy), and the `why-custom` sticky column across breakpoints.
-- **2026-07-24 — Phase 2 next.** Build the remaining 8 routes.
+- **2026-07-24 — Phase 2 complete.** All 8 remaining routes built (commit `44d0b67`): `/services`, `/process`, `/about`, `/technologies`, `/work`, `/faq`, `/contact` (accessible form + stubbed Server Action), `/book`. Built as 4 parallel agents grouped by relatedness; one agent hit the session's usage limit mid-run but had already written its files to disk, so no rebuild was needed — just independent re-verification.
+- **2026-07-24 — Phase 3 complete.** Four parallel read-only review agents (code/architecture, accessibility, content/positioning, performance) audited all 8 new pages, then two sequential fix agents applied the confirmed findings (commit `41f8acb`): WCAG AA contrast fix in the contact form, a site-wide skip-to-content link, `prefers-reduced-motion` support for the FAQ accordion, an unverifiable "senior team" claim removed, tagline wording aligned across pages, a shared `CtaBand` primitive replacing 8 near-duplicate CTA components, and Server Action hardening (length limits + honeypot). Performance review found no regressions. `lint`/`build` clean throughout.
+- **2026-07-24 — Phase 4 complete.** Site-wide SEO pass (commit `cfb2633`): `metadataBase` + per-page canonical URLs (via `NEXT_PUBLIC_SITE_URL`, placeholder until a real domain is chosen), one shared branded OG/Twitter image generated with `next/og` from the real design tokens, `robots.ts` + `sitemap.ts` for all 9 routes, Organization JSON-LD (no fabricated `sameAs` — real fields only), and removal of unused `create-next-app` boilerplate SVGs.
+- **2026-07-24 — Phase 5 (deploy) pending user input.** See "Before going live" below.
+
+### Before going live (needs your input)
+- **`NEXT_PUBLIC_SITE_URL`** — set to the real production domain (Vercel env var). Until set, canonicals/sitemap/OG image URLs resolve against a placeholder.
+- **Real contact email** — replaces the `hello@your-domain.example` fallback in `contact-aside.tsx`.
+- **Real GitHub URL** — replaces `href="#"` in `work/github-projects.tsx` and `about/engineering-in-the-open.tsx`.
+- **Real LinkedIn URL** — replaces `href="#"` in `contact-aside.tsx` and the footer.
+- **Real Calendly (or scheduling) link** — replaces `CALENDLY_URL = "#"` in `book/booking-cta.tsx`.
+- **Contact form delivery** — `contact/actions.ts` validates and returns success but does not yet send anywhere (TODO on line ~68). Needs a real provider (Resend/SMTP/webhook) wired in before the form is live, since the success message currently promises a reply.
+- **Deploy target** — Vercel is the natural fit for this stack; needs your go-ahead.
 
 ### Environment notes for all downstream work (important)
 - **shadcn is configured on Base UI (`@base-ui/react`), NOT Radix.** Component polymorphism uses the `render={<Link .../>}` prop, **not** Radix's `asChild`. Follow the existing `Nav`/`Button` usage as the reference.
@@ -51,8 +63,12 @@ A premium marketing site for **AGility**, a custom software/AI engineering compa
 - Positioning, structure, and design decisions locked (this document).
 - **Phase 0 foundation** — design tokens, shadcn/ui, Nav/Footer/Container/Section primitives, metadata, favicon. Committed + pushed to GitHub.
 
-### Not done yet (the actual build)
-Pages under `src/app/` beyond the placeholder Home are not built. Nav links to `/services`, `/process`, `/about`, `/technologies`, `/work`, `/faq`, `/contact`, `/book` currently 404 until Phase 1/2 build them.
+- **Phase 2** — all 8 remaining routes built and committed.
+- **Phase 3** — full QA pass (code, accessibility, content/positioning, performance) with all confirmed findings fixed and committed.
+- **Phase 4** — site-wide SEO (metadata, OG image, sitemap, robots, JSON-LD) committed.
+
+### Not done yet
+Phase 5 (deploy) — see "Before going live" above. The site is otherwise feature-complete and builds/lints clean.
 
 ## Implementation plan
 
