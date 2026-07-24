@@ -29,7 +29,7 @@ const perks = ["About 30 minutes", "Free", "No pressure", "No obligation"];
 
 export default function BookPage() {
   return (
-    <main id="main" className="flex flex-1 flex-col">
+    <main id="main" tabIndex={-1} className="flex flex-1 flex-col">
       <PageHeader
         eyebrow="Book a consultation"
         title="Book a free 30-minute consultation."

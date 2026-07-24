@@ -89,10 +89,9 @@ export function WhoWeServe() {
               The team behind it
             </h3>
             <p className="mt-3 text-pretty text-body-lg text-text-secondary">
-              AGility is a small, senior team of engineers who&apos;d rather do a
-              few things properly than many things at scale. You work directly
-              with the people building your software — the same people who answer
-              when you have a question.
+              AGility is a small, hands-on team. You work directly with the
+              people building your software — the same people who answer when you
+              have a question. No account managers, no handoffs.
             </p>
           </div>
         </Reveal>

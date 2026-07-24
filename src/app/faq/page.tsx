@@ -103,7 +103,7 @@ const OWNERSHIP_SUPPORT: FaqItem[] = [
 
 export default function FaqPage() {
   return (
-    <main id="main" className="flex flex-1 flex-col">
+    <main id="main" tabIndex={-1} className="flex flex-1 flex-col">
       <PageHeader
         eyebrow="FAQ"
         title="The questions we hear most, answered plainly."

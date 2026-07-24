@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 
 export default function TechnologiesPage() {
   return (
-    <main id="main" className="flex flex-1 flex-col">
+    <main id="main" tabIndex={-1} className="flex flex-1 flex-col">
       <PageHeader
         eyebrow="Technologies"
         title="Built on proven tools — so your software stays reliable, fast, and yours to maintain."

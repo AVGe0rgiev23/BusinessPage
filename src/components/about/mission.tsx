@@ -13,7 +13,7 @@ import { Reveal } from "@/components/motion/reveal";
 const OUTCOMES = [
   { icon: Clock, label: "Save time" },
   { icon: TrendingDown, label: "Cut costs" },
-  { icon: Zap, label: "Move faster" },
+  { icon: Zap, label: "Scale faster" },
 ];
 
 export function Mission() {

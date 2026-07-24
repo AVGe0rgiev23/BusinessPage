@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 
 import { Container } from "@/components/layout/container";
+import { Section } from "@/components/layout/section";
 import { Reveal } from "@/components/motion/reveal";
 
 interface Service {
@@ -127,8 +128,8 @@ const GROUPS: ServiceGroup[] = [
 
 export function ServicesCatalog() {
   return (
-    <div className="bg-bg-surface">
-      <Container className="py-24 md:py-32 lg:py-40">
+    <Section className="bg-bg-surface">
+      <Container>
         <div className="space-y-16 md:space-y-24">
           {GROUPS.map((group) => {
             const headingId = `${group.id}-heading`;
@@ -173,6 +174,6 @@ export function ServicesCatalog() {
           })}
         </div>
       </Container>
-    </div>
+    </Section>
   );
 }

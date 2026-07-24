@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 
 export default function WorkPage() {
   return (
-    <main id="main" className="flex flex-1 flex-col">
+    <main id="main" tabIndex={-1} className="flex flex-1 flex-col">
       <PageHeader
         eyebrow="Our work"
         title="We'd rather show you how we build than fake a portfolio."

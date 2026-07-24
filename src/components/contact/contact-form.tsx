@@ -4,15 +4,12 @@ import * as React from "react";
 import Link from "next/link";
 import { CheckCircle2, LoaderCircle, Send } from "lucide-react";
 
-import { cn } from "@/lib/utils";
+import { cn, focusRing } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
   submitContactForm,
   type ContactFieldErrors,
 } from "@/app/contact/actions";
-
-const focusRing =
-  "outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-bg";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MIN_MESSAGE_LENGTH = 10;
@@ -56,7 +53,7 @@ function describedBy(...ids: Array<string | false | undefined>) {
 }
 
 const inputBase =
-  "w-full rounded-lg border bg-bg px-3.5 py-2.5 text-body text-text-primary placeholder:text-text-muted transition-colors outline-none focus:ring-2 focus:ring-ring/50";
+  "w-full rounded-lg border bg-bg px-3.5 py-2.5 text-body text-text-primary placeholder:text-text-secondary transition-colors outline-none focus:ring-2 focus:ring-ring/50";
 
 function inputClasses(hasError: boolean) {
   return cn(
@@ -79,6 +76,7 @@ export function ContactForm() {
   const emailRef = React.useRef<HTMLInputElement>(null);
   const messageRef = React.useRef<HTMLTextAreaElement>(null);
   const successRef = React.useRef<HTMLDivElement>(null);
+  const honeypotRef = React.useRef<HTMLInputElement>(null);
 
   // Focus-manage the confirmation so screen readers land on (and announce) it.
   React.useEffect(() => {
@@ -137,6 +135,9 @@ export function ContactForm() {
     formData.set("email", values.email.trim());
     formData.set("company", values.company.trim());
     formData.set("message", values.message.trim());
+    // Honeypot: empty for real users; a value here means the Server Action
+    // silently drops the submission.
+    formData.set("company_website", honeypotRef.current?.value ?? "");
 
     startTransition(async () => {
       const result = await submitContactForm(formData);
@@ -211,6 +212,30 @@ export function ContactForm() {
       aria-describedby="contact-form-status"
       className="rounded-2xl border border-border bg-bg-surface p-6 md:p-8"
     >
+      {/*
+        Honeypot — moved off-screen and hidden from assistive tech (aria-hidden)
+        and keyboard users (tabIndex=-1), so real people never see or reach it.
+        Bots that autofill every field trip it, and the Server Action then
+        silently drops the submission. Deliberately NOT display:none / type=hidden,
+        which bots recognise and skip.
+      */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -left-[9999px] top-0 h-0 w-0 overflow-hidden"
+      >
+        <label htmlFor="contact-company-website">
+          Company website (leave this field blank)
+        </label>
+        <input
+          ref={honeypotRef}
+          id="contact-company-website"
+          name="company_website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </div>
+
       <p className="text-small text-text-secondary">
         Fields marked{" "}
         <span className="text-accent" aria-hidden="true">
@@ -220,7 +245,7 @@ export function ContactForm() {
       </p>
 
       {/* Form-level status: announces the overall error after a failed submit. */}
-      <div id="contact-form-status" aria-live="assertive" className="mt-2 empty:mt-0">
+      <div id="contact-form-status" className="mt-2 empty:mt-0">
         {formError ? (
           <p
             role="alert"
@@ -306,7 +331,7 @@ export function ContactForm() {
             className="text-small font-medium text-text-primary"
           >
             Company{" "}
-            <span className="font-normal text-text-muted">(optional)</span>
+            <span className="font-normal text-text-secondary">(optional)</span>
           </label>
           <input
             id="contact-company"
@@ -348,7 +373,7 @@ export function ContactForm() {
             )}
             className={cn(inputClasses(Boolean(errors.message)), "resize-y")}
           />
-          <p id="contact-message-hint" className="text-small text-text-muted">
+          <p id="contact-message-hint" className="text-small text-text-secondary">
             No pressure and no jargon — we&apos;ll take it from here.
           </p>
           {errors.message ? (

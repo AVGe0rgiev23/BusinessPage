@@ -152,3 +152,21 @@
     @apply font-sans;
   }
 }
+
+/*
+  Reduced-motion reset. Kept unlayered (outside @layer) so it outranks Tailwind's
+  utility layer, and reinforced with !important, guaranteeing it neutralises CSS
+  animations that the JS `useReducedMotion` gate can't reach — e.g. the FAQ
+  accordion's data-open/data-closed height animations. The accordion still opens
+  and closes; it just snaps instead of sliding for users who ask for less motion.
+*/
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

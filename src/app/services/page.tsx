@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 
 export default function ServicesPage() {
   return (
-    <main id="main" className="flex flex-1 flex-col">
+    <main id="main" tabIndex={-1} className="flex flex-1 flex-col">
       <PageHeader
         eyebrow="Services"
         title="Software that handles the busywork your team shouldn't be doing."
