@@ -1,3 +1,4 @@
+import * as React from "react"
 import { Button as ButtonPrimitive } from "@base-ui/react/button"
 import { cva, type VariantProps } from "class-variance-authority"
 
@@ -44,12 +45,49 @@ function Button({
   className,
   variant = "default",
   size = "default",
+  render,
+  nativeButton,
   ...props
 }: ButtonPrimitive.Props & VariantProps<typeof buttonVariants>) {
+  const classes = cn(buttonVariants({ variant, size, className }))
+
+  /**
+   * Most call sites pass `render={<Link href/>}` or `render={<a href/>}` — a
+   * link that merely *looks* like a button. Those are links, not buttons, and
+   * they must keep link semantics: announced as a link, opened in a new tab,
+   * listed in a screen reader's links list.
+   *
+   * Routing them through Base UI's Button primitive is wrong in both directions.
+   * Left alone it warns ("expected a native <button>"); silenced with
+   * `nativeButton={false}` it stamps `role="button" tabindex="0"` onto a real
+   * `<a href>`, which is worse than the warning. So for a non-button `render`
+   * element we skip the primitive entirely and just apply the button *styling*
+   * to the element the caller gave us.
+   *
+   * An explicit `nativeButton` from the caller opts back into the primitive —
+   * that's the escape hatch for genuinely button-like non-button elements.
+   */
+  if (
+    nativeButton === undefined &&
+    React.isValidElement(render) &&
+    render.type !== "button"
+  ) {
+    type UnknownProps = Record<string, unknown>
+    const renderProps = render.props as UnknownProps
+
+    return React.cloneElement(render as React.ReactElement<UnknownProps>, {
+      ...(props as UnknownProps),
+      "data-slot": "button",
+      className: cn(classes, renderProps.className as string | undefined),
+    })
+  }
+
   return (
     <ButtonPrimitive
       data-slot="button"
-      className={cn(buttonVariants({ variant, size, className }))}
+      className={classes}
+      render={render}
+      nativeButton={nativeButton}
       {...props}
     />
   )
