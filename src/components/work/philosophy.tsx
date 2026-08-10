@@ -12,8 +12,8 @@ const PRINCIPLES = [
   },
   {
     icon: ShieldCheck,
-    title: "You own everything",
-    body: "The code, the data, and the accounts all belong to you. Nothing we build ties you to us or to a platform you can't walk away from.",
+    title: "Ownership you can point to",
+    body: "We design projects so you keep appropriate ownership and control of your software, your data, and your infrastructure, according to the delivery model you choose — and we're precise about which is which.",
   },
   {
     icon: Blocks,

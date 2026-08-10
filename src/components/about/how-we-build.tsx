@@ -19,8 +19,8 @@ const PRINCIPLES = [
   },
   {
     icon: ShieldCheck,
-    title: "Yours to own outright",
-    body: "The code and the data belong to you. No per-seat rent on a platform you don’t control, and no rug-pull when a vendor changes its pricing or shuts down.",
+    title: "Ownership, defined clearly",
+    body: "The custom software we build for you is yours under the project agreement, and your data stays yours. Third-party services keep their own providers’ terms — and we’re precise about which is which instead of hand-waving at it.",
   },
   {
     icon: TrendingUp,
@@ -29,8 +29,8 @@ const PRINCIPLES = [
   },
   {
     icon: Network,
-    title: "No builder to depend on",
-    body: "Your business doesn’t hang on a third-party workflow tool staying online, supported, and affordable. What runs your operation is yours to keep running.",
+    title: "Portable by design",
+    body: "We build with ownership and portability in mind, on standard technology wherever practical — so you’re never forced to depend on AGility, or on any one platform, to keep your business running.",
   },
 ];
 
@@ -54,10 +54,10 @@ export function HowWeBuild() {
               We build around how your business actually runs.
             </h2>
             <p className="mt-5 text-pretty text-body-lg text-text-secondary">
-              We build custom software instead of relying primarily on low-code
-              automation platforms. This gives you greater flexibility,
-              ownership, scalability, and eliminates dependence on third-party
-              workflow builders.
+              We&apos;re code-first: the processes your business runs on get
+              built as software, rather than assembled inside a proprietary
+              visual workflow builder. That buys you flexibility, clearer
+              ownership, and room to grow.
             </p>
             <p className="mt-4 text-pretty text-body text-text-secondary">
               Low-code tools are genuinely useful, and when one is the right
@@ -65,6 +65,12 @@ export function HowWeBuild() {
               business, the more it pays to own it outright — rather than rent it
               from a platform that can change its rules, its pricing, or its
               availability overnight.
+            </p>
+            <p className="mt-4 text-pretty text-body text-text-secondary">
+              And you decide how much of it we operate. Some clients want us to
+              run the whole system and never think about it again; others want it
+              deployed into their own cloud and handed over; plenty want
+              something in between. We&apos;ll recommend a model — you pick one.
             </p>
           </Reveal>
 

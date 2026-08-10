@@ -10,7 +10,7 @@ import { AboutCta } from "@/components/about/about-cta";
 
 const title = "About AGility — Custom Software Built Around Your Business";
 const description =
-  "We build custom software that saves growing businesses time and money — and hands them full ownership of the code. Here is how we think about building, and what we stand for.";
+  "We build custom software that saves growing businesses time and money, with clear ownership and a delivery model you choose. Here is how we think about building, and what we stand for.";
 
 export const metadata: Metadata = {
   title,

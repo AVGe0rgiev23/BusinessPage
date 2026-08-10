@@ -6,6 +6,7 @@ import {
   Sparkles,
   Cloud,
   Plug,
+  Workflow,
   type LucideIcon,
 } from "lucide-react";
 
@@ -33,7 +34,18 @@ const STACK: StackGroup[] = [
   {
     icon: Server,
     label: "Backend & APIs",
-    items: ["Node.js", "REST APIs", "GraphQL", "Webhooks", "Background jobs"],
+    items: ["Node.js", "REST APIs", "GraphQL", "Webhooks"],
+  },
+  {
+    icon: Workflow,
+    label: "Background jobs & workflow infrastructure",
+    items: [
+      "Trigger.dev",
+      "Queues",
+      "Scheduled jobs",
+      "Retries & concurrency controls",
+      "Background workers",
+    ],
   },
   {
     icon: Database,
@@ -90,8 +102,9 @@ export function TechStack() {
           </h2>
           <p className="mt-5 text-pretty text-body-lg text-text-secondary">
             A well-supported, widely adopted toolset — the same tooling behind
-            serious software products. We mix and match from it to fit each
-            project rather than forcing every job through the same template.
+            serious software products. Think of it as a toolkit, not a template:
+            we choose the stack per project, and nothing on this list is
+            mandatory.
           </p>
         </Reveal>
 
@@ -128,6 +141,18 @@ export function TechStack() {
             );
           })}
         </ul>
+
+        <Reveal delay={0.1} className="mx-auto mt-12 max-w-3xl text-center">
+          <p className="text-pretty text-body text-text-secondary">
+            Long-running work — document processing, AI pipelines, scheduled
+            syncs — runs on background-job infrastructure that handles retries,
+            queues, concurrency, and monitoring, using a managed platform such as
+            Trigger.dev Cloud or infrastructure that&apos;s hosted for the
+            project. Where any of it lives, and whose accounts it runs under,
+            depends on the delivery model you choose — not on the tools
+            themselves.
+          </p>
+        </Reveal>
       </Container>
     </Section>
   );

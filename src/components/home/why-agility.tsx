@@ -24,8 +24,8 @@ const REASONS = [
   },
   {
     icon: ShieldCheck,
-    title: "You own your code",
-    body: "The software we build belongs to you — the code, the data, and the freedom to take it anywhere.",
+    title: "Ownership on your terms",
+    body: "The custom software is yours under the project agreement, and your data stays yours. You decide whether we operate it or you run it yourself.",
   },
   {
     icon: MessageSquare,
@@ -34,8 +34,8 @@ const REASONS = [
   },
   {
     icon: HeartHandshake,
-    title: "Long-term support",
-    body: "We don't disappear at launch. We maintain and grow what we build alongside your business.",
+    title: "Support, if you want it",
+    body: "We can stay on to maintain and grow what we build — or hand it over properly so your team runs it. Ongoing support is an option, not an obligation.",
   },
   {
     icon: Eye,

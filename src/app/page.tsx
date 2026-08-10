@@ -4,6 +4,7 @@ import { Outcomes } from "@/components/home/outcomes";
 import { ServicesPreview } from "@/components/home/services-preview";
 import { WhyCustom } from "@/components/home/why-custom";
 import { ProcessPreview } from "@/components/home/process-preview";
+import { DeliveryModels } from "@/components/shared/delivery-models";
 import { Technology } from "@/components/home/technology";
 import { WhyAgility } from "@/components/home/why-agility";
 import { OpenSource } from "@/components/home/open-source";
@@ -20,6 +21,7 @@ export default function Home() {
       <ServicesPreview />
       <WhyCustom />
       <ProcessPreview />
+      <DeliveryModels />
       <Technology />
       <WhyAgility />
       <OpenSource />

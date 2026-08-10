@@ -49,8 +49,8 @@ const ANATOMY = [
   },
   {
     icon: ShieldCheck,
-    label: "What they own",
-    body: "The code and data that stayed theirs, with no lock-in to us or a platform.",
+    label: "How it's delivered",
+    body: "Which model they chose — who owns the software and infrastructure, and who operates it.",
   },
 ];
 

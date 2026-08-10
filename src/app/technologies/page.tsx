@@ -7,7 +7,7 @@ import { TechnologiesCta } from "@/components/technologies/technologies-cta";
 
 const title = "Technology Stack | AGility";
 const description =
-  "The languages, frameworks, data, AI, and cloud tools AGility builds on — a proven, widely supported stack chosen for reliability, performance, and software you can maintain and own long term.";
+  "The languages, frameworks, data, AI, background-job, and cloud tools AGility builds with — a proven, widely supported toolkit chosen per project for reliability, performance, and software that stays maintainable long term.";
 
 export const metadata: Metadata = {
   title,
@@ -22,8 +22,8 @@ export default function TechnologiesPage() {
     <main id="main" tabIndex={-1} className="flex flex-1 flex-col">
       <PageHeader
         eyebrow="Technologies"
-        title="Built on proven tools — so your software stays reliable, fast, and yours to maintain."
-        subtitle="We work with a well-supported, widely adopted stack — the same tooling behind serious software products. We choose it for reliability and longevity rather than novelty, and we adapt it to fit each project."
+        title="Built on proven tools — so your software stays reliable, fast, and maintainable."
+        subtitle="We work with a well-supported, widely adopted stack — the same tooling behind serious software products. We choose it for reliability and longevity rather than novelty, and we pick the parts that fit each project rather than running every job through the same template."
       />
       <TechStack />
       <WhyThisStack />

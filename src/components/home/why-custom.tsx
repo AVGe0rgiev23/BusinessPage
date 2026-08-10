@@ -20,7 +20,7 @@ const REASONS = [
   {
     icon: ShieldCheck,
     title: "Ownership",
-    body: "The software is yours. No per-seat licences on a platform you don't control, no rug-pull when a vendor changes its pricing.",
+    body: "The custom software we build for you is yours under the project agreement — not a per-seat licence on a builder you don't control.",
   },
   {
     icon: Settings,
@@ -34,8 +34,8 @@ const REASONS = [
   },
   {
     icon: Blocks,
-    title: "No third-party lock-in",
-    body: "You're not dependent on a workflow builder staying online, supported, and affordable for your business to keep running.",
+    title: "No unnecessary lock-in",
+    body: "We build on standard, portable technologies wherever practical, so your core process doesn't hinge on one proprietary builder's pricing or roadmap.",
   },
   {
     icon: Network,
@@ -65,15 +65,22 @@ export function WhyCustom() {
               Own your software. Don&apos;t rent your workflow.
             </h2>
             <p className="mt-5 text-pretty text-body-lg text-text-secondary">
-              We build custom software instead of relying primarily on low-code
-              automation platforms. This gives you greater flexibility,
-              ownership, scalability, and eliminates dependence on third-party
-              workflow builders.
+              We&apos;re code-first: the processes your business runs on get
+              built as software, rather than assembled inside a proprietary
+              visual workflow builder. That buys you flexibility, clearer
+              ownership, and room to grow.
             </p>
             <p className="mt-4 text-pretty text-body text-text-secondary">
               Low-code tools have their place, and we&apos;ll tell you honestly
-              when one is the right call. But as your processes get more valuable,
-              owning them tends to pay off.
+              when one is the right call — including when it means a smaller
+              project for us. But as a process becomes central to how you make
+              money, owning it tends to pay off.
+            </p>
+            <p className="mt-4 text-pretty text-body text-text-secondary">
+              We use third-party services ourselves — cloud hosting, databases,
+              AI providers. Nobody builds without them. The difference is that we
+              avoid unnecessary platform lock-in and stick to standard, portable
+              technology wherever it&apos;s practical.
             </p>
             <Link
               href="/services"

@@ -7,7 +7,7 @@ import { ProcessCta } from "@/components/process/process-cta";
 
 const title = "Our Process — How AGility Builds Your Software";
 const description =
-  "See how we take a project from an expensive problem to working software: discovery, scoping, build, launch, and long-term support — with clear communication and no surprises at every step.";
+  "See how we take a project from an expensive problem to working software: discovery, scoping, build, launch, and optional ongoing support — with the delivery model you choose and no surprises at any step.";
 
 export const metadata: Metadata = {
   title,

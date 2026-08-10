@@ -27,12 +27,12 @@ const STEPS = [
   {
     icon: Rocket,
     title: "Deploy",
-    body: "We roll it out carefully, test it against real work, and make sure your team is comfortable using it.",
+    body: "We launch it using the operating model you've chosen, configure the infrastructure and access, and test against real work.",
   },
   {
     icon: LifeBuoy,
     title: "Support",
-    body: "We stay on to maintain, refine, and extend the software as your business changes over time.",
+    body: "Optional, and shaped to you: we operate the system, maintain it inside your environment, or hand it over to your team.",
   },
 ];
 

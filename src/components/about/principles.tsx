@@ -6,8 +6,8 @@ import { Reveal } from "@/components/motion/reveal";
 
 /**
  * Principles — the values behind AGility, built on the honest trust pillars
- * (fast communication, transparent development, long-term support, you own
- * your code). Written in a values / "why we hold this" voice, distinct from the
+ * (fast communication, transparent development, long-term support, ownership on
+ * your terms). Written in a values / "why we hold this" voice, distinct from the
  * day-to-day experiential framing of the Process page's WorkingWithUs section.
  * Server Component; `<h2>` heading + `<h3>` per principle.
  */
@@ -25,12 +25,12 @@ const PRINCIPLES = [
   {
     icon: HeartHandshake,
     title: "Long-term support",
-    body: "Software isn’t finished at launch; that’s where it starts earning. We commit to maintaining and growing what we build, because our reputation lives in how it performs a year later, not on demo day.",
+    body: "Software isn’t finished at launch; that’s where it starts earning. We’ll maintain and grow what we build for as long as you want us to, because our reputation lives in how it performs a year later, not on demo day — and if you’d rather run it yourself, we hand it over properly.",
   },
   {
     icon: ShieldCheck,
-    title: "You own your code",
-    body: "We think ownership is a right, not an upsell. The code, the data, and the freedom to take them anywhere are yours from the start — and holding ourselves to that keeps us honest about earning the work.",
+    title: "Ownership on your terms",
+    body: "We think ownership is a right, not an upsell. The custom software is yours under the project agreement and your data stays yours — and you choose how much we operate on your behalf. Holding ourselves to that keeps us honest about earning the work rather than trapping it.",
   },
 ];
 

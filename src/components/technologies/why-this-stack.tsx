@@ -18,8 +18,8 @@ const REASONS: { icon: LucideIcon; title: string; body: string }[] = [
   },
   {
     icon: KeyRound,
-    title: "Ownership",
-    body: "You get standard, well-understood code and infrastructure — not a proprietary black box — so you're never locked to us or to a single vendor.",
+    title: "Portability",
+    body: "Standard, well-understood code and infrastructure rather than a proprietary black box. We use third-party providers like everyone does — the point is that moving off one shouldn't mean a rewrite.",
   },
   {
     icon: Gauge,

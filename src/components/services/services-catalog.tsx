@@ -110,12 +110,12 @@ const GROUPS: ServiceGroup[] = [
     id: "custom-products",
     name: "Custom products",
     blurb:
-      "When nothing off-the-shelf fits, we design and build the product itself — and you own what we build.",
+      "When nothing off-the-shelf fits, we design and build the product itself — and the software we build for you is yours under the project agreement.",
     services: [
       {
         icon: Package,
         title: "Custom SaaS products",
-        body: "A full product built from first idea to launch when existing software can't do what you need — and you want to own the result.",
+        body: "A full product built from first idea to launch when existing software can't do what you need — and you want to own the result rather than rent it.",
       },
       {
         icon: BrainCircuit,

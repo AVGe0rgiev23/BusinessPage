@@ -7,7 +7,7 @@ import { Reveal } from "@/components/motion/reveal";
 /**
  * WorkingWithUs — the "what working with us is actually like" section for the
  * Process page. Draws on the honest trust pillars (fast communication,
- * transparent development, long-term support, you own your code) with an
+ * transparent development, long-term support, ownership on your terms) with an
  * experiential, day-to-day framing (distinct from the values framing used on
  * the About page). Server Component; `<h2>` heading + `<h3>` per pillar.
  */
@@ -24,13 +24,13 @@ const PILLARS = [
   },
   {
     icon: HeartHandshake,
-    title: "Long-term support",
-    body: "We don’t disappear at launch. We stay on to maintain, refine, and extend what we built, so the software keeps working for you as the business moves and grows.",
+    title: "Support on your terms",
+    body: "We don’t disappear at launch — but we don’t insist on staying, either. We can maintain, refine, and extend what we built for as long as it’s useful to you, or hand it over cleanly so your team runs it. Support is an option you choose, not a condition of working with us.",
   },
   {
     icon: ShieldCheck,
-    title: "You own your code",
-    body: "The software, the code, and the data are yours — full stop. No lock-in, no hostage situation, no platform you can’t leave. You could take everything elsewhere tomorrow, though we’d rather earn the reason to stay.",
+    title: "Ownership on your terms",
+    body: "The custom software we build for you is yours under the project agreement, and your data stays yours. You decide how much we operate: we can run the system, maintain it inside infrastructure you own, or hand it over entirely. We build with portability in mind, so moving on is always a real option — we’d just rather earn the reason to stay.",
   },
 ];
 

@@ -3,11 +3,12 @@ import type { Metadata } from "next";
 import { PageHeader } from "@/components/layout/page-header";
 import { ServicesCatalog } from "@/components/services/services-catalog";
 import { WhyCustomCallout } from "@/components/services/why-custom-callout";
+import { DeliveryModels } from "@/components/shared/delivery-models";
 import { ServicesCta } from "@/components/services/services-cta";
 
 const title = "Custom Software & AI Automation Services | AGility";
 const description =
-  "From email and document automation to AI assistants, internal tools, and custom SaaS, AGility builds software around your business to cut manual work, connect your systems, and give you tools you own.";
+  "From email and document automation to AI assistants, internal tools, and custom SaaS, AGility builds software around your business — and you choose whether we run it for you, hand it over, or maintain it inside your own environment.";
 
 export const metadata: Metadata = {
   title,
@@ -27,6 +28,14 @@ export default function ServicesPage() {
       />
       <ServicesCatalog />
       <WhyCustomCallout />
+      <DeliveryModels
+        id="delivery"
+        eyebrow="Delivery"
+        heading="How your solution is delivered"
+        intro="Every project is different, and so is the right operating model. We can run the system for you, deploy it into infrastructure you control, or manage software running inside your own environment — whichever fits how your business works."
+        className="bg-bg-surface"
+        cardClassName="bg-bg"
+      />
       <ServicesCta />
     </main>
   );

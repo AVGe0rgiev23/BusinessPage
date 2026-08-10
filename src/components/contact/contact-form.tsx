@@ -5,6 +5,7 @@ import Link from "next/link";
 import { CheckCircle2, LoaderCircle, Send } from "lucide-react";
 
 import { cn, focusRing } from "@/lib/utils";
+import { WORKING_MODELS } from "@/lib/contact-options";
 import { Button } from "@/components/ui/button";
 import {
   submitContactForm,
@@ -14,10 +15,16 @@ import {
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MIN_MESSAGE_LENGTH = 10;
 
-type FieldName = "name" | "email" | "company" | "message";
+type FieldName = "name" | "email" | "company" | "workingModel" | "message";
 type Values = Record<FieldName, string>;
 
-const INITIAL_VALUES: Values = { name: "", email: "", company: "", message: "" };
+const INITIAL_VALUES: Values = {
+  name: "",
+  email: "",
+  company: "",
+  workingModel: "",
+  message: "",
+};
 
 /** Mirror of the server-side validation so the user gets instant feedback. */
 function validate(values: Values): ContactFieldErrors {
@@ -134,6 +141,7 @@ export function ContactForm() {
     formData.set("name", values.name.trim());
     formData.set("email", values.email.trim());
     formData.set("company", values.company.trim());
+    formData.set("workingModel", values.workingModel);
     formData.set("message", values.message.trim());
     // Honeypot: empty for real users; a value here means the Server Action
     // silently drops the submission.
@@ -342,6 +350,54 @@ export function ContactForm() {
             onChange={(event) => handleChange("company", event.target.value)}
             className={inputClasses(false)}
           />
+        </div>
+
+        {/*
+          Preferred working model (optional). Commercially useful — it tells us
+          straight away how the prospect wants to work — but deliberately not
+          required, and "Not sure" is a first-class answer. A visitor should
+          never have to understand the delivery models before they can contact
+          us.
+        */}
+        <div className="grid gap-2">
+          <label
+            htmlFor="contact-working-model"
+            className="text-small font-medium text-text-primary"
+          >
+            Preferred working model{" "}
+            <span className="font-normal text-text-secondary">(optional)</span>
+          </label>
+          <select
+            id="contact-working-model"
+            name="workingModel"
+            value={values.workingModel}
+            onChange={(event) =>
+              handleChange("workingModel", event.target.value)
+            }
+            aria-describedby="contact-working-model-hint"
+            className={cn(inputClasses(false), "appearance-none pr-10")}
+            style={{
+              backgroundImage:
+                "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23a1a1aa' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E\")",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "right 0.875rem center",
+            }}
+          >
+            <option value="">Select one…</option>
+            {WORKING_MODELS.map((model) => (
+              <option key={model.value} value={model.value}>
+                {model.label}
+              </option>
+            ))}
+          </select>
+          <p
+            id="contact-working-model-hint"
+            className="text-small text-text-secondary"
+          >
+            How would you like the software run once it&apos;s built? If
+            you&apos;re not sure, leave it — recommending one is part of the
+            conversation.
+          </p>
         </div>
 
         {/* Message */}

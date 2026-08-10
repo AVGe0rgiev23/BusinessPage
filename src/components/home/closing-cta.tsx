@@ -9,7 +9,7 @@ export function ClosingCta() {
       id="get-started"
       eyebrow="Get started"
       title="Ready to get those hours back?"
-      subtitle="Book a free consultation and we'll look at where your business is losing time and money — and exactly how custom software could win it back. No pressure, no jargon."
+      subtitle="Tell us what's slowing your team down. We'll look at where the time and money are going, give you an honest answer on whether custom software is the right fix — and if it is, work out how you'd want it delivered. No pressure, no jargon."
       primary={{ label: "Book a consultation", href: "/book" }}
       secondary={{ label: "Get in touch", href: "/contact", icon: true }}
       footnote={

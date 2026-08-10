@@ -50,8 +50,8 @@ export function Footer() {
             </Link>
             <p className="mt-4 text-small text-text-secondary">
               Custom software and AI automation that reclaims the hours lost to
-              repetitive work, cuts operating costs, and leaves you owning what
-              you run on.
+              repetitive work and cuts operating costs — delivered the way you
+              choose to run it.
             </p>
             <div className="mt-6 flex items-center gap-3">
               <a

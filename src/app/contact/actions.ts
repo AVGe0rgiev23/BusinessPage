@@ -2,6 +2,8 @@
 
 import { Resend } from "resend";
 
+import { workingModelLabel } from "@/lib/contact-options";
+
 /**
  * Contact form Server Action.
  *
@@ -60,6 +62,13 @@ export async function submitContactForm(
     message: String(formData.get("message") ?? "").trim(),
   };
 
+  // Optional, and never trusted: the submitted value is resolved against the
+  // canonical option list rather than echoed into the email, so an unexpected
+  // value simply reads as "not answered" instead of arriving as free text.
+  const workingModel = workingModelLabel(
+    String(formData.get("workingModel") ?? "").trim()
+  );
+
   const fieldErrors: ContactFieldErrors = {};
 
   if (!submission.name) {
@@ -111,6 +120,7 @@ export async function submitContactForm(
       `Name: ${submission.name}`,
       `Email: ${submission.email}`,
       submission.company ? `Company: ${submission.company}` : null,
+      workingModel ? `Preferred working model: ${workingModel}` : null,
       "",
       submission.message,
     ]

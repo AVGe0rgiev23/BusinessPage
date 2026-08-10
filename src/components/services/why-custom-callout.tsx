@@ -19,7 +19,7 @@ const POINTS: { icon: LucideIcon; label: string; desc: string }[] = [
   {
     icon: ShieldCheck,
     label: "Ownership",
-    desc: "The software is yours to keep, run, and change — not rented from a platform you don't control.",
+    desc: "The custom software is yours under the project agreement — not rented from a builder you don't control.",
   },
   {
     icon: Settings,
@@ -33,8 +33,8 @@ const POINTS: { icon: LucideIcon; label: string; desc: string }[] = [
   },
   {
     icon: Blocks,
-    label: "No third-party lock-in",
-    desc: "Your business doesn't depend on a workflow builder staying online, supported, and affordable.",
+    label: "No unnecessary lock-in",
+    desc: "Standard, portable technology wherever practical — so your core process isn't hostage to one builder's pricing.",
   },
 ];
 
@@ -56,17 +56,24 @@ export function WhyCustomCallout() {
                   Why custom, not off-the-shelf
                 </h2>
                 <p className="mt-5 text-pretty text-body-lg text-text-secondary">
-                  We build custom software instead of relying primarily on
-                  low-code automation platforms. This gives you greater
-                  flexibility, ownership, scalability, and eliminates dependence
-                  on third-party workflow builders.
+                  We&apos;re code-first: the processes your business runs on get
+                  built as software, rather than assembled inside a proprietary
+                  visual workflow builder. That buys you flexibility, clearer
+                  ownership, and room to grow.
                 </p>
                 <p className="mt-4 text-pretty text-body text-text-secondary">
                   Off-the-shelf tools and low-code platforms have their place,
-                  and we&apos;ll tell you honestly when one is the right fit. But
-                  as a process becomes central to how you make money, owning it
-                  tends to pay off more than renting it from a builder that can
-                  change its pricing or shut down.
+                  and we&apos;ll tell you honestly when one is the right fit —
+                  including when it means a smaller project for us. But as a
+                  process becomes central to how you make money, owning it tends
+                  to pay off more than renting it from a builder that can change
+                  its pricing or shut down.
+                </p>
+                <p className="mt-4 text-pretty text-body text-text-secondary">
+                  We use third-party services ourselves — cloud hosting,
+                  databases, AI providers. The point isn&apos;t to avoid them,
+                  it&apos;s to avoid unnecessary lock-in and keep what we build
+                  portable.
                 </p>
                 <Link
                   href="/process"

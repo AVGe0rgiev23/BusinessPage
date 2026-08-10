@@ -75,7 +75,7 @@ export function Hero() {
         >
           We build custom software that removes the repetitive work quietly
           draining your team&apos;s hours and your budget — shaped around how your
-          business actually runs, and yours to own.
+          business actually runs, and delivered on terms you choose.
         </motion.p>
 
         <motion.div

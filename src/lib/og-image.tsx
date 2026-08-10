@@ -134,7 +134,7 @@ export function renderSocialImage() {
             }}
           />
           <div style={{ display: "flex", fontSize: 26, color: TEXT_MUTED }}>
-            Software you own, built around your business.
+            Custom software, built around your business.
           </div>
         </div>
       </div>
