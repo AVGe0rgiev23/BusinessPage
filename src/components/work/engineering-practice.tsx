@@ -1,44 +1,39 @@
-import {
-  GitPullRequest,
-  FlaskConical,
-  LockKeyhole,
-  FileText,
-  Rocket,
-  Gauge,
-} from "lucide-react";
-
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
-import { Reveal } from "@/components/motion/reveal";
+import { RevealGroup } from "@/components/motion/reveal";
+import { SectionHeading } from "@/components/layout/section-heading";
 
+/**
+ * EngineeringPractice — the invisible standards.
+ *
+ * Set as a specification list: monospace uppercase headings over hairline
+ * rules, three up. It sits directly beneath `Philosophy`, which uses the shared
+ * `PointList`, so it deliberately takes a different shape — two adjacent
+ * sections of six short titled paragraphs would otherwise read as one long
+ * undifferentiated list twelve items deep.
+ */
 const PRACTICES = [
   {
-    icon: GitPullRequest,
     title: "Reviewed, not rushed",
     body: "Changes are reviewed before they ship. A second set of eyes catches problems while they're still cheap to fix.",
   },
   {
-    icon: FlaskConical,
     title: "Tested where it counts",
     body: "Automated tests cover the parts of your software you can't afford to have break, so updates don't quietly undo what already worked.",
   },
   {
-    icon: LockKeyhole,
     title: "Handled with care",
     body: "Least-privilege access, secrets kept out of the code, and your data treated as something to protect — not an afterthought.",
   },
   {
-    icon: FileText,
     title: "Documented as we go",
     body: "What we build comes with the notes to run and change it, so you're never held hostage by one person's memory.",
   },
   {
-    icon: Rocket,
     title: "Shipped through a pipeline",
     body: "Automated checks and deploys make releases repeatable and boring — the way releases should be — instead of a manual nail-biter.",
   },
   {
-    icon: Gauge,
     title: "Measured, then tuned",
     body: "We check how software actually performs before optimising, and fix the things your users and your bill genuinely feel.",
   },
@@ -46,45 +41,44 @@ const PRACTICES = [
 
 export function EngineeringPractice() {
   return (
-    <Section id="engineering-practice" aria-labelledby="engineering-heading">
+    <Section
+      id="engineering-practice"
+      aria-labelledby="engineering-heading"
+      className="border-t border-border bg-bg-surface"
+    >
       <Container>
-        <Reveal className="mx-auto max-w-2xl text-center">
-          <p className="text-eyebrow font-mono uppercase tracking-wider text-accent">
-            Engineering practice
-          </p>
-          <h2
-            id="engineering-heading"
-            className="mt-4 text-balance text-h2 font-semibold text-text-primary"
-          >
-            The standards behind the software.
-          </h2>
-          <p className="mt-5 text-pretty text-body-lg text-text-secondary">
-            The difference between software that runs for years and software you
-            regret is mostly invisible — it lives in how it&apos;s built. Here&apos;s
-            what that looks like on our side.
-          </p>
-        </Reveal>
+        <SectionHeading
+          index="03"
+          eyebrow="Engineering practice"
+          headingId="engineering-heading"
+          title="The standards behind the software."
+          lede="The difference between software that runs for years and software you regret is mostly invisible — it lives in how it's built. Here's what that looks like on our side."
+        />
 
-        <ul className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {PRACTICES.map((practice, i) => {
-            const Icon = practice.icon;
-            return (
-              <Reveal key={practice.title} delay={(i % 3) * 0.08}>
-                <li className="h-full rounded-2xl border border-border bg-bg-surface p-6 transition-colors hover:border-border-hover">
-                  <span className="inline-flex size-11 items-center justify-center rounded-xl bg-accent-subtle text-accent">
-                    <Icon className="size-5" aria-hidden="true" />
-                  </span>
-                  <h3 className="mt-5 text-h3 font-semibold text-text-primary">
-                    {practice.title}
-                  </h3>
-                  <p className="mt-2 text-body text-text-secondary">
-                    {practice.body}
-                  </p>
-                </li>
-              </Reveal>
-            );
-          })}
-        </ul>
+        <RevealGroup
+          as="ul"
+          className="mt-16 grid gap-x-10 gap-y-9 sm:grid-cols-2 md:mt-20 lg:grid-cols-3"
+          selector=":scope > li"
+        >
+          {PRACTICES.map((practice, i) => (
+            <li key={practice.title} className="group border-t border-border pt-5">
+              <div className="flex items-baseline gap-3">
+                <span
+                  aria-hidden="true"
+                  className="tabular font-mono text-eyebrow text-text-muted transition-colors duration-[--duration-fast] group-hover:text-accent"
+                >
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="font-mono text-eyebrow uppercase text-text-primary">
+                  {practice.title}
+                </h3>
+              </div>
+              <p className="mt-3 max-w-[44ch] text-pretty text-small text-text-secondary">
+                {practice.body}
+              </p>
+            </li>
+          ))}
+        </RevealGroup>
       </Container>
     </Section>
   );

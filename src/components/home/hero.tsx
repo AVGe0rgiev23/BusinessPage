@@ -1,105 +1,227 @@
 "use client";
 
+import * as React from "react";
 import Link from "next/link";
-import { motion, useReducedMotion } from "framer-motion";
+import { createTimeline } from "animejs";
 import { ArrowRight } from "lucide-react";
 
+import { cn, focusRing } from "@/lib/utils";
+import { duration, ease, prefersReducedMotion } from "@/lib/motion";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/layout/container";
+import { SystemDiagram } from "@/components/home/system-diagram";
 
-const focusRing =
-  "outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-bg";
-
+/**
+ * Hero.
+ *
+ * The positioning line and supporting copy are unchanged — they were the
+ * strongest thing on the old site. What changed is the presentation.
+ *
+ * The old hero was centred: eyebrow pill, headline, paragraph and two pill
+ * buttons stacked down the middle over an indigo radial glow and a faint grid.
+ * That is the single most recognisable layout on the internet right now, and no
+ * amount of polish makes it look like a considered piece of design.
+ *
+ * This version is an asymmetric two-column: an editorial type stack on the
+ * left, the system diagram on the right. The headline breaks across three lines
+ * because the copy is already three sentences, and setting them as three tight
+ * lines of a narrowed display face is what turns a tagline into a statement.
+ */
 export function Hero() {
-  const shouldReduceMotion = useReducedMotion();
+  const rootRef = React.useRef<HTMLDivElement>(null);
 
-  const rise = (delay: number) => ({
-    initial: { opacity: 0, y: shouldReduceMotion ? 0 : 16 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.55, ease: "easeOut" as const, delay },
-  });
+  React.useEffect(() => {
+    const root = rootRef.current;
+    if (!root) return;
+
+    const targets = Array.from(
+      root.querySelectorAll<HTMLElement>("[data-hero]")
+    );
+    if (targets.length === 0) return;
+
+    const reveal = () => {
+      for (const el of targets) el.dataset.reveal = "shown";
+    };
+
+    if (prefersReducedMotion()) {
+      reveal();
+      return;
+    }
+
+    /*
+      One timeline, not six independent animations. The elements arrive in
+      reading order with a short overlap, so the eye is led down the stack
+      rather than presented with six things fading in at once.
+
+      `-=380` on each step starts it before the previous one finishes. That
+      overlap is the difference between a sequence that feels choreographed and
+      one that feels like a queue.
+    */
+    const timeline = createTimeline({
+      defaults: {
+        duration: duration.cinematic,
+        ease: ease.out,
+      },
+    });
+
+    timeline.call(reveal);
+
+    targets.forEach((target, i) => {
+      timeline.add(
+        target,
+        { opacity: [0, 1], y: [18, 0] },
+        i === 0 ? 0 : "-=380"
+      );
+    });
+
+    return () => {
+      timeline.revert();
+    };
+  }, []);
 
   return (
     <section
       aria-labelledby="hero-heading"
       className="relative isolate overflow-hidden"
     >
-      {/* Decorative background: indigo radial glow + faint fading grid. */}
+      {/*
+        Background. Three quiet layers instead of one loud purple orb:
+        a warm off-centre wash anchored to the diagram side, a hairline grid
+        that fades out, and film grain over the top so the flat dark ground
+        reads as a material. Nothing here glows.
+      */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
         <div
-          className="absolute left-1/2 top-[-20%] h-[720px] w-[min(1100px,120vw)] -translate-x-1/2 rounded-full opacity-70 blur-3xl"
+          className="absolute right-[-10%] top-[-30%] h-[760px] w-[min(900px,100vw)] rounded-full opacity-70 blur-3xl"
           style={{
             background:
-              "radial-gradient(closest-side, rgba(90,110,255,0.28), rgba(90,110,255,0.08) 55%, transparent 78%)",
+              "radial-gradient(closest-side, rgba(224,142,67,0.10), rgba(224,142,67,0.03) 55%, transparent 78%)",
           }}
         />
         <div
-          className="absolute inset-0 opacity-[0.04]"
+          className="absolute inset-0 opacity-[0.055]"
           style={{
             backgroundImage:
-              "linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)",
-            backgroundSize: "56px 56px",
+              "linear-gradient(to right, #efebe4 1px, transparent 1px), linear-gradient(to bottom, #efebe4 1px, transparent 1px)",
+            backgroundSize: "72px 72px",
             maskImage:
-              "radial-gradient(ellipse 70% 55% at 50% 0%, #000 40%, transparent 78%)",
+              "linear-gradient(to bottom, #000 0%, rgba(0,0,0,0.4) 55%, transparent 92%)",
             WebkitMaskImage:
-              "radial-gradient(ellipse 70% 55% at 50% 0%, #000 40%, transparent 78%)",
+              "linear-gradient(to bottom, #000 0%, rgba(0,0,0,0.4) 55%, transparent 92%)",
           }}
         />
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-bg" />
+        <div className="absolute inset-0 grain" />
       </div>
 
-      <Container className="flex flex-col items-center pt-28 pb-24 text-center md:pt-40 md:pb-32">
-        <motion.p
-          {...rise(0)}
-          className="inline-flex items-center gap-2 rounded-full border border-border bg-bg-surface/60 px-4 py-1.5 text-eyebrow font-mono uppercase tracking-wider text-accent"
+      <Container>
+        <div
+          ref={rootRef}
+          /*
+            Two columns only from `xl`. At `lg` (1024) the split left the
+            diagram about 450px to fit five input chips, a system node, four
+            outcome chips and two column headings — everything wrapped and the
+            "Handled automatically" label clipped. Below 1280 the hero stacks
+            instead, which gives the diagram the full container width and lets
+            it keep its left-to-right reading order.
+          */
+          className="grid items-center gap-16 pt-20 pb-24 md:pt-28 lg:pt-32 lg:pb-36 xl:grid-cols-[minmax(0,1fr)_minmax(0,1.06fr)] xl:gap-16"
         >
-          <span
-            aria-hidden="true"
-            className="size-1.5 rounded-full bg-accent"
-          />
-          Custom AI &amp; Automation
-        </motion.p>
+          {/* ── Type stack ───────────────────────────────────────────────── */}
+          <div>
+            <p
+              data-hero=""
+              data-reveal=""
+              className="flex items-center gap-2.5 font-mono text-eyebrow uppercase text-text-muted"
+            >
+              <span
+                aria-hidden="true"
+                className="size-1.5 rounded-full bg-accent"
+              />
+              Custom AI &amp; automation
+            </p>
 
-        <motion.h1
-          {...rise(0.08)}
-          id="hero-heading"
-          className="mt-6 max-w-4xl text-balance text-display font-semibold text-text-primary"
-        >
-          Save time. Cut costs.{" "}
-          <span className="text-accent">Scale faster.</span>
-        </motion.h1>
+            <h1
+              id="hero-heading"
+              data-hero=""
+              data-reveal=""
+              className="mt-7 text-display font-semibold text-text-primary"
+            >
+              <span className="block">Save time.</span>
+              <span className="block">Cut costs.</span>
+              <span className="block text-accent">Scale faster.</span>
+            </h1>
 
-        <motion.p
-          {...rise(0.16)}
-          className="mt-6 max-w-2xl text-pretty text-body-lg text-text-secondary"
-        >
-          We build custom software that removes the repetitive work quietly
-          draining your team&apos;s hours and your budget — shaped around how your
-          business actually runs, and delivered on terms you choose.
-        </motion.p>
+            <p
+              data-hero=""
+              data-reveal=""
+              className="mt-8 max-w-[52ch] text-pretty text-body-lg text-text-secondary"
+            >
+              We build custom software that removes the repetitive work quietly
+              draining your team&apos;s hours and your budget — shaped around how
+              your business actually runs, and delivered on terms you choose.
+            </p>
 
-        <motion.div
-          {...rise(0.24)}
-          className="mt-10 flex flex-col items-center gap-3 sm:flex-row"
-        >
-          <Button
-            render={<Link href="/book" />}
-            className={`group h-12 rounded-full px-7 text-base hover:bg-accent-hover ${focusRing}`}
-          >
-            Book a consultation
-            <ArrowRight
-              aria-hidden="true"
-              className="transition-transform group-hover/button:translate-x-0.5"
-            />
-          </Button>
-          <Button
-            variant="outline"
-            render={<Link href="/process" />}
-            className={`h-12 rounded-full border-border px-7 text-base text-text-primary hover:border-border-hover hover:bg-bg-elevated ${focusRing}`}
-          >
-            See how we work
-          </Button>
-        </motion.div>
+            <div
+              data-hero=""
+              data-reveal=""
+              className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center"
+            >
+              <Button
+                size="lg"
+                render={<Link href="/book" />}
+                className={cn("group", focusRing)}
+              >
+                Book a consultation
+                <ArrowRight
+                  aria-hidden="true"
+                  className="transition-transform duration-[--duration-fast] group-hover/button:translate-x-0.5"
+                />
+              </Button>
+              <Button
+                size="lg"
+                variant="secondary"
+                render={<Link href="/process" />}
+                className={focusRing}
+              >
+                See how we work
+              </Button>
+            </div>
+
+            {/*
+              A grounded reassurance line rather than invented social proof.
+              Everything asserted here is already promised elsewhere on the
+              site — no client counts, no fabricated logos, no statistics.
+            */}
+            {/*
+              Kept short enough to hold one line at every width. Uppercase mono
+              at 11px with wide tracking is expensive to read; two lines of it
+              under the CTAs reads as fine print, which is the opposite of
+              reassuring. Both halves are wording used elsewhere on the site
+              ("No obligation" on /book, "Honest answers either way" in the
+              About CTA) — nothing new is claimed here.
+
+              Set as inline content rather than flex children so that if it
+              ever does wrap, it breaks at a word like prose instead of
+              stranding the separator on its own line.
+            */}
+            <p
+              data-hero=""
+              data-reveal=""
+              className="mt-7 font-mono text-eyebrow uppercase leading-relaxed text-text-muted"
+            >
+              No obligation
+              <span aria-hidden="true" className="px-2.5 text-border-hover">
+                /
+              </span>
+              Honest answers either way
+            </p>
+          </div>
+
+          {/* ── Diagram ──────────────────────────────────────────────────── */}
+          <div data-hero="" data-reveal="">
+            <SystemDiagram />
+          </div>
+        </div>
       </Container>
     </section>
   );

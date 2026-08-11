@@ -1,10 +1,10 @@
 import Link from "next/link";
-import { ArrowRight, CalendarClock, Send } from "lucide-react";
+import { ArrowRight, Send } from "lucide-react";
 
 import { cn, focusRing } from "@/lib/utils";
 import { Container } from "@/components/layout/container";
-import { Section } from "@/components/layout/section";
 import { Reveal } from "@/components/motion/reveal";
+import { Eyebrow } from "@/components/layout/section-heading";
 import { Button } from "@/components/ui/button";
 
 interface CtaLink {
@@ -30,15 +30,21 @@ interface CtaBandProps {
    * plain string so the existing footnotes can keep their inline links intact.
    */
   footnote?: React.ReactNode;
-  /** Max width applied to the heading. Defaults to `max-w-3xl`. */
-  maxWidth?: string;
 }
 
 /**
- * CtaBand — the shared closing conversion band used across the site (home page
- * plus every subpage). The shell is identical everywhere — rounded surface, a
- * decorative glow, and a two-button row inside a `Reveal` — so pages supply
- * only their own eyebrow/title/subtitle/links/footnote. Server Component.
+ * CtaBand — the closing conversion moment, shared by the home page and every
+ * subpage.
+ *
+ * Rebuilt as a full-bleed band rather than the old rounded card floating on a
+ * radial glow. Two reasons. It is the last thing on the page, so letting it run
+ * edge to edge gives it the finality a closing statement needs; and it means
+ * the CTA is the one section on the site with a different *shape*, not just
+ * different words — which is how a visitor's eye knows it matters.
+ *
+ * The heading sits left and the actions sit right on desktop, so the primary
+ * button lands in its own space instead of being one of two centred pills.
+ * Server Component.
  */
 export function CtaBand({
   id,
@@ -48,7 +54,6 @@ export function CtaBand({
   primary,
   secondary,
   footnote,
-  maxWidth = "max-w-3xl",
 }: CtaBandProps) {
   const headingId = `${id}-heading`;
   // Internal routes use next/link; anything else (an external Calendly URL or
@@ -56,42 +61,43 @@ export function CtaBand({
   const primaryIsExternal = !primary.href.startsWith("/");
 
   return (
-    <Section id={id} aria-labelledby={headingId}>
-      <Container>
-        <Reveal>
-          <div className="relative isolate overflow-hidden rounded-3xl border border-border bg-bg-surface px-6 py-16 text-center md:px-12 md:py-24">
-            {/* Decorative glow */}
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-0 -z-10"
-            >
-              <div
-                className="absolute left-1/2 top-[-30%] h-[520px] w-[min(900px,110%)] -translate-x-1/2 rounded-full opacity-70 blur-3xl"
-                style={{
-                  background:
-                    "radial-gradient(closest-side, rgba(90,110,255,0.22), transparent 72%)",
-                }}
-              />
-            </div>
+    <section
+      id={id}
+      aria-labelledby={headingId}
+      className="relative isolate mt-8 overflow-hidden border-t border-border bg-bg-surface"
+    >
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
+        {/* Warm wash anchored bottom-left, so it reads as light spilling in
+            from off-page rather than a decorative orb sitting on the surface. */}
+        <div
+          className="absolute bottom-[-40%] left-[-5%] h-[560px] w-[min(820px,90vw)] rounded-full opacity-80 blur-3xl"
+          style={{
+            background:
+              "radial-gradient(closest-side, rgba(224,142,67,0.11), transparent 74%)",
+          }}
+        />
+        <div className="absolute inset-0 grain" />
+      </div>
 
-            <p className="text-eyebrow font-mono uppercase tracking-wider text-accent">
-              {eyebrow}
-            </p>
+      <Container className="py-24 md:py-32">
+        <Reveal className="grid gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-end lg:gap-20">
+          <div>
+            <Eyebrow className="text-accent">{eyebrow}</Eyebrow>
             <h2
               id={headingId}
-              className={cn(
-                "mx-auto mt-4 text-balance text-h1 font-semibold text-text-primary",
-                maxWidth
-              )}
+              className="mt-6 max-w-[16ch] text-balance text-h1 font-semibold text-text-primary"
             >
               {title}
             </h2>
-            <p className="mx-auto mt-5 max-w-2xl text-pretty text-body-lg text-text-secondary">
+            <p className="mt-6 max-w-[58ch] text-pretty text-body-lg text-text-secondary">
               {subtitle}
             </p>
+          </div>
 
-            <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <div className="lg:pb-2">
+            <div className="flex flex-col gap-3 sm:flex-row lg:flex-col lg:items-stretch">
               <Button
+                size="lg"
                 render={
                   primaryIsExternal ? (
                     <a
@@ -103,39 +109,36 @@ export function CtaBand({
                     <Link href={primary.href} />
                   )
                 }
-                className={cn(
-                  "group h-12 rounded-full px-7 text-base hover:bg-accent-hover",
-                  focusRing
-                )}
+                className={cn("group justify-between", focusRing)}
               >
-                <CalendarClock aria-hidden="true" />
                 {primary.label}
                 <ArrowRight
-                  className="transition-transform group-hover/button:translate-x-0.5"
+                  className="transition-transform duration-[--duration-fast] group-hover/button:translate-x-0.5"
                   aria-hidden="true"
                 />
               </Button>
+
               {secondary ? (
                 <Button
-                  variant="outline"
+                  size="lg"
+                  variant="secondary"
                   render={<Link href={secondary.href} />}
-                  className={cn(
-                    "h-12 rounded-full border-border px-7 text-base text-text-primary hover:border-border-hover hover:bg-bg-elevated",
-                    focusRing
-                  )}
+                  className={cn("justify-between", focusRing)}
                 >
-                  {secondary.icon ? <Send aria-hidden="true" /> : null}
                   {secondary.label}
+                  {secondary.icon ? (
+                    <Send aria-hidden="true" className="text-text-muted" />
+                  ) : null}
                 </Button>
               ) : null}
             </div>
 
             {footnote ? (
-              <p className="mt-6 text-small text-text-secondary">{footnote}</p>
+              <p className="mt-6 text-small text-text-muted">{footnote}</p>
             ) : null}
           </div>
         </Reveal>
       </Container>
-    </Section>
+    </section>
   );
 }

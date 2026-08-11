@@ -1,106 +1,188 @@
-import Link from "next/link";
-import { Search, PenTool, Hammer, Rocket, LifeBuoy, ArrowRight } from "lucide-react";
+"use client";
 
+import * as React from "react";
+import Link from "next/link";
+import { animate, stagger } from "animejs";
+import { ArrowRight } from "lucide-react";
+
+import { arrowLink, cn, focusRing } from "@/lib/utils";
+import { duration, ease, observeOnce, prefersReducedMotion } from "@/lib/motion";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
-import { Reveal } from "@/components/motion/reveal";
+import { SectionHeading } from "@/components/layout/section-heading";
 
-const focusRing =
-  "outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-bg";
-
+/**
+ * ProcessPreview — Discovery → Design → Build → Deploy → Support.
+ *
+ * A process is a connected sequence, so it is drawn as one: nodes on a rail
+ * that draws itself left-to-right as the section arrives. Five disconnected
+ * cards actively misrepresented this content — they implied five separate
+ * offerings rather than one path from problem to production.
+ *
+ * The rail animates via `scaleX` on a 1px element, which the compositor handles
+ * without touching layout. No width tweening, no reflow, no jank on a long page.
+ */
 const STEPS = [
   {
-    icon: Search,
     title: "Discovery",
     body: "We map where the time and money are going, and agree on what a win looks like before any code is written.",
   },
   {
-    icon: PenTool,
     title: "Design",
     body: "We plan the solution and how it fits your existing tools, so there are no surprises once the build begins.",
   },
   {
-    icon: Hammer,
     title: "Build",
     body: "We develop in focused increments, sharing progress as we go so you always know exactly where things stand.",
   },
   {
-    icon: Rocket,
     title: "Deploy",
     body: "We launch it using the operating model you've chosen, configure the infrastructure and access, and test against real work.",
   },
   {
-    icon: LifeBuoy,
     title: "Support",
     body: "Optional, and shaped to you: we operate the system, maintain it inside your environment, or hand it over to your team.",
   },
 ];
 
 export function ProcessPreview() {
+  const railRef = React.useRef<HTMLDivElement>(null);
+  const rootRef = React.useRef<HTMLOListElement>(null);
+
+  React.useEffect(() => {
+    const root = rootRef.current;
+    const rail = railRef.current;
+    if (!root || !rail) return;
+
+    const steps = Array.from(root.querySelectorAll<HTMLElement>("[data-step]"));
+    const show = () => {
+      rail.style.transform = "";
+      for (const step of steps) step.style.opacity = "";
+    };
+
+    if (prefersReducedMotion()) {
+      show();
+      return;
+    }
+
+    // Pre-hide here rather than in the markup: if this effect never runs, the
+    // section must still be fully visible.
+    rail.style.transform = "scaleX(0)";
+    for (const step of steps) step.style.opacity = "0";
+
+    let railAnim: ReturnType<typeof animate> | undefined;
+    let stepAnim: ReturnType<typeof animate> | undefined;
+
+    const cancel = observeOnce(root, () => {
+      // The rail draws slightly ahead of the nodes, so each step appears to be
+      // reached by the line rather than landing on it.
+      railAnim = animate(rail, {
+        scaleX: [0, 1],
+        duration: duration.cinematic,
+        ease: ease.out,
+      });
+
+      stepAnim = animate(steps, {
+        opacity: [0, 1],
+        y: [12, 0],
+        duration: duration.slow,
+        delay: stagger(90, { start: 160 }),
+        ease: ease.out,
+        onComplete: show,
+      });
+    });
+
+    return () => {
+      cancel();
+      railAnim?.revert();
+      stepAnim?.revert();
+      show();
+    };
+  }, []);
+
   return (
     <Section
       id="process"
       aria-labelledby="process-heading"
-      className="bg-bg-surface"
+      className="border-t border-border bg-bg-surface"
     >
       <Container>
-        <Reveal className="mx-auto max-w-2xl text-center">
-          <p className="text-eyebrow font-mono uppercase tracking-wider text-accent">
-            How we work
-          </p>
-          <h2
-            id="process-heading"
-            className="mt-4 text-balance text-h2 font-semibold text-text-primary"
-          >
-            A clear path from problem to production.
-          </h2>
-          <p className="mt-5 text-pretty text-body-lg text-text-secondary">
-            No black boxes. You&apos;ll know what&apos;s happening at every stage
-            — and why it matters for your business.
-          </p>
-        </Reveal>
+        <SectionHeading
+          index="05"
+          eyebrow="How we work"
+          headingId="process-heading"
+          title="A clear path from problem to production."
+          lede="No black boxes. You'll know what's happening at every stage — and why it matters for your business."
+        />
 
-        <ol className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-          {STEPS.map((step, i) => {
-            const Icon = step.icon;
-            return (
-              <Reveal key={step.title} delay={i * 0.06} className="h-full">
-                <li className="flex h-full flex-col rounded-2xl border border-border bg-bg p-6 transition-colors hover:border-border-hover">
-                  <div className="flex items-center justify-between">
-                    <span className="inline-flex size-11 items-center justify-center rounded-xl border border-border bg-bg-elevated text-accent">
-                      <Icon className="size-5" aria-hidden="true" />
-                    </span>
-                    <span
-                      aria-hidden="true"
-                      className="font-mono text-small text-text-secondary"
-                    >
-                      0{i + 1}
-                    </span>
-                  </div>
-                  <h3 className="mt-5 text-h3 font-semibold text-text-primary">
+        <div className="relative mt-16 md:mt-24">
+          {/*
+            The rail. Horizontal from `lg`, vertical below it — one element in
+            each orientation, positioned so it passes exactly through the centre
+            of the fixed-height marker rows.
+          */}
+          <div
+            ref={railRef}
+            aria-hidden="true"
+            className={cn(
+              "absolute origin-left bg-border",
+              // Vertical rail down the left gutter on small screens.
+              "left-[5px] top-2 h-[calc(100%-1rem)] w-px origin-top",
+              // Horizontal rail across the marker row on large screens.
+              "lg:left-0 lg:top-[5px] lg:h-px lg:w-full lg:origin-left"
+            )}
+          />
+
+          <ol
+            ref={rootRef}
+            className="grid gap-y-9 lg:grid-cols-5 lg:gap-x-8 lg:gap-y-0"
+          >
+            {STEPS.map((step, i) => (
+              <li
+                key={step.title}
+                data-step=""
+                className="group relative grid grid-cols-[auto_minmax(0,1fr)] gap-x-5 lg:block"
+              >
+                {/* Marker. 11px box keeps the 3px dot centred on the rail. */}
+                <span
+                  aria-hidden="true"
+                  className="relative flex size-[11px] items-center justify-center lg:mb-6"
+                >
+                  <span className="size-[11px] rounded-full bg-bg-surface" />
+                  <span className="absolute size-[7px] rounded-full border border-border-hover bg-bg-surface transition-[background-color,border-color,transform] duration-[--duration-base] ease-[--ease-out] group-hover:scale-125 group-hover:border-accent group-hover:bg-accent" />
+                </span>
+
+                <div className="lg:contents">
+                  <span
+                    aria-hidden="true"
+                    className="tabular block font-mono text-eyebrow text-text-muted transition-colors duration-[--duration-fast] group-hover:text-accent lg:mb-3"
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="mt-2 text-h4 font-semibold text-text-primary lg:mt-0">
                     {step.title}
                   </h3>
-                  <p className="mt-2 text-small text-text-secondary">
+                  <p className="mt-2 max-w-[46ch] text-pretty text-small text-text-secondary lg:mt-2.5 lg:pr-2">
                     {step.body}
                   </p>
-                </li>
-              </Reveal>
-            );
-          })}
-        </ol>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
 
-        <Reveal className="mt-12 flex justify-center">
+        <div className="mt-14">
           <Link
             href="/process"
-            className={`group inline-flex items-center gap-2 rounded-md text-body font-medium text-accent transition-colors hover:text-accent-hover ${focusRing}`}
+            className={cn(arrowLink, focusRing)}
           >
             See our full process
             <ArrowRight
-              className="size-4 transition-transform group-hover:translate-x-0.5"
+              className="size-4 transition-transform duration-[--duration-fast] group-hover:translate-x-0.5"
               aria-hidden="true"
             />
           </Link>
-        </Reveal>
+        </div>
       </Container>
     </Section>
   );

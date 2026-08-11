@@ -1,17 +1,20 @@
 import { cn } from "@/lib/utils";
 import { Container } from "@/components/layout/container";
+import { Eyebrow } from "@/components/layout/section-heading";
 
 /**
- * PageHeader — the shared hero for every top-level route page (Services,
- * Process, About, Technologies, Work, FAQ, Contact, Book).
+ * PageHeader — the shared hero for every top-level route (Services, Process,
+ * About, Technologies, Work, FAQ, Contact, Book).
  *
  * It renders the page's single `<h1>` (via `eyebrow` + `title` + `subtitle`),
- * so an individual page must NOT declare another `<h1>`. Server Component —
- * no client JS. A subtle indigo top-glow keeps it consistent with the Home
- * hero without the heavier animated treatment.
+ * so an individual page must NOT declare another `<h1>`.
  *
- * `id` defaults to "page-heading"; pass the wrapping `<section>` an
- * `aria-labelledby` of that id (already wired here via the labelled section).
+ * Rebuilt to match the home hero's left-aligned, asymmetric composition rather
+ * than the old centred stack over an indigo radial glow. The subtitle sits in a
+ * facing column on large screens, which keeps the headline measure short and
+ * punchy instead of letting it sprawl to `max-w-4xl` across the page.
+ *
+ * Server Component — no client JS.
  */
 export function PageHeader({
   eyebrow,
@@ -31,53 +34,60 @@ export function PageHeader({
   return (
     <section
       aria-labelledby={headingId}
-      className={cn("relative isolate overflow-hidden", className)}
+      className={cn(
+        "relative isolate overflow-hidden border-b border-border",
+        className
+      )}
     >
-      {/* Decorative background: soft indigo top-glow + faint fading grid. */}
+      {/* Same three quiet layers as the home hero: an off-centre warm wash, a
+          fading hairline grid, and grain. No glow, no purple. */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10"
       >
         <div
-          className="absolute left-1/2 top-[-30%] h-[560px] w-[min(1000px,120vw)] -translate-x-1/2 rounded-full opacity-60 blur-3xl"
+          className="absolute right-[-8%] top-[-45%] h-[600px] w-[min(820px,100vw)] rounded-full opacity-70 blur-3xl"
           style={{
             background:
-              "radial-gradient(closest-side, rgba(90,110,255,0.22), rgba(90,110,255,0.06) 55%, transparent 78%)",
+              "radial-gradient(closest-side, rgba(224,142,67,0.09), transparent 76%)",
           }}
         />
         <div
-          className="absolute inset-0 opacity-[0.035]"
+          className="absolute inset-0 opacity-[0.05]"
           style={{
             backgroundImage:
-              "linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)",
-            backgroundSize: "56px 56px",
+              "linear-gradient(to right, #efebe4 1px, transparent 1px), linear-gradient(to bottom, #efebe4 1px, transparent 1px)",
+            backgroundSize: "72px 72px",
             maskImage:
-              "radial-gradient(ellipse 70% 55% at 50% 0%, #000 40%, transparent 78%)",
+              "linear-gradient(to bottom, #000 0%, rgba(0,0,0,0.35) 60%, transparent 95%)",
             WebkitMaskImage:
-              "radial-gradient(ellipse 70% 55% at 50% 0%, #000 40%, transparent 78%)",
+              "linear-gradient(to bottom, #000 0%, rgba(0,0,0,0.35) 60%, transparent 95%)",
           }}
         />
-        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-bg" />
+        <div className="absolute inset-0 grain" />
       </div>
 
-      <Container className="flex flex-col items-center pt-24 pb-16 text-center md:pt-32 md:pb-20">
-        <p className="inline-flex items-center gap-2 rounded-full border border-border bg-bg-surface/60 px-4 py-1.5 text-eyebrow font-mono uppercase tracking-wider text-accent">
+      <Container className="pt-16 pb-20 md:pt-24 md:pb-24">
+        <div className="flex items-center gap-4">
           <span aria-hidden="true" className="size-1.5 rounded-full bg-accent" />
-          {eyebrow}
-        </p>
+          <Eyebrow>{eyebrow}</Eyebrow>
+          <span aria-hidden="true" className="h-px flex-1 bg-border" />
+        </div>
 
-        <h1
-          id={headingId}
-          className="mt-6 max-w-4xl text-balance text-display font-semibold text-text-primary"
-        >
-          {title}
-        </h1>
+        <div className="mt-9 lg:grid lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:items-baseline lg:gap-x-16">
+          <h1
+            id={headingId}
+            className="max-w-[20ch] text-balance text-h1 font-semibold text-text-primary"
+          >
+            {title}
+          </h1>
 
-        {subtitle ? (
-          <p className="mt-6 max-w-2xl text-pretty text-body-lg text-text-secondary">
-            {subtitle}
-          </p>
-        ) : null}
+          {subtitle ? (
+            <p className="mt-6 max-w-[56ch] text-pretty text-body-lg text-text-secondary lg:mt-0">
+              {subtitle}
+            </p>
+          ) : null}
+        </div>
 
         {children ? <div className="mt-10">{children}</div> : null}
       </Container>

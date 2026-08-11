@@ -23,13 +23,15 @@ export const alt =
   "AGility — Custom software & AI automation. Save time. Cut costs. Scale faster.";
 
 // Literal design-token values (from globals.css — Satori can't resolve CSS vars).
-const BG = "#0a0a0d";
-const SURFACE = "#101014";
-const ACCENT = "#5a6eff";
-const TEXT_PRIMARY = "#f5f5f7";
-const TEXT_SECONDARY = "#a1a1aa";
-const TEXT_MUTED = "#71717a";
-const BORDER = "rgba(255, 255, 255, 0.08)";
+// These must be kept in step with `:root` / the `@theme` block by hand; there is
+// no build-time link between the two, so a palette change means editing here too.
+const BG = "#0b0a09";
+const SURFACE = "#121110";
+const ACCENT = "#e08e43";
+const TEXT_PRIMARY = "#efebe4";
+const TEXT_SECONDARY = "#a39d93";
+const TEXT_MUTED = "#827c74";
+const BORDER = "rgba(239, 235, 228, 0.09)";
 
 export function renderSocialImage() {
   return new ImageResponse(
@@ -42,9 +44,10 @@ export function renderSocialImage() {
           flexDirection: "column",
           justifyContent: "space-between",
           backgroundColor: BG,
-          // Soft Electric Indigo glow, top-centre, matching the site's accent.
+          // Warm copper wash pushed off-centre, echoing the site hero rather
+          // than the symmetrical top-centre glow the old design used.
           backgroundImage:
-            "radial-gradient(1000px 600px at 50% -10%, rgba(90, 110, 255, 0.22), rgba(10, 10, 13, 0) 60%)",
+            "radial-gradient(900px 620px at 82% -12%, rgba(224, 142, 67, 0.16), rgba(11, 10, 9, 0) 62%)",
           padding: 80,
           fontFamily: "sans-serif",
         }}
@@ -56,7 +59,7 @@ export function renderSocialImage() {
               display: "flex",
               width: 76,
               height: 76,
-              borderRadius: 16,
+              borderRadius: 12,
               backgroundColor: SURFACE,
               border: `1px solid ${BORDER}`,
               alignItems: "center",
@@ -128,8 +131,8 @@ export function renderSocialImage() {
             style={{
               display: "flex",
               width: 64,
-              height: 5,
-              borderRadius: 999,
+              height: 4,
+              borderRadius: 2,
               backgroundColor: ACCENT,
             }}
           />

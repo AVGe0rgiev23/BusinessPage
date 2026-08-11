@@ -1,28 +1,30 @@
-import { ArrowUpRight, GitBranch, Star, Code2 } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
+import { cn, focusRing } from "@/lib/utils";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
-import { Reveal } from "@/components/motion/reveal";
+import { Reveal, RevealGroup } from "@/components/motion/reveal";
+import { Eyebrow } from "@/components/layout/section-heading";
 import { Button } from "@/components/ui/button";
 import { GithubIcon } from "@/components/icons/brand-icons";
 import { githubUrl } from "@/lib/site-config";
 
-const focusRing =
-  "outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-bg";
-
+/**
+ * OpenSource — proof that the engineering claim is checkable.
+ *
+ * The old version put a 112px GitHub logo in a bordered square with a radial
+ * glow behind it, taking up half the section to say nothing the button beneath
+ * it didn't already say. It is now a two-column split where the right side
+ * carries the three actual points, hairline-ruled.
+ *
+ * Sits on the sunken background — the darkest surface on the site — so this and
+ * the Connect band beneath it read as a single quieter passage between the
+ * argument and the closing FAQ.
+ */
 const POINTS = [
-  {
-    icon: Code2,
-    text: "We publish tools and libraries we build for our own work.",
-  },
-  {
-    icon: GitBranch,
-    text: "We contribute back to the projects our software is built on.",
-  },
-  {
-    icon: Star,
-    text: "You can see how we write code before you ever hire us.",
-  },
+  "We publish tools and libraries we build for our own work.",
+  "We contribute back to the projects our software is built on.",
+  "You can see how we write code before you ever hire us.",
 ];
 
 export function OpenSource() {
@@ -30,77 +32,66 @@ export function OpenSource() {
     <Section
       id="open-source"
       aria-labelledby="open-source-heading"
-      className="bg-bg-surface"
+      className="border-t border-border bg-bg-sunken"
     >
       <Container>
-        <Reveal>
-          <div className="overflow-hidden rounded-3xl border border-border bg-bg">
-            <div className="grid gap-10 p-8 md:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] md:items-center md:p-12">
-              <div>
-                <p className="text-eyebrow font-mono uppercase tracking-wider text-accent">
-                  Open source
-                </p>
-                <h2
-                  id="open-source-heading"
-                  className="mt-4 text-balance text-h2 font-semibold text-text-primary"
-                >
-                  We build in the open.
-                </h2>
-                <p className="mt-5 text-pretty text-body-lg text-text-secondary">
-                  Good engineering doesn&apos;t hide. A lot of our work lives on
-                  GitHub — the tools we rely on, the contributions we make, and
-                  the standards we hold ourselves to when no one&apos;s watching.
-                </p>
-                <ul className="mt-8 flex flex-col gap-4">
-                  {POINTS.map((point) => {
-                    const Icon = point.icon;
-                    return (
-                      <li key={point.text} className="flex items-start gap-3">
-                        <span className="mt-0.5 inline-flex size-8 shrink-0 items-center justify-center rounded-lg bg-accent-subtle text-accent">
-                          <Icon className="size-4" aria-hidden="true" />
-                        </span>
-                        <span className="text-body text-text-secondary">
-                          {point.text}
-                        </span>
-                      </li>
-                    );
-                  })}
-                </ul>
-                <Button
-                  render={
-                    <a
-                      href={githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    />
-                  }
-                  className={`group mt-9 h-12 rounded-full px-7 text-base hover:bg-accent-hover ${focusRing}`}
-                >
-                  <GithubIcon className="size-5" aria-hidden="true" />
-                  View our GitHub
-                  <ArrowUpRight
-                    className="transition-transform group-hover/button:translate-x-0.5 group-hover/button:-translate-y-0.5"
-                    aria-hidden="true"
-                  />
-                </Button>
-              </div>
-
-              <div
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-24">
+          <Reveal>
+            <div className="flex items-center gap-4">
+              <span
                 aria-hidden="true"
-                className="relative hidden aspect-square items-center justify-center rounded-2xl border border-border bg-bg-surface md:flex"
+                className="tabular font-mono text-eyebrow text-accent"
               >
-                <div
-                  className="absolute inset-0 rounded-2xl opacity-60"
-                  style={{
-                    background:
-                      "radial-gradient(closest-side, rgba(90,110,255,0.18), transparent 75%)",
-                  }}
-                />
-                <GithubIcon className="relative size-28 text-text-primary/90" />
-              </div>
+                09
+              </span>
+              <Eyebrow>Open source</Eyebrow>
             </div>
-          </div>
-        </Reveal>
+
+            <h2
+              id="open-source-heading"
+              className="mt-7 max-w-[14ch] text-balance text-h2 font-semibold text-text-primary"
+            >
+              We build in the open.
+            </h2>
+
+            <p className="mt-6 max-w-[52ch] text-pretty text-body-lg text-text-secondary">
+              Good engineering doesn&apos;t hide. A lot of our work lives on
+              GitHub — the tools we rely on, the contributions we make, and the
+              standards we hold ourselves to when no one&apos;s watching.
+            </p>
+
+            <Button
+              size="lg"
+              variant="secondary"
+              render={
+                <a href={githubUrl} target="_blank" rel="noopener noreferrer" />
+              }
+              className={cn("group mt-9", focusRing)}
+            >
+              <GithubIcon className="size-5" aria-hidden="true" />
+              View our GitHub
+              <ArrowUpRight
+                className="text-text-muted transition-transform duration-[--duration-fast] group-hover/button:translate-x-0.5 group-hover/button:-translate-y-0.5"
+                aria-hidden="true"
+              />
+            </Button>
+          </Reveal>
+
+          <RevealGroup
+            as="ul"
+            className="border-t border-border lg:pt-2"
+            selector=":scope > li"
+          >
+            {POINTS.map((point) => (
+              <li
+                key={point}
+                className="border-b border-border py-6 text-pretty text-body text-text-secondary"
+              >
+                {point}
+              </li>
+            ))}
+          </RevealGroup>
+        </div>
       </Container>
     </Section>
   );

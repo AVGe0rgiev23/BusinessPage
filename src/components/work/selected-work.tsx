@@ -1,20 +1,23 @@
-import { Search, Wrench, Gauge, ShieldCheck } from "lucide-react";
-
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
-import { Reveal } from "@/components/motion/reveal";
+import { Reveal, RevealGroup } from "@/components/motion/reveal";
+import { SectionHeading } from "@/components/layout/section-heading";
 
 /**
- * Selected work — honest placeholder grid.
+ * Selected work — honest placeholder slots.
  *
  * AGility has no client case studies yet, so this section is deliberately, and
- * visibly, a set of empty slots. The cards read as "coming soon" placeholders —
+ * visibly, a set of empty slots. They read as "coming soon" placeholders —
  * never as real or implied clients. The category labels describe the KIND of
  * work we do, not any specific engagement.
  *
- * TODO: replace each placeholder card with a real, published case study once a
+ * The dashed borders and hatched preview areas are load-bearing here, not
+ * decoration: an empty slot has to look unmistakably empty. A polished-looking
+ * card with vague copy is how a placeholder starts reading as a real project.
+ *
+ * TODO: replace each placeholder with a real, published case study once a
  * client has agreed to share it — link each to its own `/work/<slug>` page and
- * remove the border-dashed placeholder treatment.
+ * drop the dashed placeholder treatment.
  */
 const PLACEHOLDERS = [
   {
@@ -33,22 +36,18 @@ const PLACEHOLDERS = [
 
 const ANATOMY = [
   {
-    icon: Search,
     label: "The problem",
     body: "The process that was costing time or money, and what it was costing.",
   },
   {
-    icon: Wrench,
     label: "What we built",
     body: "The software we shipped, and how it fits the tools the client already used.",
   },
   {
-    icon: Gauge,
     label: "The result",
     body: "The measurable outcome — in real numbers, shared with the client's blessing.",
   },
   {
-    icon: ShieldCheck,
     label: "How it's delivered",
     body: "Which model they chose — who owns the software and infrastructure, and who operates it.",
   },
@@ -56,82 +55,78 @@ const ANATOMY = [
 
 export function SelectedWork() {
   return (
-    <Section
-      id="selected-work"
-      aria-labelledby="selected-work-heading"
-      className="bg-bg-surface"
-    >
+    <Section id="selected-work" aria-labelledby="selected-work-heading">
       <Container>
-        <Reveal className="mx-auto max-w-2xl text-center">
-          <p className="text-eyebrow font-mono uppercase tracking-wider text-accent">
-            Selected work
-          </p>
-          <h2
-            id="selected-work-heading"
-            className="mt-4 text-balance text-h2 font-semibold text-text-primary"
-          >
-            Case studies are on the way.
-          </h2>
-          <p className="mt-5 text-pretty text-body-lg text-text-secondary">
-            We&apos;d rather leave these slots honestly empty than fill them with
-            stock photos and invented results. When a client is happy to share a
-            project, it goes here — and every claim in it will be real.
-          </p>
-        </Reveal>
+        <SectionHeading
+          index="04"
+          eyebrow="Selected work"
+          headingId="selected-work-heading"
+          title="Case studies are on the way."
+          lede="We'd rather leave these slots honestly empty than fill them with stock photos and invented results. When a client is happy to share a project, it goes here — and every claim in it will be real."
+        />
 
-        <ul className="mt-16 grid gap-4 md:grid-cols-3">
-          {PLACEHOLDERS.map((item, i) => (
-            <Reveal key={item.category} delay={(i % 3) * 0.08}>
-              <li className="flex h-full flex-col rounded-2xl border border-dashed border-border bg-bg p-6">
-                <div className="flex items-center justify-between gap-3">
-                  <span className="text-eyebrow font-mono uppercase tracking-wider text-text-secondary">
-                    Case study
-                  </span>
-                  <span className="rounded-full border border-border px-2.5 py-1 text-eyebrow font-mono uppercase tracking-wider text-accent">
-                    Coming soon
-                  </span>
-                </div>
-                <div
-                  aria-hidden="true"
-                  className="mt-5 aspect-[16/10] rounded-xl border border-dashed border-border bg-bg-surface"
-                  style={{
-                    backgroundImage:
-                      "repeating-linear-gradient(135deg, rgba(255,255,255,0.03) 0, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 12px)",
-                  }}
-                />
-                <h3 className="mt-5 text-h3 font-semibold text-text-primary">
-                  {item.category}
-                </h3>
-                <p className="mt-2 text-body text-text-secondary">{item.body}</p>
-              </li>
-            </Reveal>
+        <RevealGroup
+          as="ul"
+          className="mt-16 grid gap-5 md:mt-20 md:grid-cols-3"
+          selector=":scope > li"
+        >
+          {PLACEHOLDERS.map((item) => (
+            <li
+              key={item.category}
+              className="flex h-full flex-col rounded-xl border border-dashed border-border-strong p-6"
+            >
+              <div className="flex items-center justify-between gap-3">
+                <span className="font-mono text-eyebrow uppercase text-text-muted">
+                  Case study
+                </span>
+                <span className="rounded-sm border border-border-strong px-2 py-0.5 font-mono text-eyebrow uppercase text-text-muted">
+                  Coming soon
+                </span>
+              </div>
+
+              <div
+                aria-hidden="true"
+                className="mt-6 aspect-[16/10] rounded-md border border-dashed border-border"
+                style={{
+                  backgroundImage:
+                    "repeating-linear-gradient(135deg, rgba(239,235,228,0.035) 0, rgba(239,235,228,0.035) 1px, transparent 1px, transparent 10px)",
+                }}
+              />
+
+              <h3 className="mt-6 text-h4 font-semibold text-text-primary">
+                {item.category}
+              </h3>
+              <p className="mt-2 text-pretty text-small text-text-secondary">
+                {item.body}
+              </p>
+            </li>
           ))}
-        </ul>
+        </RevealGroup>
 
-        <Reveal className="mt-14">
-          <div className="rounded-2xl border border-border bg-bg p-6 md:p-8">
-            <p className="text-eyebrow font-mono uppercase tracking-wider text-text-secondary">
-              What each one will show
-            </p>
-            <ul className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {ANATOMY.map((step) => {
-                const Icon = step.icon;
-                return (
-                  <li key={step.label} className="flex flex-col">
-                    <span className="inline-flex size-10 items-center justify-center rounded-lg bg-accent-subtle text-accent">
-                      <Icon className="size-5" aria-hidden="true" />
-                    </span>
-                    <p className="mt-4 text-body font-medium text-text-primary">
-                      {step.label}
-                    </p>
-                    <p className="mt-1 text-small text-text-secondary">
-                      {step.body}
-                    </p>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
+        <Reveal className="mt-16">
+          <p className="font-mono text-eyebrow uppercase text-text-muted">
+            What each one will show
+          </p>
+          <dl className="mt-6 grid gap-x-10 gap-y-8 border-t border-border pt-8 sm:grid-cols-2 lg:grid-cols-4">
+            {ANATOMY.map((step, i) => (
+              <div key={step.label}>
+                <dt className="flex items-baseline gap-3">
+                  <span
+                    aria-hidden="true"
+                    className="tabular font-mono text-eyebrow text-accent"
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="text-h4 font-semibold text-text-primary">
+                    {step.label}
+                  </span>
+                </dt>
+                <dd className="mt-2 text-pretty text-small text-text-secondary">
+                  {step.body}
+                </dd>
+              </div>
+            ))}
+          </dl>
         </Reveal>
       </Container>
     </Section>

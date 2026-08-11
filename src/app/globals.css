@@ -3,20 +3,34 @@
 @import "shadcn/tailwind.css";
 
 /*
-  AGility — Electric Indigo design system (dark-only brand).
+  ═══════════════════════════════════════════════════════════════════════════
+  AGility design system — "engineering ledger"
+  ═══════════════════════════════════════════════════════════════════════════
 
-  There is NO light/dark toggle and `<html>` never carries a `.dark` class, so
-  our real values live directly in `:root`. The `.dark` block that shadcn's init
-  scaffolds has been removed, and `dark:` utilities have been stripped from the
-  generated components because they could never activate. This `@custom-variant`
-  is kept only as a safety net: any stray `dark:` utility stays gated behind a
-  class that is never applied, so it can never flip the site out of dark mode.
+  The visual language is technical documentation, not marketing brochure:
+  warm graphite ground, bone-white text, hairline rules doing the structural
+  work, monospace annotation, and ONE signal colour (copper) spent sparingly.
+
+  Three rules that keep it from drifting back into generic-SaaS territory:
+
+    1. Copper is a signal, not a decoration. It marks the primary action, the
+       current state, and live data lines. If everything is copper, nothing is.
+    2. Structure comes from hairlines and type weight, not from wrapping every
+       thought in a bordered rounded card.
+    3. Radii are small and architectural. `rounded-full` is reserved for status
+       dots and nothing else — pill buttons are the house style of the very
+       template aesthetic this system exists to avoid.
+
+  Dark-only brand: `<html>` never carries a `.dark` class, so the real values
+  live directly in `:root`. The `@custom-variant` below is a safety net only —
+  it keeps any stray `dark:` utility gated behind a class that is never
+  applied, so it can never flip the site out of dark mode.
 */
 @custom-variant dark (&:is(.dark *));
 
 /*
-  shadcn semantic tokens → mapped to the palette values defined in `:root`.
-  These drive every shadcn/ui component (button, sheet, badge, ...).
+  shadcn semantic tokens → mapped to the palette defined in `:root`.
+  These drive every shadcn/ui component (button, sheet, badge, accordion, ...).
 */
 @theme inline {
   --color-background: var(--background);
@@ -38,107 +52,174 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  /* Fonts — Geist Sans / Geist Mono are wired in layout.tsx via next/font,
-     which injects `--font-geist-sans` / `--font-geist-mono` onto <html>. */
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
-  --font-heading: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  /*
+    Fonts — wired in layout.tsx via next/font/google, which injects the
+    `--font-*` custom properties onto <html>.
 
-  /* Radii — cards/buttons land in the 0.75rem–1rem range; badges/CTA use rounded-full. */
-  --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
+      Archivo         industrial grotesque, variable weight. Headings only,
+                      set large and tight — this is where the site gets its
+                      voice. (Its width axis is deliberately not loaded; see
+                      the note in layout.tsx.)
+      Instrument Sans body and UI. Modern, faintly warm, and crucially not
+                      Inter/Geist/system-ui.
+      JetBrains Mono  labels, eyebrows, numerals, diagram annotation. The
+                      "ledger" half of the concept.
+  */
+  --font-display: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-instrument-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, monospace;
+
+  /*
+    Radii — architectural, not pillowy. Hierarchy is real: inputs and chips sit
+    tighter than buttons, which sit tighter than panels.
+  */
+  --radius-xs: 0.125rem;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --radius-3xl: 1.25rem;
+  --radius-4xl: 1.5rem;
 }
 
 /*
-  AGility named palette + type scale.
-  A non-inline `@theme` block so each `--color-*` is emitted as a real CSS
-  variable AND generates a Tailwind utility (bg-bg-surface, text-text-secondary,
-  border-border-hover, bg-accent-subtle, hover:bg-accent-hover, ...).
+  AGility named palette, type scale, and motion tokens. A non-inline `@theme`
+  so each entry is emitted as a real CSS variable AND generates a Tailwind
+  utility (bg-bg-surface, text-text-secondary, border-border-hover, ...).
 */
 @theme {
-  /* Backgrounds */
-  --color-bg: #0a0a0d;
-  --color-bg-surface: #101014;
-  --color-bg-elevated: #17171c;
+  /* ── Backgrounds ──────────────────────────────────────────────────────
+     Warm-neutral graphite rather than blue-black. The warmth is what stops
+     the dark theme reading as "generic dark SaaS" and lets copper sit on it
+     without fighting. */
+  --color-bg: #0b0a09;
+  --color-bg-surface: #121110;
+  --color-bg-elevated: #1a1917;
+  --color-bg-sunken: #070706;
 
-  /* Borders (hairlines) — border-border comes from the shadcn mapping above. */
-  --color-border-hover: rgba(255, 255, 255, 0.14);
+  /* ── Borders (hairlines) ──────────────────────────────────────────────
+     `border-border` itself comes from the shadcn mapping above. These are the
+     louder steps used for hover and for structural rules that must read. */
+  --color-border-hover: rgba(239, 235, 228, 0.18);
+  --color-border-strong: rgba(239, 235, 228, 0.14);
 
-  /* Text */
-  --color-text-primary: #f5f5f7;
-  --color-text-secondary: #a1a1aa;
-  --color-text-muted: #71717a;
+  /* ── Text ─────────────────────────────────────────────────────────────
+     Bone, not pure white. #fff on near-black glares and reads cheap; a warm
+     off-white reads like ink on good paper.
+     Contrast on --color-bg: primary ~17:1, secondary ~7.6:1, muted ~4.7:1. */
+  --color-text-primary: #efebe4;
+  --color-text-secondary: #a39d93;
+  --color-text-muted: #827c74;
 
-  /* Accent (Electric Indigo) — bg-accent / text-accent come from the shadcn
-     mapping above; these are the additional states + subtle badge background. */
-  --color-accent-hover: #6b7cff;
-  --color-accent-active: #4a5ae0;
-  --color-accent-subtle: rgba(90, 110, 255, 0.1);
+  /* ── Accent (copper) ──────────────────────────────────────────────────
+     The one signal colour. ~7.7:1 on the background; near-black foreground
+     on a copper fill is ~7.2:1, so the primary CTA is legible without a
+     border or glow propping it up. */
+  --color-accent-hover: #f0a25c;
+  --color-accent-active: #c4762f;
+  --color-accent-subtle: rgba(224, 142, 67, 0.1);
+  --color-accent-line: rgba(224, 142, 67, 0.38);
 
-  /* Type scale — clamp()-driven fluid headings, fixed body sizes. */
-  --text-display: clamp(2.5rem, 5vw + 1rem, 4.5rem);
-  --text-display--line-height: 1.05;
-  --text-display--letter-spacing: -0.03em;
+  /* ── Status ───────────────────────────────────────────────────────────
+     Deliberately desaturated so they never out-shout the accent. */
+  --color-success: #7fb894;
+  --color-warning: #d9a441;
 
-  --text-h1: clamp(2rem, 3vw + 1rem, 3rem);
-  --text-h1--line-height: 1.1;
-  --text-h1--letter-spacing: -0.02em;
+  /* ── Type scale ───────────────────────────────────────────────────────
+     Fluid clamp() headings, fixed body sizes. The display step is much
+     larger and tighter than a default scale — typography is meant to do the
+     heavy lifting here, so the top of the scale has to earn its keep. */
+  --text-display: clamp(2.75rem, 5.2vw + 1rem, 5.25rem);
+  --text-display--line-height: 0.95;
+  --text-display--letter-spacing: -0.04em;
 
-  --text-h2: clamp(1.75rem, 2vw + 1rem, 2.5rem);
-  --text-h2--line-height: 1.15;
-  --text-h2--letter-spacing: -0.015em;
+  --text-h1: clamp(2.25rem, 3.2vw + 1rem, 3.5rem);
+  --text-h1--line-height: 1.02;
+  --text-h1--letter-spacing: -0.032em;
 
-  --text-h3: 1.5rem;
-  --text-h3--line-height: 1.3;
-  --text-h3--letter-spacing: -0.01em;
+  --text-h2: clamp(1.875rem, 2.2vw + 1rem, 2.75rem);
+  --text-h2--line-height: 1.08;
+  --text-h2--letter-spacing: -0.028em;
+
+  --text-h3: 1.375rem;
+  --text-h3--line-height: 1.25;
+  --text-h3--letter-spacing: -0.018em;
+
+  --text-h4: 1.0625rem;
+  --text-h4--line-height: 1.4;
+  --text-h4--letter-spacing: -0.01em;
 
   --text-body-lg: 1.125rem;
-  --text-body-lg--line-height: 1.75;
+  --text-body-lg--line-height: 1.65;
+  --text-body-lg--letter-spacing: -0.006em;
 
   --text-body: 1rem;
-  --text-body--line-height: 1.7;
+  --text-body--line-height: 1.65;
 
   --text-small: 0.875rem;
-  --text-small--line-height: 1.5;
+  --text-small--line-height: 1.55;
 
-  /* Eyebrow / micro-label — pair with `uppercase font-mono` at the call site. */
-  --text-eyebrow: 0.75rem;
+  --text-micro: 0.8125rem;
+  --text-micro--line-height: 1.5;
+
+  /* Eyebrow / micro-label — pair with `font-mono uppercase` at the call site. */
+  --text-eyebrow: 0.6875rem;
   --text-eyebrow--line-height: 1;
-  --text-eyebrow--letter-spacing: 0.12em;
+  --text-eyebrow--letter-spacing: 0.16em;
+
+  /* ── Motion ───────────────────────────────────────────────────────────
+     One vocabulary, four speeds. Anything animated on this site picks a
+     duration from here rather than inventing its own, which is what keeps
+     the whole surface feeling like a single piece of software.
+
+       micro      state you should barely notice — hover tints, icon nudges
+       fast       normal UI transitions
+       base       element entrances, accordion, tab swaps
+       slow       section reveals
+       cinematic  the hero timeline and diagram draw, once per page load
+
+     `--ease-out` is a strong expo-out: fast departure, long settle. It is
+     the single curve that most makes motion feel expensive rather than
+     mechanical, so it is the default for anything entering the screen. */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+
+  --duration-micro: 120ms;
+  --duration-fast: 200ms;
+  --duration-base: 320ms;
+  --duration-slow: 520ms;
+  --duration-cinematic: 900ms;
 }
 
 /*
   Canonical palette values (dark-only). No `.dark` override block — these apply
   unconditionally. `--color-accent`, `--color-accent-foreground` and
-  `--color-border` are surfaced through the shadcn mapping above and resolve here.
+  `--color-border` are surfaced through the shadcn mapping above.
 */
 :root {
   color-scheme: dark;
 
-  --background: #0a0a0d;
-  --foreground: #f5f5f7;
-  --card: #101014;
-  --card-foreground: #f5f5f7;
-  --popover: #17171c;
-  --popover-foreground: #f5f5f7;
-  --primary: #5a6eff;
-  --primary-foreground: #ffffff;
-  --secondary: #17171c;
-  --secondary-foreground: #f5f5f7;
-  --muted: #17171c;
-  --muted-foreground: #a1a1aa;
-  --accent: #5a6eff;
-  --accent-foreground: #ffffff;
-  --destructive: #f87171;
-  --border: rgba(255, 255, 255, 0.08);
-  --input: rgba(255, 255, 255, 0.08);
-  --ring: #5a6eff;
-  --radius: 0.75rem;
+  --background: #0b0a09;
+  --foreground: #efebe4;
+  --card: #121110;
+  --card-foreground: #efebe4;
+  --popover: #1a1917;
+  --popover-foreground: #efebe4;
+  --primary: #e08e43;
+  --primary-foreground: #17130e;
+  --secondary: #1a1917;
+  --secondary-foreground: #efebe4;
+  --muted: #1a1917;
+  --muted-foreground: #a39d93;
+  --accent: #e08e43;
+  --accent-foreground: #17130e;
+  --destructive: #e0685c;
+  --border: rgba(239, 235, 228, 0.09);
+  --input: rgba(239, 235, 228, 0.12);
+  --ring: #e08e43;
+  --radius: 0.375rem;
 }
 
 @layer base {
@@ -147,18 +228,89 @@
   }
   body {
     @apply bg-background text-foreground;
+    /* Slightly open tracking on body copy — Instrument Sans is compact, and
+       long paragraphs on a dark ground read better with a little air. */
+    letter-spacing: 0.004em;
   }
   html {
     @apply font-sans;
+    -webkit-font-smoothing: antialiased;
+  }
+  /* Headings carry the display face by default so individual components don't
+     each have to remember `font-display`. */
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+  }
+  /* Tabular numerals everywhere a figure is doing structural work (step
+     indices, ledger rows, matrix cells) so columns line up exactly. */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@utility hairline {
+  /* The workhorse divider. A 1px rule at 9% is invisible on most screens; this
+     pairs a faint line with a slightly brighter one so it survives both OLED
+     and cheap LCD panels. */
+  border-color: var(--border);
+}
+
+@utility rule-x {
+  /* Horizontal hairline that fades at both ends — used to separate ledger rows
+     and section blocks without the hard-stop look of a plain border. */
+  background-image: linear-gradient(
+    to right,
+    transparent,
+    var(--color-border-strong) 12%,
+    var(--color-border-strong) 88%,
+    transparent
+  );
+  height: 1px;
+}
+
+@utility grain {
+  /* Fine film grain, applied to an aria-hidden overlay element that the call
+     site positions. Flat #0b0a09 bands badly under large soft gradients and
+     reads plasticky; a ~3.5% noise layer is the cheapest way to make a dark
+     ground look like a material rather than a fill. Inline SVG data URI, so
+     there is no extra network request. */
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/*
+  Scroll-reveal contract.
+
+  Elements opt in with `data-reveal`, which hides them via CSS. The IntersectionObserver
+  in `useReveal` then hands them to anime.js, which animates them and sets
+  `data-reveal="shown"`.
+
+  Critically, the hidden state is scoped to `html.js-reveal` — a class set by an
+  inline script in <head> before first paint. If JavaScript is disabled or fails
+  to load, that class is never added, so nothing is ever hidden and all content
+  renders normally. Progressive enhancement, not a blank page.
+*/
+html.js-reveal [data-reveal]:not([data-reveal="shown"]) {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.js-reveal [data-reveal]:not([data-reveal="shown"]) {
+    opacity: 1;
   }
 }
 
 /*
-  Reduced-motion reset. Kept unlayered (outside @layer) so it outranks Tailwind's
-  utility layer, and reinforced with !important, guaranteeing it neutralises CSS
-  animations that the JS `useReducedMotion` gate can't reach — e.g. the FAQ
-  accordion's data-open/data-closed height animations. The accordion still opens
-  and closes; it just snaps instead of sliding for users who ask for less motion.
+  Reduced-motion reset. Kept unlayered (outside @layer) so it outranks
+  Tailwind's utility layer, and reinforced with !important, guaranteeing it
+  neutralises CSS animations that the JS `usePrefersReducedMotion` gate can't
+  reach — e.g. the FAQ accordion's data-open/data-closed height animations.
+  Components still change state; they just snap instead of sliding.
 */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -169,4 +321,15 @@
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* Firefox renders a visible scrollbar gutter that shifts the sticky nav; this
+   keeps the layout stable without hiding the scrollbar entirely. */
+html {
+  scrollbar-gutter: stable;
+}
+
+::selection {
+  background: var(--color-accent-line);
+  color: var(--color-text-primary);
 }

@@ -33,8 +33,7 @@ export default function ServicesPage() {
         eyebrow="Delivery"
         heading="How your solution is delivered"
         intro="Every project is different, and so is the right operating model. We can run the system for you, deploy it into infrastructure you control, or manage software running inside your own environment — whichever fits how your business works."
-        className="bg-bg-surface"
-        cardClassName="bg-bg"
+        className="border-t border-border bg-bg-surface"
       />
       <ServicesCta />
     </main>

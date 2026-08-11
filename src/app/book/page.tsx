@@ -33,25 +33,27 @@ export default function BookPage() {
         title="Book a free 30-minute consultation."
         subtitle="We'll look at where your business is losing time and money — and give you an honest answer on whether custom software is worth it. No pressure, no obligation, no jargon."
       >
-        <div className="flex flex-col items-center gap-6">
+        <div className="flex flex-col items-start gap-7">
           <Button
+            size="lg"
             render={
               <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" />
             }
-            className={cn(
-              "h-12 rounded-full px-7 text-base hover:bg-accent-hover",
-              focusRing
-            )}
+            className={cn("group", focusRing)}
           >
             <CalendarClock aria-hidden="true" />
             Book a consultation
           </Button>
-          <ul className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
-            {perks.map((perk) => (
-              <li
-                key={perk}
-                className="rounded-full border border-border bg-bg-surface/60 px-3 py-1 text-small text-text-secondary"
-              >
+          {/* The four terms of the offer, set as a monospace run rather than
+              pills — it reads as a specification line, not four more badges. */}
+          <ul className="flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-eyebrow uppercase text-text-muted">
+            {perks.map((perk, i) => (
+              <li key={perk} className="flex items-center gap-3">
+                {i > 0 ? (
+                  <span aria-hidden="true" className="text-border-hover">
+                    /
+                  </span>
+                ) : null}
                 {perk}
               </li>
             ))}

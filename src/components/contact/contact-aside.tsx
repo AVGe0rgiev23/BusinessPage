@@ -16,7 +16,7 @@ const reassurances = [
 
 export function ContactAside() {
   return (
-    <div className="rounded-2xl border border-border bg-bg-surface/60 p-6 md:p-8">
+    <div className="rounded-xl border border-border bg-bg-surface p-6 md:p-8">
       <h3
         id="contact-alt-heading"
         className="text-h3 font-semibold text-text-primary"
@@ -31,11 +31,11 @@ export function ContactAside() {
       <Link
         href="/book"
         className={cn(
-          "group mt-6 flex items-center gap-4 rounded-xl border border-border bg-bg p-4 transition-colors hover:border-border-hover hover:bg-bg-elevated",
+          "group mt-6 flex items-center gap-4 rounded-md border border-border bg-bg p-4 transition-colors duration-[--duration-fast] hover:border-border-hover hover:bg-bg-elevated",
           focusRing
         )}
       >
-        <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-accent-subtle text-accent">
+        <span className="flex size-10 shrink-0 items-center justify-center rounded-md bg-accent-subtle text-accent">
           <CalendarClock aria-hidden="true" className="size-5" />
         </span>
         <span className="min-w-0 flex-1">
@@ -58,11 +58,11 @@ export function ContactAside() {
           <a
             href={`mailto:${contactEmail}`}
             className={cn(
-              "group flex items-center gap-4 rounded-xl border border-border bg-bg p-4 transition-colors hover:border-border-hover hover:bg-bg-elevated",
+              "group flex items-center gap-4 rounded-md border border-border bg-bg p-4 transition-colors duration-[--duration-fast] hover:border-border-hover hover:bg-bg-elevated",
               focusRing
             )}
           >
-            <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-bg-elevated text-text-secondary">
+            <span className="flex size-10 shrink-0 items-center justify-center rounded-md bg-bg-elevated text-text-muted">
               <Mail aria-hidden="true" className="size-5" />
             </span>
             <span className="min-w-0 flex-1">
@@ -81,11 +81,11 @@ export function ContactAside() {
             target="_blank"
             rel="noopener noreferrer"
             className={cn(
-              "group flex items-center gap-4 rounded-xl border border-border bg-bg p-4 transition-colors hover:border-border-hover hover:bg-bg-elevated",
+              "group flex items-center gap-4 rounded-md border border-border bg-bg p-4 transition-colors duration-[--duration-fast] hover:border-border-hover hover:bg-bg-elevated",
               focusRing
             )}
           >
-            <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-bg-elevated text-text-secondary">
+            <span className="flex size-10 shrink-0 items-center justify-center rounded-md bg-bg-elevated text-text-muted">
               <LinkedinIcon aria-hidden="true" className="size-5" />
             </span>
             <span className="min-w-0 flex-1">

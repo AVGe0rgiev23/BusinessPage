@@ -317,29 +317,34 @@ export default function FaqPage() {
       />
       <FaqGroup
         id="working-together"
+        index="01"
         eyebrow="Working together"
         heading="Working together"
         items={WORKING_TOGETHER}
       />
       <FaqGroup
         id="pricing-timelines"
+        index="02"
         eyebrow="Pricing & timelines"
         heading="Pricing, costs and timelines"
         items={PRICING_TIMELINES}
-        className="bg-bg-surface"
+        className="border-t border-border bg-bg-surface"
       />
       <FaqGroup
         id="delivery-ownership"
+        index="03"
         eyebrow="Delivery & ownership"
         heading="Delivery, ownership and infrastructure"
         items={DELIVERY_OWNERSHIP}
+        className="border-t border-border"
       />
       <FaqGroup
         id="after-launch"
+        index="04"
         eyebrow="After launch"
         heading="After launch, support and security"
         items={AFTER_LAUNCH}
-        className="bg-bg-surface"
+        className="border-t border-border bg-bg-surface"
       />
       <FaqCta />
     </main>

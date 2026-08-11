@@ -13,7 +13,6 @@ export function BookingCta() {
       eyebrow="Book your call"
       title="Pick a time that works for you"
       subtitle="Choose a free 30-minute slot and we'll talk through where your business is losing time — and whether custom software is worth it. No pressure, no obligation."
-      maxWidth="max-w-2xl"
       primary={{ label: "Book a consultation", href: CALENDLY_URL }}
       secondary={{ label: "Send a message instead", href: "/contact" }}
       footnote={

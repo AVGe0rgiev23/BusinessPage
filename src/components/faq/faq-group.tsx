@@ -1,15 +1,13 @@
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { Reveal } from "@/components/motion/reveal";
+import { Eyebrow } from "@/components/layout/section-heading";
 import {
   Accordion,
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
 } from "@/components/ui/accordion";
-
-const focusRing =
-  "outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-bg";
 
 export interface FaqItem {
   /** The question — becomes the accordion trigger, rendered inside a Base UI
@@ -23,6 +21,8 @@ export interface FaqItem {
 interface FaqGroupProps {
   /** Section id; the labelling `<h2>` gets `${id}-heading`. */
   id: string;
+  /** Two-digit index shown beside the eyebrow. */
+  index?: string;
   eyebrow: string;
   heading: string;
   items: FaqItem[];
@@ -31,13 +31,19 @@ interface FaqGroupProps {
 }
 
 /**
- * FaqGroup — one labelled FAQ block: a section `<h2>` on the left and a Base UI
- * accordion on the right. Server Component (the accordion primitives carry their
- * own "use client"). Each `AccordionTrigger` sits inside an `<h3>` header, so the
- * page's heading order stays h1 → h2 → h3.
+ * FaqGroup — one labelled FAQ block: a sticky section `<h2>` on the left and an
+ * accordion on the right.
+ *
+ * The trigger carries no styling overrides any more. All of the question's
+ * typography, hover behaviour, focus ring and the rotating plus now live in
+ * `ui/accordion.tsx`, so every accordion on the site is identical by
+ * construction rather than by each call site remembering to pass the same
+ * classes. Server Component — the accordion primitives carry their own
+ * "use client".
  */
 export function FaqGroup({
   id,
+  index,
   eyebrow,
   heading,
   items,
@@ -48,14 +54,22 @@ export function FaqGroup({
   return (
     <Section id={id} aria-labelledby={headingId} className={className}>
       <Container>
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] lg:gap-16">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] lg:gap-20">
           <Reveal className="lg:sticky lg:top-28 lg:self-start">
-            <p className="text-eyebrow font-mono uppercase tracking-wider text-accent">
-              {eyebrow}
-            </p>
+            <div className="flex items-center gap-4">
+              {index ? (
+                <span
+                  aria-hidden="true"
+                  className="tabular font-mono text-eyebrow text-accent"
+                >
+                  {index}
+                </span>
+              ) : null}
+              <Eyebrow>{eyebrow}</Eyebrow>
+            </div>
             <h2
               id={headingId}
-              className="mt-4 text-balance text-h2 font-semibold text-text-primary"
+              className="mt-6 text-balance text-h2 font-semibold text-text-primary"
             >
               {heading}
             </h2>
@@ -65,18 +79,14 @@ export function FaqGroup({
             <Accordion>
               {items.map((item) => (
                 <AccordionItem key={item.q}>
-                  <AccordionTrigger
-                    className={`py-5 text-body font-medium text-text-primary hover:no-underline ${focusRing}`}
-                  >
-                    {item.q}
-                  </AccordionTrigger>
+                  <AccordionTrigger>{item.q}</AccordionTrigger>
                   <AccordionContent>
                     {typeof item.a === "string" ? (
-                      <p className="max-w-2xl text-body text-text-secondary">
+                      <p className="max-w-[68ch] text-body text-text-secondary">
                         {item.a}
                       </p>
                     ) : (
-                      <div className="max-w-2xl text-body text-text-secondary">
+                      <div className="max-w-[68ch] text-body text-text-secondary">
                         {item.a}
                       </div>
                     )}

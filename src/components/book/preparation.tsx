@@ -1,71 +1,78 @@
-import { Check } from "lucide-react";
-
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
-import { Reveal } from "@/components/motion/reveal";
+import { Reveal, RevealGroup } from "@/components/motion/reveal";
+import { Eyebrow } from "@/components/layout/section-heading";
 
-const whoItsFor = [
-  "Growing businesses buried in repetitive, manual work",
-  "Teams copy-pasting between tools, inboxes, and spreadsheets",
-  "Owners who suspect software could help but aren't sure where to start",
+const COLUMNS = [
+  {
+    title: "Who it's for",
+    items: [
+      "Growing businesses buried in repetitive, manual work",
+      "Teams copy-pasting between tools, inboxes, and spreadsheets",
+      "Owners who suspect software could help but aren't sure where to start",
+    ],
+  },
+  {
+    title: "How to prepare",
+    items: [
+      "Nothing formal — no slides or documents needed",
+      "Think of the one task your team dreads most",
+      "Bring any tools or numbers you already track (optional)",
+    ],
+  },
 ];
 
-const howToPrepare = [
-  "Nothing formal — no slides or documents needed",
-  "Think of the one task your team dreads most",
-  "Bring any tools or numbers you already track (optional)",
-];
-
-function CheckList({ items }: { items: string[] }) {
-  return (
-    <ul className="mt-5 grid gap-3">
-      {items.map((item) => (
-        <li key={item} className="flex items-start gap-3 text-body text-text-secondary">
-          <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-accent-subtle text-accent">
-            <Check aria-hidden="true" className="size-3" />
-          </span>
-          {item}
-        </li>
-      ))}
-    </ul>
-  );
-}
-
+/**
+ * Preparation — who the call suits and what (little) to bring.
+ *
+ * The checkmark bullets are gone. A tick beside "Nothing formal — no slides or
+ * documents needed" implies a completed requirement, which is the opposite of
+ * the point; these are notes, not a checklist. They are now hairline-separated
+ * rows, which says "list" without asserting anything.
+ */
 export function Preparation() {
   return (
     <Section aria-labelledby="prepare-heading" className="pt-0">
       <Container>
         <Reveal>
+          <div className="flex items-center gap-4">
+            <Eyebrow>Before we meet</Eyebrow>
+            <span aria-hidden="true" className="h-px flex-1 bg-border" />
+          </div>
           <h2
             id="prepare-heading"
-            className="max-w-2xl text-h2 font-semibold text-text-primary"
+            className="mt-7 max-w-[18ch] text-balance text-h2 font-semibold text-text-primary"
           >
-            Before we meet
+            Come as you are
           </h2>
-          <p className="mt-4 max-w-2xl text-body-lg text-text-secondary">
-            Come as you are. A quick read on who this is for and the little that
-            helps us make the most of your time.
+          <p className="mt-5 max-w-[54ch] text-pretty text-body-lg text-text-secondary">
+            A quick read on who this is for and the little that helps us make the
+            most of your time.
           </p>
         </Reveal>
 
-        <div className="mt-12 grid gap-5 md:grid-cols-2">
-          <Reveal>
-            <div className="h-full rounded-2xl border border-border bg-bg-surface p-6 md:p-8">
-              <h3 className="text-h3 font-semibold text-text-primary">
-                Who it&apos;s for
+        <RevealGroup
+          className="mt-14 grid gap-x-16 gap-y-10 md:grid-cols-2"
+          selector=":scope > div"
+        >
+          {COLUMNS.map((column) => (
+            <div key={column.title}>
+              <h3 className="font-mono text-eyebrow uppercase text-text-secondary">
+                {column.title}
               </h3>
-              <CheckList items={whoItsFor} />
+              <ul className="mt-5 border-t border-border">
+                {column.items.map((item) => (
+                  <li
+                    key={item}
+                    className="border-b border-border py-4 text-pretty text-body text-text-secondary"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </div>
-          </Reveal>
-          <Reveal delay={0.05}>
-            <div className="h-full rounded-2xl border border-border bg-bg-surface p-6 md:p-8">
-              <h3 className="text-h3 font-semibold text-text-primary">
-                How to prepare
-              </h3>
-              <CheckList items={howToPrepare} />
-            </div>
-          </Reveal>
-        </div>
+          ))}
+        </RevealGroup>
       </Container>
     </Section>
   );

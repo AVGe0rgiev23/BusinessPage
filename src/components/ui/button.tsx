@@ -4,47 +4,89 @@ import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
 
+/**
+ * AGility button system.
+ *
+ * Three things distinguish this from the stock shadcn styling:
+ *
+ *   1. **Rectangles, not pills.** `rounded-md` (6px). Fully-rounded buttons are
+ *      the house style of the exact template aesthetic this design system
+ *      exists to avoid, and a tighter radius reads as a tool rather than a
+ *      landing page.
+ *   2. **A real hierarchy.** `primary` is a solid copper fill and is the only
+ *      variant that carries the accent colour. `secondary` is a hairline
+ *      outline. `ghost` and `link` are quieter still. Because there is exactly
+ *      one loud variant, a visitor can always tell what the page wants them to
+ *      do — which is the entire job of a CTA system.
+ *   3. **Sizes that match the type scale**, so call sites stop overriding
+ *      heights and padding inline (the old code shipped `h-12 rounded-full
+ *      px-7` at nearly every call site, which meant the variants weren't
+ *      really doing anything).
+ *
+ * The primary variant's inset top highlight and one-pass sheen on hover are
+ * borrowed from the physical-button treatments common on Uiverse, dialled far
+ * down: a 1px light edge and a low-opacity sweep. At full strength that effect
+ * looks like a toy; at this strength it just looks like the button is made of
+ * something. Both are pure CSS transitions, so the global reduced-motion reset
+ * in globals.css neutralises them without any JS involvement.
+ */
 const buttonVariants = cva(
-  "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+  [
+    "group/button relative isolate inline-flex shrink-0 items-center justify-center overflow-hidden",
+    "rounded-md border border-transparent bg-clip-padding font-medium whitespace-nowrap",
+    "transition-[background-color,border-color,color,box-shadow,transform] duration-[--duration-fast] ease-[--ease-standard]",
+    "outline-none select-none",
+    "focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-bg",
+    "active:not-aria-[haspopup]:translate-y-px",
+    "disabled:pointer-events-none disabled:opacity-45",
+    "aria-invalid:border-destructive aria-invalid:ring-2 aria-invalid:ring-destructive/25",
+    "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+  ],
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/80",
-        outline:
-          "border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground",
-        secondary:
-          "bg-secondary text-secondary-foreground hover:bg-[color-mix(in_oklch,var(--secondary),var(--foreground)_5%)] aria-expanded:bg-secondary aria-expanded:text-secondary-foreground",
+        primary: [
+          "bg-accent text-accent-foreground",
+          "shadow-[inset_0_1px_0_rgba(255,255,255,0.24),0_1px_2px_rgba(0,0,0,0.4)]",
+          "hover:bg-accent-hover",
+          "active:bg-accent-active",
+          // Single sheen pass on hover.
+          "before:pointer-events-none before:absolute before:inset-y-0 before:-left-full before:-z-10 before:w-full",
+          "before:bg-gradient-to-r before:from-transparent before:via-white/25 before:to-transparent",
+          "before:transition-transform before:duration-700 before:ease-[--ease-out]",
+          "hover:before:translate-x-[200%]",
+        ],
+        secondary: [
+          "border-border-strong bg-bg-surface/60 text-text-primary",
+          "hover:border-border-hover hover:bg-bg-elevated",
+          "aria-expanded:border-border-hover aria-expanded:bg-bg-elevated",
+        ],
         ghost:
-          "hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground",
+          "text-text-secondary hover:bg-bg-elevated hover:text-text-primary aria-expanded:bg-bg-elevated aria-expanded:text-text-primary",
+        link: "h-auto rounded-sm px-0 text-accent underline-offset-4 hover:text-accent-hover hover:underline",
         destructive:
-          "bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20",
-        link: "text-primary underline-offset-4 hover:underline",
+          "border-destructive/25 bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:ring-destructive/40",
       },
       size: {
-        default:
-          "h-8 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
-        xs: "h-6 gap-1 rounded-[min(var(--radius-md),10px)] px-2 text-xs in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3",
-        sm: "h-7 gap-1 rounded-[min(var(--radius-md),12px)] px-2.5 text-[0.8rem] in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5",
-        lg: "h-9 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
-        icon: "size-8",
-        "icon-xs":
-          "size-6 rounded-[min(var(--radius-md),10px)] in-data-[slot=button-group]:rounded-lg [&_svg:not([class*='size-'])]:size-3",
-        "icon-sm":
-          "size-7 rounded-[min(var(--radius-md),12px)] in-data-[slot=button-group]:rounded-lg",
-        "icon-lg": "size-9",
+        sm: "h-8 gap-1.5 px-3 text-small",
+        md: "h-10 gap-2 px-4 text-small",
+        lg: "h-12 gap-2.5 px-6 text-body [&_svg:not([class*='size-'])]:size-[1.125rem]",
+        icon: "size-10",
+        "icon-sm": "size-8 [&_svg:not([class*='size-'])]:size-3.5",
+        "icon-lg": "size-12",
       },
     },
     defaultVariants: {
-      variant: "default",
-      size: "default",
+      variant: "primary",
+      size: "md",
     },
   }
 )
 
 function Button({
   className,
-  variant = "default",
-  size = "default",
+  variant = "primary",
+  size = "md",
   render,
   nativeButton,
   ...props

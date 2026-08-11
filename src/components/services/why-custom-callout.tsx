@@ -1,38 +1,35 @@
 import Link from "next/link";
-import {
-  ShieldCheck,
-  Settings,
-  TrendingUp,
-  Blocks,
-  ArrowRight,
-  type LucideIcon,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
+import { arrowLink, cn, focusRing } from "@/lib/utils";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
-import { Reveal } from "@/components/motion/reveal";
+import { Reveal, RevealGroup } from "@/components/motion/reveal";
+import { Eyebrow } from "@/components/layout/section-heading";
 
-const focusRing =
-  "outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-bg";
-
-const POINTS: { icon: LucideIcon; label: string; desc: string }[] = [
+/**
+ * WhyCustomCallout — the services-page version of the custom-vs-off-the-shelf
+ * argument.
+ *
+ * Shorter than the homepage comparison table on purpose: by the time someone is
+ * this far into the services page they have already seen the catalogue and are
+ * weighing an approach, not being introduced to one. Four points, hairline
+ * ruled, with the honest caveat kept in full.
+ */
+const POINTS = [
   {
-    icon: ShieldCheck,
     label: "Ownership",
     desc: "The custom software is yours under the project agreement — not rented from a builder you don't control.",
   },
   {
-    icon: Settings,
     label: "Flexibility",
     desc: "It does exactly what your business needs, not just what a drag-and-drop builder happens to support.",
   },
   {
-    icon: TrendingUp,
     label: "Scalability",
     desc: "It grows with your volume and complexity instead of hitting a platform ceiling.",
   },
   {
-    icon: Blocks,
     label: "No unnecessary lock-in",
     desc: "Standard, portable technology wherever practical — so your core process isn't hostage to one builder's pricing.",
   },
@@ -42,77 +39,80 @@ export function WhyCustomCallout() {
   return (
     <Section aria-labelledby="why-custom-heading">
       <Container>
-        <Reveal>
-          <div className="rounded-3xl border border-border bg-bg-surface p-8 md:p-12">
-            <div className="grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:items-center lg:gap-16">
-              <div>
-                <p className="text-eyebrow font-mono uppercase tracking-wider text-accent">
-                  Custom vs. off-the-shelf
-                </p>
-                <h2
-                  id="why-custom-heading"
-                  className="mt-4 text-balance text-h2 font-semibold text-text-primary"
-                >
-                  Why custom, not off-the-shelf
-                </h2>
-                <p className="mt-5 text-pretty text-body-lg text-text-secondary">
-                  We&apos;re code-first: the processes your business runs on get
-                  built as software, rather than assembled inside a proprietary
-                  visual workflow builder. That buys you flexibility, clearer
-                  ownership, and room to grow.
-                </p>
-                <p className="mt-4 text-pretty text-body text-text-secondary">
-                  Off-the-shelf tools and low-code platforms have their place,
-                  and we&apos;ll tell you honestly when one is the right fit —
-                  including when it means a smaller project for us. But as a
-                  process becomes central to how you make money, owning it tends
-                  to pay off more than renting it from a builder that can change
-                  its pricing or shut down.
-                </p>
-                <p className="mt-4 text-pretty text-body text-text-secondary">
-                  We use third-party services ourselves — cloud hosting,
-                  databases, AI providers. The point isn&apos;t to avoid them,
-                  it&apos;s to avoid unnecessary lock-in and keep what we build
-                  portable.
-                </p>
-                <Link
-                  href="/process"
-                  className={`group mt-6 inline-flex items-center gap-2 rounded-md text-body font-medium text-accent transition-colors hover:text-accent-hover ${focusRing}`}
-                >
-                  See how we work
-                  <ArrowRight
-                    className="size-4 transition-transform group-hover:translate-x-0.5"
-                    aria-hidden="true"
-                  />
-                </Link>
-              </div>
-
-              <ul className="grid gap-3">
-                {POINTS.map((point) => {
-                  const Icon = point.icon;
-                  return (
-                    <li
-                      key={point.label}
-                      className="flex items-start gap-3 rounded-xl border border-border bg-bg p-4"
-                    >
-                      <span className="inline-flex size-9 shrink-0 items-center justify-center rounded-lg bg-accent-subtle text-accent">
-                        <Icon className="size-4.5" aria-hidden="true" />
-                      </span>
-                      <div>
-                        <p className="text-body font-medium text-text-primary">
-                          {point.label}
-                        </p>
-                        <p className="mt-0.5 text-small text-text-secondary">
-                          {point.desc}
-                        </p>
-                      </div>
-                    </li>
-                  );
-                })}
-              </ul>
+        <div className="grid gap-14 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] lg:gap-24">
+          <Reveal>
+            <div className="flex items-center gap-4">
+              <Eyebrow>Custom vs. off-the-shelf</Eyebrow>
+              <span aria-hidden="true" className="h-px flex-1 bg-border" />
             </div>
-          </div>
-        </Reveal>
+
+            <h2
+              id="why-custom-heading"
+              className="mt-7 max-w-[18ch] text-balance text-h2 font-semibold text-text-primary"
+            >
+              Why custom, not off-the-shelf
+            </h2>
+
+            <p className="mt-6 max-w-[54ch] text-pretty text-body-lg text-text-secondary">
+              We&apos;re code-first: the processes your business runs on get
+              built as software, rather than assembled inside a proprietary
+              visual workflow builder. That buys you flexibility, clearer
+              ownership, and room to grow.
+            </p>
+            <p className="mt-4 max-w-[54ch] text-pretty text-body text-text-secondary">
+              Off-the-shelf tools and low-code platforms have their place, and
+              we&apos;ll tell you honestly when one is the right fit — including
+              when it means a smaller project for us. But as a process becomes
+              central to how you make money, owning it tends to pay off more
+              than renting it from a builder that can change its pricing or shut
+              down.
+            </p>
+            <p className="mt-4 max-w-[54ch] text-pretty text-body text-text-secondary">
+              We use third-party services ourselves — cloud hosting, databases,
+              AI providers. The point isn&apos;t to avoid them, it&apos;s to
+              avoid unnecessary lock-in and keep what we build portable.
+            </p>
+
+            <Link
+              href="/process"
+              className={cn(arrowLink, "mt-8", focusRing)}
+            >
+              See how we work
+              <ArrowRight
+                className="size-4 transition-transform duration-[--duration-fast] group-hover:translate-x-0.5"
+                aria-hidden="true"
+              />
+            </Link>
+          </Reveal>
+
+          <RevealGroup
+            as="ul"
+            className="border-t border-border lg:pt-1"
+            selector=":scope > li"
+          >
+            {POINTS.map((point) => (
+              <li
+                key={point.label}
+                className="group border-b border-border py-6"
+              >
+                <div className="flex gap-5">
+                  <span
+                    aria-hidden="true"
+                    className="mt-3 h-px w-5 shrink-0 bg-border-hover transition-[width,background-color] duration-[--duration-base] ease-[--ease-out] group-hover:w-8 group-hover:bg-accent"
+                  />
+                  <div>
+                    <h3 className="text-h4 font-semibold text-text-primary">
+                      {point.label}
+                    </h3>
+                    <p className="mt-1.5 max-w-[48ch] text-pretty text-small text-text-secondary">
+                      {point.desc}
+                    </p>
+                  </div>
+                </div>
+              </li>
+            ))}
+          </RevealGroup>
+        </div>
       </Container>
     </Section>
   );

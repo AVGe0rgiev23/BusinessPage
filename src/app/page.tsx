@@ -21,7 +21,7 @@ export default function Home() {
       <ServicesPreview />
       <WhyCustom />
       <ProcessPreview />
-      <DeliveryModels />
+      <DeliveryModels index="06" />
       <Technology />
       <WhyAgility />
       <OpenSource />

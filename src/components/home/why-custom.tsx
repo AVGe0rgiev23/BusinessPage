@@ -1,51 +1,61 @@
 import Link from "next/link";
-import {
-  ShieldCheck,
-  Settings,
-  TrendingUp,
-  Blocks,
-  Network,
-  Gauge,
-  ArrowRight,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
+import { arrowLink, cn, focusRing } from "@/lib/utils";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { Reveal } from "@/components/motion/reveal";
+import { SectionHeading } from "@/components/layout/section-heading";
 
-const focusRing =
-  "outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-bg";
-
-const REASONS = [
+/**
+ * WhyCustom — the custom vs. low-code comparison.
+ *
+ * This used to be six more bordered cards sitting next to a wall of prose. It
+ * is a *comparison*, so it is now built as one: a real matrix, six dimensions,
+ * two columns, hairline ruled.
+ *
+ * ── Accuracy constraint, do not loosen ──────────────────────────────────────
+ * Every cell below is taken near-verbatim from copy that was already on this
+ * page. Nothing about low-code platforms is asserted here that the site did not
+ * already say in prose. A comparison table is a persuasive format and it would
+ * be very easy to start inventing weaknesses for the other column — don't. If a
+ * claim cannot be traced to existing approved copy, it does not go in the
+ * table.
+ *
+ * The honest caveat ("low-code tools have their place, and we'll tell you when
+ * one is the right call") is kept directly underneath, where it belongs. It is
+ * the most trust-building sentence in the section.
+ */
+const DIMENSIONS = [
   {
-    icon: ShieldCheck,
-    title: "Ownership",
-    body: "The custom software we build for you is yours under the project agreement — not a per-seat licence on a builder you don't control.",
+    dimension: "Ownership",
+    custom: "Yours under the project agreement.",
+    lowCode: "A per-seat licence on a builder you don't control.",
   },
   {
-    icon: Settings,
-    title: "Flexibility",
-    body: "It does exactly what your business needs — not just what a drag-and-drop builder happens to support.",
+    dimension: "Flexibility",
+    custom: "Does exactly what your business needs.",
+    lowCode: "Only what a drag-and-drop builder happens to support.",
   },
   {
-    icon: TrendingUp,
-    title: "Scalability",
-    body: "Built to handle more volume, more users, and more complexity as you grow, without hitting a platform ceiling.",
+    dimension: "Scalability",
+    custom: "Handles more volume, users, and complexity as you grow.",
+    lowCode: "Growth eventually meets a platform ceiling.",
   },
   {
-    icon: Blocks,
-    title: "No unnecessary lock-in",
-    body: "We build on standard, portable technologies wherever practical, so your core process doesn't hinge on one proprietary builder's pricing or roadmap.",
+    dimension: "Lock-in",
+    custom: "Standard, portable technology wherever it's practical.",
+    lowCode: "Your core process hinges on one builder's pricing and roadmap.",
   },
   {
-    icon: Network,
-    title: "Better integrations",
-    body: "Connect deeply to the systems you already use, with the control that pre-packaged connectors rarely give you.",
+    dimension: "Integrations",
+    custom: "Deep connections to your systems, with real control.",
+    lowCode: "Whatever the pre-packaged connectors happen to allow.",
   },
   {
-    icon: Gauge,
-    title: "Performance",
-    body: "Software tuned to your workload runs faster and more reliably than a general-purpose platform doing everything for everyone.",
+    dimension: "Performance",
+    custom: "Tuned to your workload.",
+    lowCode: "A general-purpose platform doing everything for everyone.",
   },
 ];
 
@@ -53,68 +63,109 @@ export function WhyCustom() {
   return (
     <Section id="why-custom" aria-labelledby="why-custom-heading">
       <Container>
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:gap-16">
-          <Reveal className="lg:sticky lg:top-28 lg:self-start">
-            <p className="text-eyebrow font-mono uppercase tracking-wider text-accent">
-              Custom vs. low-code
-            </p>
-            <h2
-              id="why-custom-heading"
-              className="mt-4 text-balance text-h2 font-semibold text-text-primary"
-            >
-              Own your software. Don&apos;t rent your workflow.
-            </h2>
-            <p className="mt-5 text-pretty text-body-lg text-text-secondary">
-              We&apos;re code-first: the processes your business runs on get
-              built as software, rather than assembled inside a proprietary
-              visual workflow builder. That buys you flexibility, clearer
-              ownership, and room to grow.
-            </p>
-            <p className="mt-4 text-pretty text-body text-text-secondary">
-              Low-code tools have their place, and we&apos;ll tell you honestly
-              when one is the right call — including when it means a smaller
-              project for us. But as a process becomes central to how you make
-              money, owning it tends to pay off.
-            </p>
-            <p className="mt-4 text-pretty text-body text-text-secondary">
-              We use third-party services ourselves — cloud hosting, databases,
-              AI providers. Nobody builds without them. The difference is that we
-              avoid unnecessary platform lock-in and stick to standard, portable
-              technology wherever it&apos;s practical.
-            </p>
+        <SectionHeading
+          index="04"
+          eyebrow="Custom vs. low-code"
+          headingId="why-custom-heading"
+          title="Own your software. Don't rent your workflow."
+          lede="We're code-first: the processes your business runs on get built as software, rather than assembled inside a proprietary visual workflow builder. That buys you flexibility, clearer ownership, and room to grow."
+        />
+
+        <Reveal className="mt-16 md:mt-20">
+          <table className="w-full border-collapse text-left">
+            <caption className="sr-only">
+              Custom software compared with low-code platforms across ownership,
+              flexibility, scalability, lock-in, integrations and performance.
+            </caption>
+            <thead className="sr-only md:not-sr-only">
+              <tr>
+                <th
+                  scope="col"
+                  className="w-[18%] border-b border-border pb-4 font-mono text-eyebrow font-normal uppercase text-text-muted"
+                >
+                  <span className="sr-only">Dimension</span>
+                </th>
+                <th
+                  scope="col"
+                  className="w-[41%] border-b border-accent-line pb-4 pl-6 font-mono text-eyebrow font-normal uppercase text-accent"
+                >
+                  Custom software
+                </th>
+                <th
+                  scope="col"
+                  className="w-[41%] border-b border-border pb-4 pl-6 font-mono text-eyebrow font-normal uppercase text-text-muted"
+                >
+                  Low-code platform
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {DIMENSIONS.map((row) => (
+                <tr
+                  key={row.dimension}
+                  className="group block border-b border-border py-6 md:table-row md:py-0"
+                >
+                  <th
+                    scope="row"
+                    className="block font-mono text-eyebrow font-normal uppercase text-text-primary md:table-cell md:w-[18%] md:py-6 md:pr-6 md:align-top md:text-text-secondary md:transition-colors md:group-hover:text-text-primary"
+                  >
+                    {row.dimension}
+                  </th>
+                  {/*
+                    The custom column carries a faint copper wash and a copper
+                    left rule so the eye knows which side of the comparison the
+                    page is arguing for, without shouting about it.
+                  */}
+                  <td className="block pt-3 md:table-cell md:border-l md:border-accent-line md:bg-accent-subtle/40 md:py-6 md:pl-6 md:align-top md:transition-colors md:group-hover:bg-accent-subtle">
+                    <span className="mb-1 block font-mono text-eyebrow uppercase text-accent md:hidden">
+                      Custom
+                    </span>
+                    <span className="text-body text-text-primary">
+                      {row.custom}
+                    </span>
+                  </td>
+                  <td className="block pt-3 md:table-cell md:border-l md:border-border md:py-6 md:pl-6 md:align-top">
+                    <span className="mb-1 block font-mono text-eyebrow uppercase text-text-muted md:hidden">
+                      Low-code
+                    </span>
+                    <span className="text-body text-text-secondary">
+                      {row.lowCode}
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </Reveal>
+
+        {/* The caveat. Two columns of prose, deliberately set narrower than the
+            table above so the section closes rather than continuing. */}
+        <Reveal className="mt-14 grid max-w-5xl gap-x-14 gap-y-5 md:grid-cols-2">
+          <p className="text-pretty text-body text-text-secondary">
+            Low-code tools have their place, and we&apos;ll tell you honestly
+            when one is the right call — including when it means a smaller
+            project for us. But as a process becomes central to how you make
+            money, owning it tends to pay off.
+          </p>
+          <p className="text-pretty text-body text-text-secondary">
+            We use third-party services ourselves — cloud hosting, databases, AI
+            providers. Nobody builds without them. The difference is that we
+            avoid unnecessary platform lock-in and stick to standard, portable
+            technology wherever it&apos;s practical.
+          </p>
+          <div className="md:col-span-2">
             <Link
               href="/services"
-              className={`group mt-6 inline-flex items-center gap-2 rounded-md text-body font-medium text-accent transition-colors hover:text-accent-hover ${focusRing}`}
+              className={cn(arrowLink, focusRing)}
             >
               How we approach a build
               <ArrowRight
-                className="size-4 transition-transform group-hover:translate-x-0.5"
+                className="size-4 transition-transform duration-[--duration-fast] group-hover:translate-x-0.5"
                 aria-hidden="true"
               />
             </Link>
-          </Reveal>
-
-          <ul className="grid gap-4 sm:grid-cols-2">
-            {REASONS.map((reason, i) => {
-              const Icon = reason.icon;
-              return (
-                <Reveal key={reason.title} delay={(i % 2) * 0.08}>
-                  <li className="h-full rounded-2xl border border-border bg-bg-surface p-6 transition-colors hover:border-border-hover">
-                    <span className="inline-flex size-11 items-center justify-center rounded-xl bg-accent-subtle text-accent">
-                      <Icon className="size-5" aria-hidden="true" />
-                    </span>
-                    <h3 className="mt-5 text-h3 font-semibold text-text-primary">
-                      {reason.title}
-                    </h3>
-                    <p className="mt-2 text-body text-text-secondary">
-                      {reason.body}
-                    </p>
-                  </li>
-                </Reveal>
-              );
-            })}
-          </ul>
-        </div>
+          </div>
+        </Reveal>
       </Container>
     </Section>
   );

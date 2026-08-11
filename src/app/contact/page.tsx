@@ -40,7 +40,7 @@ export default function ContactPage() {
                 >
                   Send us a message
                 </h2>
-                <p className="mt-3 max-w-xl text-body text-text-secondary">
+                <p className="mt-4 max-w-[52ch] text-pretty text-body-lg text-text-secondary">
                   A few details are all we need to point you in the right
                   direction. Everything you send stays between us.
                 </p>
@@ -52,7 +52,7 @@ export default function ContactPage() {
 
             {/* Alternative paths */}
             <aside aria-labelledby="contact-alt-heading" className="lg:col-span-1">
-              <Reveal delay={0.1}>
+              <Reveal delay={90}>
                 <ContactAside />
               </Reveal>
             </aside>

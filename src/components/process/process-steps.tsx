@@ -1,26 +1,26 @@
-import { Search, PenTool, Hammer, Rocket, LifeBuoy, ListChecks, Eye } from "lucide-react";
-
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
-import { Reveal } from "@/components/motion/reveal";
+import { RevealGroup } from "@/components/motion/reveal";
+import { SectionHeading } from "@/components/layout/section-heading";
 
 /**
  * ProcessSteps — the full, detailed engagement path for the Process page.
  *
- * Expands the five-card home preview (`home/process-preview.tsx`) into a
- * numbered, step-by-step walkthrough. Each step spells out three things:
- * what happens, what the client walks away with, and the transparency angle
- * (you always know where things stand).
+ * Expands the five-step home preview (`home/process-preview.tsx`) into a
+ * walkthrough. Each step spells out three things: what happens, what the client
+ * walks away with, and the transparency angle.
+ *
+ * Laid out as a numbered document with a hanging step column rather than five
+ * bordered cards each containing two more bordered sub-cards. The old version
+ * nested a card inside a card inside a card — three levels of border for one
+ * paragraph of text — which is exactly the reflex this redesign exists to break.
+ * Here the two supporting facts hang off a hairline instead.
  *
  * Copy strings use real typographic characters and are rendered as JSX
- * expressions ({step.lead}), so no entity escaping is needed.
- *
- * Server Component. Renders `<h2>` for the section heading and `<h3>` per step
- * so the page heading order stays h1 → h2 → h3.
+ * expressions, so no entity escaping is needed.
  */
 const STEPS = [
   {
-    icon: Search,
     title: "Discovery",
     lead: "We sit down with you to find the expensive problem — where the hours disappear, where money quietly leaks, where growth keeps stalling. We map how the work actually flows today, and we agree on what a win looks like in real numbers before anyone writes a line of code.",
     deliverable:
@@ -29,7 +29,6 @@ const STEPS = [
       "You define what success means up front, so the project is never measured against a moving target.",
   },
   {
-    icon: PenTool,
     title: "Scoping & design",
     lead: "We turn the problem into a concrete plan: what we’ll build, how it fits the tools you already use, what it will cost, and how long it will take. This is also where we agree how the finished system should be delivered and operated — run by us, run by you, or a hybrid — so the architecture is designed for that from the start rather than retrofitted later.",
     deliverable:
@@ -38,7 +37,6 @@ const STEPS = [
       "You approve the plan and the price before the build starts. No open-ended invoices, no scope quietly creeping in later.",
   },
   {
-    icon: Hammer,
     title: "Build",
     lead: "We develop in short, focused increments and put working software in front of you as it takes shape — not months of silence followed by one big reveal.",
     deliverable:
@@ -47,7 +45,6 @@ const STEPS = [
       "You have a direct line to the people writing the code and a live view of where the project stands at any moment.",
   },
   {
-    icon: Rocket,
     title: "Deploy",
     lead: "We deploy the system using the operating model you’ve chosen — fully managed by us, into infrastructure you own, or a hybrid of the two. We configure the infrastructure, integrations, monitoring, and access it needs, test it against real work rather than a demo, and make sure everyone knows how it runs.",
     deliverable:
@@ -56,7 +53,6 @@ const STEPS = [
       "You know exactly what’s changing, when it goes live, who holds which accounts and access, and how to reach us the moment anything needs attention.",
   },
   {
-    icon: LifeBuoy,
     title: "Support & iterate",
     lead: "Ongoing support is optional, and it takes whichever form suits you. We can operate the system for you, keep maintaining and improving it while your team owns the infrastructure, or hand it over so your team runs it independently. The first version is a starting point, not the finish line.",
     deliverable:
@@ -70,81 +66,65 @@ export function ProcessSteps() {
   return (
     <Section id="steps" aria-labelledby="steps-heading">
       <Container>
-        <Reveal className="mx-auto max-w-2xl text-center">
-          <p className="text-eyebrow font-mono uppercase tracking-wider text-accent">
-            The path
-          </p>
-          <h2
-            id="steps-heading"
-            className="mt-4 text-balance text-h2 font-semibold text-text-primary"
-          >
-            From an expensive problem to working software.
-          </h2>
-          <p className="mt-5 text-pretty text-body-lg text-text-secondary">
-            No black boxes. Five clear stages, each with a purpose you can point
-            to — so from the first call to long after launch, you always know
-            what&apos;s happening and why.
-          </p>
-        </Reveal>
+        <SectionHeading
+          index="01"
+          eyebrow="The path"
+          headingId="steps-heading"
+          title="From an expensive problem to working software."
+          lede="No black boxes. Five clear stages, each with a purpose you can point to — so from the first call to long after launch, you always know what's happening and why."
+        />
 
-        <ol className="mt-16 flex flex-col gap-4">
-          {STEPS.map((step, i) => {
-            const Icon = step.icon;
-            return (
-              <Reveal key={step.title} delay={(i % 2) * 0.06}>
-                <li className="rounded-2xl border border-border bg-bg-surface p-6 transition-colors hover:border-border-hover md:p-8">
-                  <div className="flex flex-col gap-6 md:flex-row md:gap-10">
-                    {/* Step marker + title */}
-                    <div className="flex items-center gap-4 md:w-64 md:shrink-0 md:flex-col md:items-start md:gap-5">
-                      <span className="inline-flex size-12 items-center justify-center rounded-2xl border border-border bg-bg-elevated text-accent">
-                        <Icon className="size-6" aria-hidden="true" />
-                      </span>
-                      <div>
-                        <span
-                          aria-hidden="true"
-                          className="font-mono text-small text-text-secondary"
-                        >
-                          Step 0{i + 1}
-                        </span>
-                        <h3 className="mt-1 text-h3 font-semibold text-text-primary">
-                          {step.title}
-                        </h3>
-                      </div>
+        <RevealGroup
+          as="ol"
+          className="mt-16 border-t border-border md:mt-20"
+          selector=":scope > li"
+        >
+          {STEPS.map((step, i) => (
+            <li key={step.title} className="group border-b border-border py-10">
+              <div className="grid gap-x-14 gap-y-6 lg:grid-cols-[minmax(0,16rem)_minmax(0,1fr)]">
+                {/* Hanging step column */}
+                <div className="lg:sticky lg:top-28 lg:self-start">
+                  <span
+                    aria-hidden="true"
+                    className="tabular font-mono text-eyebrow uppercase text-text-muted transition-colors duration-[--duration-fast] group-hover:text-accent"
+                  >
+                    Step {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="mt-3 text-h3 font-semibold text-text-primary">
+                    {step.title}
+                  </h3>
+                </div>
+
+                <div>
+                  <p className="max-w-[68ch] text-pretty text-body text-text-secondary">
+                    {step.lead}
+                  </p>
+
+                  {/* The two supporting facts hang off a rule rather than
+                      sitting in nested boxes. */}
+                  <dl className="mt-7 grid gap-x-10 gap-y-5 border-t border-border pt-6 sm:grid-cols-2">
+                    <div>
+                      <dt className="font-mono text-eyebrow uppercase text-text-muted">
+                        What you walk away with
+                      </dt>
+                      <dd className="mt-2 text-pretty text-small text-text-secondary">
+                        {step.deliverable}
+                      </dd>
                     </div>
-
-                    {/* Detail */}
-                    <div className="flex-1">
-                      <p className="text-body text-text-secondary">
-                        {step.lead}
-                      </p>
-
-                      <div className="mt-6 grid gap-4 sm:grid-cols-2">
-                        <div className="rounded-xl border border-border bg-bg p-5">
-                          <p className="flex items-center gap-2 text-eyebrow font-mono uppercase tracking-wider text-accent">
-                            <ListChecks className="size-4" aria-hidden="true" />
-                            What you walk away with
-                          </p>
-                          <p className="mt-2 text-small text-text-secondary">
-                            {step.deliverable}
-                          </p>
-                        </div>
-                        <div className="rounded-xl border border-border bg-bg p-5">
-                          <p className="flex items-center gap-2 text-eyebrow font-mono uppercase tracking-wider text-accent">
-                            <Eye className="size-4" aria-hidden="true" />
-                            How you stay in the loop
-                          </p>
-                          <p className="mt-2 text-small text-text-secondary">
-                            {step.transparency}
-                          </p>
-                        </div>
-                      </div>
+                    <div>
+                      <dt className="font-mono text-eyebrow uppercase text-text-muted">
+                        How you stay in the loop
+                      </dt>
+                      <dd className="mt-2 text-pretty text-small text-text-secondary">
+                        {step.transparency}
+                      </dd>
                     </div>
-                  </div>
-                </li>
-              </Reveal>
-            );
-          })}
-        </ol>
+                  </dl>
+                </div>
+              </div>
+            </li>
+          ))}
+        </RevealGroup>
       </Container>
     </Section>
   );

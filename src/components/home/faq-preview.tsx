@@ -1,18 +1,17 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
+import { arrowLink, cn, focusRing } from "@/lib/utils";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { Reveal } from "@/components/motion/reveal";
+import { SectionHeading } from "@/components/layout/section-heading";
 import {
   Accordion,
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
 } from "@/components/ui/accordion";
-
-const focusRing =
-  "outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-bg";
 
 const FAQS = [
   {
@@ -45,60 +44,58 @@ const FAQS = [
   },
 ];
 
+/**
+ * FaqPreview.
+ *
+ * The accordion sits in a wide column beside the heading rather than centred in
+ * a narrow one. Questions are the last real objection-handling step before the
+ * closing CTA, so they get room to breathe and a comfortable reading measure
+ * for the answers.
+ */
 export function FaqPreview() {
   return (
-    <Section
-      id="faq"
-      aria-labelledby="faq-heading"
-      className="bg-bg-surface"
-    >
+    <Section id="faq" aria-labelledby="faq-heading">
       <Container>
-        <Reveal className="mx-auto max-w-2xl text-center">
-          <p className="text-eyebrow font-mono uppercase tracking-wider text-accent">
-            FAQ
-          </p>
-          <h2
-            id="faq-heading"
-            className="mt-4 text-balance text-h2 font-semibold text-text-primary"
-          >
-            Questions, answered.
-          </h2>
-          <p className="mt-5 text-pretty text-body-lg text-text-secondary">
-            The things business owners ask us most before getting started.
-          </p>
-        </Reveal>
-
-        <Reveal className="mx-auto mt-14 max-w-3xl">
-          <Accordion>
-            {FAQS.map((faq) => (
-              <AccordionItem key={faq.q}>
-                <AccordionTrigger
-                  className={`py-5 text-body font-medium text-text-primary hover:no-underline ${focusRing}`}
-                >
-                  {faq.q}
-                </AccordionTrigger>
-                <AccordionContent>
-                  <p className="max-w-2xl text-body text-text-secondary">
-                    {faq.a}
-                  </p>
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </Reveal>
-
-        <Reveal className="mt-12 flex justify-center">
-          <Link
-            href="/faq"
-            className={`group inline-flex items-center gap-2 rounded-md text-body font-medium text-accent transition-colors hover:text-accent-hover ${focusRing}`}
-          >
-            Read all FAQs
-            <ArrowRight
-              className="size-4 transition-transform group-hover:translate-x-0.5"
-              aria-hidden="true"
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)] lg:gap-20">
+          <div className="lg:sticky lg:top-28 lg:self-start">
+            <SectionHeading
+              index="10"
+              eyebrow="FAQ"
+              headingId="faq-heading"
+              title="Questions, answered."
+              lede="The things business owners ask us most before getting started."
+              layout="stacked"
             />
-          </Link>
-        </Reveal>
+
+            <Reveal className="mt-8">
+              <Link
+                href="/faq"
+                className={cn(arrowLink, focusRing)}
+              >
+                Read all FAQs
+                <ArrowRight
+                  className="size-4 transition-transform duration-[--duration-fast] group-hover:translate-x-0.5"
+                  aria-hidden="true"
+                />
+              </Link>
+            </Reveal>
+          </div>
+
+          <Reveal>
+            <Accordion>
+              {FAQS.map((faq) => (
+                <AccordionItem key={faq.q}>
+                  <AccordionTrigger>{faq.q}</AccordionTrigger>
+                  <AccordionContent>
+                    <p className="max-w-[68ch] text-body text-text-secondary">
+                      {faq.a}
+                    </p>
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </Reveal>
+        </div>
       </Container>
     </Section>
   );

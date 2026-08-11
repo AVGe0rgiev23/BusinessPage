@@ -59,15 +59,24 @@ function describedBy(...ids: Array<string | false | undefined>) {
   return value.length > 0 ? value : undefined;
 }
 
+/**
+ * Field styling.
+ *
+ * A tighter radius than the old `rounded-lg` and an inset surface (`bg-bg`
+ * against the form's `bg-bg-surface`) so inputs read as recessed wells rather
+ * than raised cards. Placeholder text drops to `text-text-muted`: at
+ * `text-text-secondary` it sat close enough to real input to be misread as a
+ * filled field.
+ */
 const inputBase =
-  "w-full rounded-lg border bg-bg px-3.5 py-2.5 text-body text-text-primary placeholder:text-text-secondary transition-colors outline-none focus:ring-2 focus:ring-ring/50";
+  "w-full rounded-md border bg-bg px-3.5 py-2.5 text-body text-text-primary placeholder:text-text-muted transition-colors duration-[--duration-fast] outline-none focus:ring-2 focus:ring-ring/40";
 
 function inputClasses(hasError: boolean) {
   return cn(
     inputBase,
     hasError
       ? "border-destructive focus:border-destructive focus:ring-destructive/30"
-      : "border-border focus:border-border-hover"
+      : "border-input hover:border-border-hover focus:border-accent"
   );
 }
 
@@ -173,7 +182,7 @@ export function ContactForm() {
         tabIndex={-1}
         role="status"
         className={cn(
-          "rounded-2xl border border-border bg-bg-surface p-6 text-center md:p-10",
+          "rounded-xl border border-border bg-bg-surface p-6 text-center md:p-10",
           focusRing
         )}
       >
@@ -191,18 +200,18 @@ export function ContactForm() {
           <Button
             render={<Link href="/book" />}
             className={cn(
-              "h-11 rounded-full px-6 hover:bg-accent-hover",
+              "h-11 px-6",
               focusRing
             )}
           >
             Book a consultation
           </Button>
           <Button
-            variant="outline"
+            variant="secondary"
             type="button"
             onClick={() => setSuccess(false)}
             className={cn(
-              "h-11 rounded-full border-border px-6 text-text-primary hover:border-border-hover hover:bg-bg-elevated",
+              "h-11 px-6",
               focusRing
             )}
           >
@@ -218,7 +227,7 @@ export function ContactForm() {
       noValidate
       onSubmit={handleSubmit}
       aria-describedby="contact-form-status"
-      className="rounded-2xl border border-border bg-bg-surface p-6 md:p-8"
+      className="relative rounded-xl border border-border bg-bg-surface p-6 md:p-8"
     >
       {/*
         Honeypot — moved off-screen and hidden from assistive tech (aria-hidden)
@@ -257,7 +266,7 @@ export function ContactForm() {
         {formError ? (
           <p
             role="alert"
-            className="rounded-lg border border-destructive/40 bg-destructive/10 px-3.5 py-2.5 text-small font-medium text-destructive"
+            className="rounded-md border border-destructive/40 bg-destructive/10 px-3.5 py-2.5 text-small font-medium text-destructive"
           >
             {formError}
           </p>
@@ -378,7 +387,9 @@ export function ContactForm() {
             className={cn(inputClasses(false), "appearance-none pr-10")}
             style={{
               backgroundImage:
-                "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23a1a1aa' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E\")",
+                // Chevron stroke is the literal value of --color-text-muted;
+                // a data URI can't read a CSS custom property.
+                "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23827c74' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E\")",
               backgroundRepeat: "no-repeat",
               backgroundPosition: "right 0.875rem center",
             }}
@@ -443,12 +454,10 @@ export function ContactForm() {
       <div className="mt-7">
         <Button
           type="submit"
+          size="lg"
           disabled={isPending}
           aria-busy={isPending}
-          className={cn(
-            "h-12 w-full rounded-full px-7 text-base hover:bg-accent-hover sm:w-auto",
-            focusRing
-          )}
+          className={cn("w-full sm:w-auto", focusRing)}
         >
           {isPending ? (
             <>
