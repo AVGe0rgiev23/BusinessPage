@@ -2,16 +2,22 @@
  * Central site configuration.
  *
  * The production URL is read from `NEXT_PUBLIC_SITE_URL` when set; otherwise it
- * falls back to a clearly-placeholder `.example` domain (NOT a real host) — the
- * same convention as `NEXT_PUBLIC_CONTACT_EMAIL` in `contact-aside.tsx`.
+ * falls back to the current live origin on Vercel.
  *
- * TODO (before going live): set `NEXT_PUBLIC_SITE_URL` to the real production
- * domain (e.g. `https://agility.com`) in the deployment environment. Canonical
- * URLs, `sitemap.xml`, `robots.txt`, and the OpenGraph / Twitter image URLs all
- * resolve against this value, so it must be the real origin in production.
+ * The fallback used to be a placeholder `.example` domain, on the theory that a
+ * fake host is safer than a wrong real one. In practice `NEXT_PUBLIC_SITE_URL`
+ * was never set in the deployment environment, so production actually served
+ * `https://agility.example.com` as its canonical URL, sitemap `<loc>`s,
+ * `robots.txt` sitemap line, Organization JSON-LD `url`, and — worst — its
+ * OpenGraph / Twitter image URLs, which made every social preview fail to load.
+ * A dead placeholder is not safer than the real origin; it just fails quietly.
+ *
+ * When a custom domain is bought, set `NEXT_PUBLIC_SITE_URL` to it in the
+ * Vercel project env (it overrides this fallback everywhere) and update this
+ * default in the same change so the two never drift apart.
  */
 export const siteUrl = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://agility.example.com"
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://agility-scaffold-tmp.vercel.app"
 ).replace(/\/+$/, "");
 
 export const siteName = "AGility";
