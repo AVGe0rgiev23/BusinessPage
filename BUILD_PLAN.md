@@ -1,6 +1,6 @@
 # AGility — Build Status & Plan
 
-_Last updated: 2026-07-24_
+_Last updated: 2026-08-12 — **the site is live at https://agility-scaffold-tmp.vercel.app**_
 
 ## What AGility is
 
@@ -52,11 +52,31 @@ A premium marketing site for **AGility**, a custom software/AI engineering compa
 
   Verified: `tsc`, `eslint`, and `next build` (17/17 routes static) all clean; an automated sweep across 9 routes × 5 breakpoints (1920/1440/1024/768/390) found no horizontal overflow, no stuck-hidden reveals, no console errors or page exceptions, and no touch targets under the WCAG 2.2 24px minimum (applying the spec's inline-in-sentence exemption); plus a `prefers-reduced-motion` pass confirming all text renders visible without scrolling, and a keyboard pass confirming a visible focus ring on the first 20 tab stops.
 
-  **Follow-up for you:** `/technologies` still lists "Framer Motion" under *Frontend*. That's a claim about what AGility can build with, not about this site, so it was left alone — but this site no longer uses it, so decide whether to keep it, swap it for Anime.js, or list both.
+  **Follow-up for you:** `/technologies` still lists "Framer Motion" under *Frontend*. That's a claim about what AGility can build with, not about this site, so it was left alone — but this site no longer uses it, so decide whether to keep it, swap it for Anime.js, or list both. **Still open as of the 2026-08-12 deploy — it is live in production right now** (3 occurrences on `/technologies`).
+
+- **2026-08-12 — Redesign deployed to production.** The redesign above had been sitting uncommitted in the working tree; production was still serving the 18-day-old pre-redesign build. Committed as `349411b`, pushed, fast-forwarded into `main` (the project keeps a linear history — no merge commits), and shipped via the GitHub → Vercel integration.
+
+  **Live: https://agility-scaffold-tmp.vercel.app** — production deployment `dpl_6mqi6wifm3akCevNy2WtaTzTqy7a`, target `production`, status Ready, aliased to the bare domain plus `-ag777` and `-git-main-ag777`.
+
+  Pre-deploy gates, all clean and independently re-run rather than taken from the previous session's notes: `pnpm build` (17/17 routes static), `tsc --noEmit`, `eslint`. The branch push produced its own preview build first (also Ready) before `main` was touched.
+
+  Post-deploy verification against the live origin: 14/14 endpoints return 200 (9 routes + `sitemap.xml`, `robots.txt`, `opengraph-image`, `twitter-image`, `icon.svg`); the redesign is confirmed *actually served*, not cached from the old build — three font faces preload, the shipped CSS carries `Archivo` / `Instrument Sans` / `JetBrains Mono` and the tokens `#0b0a09`, `#e08e43`, `#efebe4`, and there are zero `Geist` references left; 225 KB of server-rendered HTML with the real `<h1>` and skip-to-content link; the `js-reveal` class is correctly *absent* from the SSR payload (it is set by the inline script before paint, so a broken bundle still degrades to a visible page); sitemap, robots, JSON-LD `url`, and the OG/Twitter image URLs all resolve against the real origin with **zero** `agility.example.com` placeholders remaining; runtime logs show only `info` entries, no errors, cache `HIT`/`PRERENDER`.
+
+  **Not verified end-to-end:** the contact form's actual email send. Triggering it sends real mail, so it was left for you — see "Still open" below.
 
 ### Still open (only when you're ready)
-- **A real owned domain** — canonical/sitemap/OG URLs now correctly resolve against `https://agility-scaffold-tmp.vercel.app`, so nothing is broken, but a custom domain is still wanted for branding and is required to move Resend off sandbox mode (currently limited to delivering only to your own Resend account email, not arbitrary visitors replying to your own domain). When it lands, set `NEXT_PUBLIC_SITE_URL` in the Vercel project env **and** update the fallback default in `src/lib/site-config.ts` in the same change so the two never drift.
-- **Deploy target** — Vercel is the natural fit for this stack; needs your go-ahead.
+- **A real owned domain** — canonical/sitemap/OG URLs correctly resolve against `https://agility-scaffold-tmp.vercel.app`, so nothing is broken, but a custom domain is still wanted for branding and is required to move Resend off sandbox mode (currently limited to delivering only to your own Resend account email, not arbitrary visitors replying to your own domain). When it lands, set `NEXT_PUBLIC_SITE_URL` in the Vercel project env **and** update the fallback default in `src/lib/site-config.ts` in the same change so the two never drift.
+- **Send one test message through the live contact form** and confirm it arrives. `RESEND_API_KEY` is present and encrypted on all three environments (Production/Preview/Development), and the send path was verified end-to-end back on 2026-07-25, but it has not been re-exercised since. Note `vercel integration ls` now reports "No resources found" — the key still works as a plain env var, but the Marketplace resource is no longer listed, so don't assume the integration is managed.
+- **`/technologies` still lists Framer Motion** — see the follow-up note above. Live in production; your call.
+- **No observability configured** — no log drains, no error-tracking integration, and no `@vercel/analytics` / Speed Insights in `package.json`. For a fully static marketing site this is a low risk (every route prerenders; the only server code is the contact Server Action), but it does mean a failing contact form would be silent. Adding `@vercel/analytics` is the cheapest first step.
+
+### Deploy runbook (how this ships now)
+Production deploys come from **`main` via the GitHub → Vercel integration** — pushing `main` is the deploy. Pushing any other branch produces a preview build instead.
+
+- Vercel scope `ag777`, project `agility-scaffold-tmp` (`prj_PjI6EEdQ0vbAO6dxLvaWwq9ZeVWT`), framework preset Next.js, Node 24.x, root `.`.
+- **Preview URLs are SSO-protected** — they 302 to `vercel.com/sso-api` for anyone not logged into the team. That is Deployment Protection working as intended, *not* a broken build; judge a preview by its Ready state, and smoke-test public URLs against production.
+- The bare `agility-scaffold-tmp.vercel.app` alias is the permanent public URL. Per the 2026-07-25 correction above, never trust a guessed `*.vercel.app` hostname without checking the page content — that namespace is global, not per-account.
+- Useful: `vercel ls agility-scaffold-tmp`, `vercel inspect <url>`, `vercel logs <url> --json`, `vercel env ls`.
 
 ### Environment notes for all downstream work (important)
 - **shadcn is configured on Base UI (`@base-ui/react`), NOT Radix.** Component polymorphism uses the `render={<Link .../>}` prop, **not** Radix's `asChild`. Follow the existing `Nav`/`Button` usage as the reference.
@@ -77,9 +97,11 @@ A premium marketing site for **AGility**, a custom software/AI engineering compa
 - **Phase 2** — all 8 remaining routes built and committed.
 - **Phase 3** — full QA pass (code, accessibility, content/positioning, performance) with all confirmed findings fixed and committed.
 - **Phase 4** — site-wide SEO (metadata, OG image, sitemap, robots, JSON-LD) committed.
+- **Phase 5** — deployed. Live at **https://agility-scaffold-tmp.vercel.app**, production tracking `main`. See the 2026-08-12 log entry for the verification evidence and the "Deploy runbook" section for how it ships.
+- **Premium frontend & interaction redesign** — built, committed (`349411b`), merged to `main`, and live.
 
 ### Not done yet
-Phase 5 (deploy) — see "Before going live" above. The site is otherwise feature-complete and builds/lints clean.
+The build itself is complete and shipped. What remains is owner-side setup rather than build work — a custom domain, one live contact-form test, the `/technologies` Framer Motion decision, and (optionally) observability. All four are detailed under "Still open" above.
 
 ## Implementation plan
 
@@ -106,8 +128,8 @@ Hero → problem statement → business outcomes → services preview → why cu
 ### Phase 4 — SEO
 Per-page metadata, OpenGraph, semantic headings, schema where relevant, alt text.
 
-### Phase 5 — Deploy
-Vercel (natural fit for the stack) — pending your confirmation when we get there.
+### Phase 5 — Deploy ✅
+Shipped to Vercel on 2026-08-12. Production tracks `main` through the GitHub integration; see "Deploy runbook" above.
 
 ## Working method for the rest of this build
 Subagents do all building, testing, and reviewing. I gate each phase transition (verify build/lint/review results) before the next phase starts or parallelizes, so problems don't propagate across 8 pages at once.

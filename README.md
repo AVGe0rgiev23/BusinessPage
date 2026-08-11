@@ -43,6 +43,36 @@ pnpm build    # production build
 pnpm lint     # eslint
 ```
 
+## Deployment
+
+Live at **https://agility-scaffold-tmp.vercel.app** (Vercel scope `ag777`, project
+`agility-scaffold-tmp`).
+
+**Pushing `main` is the deploy.** The GitHub → Vercel integration builds and
+promotes production from `main`; any other branch gets a preview build instead.
+There is no manual `vercel --prod` step in the normal flow.
+
+Preview deployments are **SSO-protected** and will 302 any logged-out request to
+`vercel.com/sso-api`. That is Deployment Protection working correctly, not a
+broken build — judge a preview by its `Ready` state and smoke-test public URLs
+against production.
+
+Every route prerenders as static. The only server-side code is the contact
+Server Action, which needs `RESEND_API_KEY` (set encrypted on Production,
+Preview, and Development).
+
+`NEXT_PUBLIC_SITE_URL` is **not** set; `src/lib/site-config.ts` falls back to the
+real production origin, which is what canonical URLs, the sitemap, `robots.txt`,
+the JSON-LD `url`, and the OG/Twitter image URLs are built from. If you ever set
+that env var, update the fallback in the same change so the two cannot drift.
+
+```bash
+vercel ls agility-scaffold-tmp   # recent deployments
+vercel inspect <url>             # state, aliases, build output
+vercel logs <url> --json         # runtime logs
+vercel env ls                    # configured env vars
+```
+
 ## Project structure
 
 - `src/app` — App Router routes, root layout, global styles, favicon (`icon.svg`)
