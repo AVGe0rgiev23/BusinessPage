@@ -39,6 +39,9 @@ yarn-error.log*
 # tool runtime state (brainstorm skill session data, not project source)
 .superpowers/
 
+# pasted session transcripts kept as local scratch, not project source
+*-continue.txt
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
