@@ -7,11 +7,12 @@ import { PointList, type Point } from "@/components/shared/point-list";
 /**
  * WhoWeServe — the audience AGility is built for (SMBs and growing companies
  * with repetitive workflows), plus the sanctioned geography (Europe-based,
- * available worldwide) and an HONEST, generic team statement.
+ * available worldwide) and an honest statement of who is behind it.
  *
- * No fabricated people, bios, headcount, founding year, or history. The team
- * treatment speaks as "we" / "a small team" and leaves a clearly-marked TODO
- * slot for real member content — see the comment below.
+ * No fabricated people, bios, headcount, founding year, or history. AGility is
+ * one person, and the block at the foot of this section says so in as many
+ * words — it used to say "a small, hands-on team", which was the single most
+ * misleading sentence on the site.
  */
 const AUDIENCE: Point[] = [
   {
@@ -38,32 +39,29 @@ export function WhoWeServe() {
       <Container>
         <SectionHeading
           index="05"
-          eyebrow="Who we serve"
+          eyebrow="Who I serve"
           headingId="who-we-serve-heading"
           title="Built for growing businesses, wherever you are."
-          lede="We work best with businesses that have real, repetitive work to hand off. We're based in Europe and work with clients worldwide."
+          lede="I work best with businesses that have real, repetitive work to hand off. I'm based in Europe and work with clients worldwide."
         />
 
         <PointList items={AUDIENCE} className="mt-16 md:mt-20" />
 
         {/*
-          The team — honest, generic statement only. NO fabricated names, bios,
-          photos, headcount, or founding year.
-
-          TODO: When real team content is approved, replace the generic
-          statement below with actual team members (name, role, short bio,
-          optional photo/GitHub/LinkedIn). Until then, this stays generic on
-          purpose — do not invent people.
+          Who is behind it — one person, stated plainly. NO fabricated names,
+          bios, photos, headcount, or founding year, and no drift back toward
+          the plural: "team" here would be a claim about capacity that is not
+          true, and it is the exact claim a buyer would feel misled about later.
         */}
         <Reveal className="mt-16">
           <div className="grid gap-6 rounded-xl border border-border bg-bg p-8 md:grid-cols-[minmax(0,14rem)_minmax(0,1fr)] md:gap-12 md:p-10">
             <h3 className="text-h3 font-semibold text-text-primary">
-              The team behind it
+              Who&apos;s behind it
             </h3>
             <p className="max-w-[58ch] text-pretty text-body-lg text-text-secondary">
-              AGility is a small, hands-on team. You work directly with the
-              people building your software — the same people who answer when
-              you have a question. No account managers, no handoffs.
+              AGility is one person. You work directly with me — the same person
+              who writes your software and answers when you have a question. No
+              account managers, no handoffs, and no one to pass you along to.
             </p>
           </div>
         </Reveal>

@@ -90,10 +90,10 @@ export async function submitContactForm(
   }
 
   if (!submission.message) {
-    fieldErrors.message = "Please tell us a little about what you need.";
+    fieldErrors.message = "Please tell me a little about what you need.";
   } else if (submission.message.length < MIN_MESSAGE_LENGTH) {
     fieldErrors.message =
-      "Please add a little more detail so we can help — at least 10 characters.";
+      "Please add a little more detail so I can help — at least 10 characters.";
   } else if (submission.message.length > MAX_MESSAGE_LENGTH) {
     fieldErrors.message =
       "Please keep your message under 5,000 characters.";
@@ -132,7 +132,7 @@ export async function submitContactForm(
     return {
       ok: false,
       formError:
-        "Something went wrong sending your message. Please try again, or email us directly.",
+        "Something went wrong sending your message. Please try again, or email me directly.",
       fieldErrors: {},
     };
   }

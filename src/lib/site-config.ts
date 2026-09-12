@@ -25,7 +25,7 @@ export const siteName = "AGility";
 export const siteTitle = "AGility — Custom Software & AI Automation";
 
 export const siteDescription =
-  "Custom software and AI automation for growing businesses — reclaim the hours lost to repetitive work, cut operating costs, and choose how it's delivered: run by us, run by you, or a hybrid of both.";
+  "Custom software and AI automation for growing businesses — reclaim the hours lost to repetitive work, cut operating costs, and choose how it's delivered: run by me, run by you, or a hybrid of both.";
 
 /** Contact + social links. Real values — not placeholders. */
 export const contactEmail =

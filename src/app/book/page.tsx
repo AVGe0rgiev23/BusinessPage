@@ -13,7 +13,7 @@ const focusRing =
 
 const title = "Book a Consultation — A Free 30-Minute Call with AGility";
 const description =
-  "Book a free, 30-minute consultation. We'll look at where your business is losing time and money and give you an honest answer on whether custom software is worth it.";
+  "Book a free, 30-minute consultation. I'll look at where your business is losing time and money and give you an honest answer on whether custom software is worth it.";
 
 export const metadata: Metadata = {
   title,
@@ -31,7 +31,7 @@ export default function BookPage() {
       <PageHeader
         eyebrow="Book a consultation"
         title="Book a free 30-minute consultation."
-        subtitle="We'll look at where your business is losing time and money — and give you an honest answer on whether custom software is worth it. No pressure, no obligation, no jargon."
+        subtitle="I'll look at where your business is losing time and money — and give you an honest answer on whether custom software is worth it. No pressure, no obligation, no jargon."
       >
         <div className="flex flex-col items-start gap-7">
           <Button

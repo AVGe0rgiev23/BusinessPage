@@ -11,15 +11,15 @@ const ITEMS: Point[] = [
   },
   {
     title: "Free, with no obligation",
-    body: "No invoice and no commitment. If we're not the right fit, we'll say so and point you elsewhere.",
+    body: "No invoice and no commitment. If I'm not the right fit, I'll say so and point you elsewhere.",
   },
   {
-    title: "We look at where you're losing time and money",
-    body: "Walk us through the workflow that frustrates you most. We'll dig into what it's really costing you.",
+    title: "A look at where you're losing time and money",
+    body: "Walk me through the workflow that frustrates you most. I'll dig into what it's really costing you.",
   },
   {
     title: "An honest answer on whether custom software is worth it",
-    body: "Sometimes the right move is a small fix — or nothing at all. We'll tell you straight, either way.",
+    body: "Sometimes the right move is a small fix — or nothing at all. I'll tell you straight, either way.",
   },
 ];
 

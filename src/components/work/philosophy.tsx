@@ -10,7 +10,7 @@ const PRINCIPLES: Point[] = [
   },
   {
     title: "Ownership you can point to",
-    body: "We design projects so you keep appropriate ownership and control of your software, your data, and your infrastructure, according to the delivery model you choose — and we're precise about which is which.",
+    body: "I design projects so you keep appropriate ownership and control of your software, your data, and your infrastructure, according to the delivery model you choose — and I'm precise about which is which.",
   },
   {
     title: "Ship in small increments",
@@ -18,7 +18,7 @@ const PRINCIPLES: Point[] = [
   },
   {
     title: "Code built to be read",
-    body: "Clear, documented, tested code that the next engineer — ours or yours — can pick up and extend without starting over.",
+    body: "Clear, documented, tested code that the next engineer — me or yours — can pick up and extend without starting over.",
   },
   {
     title: "Honest by default",
@@ -26,7 +26,7 @@ const PRINCIPLES: Point[] = [
   },
   {
     title: "Close communication",
-    body: "You talk directly to the people writing your software, and you get quick, plain-spoken answers when something comes up.",
+    body: "You talk directly to the person writing your software, and you get quick, plain-spoken answers when something comes up.",
   },
 ];
 
@@ -36,10 +36,10 @@ export function Philosophy() {
       <Container>
         <SectionHeading
           index="01"
-          eyebrow="How we build"
+          eyebrow="How I build"
           headingId="philosophy-heading"
           title="The principles behind every build."
-          lede="We don't have a wall of client logos yet — we're early, and we won't pretend otherwise. What we can show you is exactly how we work, so you can judge us on the things that decide whether software is worth trusting."
+          lede="There's no wall of client logos yet — AGility is early, and I won't pretend otherwise. What I can show you is exactly how I work, so you can judge me on the things that decide whether software is worth trusting."
         />
 
         <PointList

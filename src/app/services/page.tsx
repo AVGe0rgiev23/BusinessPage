@@ -8,7 +8,7 @@ import { ServicesCta } from "@/components/services/services-cta";
 
 const title = "Custom Software & AI Automation Services | AGility";
 const description =
-  "From email and document automation to AI assistants, internal tools, and custom SaaS, AGility builds software around your business — and you choose whether we run it for you, hand it over, or maintain it inside your own environment.";
+  "From email and document automation to AI assistants, internal tools, and custom SaaS, AGility builds software around your business — and you choose whether I run it for you, hand it over, or maintain it inside your own environment.";
 
 export const metadata: Metadata = {
   title,
@@ -24,15 +24,15 @@ export default function ServicesPage() {
       <PageHeader
         eyebrow="Services"
         title="Software that handles the busywork your team shouldn't be doing."
-        subtitle="Everything below is an example of what we build, not a fixed menu. Every solution is designed around your business — your tools, your process, and the specific work you want to stop doing by hand."
+        subtitle="Everything below is an example of what I build, not a fixed menu. Every project is designed around your business — your tools, your process, and the specific work you want to stop doing by hand."
       />
       <ServicesCatalog />
       <WhyCustomCallout />
       <DeliveryModels
         id="delivery"
         eyebrow="Delivery"
-        heading="How your solution is delivered"
-        intro="Every project is different, and so is the right operating model. We can run the system for you, deploy it into infrastructure you control, or manage software running inside your own environment — whichever fits how your business works."
+        heading="How your software is delivered"
+        intro="Every project is different, and so is the right operating model. I can run the system for you, deploy it into infrastructure you control, or manage software running inside your own environment — whichever fits how your business works."
         className="border-t border-border bg-bg-surface"
       />
       <ServicesCta />

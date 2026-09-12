@@ -14,8 +14,10 @@ import { SystemDiagram } from "@/components/home/system-diagram";
 /**
  * Hero.
  *
- * The positioning line and supporting copy are unchanged — they were the
- * strongest thing on the old site. What changed is the presentation.
+ * The headline names the problem the buyer already has rather than promising
+ * outcomes. "Save time. Cut costs. Scale faster." was three verbs any agency
+ * could have written; a business owner reads it and learns nothing about
+ * whether this is for them. Naming the manual work directly does that job.
  *
  * The old hero was centred: eyebrow pill, headline, paragraph and two pill
  * buttons stacked down the middle over an indigo radial glow and a faint grid.
@@ -23,9 +25,13 @@ import { SystemDiagram } from "@/components/home/system-diagram";
  * amount of polish makes it look like a considered piece of design.
  *
  * This version is an asymmetric two-column: an editorial type stack on the
- * left, the system diagram on the right. The headline breaks across three lines
- * because the copy is already three sentences, and setting them as three tight
- * lines of a narrowed display face is what turns a tagline into a statement.
+ * left, the system diagram on the right. The headline breaks across three
+ * hand-set lines of a narrowed display face, which is what turns a sentence
+ * into a statement.
+ *
+ * Those line breaks are manual `block` spans, so they do not reflow: at the top
+ * of the clamp the display face is 84px, which fits roughly 13 characters in
+ * this column. Keep each line at or under that or the headline will overflow.
  */
 export function Hero() {
   const rootRef = React.useRef<HTMLDivElement>(null);
@@ -146,9 +152,9 @@ export function Hero() {
               data-reveal=""
               className="mt-7 text-display font-semibold text-text-primary"
             >
-              <span className="block">Save time.</span>
-              <span className="block">Cut costs.</span>
-              <span className="block text-accent">Scale faster.</span>
+              <span className="block">Your team is</span>
+              <span className="block">moving data</span>
+              <span className="block text-accent">by hand.</span>
             </h1>
 
             <p
@@ -156,8 +162,9 @@ export function Hero() {
               data-reveal=""
               className="mt-8 max-w-[52ch] text-pretty text-body-lg text-text-secondary"
             >
-              We build custom software that removes the repetitive work quietly
-              draining your team&apos;s hours and your budget — shaped around how
+              Between the CRM, the inbox and the spreadsheet, someone is the
+              connection — re-keying the same rows, chasing the same updates. I
+              build the software that does that part instead, shaped around how
               your business actually runs, and delivered on terms you choose.
             </p>
 
@@ -166,12 +173,16 @@ export function Hero() {
               data-reveal=""
               className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center"
             >
+              {/* Points at the teardown, not at /book. The page now has exactly
+                  one "Book a consultation" and it sits below the teardown, so
+                  the hero must not reintroduce the higher-commitment ask above
+                  the lower-friction one. */}
               <Button
                 size="lg"
-                render={<Link href="/book" />}
+                render={<a href="#teardown" />}
                 className={cn("group", focusRing)}
               >
-                Book a consultation
+                Get a free teardown
                 <ArrowRight
                   aria-hidden="true"
                   className="transition-transform duration-[--duration-fast] group-hover/button:translate-x-0.5"
@@ -183,7 +194,7 @@ export function Hero() {
                 render={<Link href="/process" />}
                 className={focusRing}
               >
-                See how we work
+                See how I work
               </Button>
             </div>
 

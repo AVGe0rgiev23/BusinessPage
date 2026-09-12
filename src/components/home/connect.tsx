@@ -12,7 +12,7 @@ import { linkedinUrl } from "@/lib/site-config";
  *
  * Deliberately the smallest section on the page. It used to be a full-height
  * section with its own centred icon tile, eyebrow, h2 and lede — the same
- * weight as "what we build", for a link to a social profile. That is a
+ * weight as "what I build", for a link to a social profile. That is a
  * hierarchy problem, not a styling one.
  *
  * It is now a single compressed band: one line of context, one action. Giving a
@@ -37,7 +37,7 @@ export function Connect() {
               <span id="connect-heading" className="text-text-primary">
                 Let&apos;s stay in touch.
               </span>{" "}
-              Follow along on LinkedIn for how we think about building software,
+              Follow along on LinkedIn for how I think about building software,
               automating the busywork, and getting real value out of AI — no
               hype, just what works.
             </p>

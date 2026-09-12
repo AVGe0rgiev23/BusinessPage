@@ -14,7 +14,7 @@ export function AboutCta() {
       id="get-started"
       eyebrow="Get started"
       title="If that's how you'd want it built, let's talk."
-      subtitle="Book a free consultation and we'll look at where your business is losing time and money — and whether custom software is the right way to win it back. Honest answers either way."
+      subtitle="Book a free consultation and I'll look at where your business is losing time and money — and whether custom software is the right way to win it back. Honest answers either way."
       primary={{ label: "Book a consultation", href: "/book" }}
       secondary={{ label: "Get in touch", href: "/contact", icon: true }}
       footnote={
@@ -24,7 +24,7 @@ export function AboutCta() {
             href="/process"
             className={`rounded-sm font-medium text-accent underline-offset-4 transition-colors hover:text-accent-hover hover:underline ${focusRing}`}
           >
-            our full process
+            the full process
           </Link>
           .
         </>

@@ -26,8 +26,8 @@ const PRACTICES = [
     body: "Least-privilege access, secrets kept out of the code, and your data treated as something to protect — not an afterthought.",
   },
   {
-    title: "Documented as we go",
-    body: "What we build comes with the notes to run and change it, so you're never held hostage by one person's memory.",
+    title: "Documented as I go",
+    body: "What I build comes with the notes to run and change it, so you're never held hostage by one person's memory.",
   },
   {
     title: "Shipped through a pipeline",
@@ -35,7 +35,7 @@ const PRACTICES = [
   },
   {
     title: "Measured, then tuned",
-    body: "We check how software actually performs before optimising, and fix the things your users and your bill genuinely feel.",
+    body: "I check how software actually performs before optimising, and fix the things your users and your bill genuinely feel.",
   },
 ];
 
@@ -52,7 +52,7 @@ export function EngineeringPractice() {
           eyebrow="Engineering practice"
           headingId="engineering-heading"
           title="The standards behind the software."
-          lede="The difference between software that runs for years and software you regret is mostly invisible — it lives in how it's built. Here's what that looks like on our side."
+          lede="The difference between software that runs for years and software you regret is mostly invisible — it lives in how it's built. Here's what that looks like on my side."
         />
 
         <RevealGroup

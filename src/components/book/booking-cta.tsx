@@ -17,7 +17,7 @@ export function BookingCta() {
       secondary={{ label: "Send a message instead", href: "/contact" }}
       footnote={
         <>
-          Rather not book yet? Ask us anything through the{" "}
+          Rather not book yet? Ask me anything through the{" "}
           <Link
             href="/contact"
             className={`rounded-sm font-medium text-accent underline-offset-4 transition-colors hover:text-accent-hover hover:underline ${focusRing}`}

@@ -12,7 +12,12 @@ import { githubUrl } from "@/lib/site-config";
 
 /**
  * EngineeringInTheOpen — the About-page tie to GitHub / open source, framed
- * around trust: seeing how we work before you hire us.
+ * around trust: seeing how the work is done before you hire.
+ *
+ * Two of the three points here used to claim published libraries and upstream
+ * contributions. Neither has happened yet, so both are gone rather than
+ * softened — the same edit was made in `home/open-source.tsx` and
+ * `work/github-projects.tsx`, and all three must stay in step.
  *
  * The 112px GitHub logo in a bordered square with an indigo glow behind it is
  * gone. It was the last surviving piece of the old palette in the codebase, and
@@ -22,15 +27,15 @@ import { githubUrl } from "@/lib/site-config";
 const POINTS: Point[] = [
   {
     title: "Judge the work, not the pitch",
-    body: "You can read how we write code before you ever sign anything. That’s a fairer basis for a decision than a polished sales deck.",
+    body: "You can read how I write code before you ever sign anything. That’s a fairer basis for a decision than a polished sales deck.",
   },
   {
-    title: "Tools we actually use",
-    body: "We publish the libraries and utilities we build for our own projects, held to the same standard as the software we ship to clients.",
+    title: "The code, not a description of it",
+    body: "Repositories rather than screenshots, so you can look at how something is actually put together instead of taking my word for it.",
   },
   {
-    title: "Contributing back",
-    body: "A lot of what we build stands on open-source work, so we give back to the projects our software depends on.",
+    title: "History you can check",
+    body: "Commits in order, showing how a project really got built — not how it got described once it was finished.",
   },
 ];
 
@@ -58,14 +63,14 @@ export function EngineeringInTheOpen() {
               id="in-the-open-heading"
               className="mt-7 max-w-[16ch] text-balance text-h2 font-semibold text-text-primary"
             >
-              See how we work before you hire us.
+              See how I work before you hire me.
             </h2>
 
             <p className="mt-6 max-w-[52ch] text-pretty text-body-lg text-text-secondary">
-              We can&apos;t point you at fake five-star reviews, and we
-              wouldn&apos;t want to. Instead, much of our work lives on GitHub —
-              the tools we rely on, the contributions we make, and the standards
-              we hold to when no one&apos;s watching.
+              I can&apos;t point you at fake five-star reviews, and I
+              wouldn&apos;t want to. What I can point you at is GitHub — the
+              code itself, the commit history, and the standards I hold to when
+              no one&apos;s watching.
             </p>
 
             <Button
@@ -77,7 +82,7 @@ export function EngineeringInTheOpen() {
               className={cn("group mt-9", focusRing)}
             >
               <GithubIcon className="size-5" aria-hidden="true" />
-              View our GitHub
+              View my GitHub
               <ArrowUpRight
                 className="text-text-muted transition-transform duration-[--duration-fast] group-hover/button:translate-x-0.5 group-hover/button:-translate-y-0.5"
                 aria-hidden="true"

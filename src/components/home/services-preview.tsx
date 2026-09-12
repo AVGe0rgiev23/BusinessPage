@@ -76,10 +76,10 @@ export function ServicesPreview() {
       <Container>
         <SectionHeading
           index="03"
-          eyebrow="What we build"
+          eyebrow="What I build"
           headingId="services-heading"
           title="Custom-built for the way you work."
-          lede="These are examples, not a fixed menu. Every solution is designed around your business — your tools, your process, your goals."
+          lede="These are examples, not a fixed menu. Every project is designed around your business — your tools, your process, your goals."
         />
 
         <RevealGroup

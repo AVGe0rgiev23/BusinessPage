@@ -10,18 +10,28 @@ import { GithubIcon } from "@/components/icons/brand-icons";
 import { PointList, type Point } from "@/components/shared/point-list";
 import { githubUrl } from "@/lib/site-config";
 
+/*
+  These points used to claim published tools and libraries, and contributions
+  sent back upstream. Neither has happened yet, and both are checkable in about
+  fifteen seconds by the one kind of visitor most worth impressing. They were
+  removed rather than hedged — the same edit was made to the home page's
+  `home/open-source.tsx`, and the two must stay in step.
+
+  What is left is what a GitHub profile genuinely evidences: readable code,
+  a commit history, and the standards visible in both.
+*/
 const PROOF: Point[] = [
   {
-    title: "Tools we build",
-    body: "The libraries and utilities we write to make our own work faster, published so anyone can read, use, and pressure-test them.",
+    title: "Code you can read",
+    body: "The repositories themselves, not screenshots of them. You can look at how something is actually put together before you decide whether to trust me with yours.",
   },
   {
-    title: "Contributions we make",
-    body: "Fixes and improvements sent back to the open-source projects our software is built on — because the work should get better, not just ours.",
+    title: "History you can check",
+    body: "Commits in order, so you can see how a project was really built rather than how it got described afterwards.",
   },
   {
-    title: "Standards we hold",
-    body: "How we structure, document, and review code, out in the open. Not a claim in a pitch deck — something you can go and check for yourself.",
+    title: "Standards I hold",
+    body: "How I structure, document, and review code, out in the open. Not a claim in a pitch deck — something you can go and check for yourself.",
   },
 ];
 
@@ -49,13 +59,13 @@ export function GithubProjects() {
               id="open-source-heading"
               className="mt-7 max-w-[16ch] text-balance text-h2 font-semibold text-text-primary"
             >
-              See how we build before you ever hire us.
+              See how I build before you ever hire me.
             </h2>
 
             <p className="mt-6 max-w-[52ch] text-pretty text-body-lg text-text-secondary">
-              Good engineering doesn&apos;t hide. A lot of our work lives on
-              GitHub — the tools we rely on, the contributions we make, and the
-              standards we hold ourselves to when no one&apos;s watching.
+              Good engineering doesn&apos;t hide. My GitHub is the repositories
+              themselves — the code, the commit history, and the standards I
+              hold myself to when no one&apos;s watching.
             </p>
 
             <Button
@@ -67,7 +77,7 @@ export function GithubProjects() {
               className={cn("group mt-9", focusRing)}
             >
               <GithubIcon className="size-5" aria-hidden="true" />
-              View our GitHub
+              View my GitHub
               <ArrowUpRight
                 className="text-text-muted transition-transform duration-[--duration-fast] group-hover/button:translate-x-0.5 group-hover/button:-translate-y-0.5"
                 aria-hidden="true"

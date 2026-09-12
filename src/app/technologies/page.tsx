@@ -23,7 +23,7 @@ export default function TechnologiesPage() {
       <PageHeader
         eyebrow="Technologies"
         title="Built on proven tools — so your software stays reliable, fast, and maintainable."
-        subtitle="We work with a well-supported, widely adopted stack — the same tooling behind serious software products. We choose it for reliability and longevity rather than novelty, and we pick the parts that fit each project rather than running every job through the same template."
+        subtitle="I work with a well-supported, widely adopted stack — the same tooling behind serious software products. I choose it for reliability and longevity rather than novelty, and I pick the parts that fit each project rather than running every job through the same template."
       />
       <TechStack />
       <WhyThisStack />

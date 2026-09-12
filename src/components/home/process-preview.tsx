@@ -25,23 +25,23 @@ import { SectionHeading } from "@/components/layout/section-heading";
 const STEPS = [
   {
     title: "Discovery",
-    body: "We map where the time and money are going, and agree on what a win looks like before any code is written.",
+    body: "I map where the time and money are going, and we agree on what a win looks like before any code is written.",
   },
   {
     title: "Design",
-    body: "We plan the solution and how it fits your existing tools, so there are no surprises once the build begins.",
+    body: "I plan the build and how it fits your existing tools, so there are no surprises once it begins.",
   },
   {
     title: "Build",
-    body: "We develop in focused increments, sharing progress as we go so you always know exactly where things stand.",
+    body: "I develop in focused increments, sharing progress along the way so you always know exactly where things stand.",
   },
   {
     title: "Deploy",
-    body: "We launch it using the operating model you've chosen, configure the infrastructure and access, and test against real work.",
+    body: "I launch it using the operating model you've chosen, configure the infrastructure and access, and test against real work.",
   },
   {
     title: "Support",
-    body: "Optional, and shaped to you: we operate the system, maintain it inside your environment, or hand it over to your team.",
+    body: "Optional, and shaped to you: I operate the system, maintain it inside your environment, or hand it over to your team.",
   },
 ];
 
@@ -109,7 +109,7 @@ export function ProcessPreview() {
       <Container>
         <SectionHeading
           index="05"
-          eyebrow="How we work"
+          eyebrow="How I work"
           headingId="process-heading"
           title="A clear path from problem to production."
           lede="No black boxes. You'll know what's happening at every stage — and why it matters for your business."
@@ -176,7 +176,7 @@ export function ProcessPreview() {
             href="/process"
             className={cn(arrowLink, focusRing)}
           >
-            See our full process
+            See the full process
             <ArrowRight
               className="size-4 transition-transform duration-[--duration-fast] group-hover:translate-x-0.5"
               aria-hidden="true"

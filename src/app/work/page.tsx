@@ -7,9 +7,9 @@ import { EngineeringPractice } from "@/components/work/engineering-practice";
 import { SelectedWork } from "@/components/work/selected-work";
 import { WorkCta } from "@/components/work/work-cta";
 
-const title = "Work — Our Engineering Practice | AGility";
+const title = "Work — My Engineering Practice | AGility";
 const description =
-  "We're early and building our public track record. Instead of invented case studies, see how we actually build: open-source work, engineering standards, and what our case studies will show.";
+  "No client case studies yet. Instead of inventing them: my own product, two hackathon builds, the code on GitHub, and the engineering standards behind all of it.";
 
 export const metadata: Metadata = {
   title,
@@ -23,9 +23,9 @@ export default function WorkPage() {
   return (
     <main id="main" tabIndex={-1} className="flex flex-1 flex-col">
       <PageHeader
-        eyebrow="Our work"
-        title="We'd rather show you how we build than fake a portfolio."
-        subtitle="AGility is early, and we're honest about it. We haven't collected a wall of client logos yet — so instead of inventing them, we're putting our engineering out in the open. Judge us on the work itself."
+        eyebrow="My work"
+        title="I'd rather show you how I build than fake a portfolio."
+        subtitle="AGility is early, and I'm honest about it. There's no wall of client logos yet — so instead of inventing one, the engineering goes out in the open. Judge it on the work itself."
       />
       <Philosophy />
       <GithubProjects />

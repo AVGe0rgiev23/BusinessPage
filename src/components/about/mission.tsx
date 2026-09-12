@@ -25,7 +25,7 @@ export function Mission() {
             >
               01
             </span>
-            <Eyebrow>Our mission</Eyebrow>
+            <Eyebrow>My mission</Eyebrow>
             <span aria-hidden="true" className="h-px flex-1 bg-border" />
           </div>
 
@@ -33,7 +33,7 @@ export function Mission() {
             id="mission-heading"
             className="mt-7 max-w-[16ch] text-balance text-h2 font-semibold text-text-primary"
           >
-            We sell outcomes, not software.
+            I sell outcomes, not software.
           </h2>
 
           <div className="mt-7 flex flex-col gap-5 text-pretty text-body-lg text-text-secondary">
@@ -42,20 +42,22 @@ export function Mission() {
               &ldquo;automation.&rdquo; They wake up thinking we&apos;re wasting
               hours, we&apos;re drowning in email, our leads aren&apos;t getting
               answered, we&apos;re paying good people to copy and paste. AGility
-              exists to fix that. The technology is simply how we do it.
+              exists to fix that. The technology is simply how I do it.
             </p>
             <p>
-              So we start from the result: the hours you get back, the costs you
+              So I start from the result: the hours you get back, the costs you
               stop paying, the speed you gain on the work that actually makes
               you money. If a project can&apos;t be tied to one of those, it
-              isn&apos;t worth building — and we&apos;ll tell you so plainly,
-              even when it means talking ourselves out of work.
+              isn&apos;t worth building — and I&apos;ll tell you so plainly,
+              even when it means talking myself out of work.
             </p>
           </div>
         </Reveal>
 
-        {/* The three outcomes as a rule-separated strip — the same words as the
-            home hero headline, restated as a closing beat. */}
+        {/* The three outcomes as a rule-separated strip. These were the home
+            hero headline until it was rewritten to lead with the buyer's
+            problem instead; they still work here, where the surrounding prose
+            has already earned them. */}
         <RevealGroup
           as="ul"
           className="mt-14 grid border-t border-border sm:grid-cols-3"

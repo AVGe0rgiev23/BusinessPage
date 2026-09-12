@@ -54,30 +54,30 @@ export function WhyCustomCallout() {
             </h2>
 
             <p className="mt-6 max-w-[54ch] text-pretty text-body-lg text-text-secondary">
-              We&apos;re code-first: the processes your business runs on get
+              I&apos;m code-first: the processes your business runs on get
               built as software, rather than assembled inside a proprietary
               visual workflow builder. That buys you flexibility, clearer
               ownership, and room to grow.
             </p>
             <p className="mt-4 max-w-[54ch] text-pretty text-body text-text-secondary">
               Off-the-shelf tools and low-code platforms have their place, and
-              we&apos;ll tell you honestly when one is the right fit — including
-              when it means a smaller project for us. But as a process becomes
+              I&apos;ll tell you honestly when one is the right fit — including
+              when it means a smaller project for me. But as a process becomes
               central to how you make money, owning it tends to pay off more
               than renting it from a builder that can change its pricing or shut
               down.
             </p>
             <p className="mt-4 max-w-[54ch] text-pretty text-body text-text-secondary">
-              We use third-party services ourselves — cloud hosting, databases,
-              AI providers. The point isn&apos;t to avoid them, it&apos;s to
-              avoid unnecessary lock-in and keep what we build portable.
+              I use third-party services myself — cloud hosting, databases, AI
+              providers. The point isn&apos;t to avoid them, it&apos;s to avoid
+              unnecessary lock-in and keep what I build portable.
             </p>
 
             <Link
               href="/process"
               className={cn(arrowLink, "mt-8", focusRing)}
             >
-              See how we work
+              See how I work
               <ArrowRight
                 className="size-4 transition-transform duration-[--duration-fast] group-hover:translate-x-0.5"
                 aria-hidden="true"

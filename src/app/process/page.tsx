@@ -5,9 +5,9 @@ import { ProcessSteps } from "@/components/process/process-steps";
 import { WorkingWithUs } from "@/components/process/working-with-us";
 import { ProcessCta } from "@/components/process/process-cta";
 
-const title = "Our Process — How AGility Builds Your Software";
+const title = "My Process — How AGility Builds Your Software";
 const description =
-  "See how we take a project from an expensive problem to working software: discovery, scoping, build, launch, and optional ongoing support — with the delivery model you choose and no surprises at any step.";
+  "See how a project goes from an expensive problem to working software: discovery, scoping, build, launch, and optional ongoing support — with the delivery model you choose and no surprises at any step.";
 
 export const metadata: Metadata = {
   title,
@@ -23,7 +23,7 @@ export default function ProcessPage() {
       <PageHeader
         eyebrow="Process"
         title="You’ll always know exactly where your project stands."
-        subtitle="Great software shouldn’t come with mystery. We work in clear, predictable stages — so from the first conversation to long after launch, there are no black boxes and no surprises."
+        subtitle="Great software shouldn’t come with mystery. I work in clear, predictable stages — so from the first conversation to long after launch, there are no black boxes and no surprises."
       />
       <ProcessSteps />
       <WorkingWithUs />

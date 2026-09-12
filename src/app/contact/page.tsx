@@ -7,9 +7,9 @@ import { Reveal } from "@/components/motion/reveal";
 import { ContactForm } from "@/components/contact/contact-form";
 import { ContactAside } from "@/components/contact/contact-aside";
 
-const title = "Contact AGility — Tell Us What's Slowing You Down";
+const title = "Contact AGility — Tell Me What's Slowing You Down";
 const description =
-  "Send us a message about the repetitive work costing your team time and money. We read every message ourselves and reply within one business day.";
+  "Send me a message about the repetitive work costing your team time and money. I read every message myself and reply within one business day.";
 
 export const metadata: Metadata = {
   title,
@@ -24,8 +24,8 @@ export default function ContactPage() {
     <main id="main" tabIndex={-1} className="flex flex-1 flex-col">
       <PageHeader
         eyebrow="Contact"
-        title="Tell us where your time is going."
-        subtitle="Describe the work that's slowing your team down. We'll read it ourselves and reply within one business day — no jargon, no sales script, no pressure."
+        title="Tell me where your time is going."
+        subtitle="Describe the work that's slowing your team down. I'll read it myself and reply within one business day — no jargon, no sales script, no pressure."
       />
 
       <Section aria-labelledby="contact-heading" className="pt-0">
@@ -38,10 +38,10 @@ export default function ContactPage() {
                   id="contact-heading"
                   className="text-h2 font-semibold text-text-primary"
                 >
-                  Send us a message
+                  Send me a message
                 </h2>
                 <p className="mt-4 max-w-[52ch] text-pretty text-body-lg text-text-secondary">
-                  A few details are all we need to point you in the right
+                  A few details are all I need to point you in the right
                   direction. Everything you send stays between us.
                 </p>
                 <div className="mt-8">

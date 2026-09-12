@@ -10,7 +10,7 @@ import { AboutCta } from "@/components/about/about-cta";
 
 const title = "About AGility — Custom Software Built Around Your Business";
 const description =
-  "We build custom software that saves growing businesses time and money, with clear ownership and a delivery model you choose. Here is how we think about building, and what we stand for.";
+  "I build custom software that saves growing businesses time and money, with clear ownership and a delivery model you choose. Here is how I think about building, and what I stand for.";
 
 export const metadata: Metadata = {
   title,
@@ -25,8 +25,8 @@ export default function AboutPage() {
     <main id="main" tabIndex={-1} className="flex flex-1 flex-col">
       <PageHeader
         eyebrow="About"
-        title="We build software that pays for itself."
-        subtitle="AGility is a software team with a simple belief: technology should earn its keep. We start from the time and money a business is losing, and build exactly what it takes to win it back — and nothing it doesn’t."
+        title="I build software that pays for itself."
+        subtitle="AGility is one person with a simple belief: technology should earn its keep. I start from the time and money a business is losing, and build exactly what it takes to win it back — and nothing it doesn’t."
       />
       <Mission />
       <HowWeBuild />

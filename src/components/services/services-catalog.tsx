@@ -97,7 +97,7 @@ const GROUPS: ServiceGroup[] = [
     id: "custom-products",
     name: "Custom products",
     blurb:
-      "When nothing off-the-shelf fits, we design and build the product itself — and the software we build for you is yours under the project agreement.",
+      "When nothing off-the-shelf fits, I design and build the product itself — and the software I build for you is yours under the project agreement.",
     services: [
       {
         title: "Custom SaaS products",
@@ -105,7 +105,7 @@ const GROUPS: ServiceGroup[] = [
       },
       {
         title: "Bespoke AI solutions",
-        body: "Have a problem that doesn't fit a category? We scope and build a solution around it, using AI only where it genuinely earns its place.",
+        body: "Have a problem that doesn't fit a category? I scope and build around it, using AI only where it genuinely earns its place.",
       },
     ],
   },

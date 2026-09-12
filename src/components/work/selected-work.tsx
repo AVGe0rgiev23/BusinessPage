@@ -1,55 +1,70 @@
+import { ArrowUpRight } from "lucide-react";
+
+import { cn, focusRing } from "@/lib/utils";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
-import { Reveal, RevealGroup } from "@/components/motion/reveal";
+import { RevealGroup } from "@/components/motion/reveal";
 import { SectionHeading } from "@/components/layout/section-heading";
 
 /**
- * Selected work — honest placeholder slots.
+ * Selected work — real builds, honestly labelled.
  *
- * AGility has no client case studies yet, so this section is deliberately, and
- * visibly, a set of empty slots. They read as "coming soon" placeholders —
- * never as real or implied clients. The category labels describe the KIND of
- * work we do, not any specific engagement.
+ * This section used to be three dashed "case study — coming soon" cards. The
+ * intent was honesty, but the effect was the opposite of the one wanted: three
+ * empty slots advertise the absence rather than acknowledge it, and a visitor
+ * counts them. Saying "no client projects yet" once, in a sentence, and then
+ * showing actual built things is both shorter and more convincing.
  *
- * The dashed borders and hatched preview areas are load-bearing here, not
- * decoration: an empty slot has to look unmistakably empty. A polished-looking
- * card with vague copy is how a placeholder starts reading as a real project.
- *
- * TODO: replace each placeholder with a real, published case study once a
- * client has agreed to share it — link each to its own `/work/<slug>` page and
- * drop the dashed placeholder treatment.
+ * ── The labels are the load-bearing part ────────────────────────────────────
+ * Every item here is either the operator's own product or a hackathon build.
+ * None of it is client work, and each card says so on its face — in the UI, as
+ * a badge, not in a caption, a tooltip, or a footnote below the grid. A visitor
+ * who scans the grid and reads nothing else must still come away knowing these
+ * were not commissioned. Do not move these labels into small print, and do not
+ * add an item here without one.
  */
-const PLACEHOLDERS = [
-  {
-    category: "Operations automation",
-    body: "A real project will live here once it's shipped and our client is happy to share it — the manual process, what we automated, and the hours it gave back.",
-  },
-  {
-    category: "Customer workflows",
-    body: "The kind of build that answers leads and handles follow-up without anyone chasing it by hand. The story goes here when there's a real one to tell.",
-  },
-  {
-    category: "Internal tooling",
-    body: "Custom software a growing team runs on every day. We'll show the before, the after, and the numbers — with permission, never invented.",
-  },
-];
+interface Build {
+  name: string;
+  /** Rendered as a badge on the card. Says what this is NOT, first. */
+  label: string;
+  body: string;
+  href: string;
+  /** Link text — names the destination so it isn't a bare "view project". */
+  linkLabel: string;
+}
 
-const ANATOMY = [
+const BUILDS: Build[] = [
   {
-    label: "The problem",
-    body: "The process that was costing time or money, and what it was costing.",
+    name: "LeadGenius",
+    label: "Self-built — not client work",
+    // TODO: expand this with what LeadGenius actually does and who it is for.
+    // The current copy is true but deliberately says nothing about the product
+    // itself, because the operator has not supplied those details yet.
+    body: "My own product, built and maintained end to end — the same stack, review, and testing standards I would bring to a client project. It exists because I wanted it to exist, not because anyone commissioned it.",
+    // TODO: replace with the real repository or live demo URL. This is a
+    // placeholder pointing at the GitHub profile while the repo is private.
+    // The card must not ship with a link that 404s or that implies a public
+    // repo exists when it does not.
+    href: "https://github.com/AVGe0rgiev23",
+    linkLabel: "View on GitHub",
   },
   {
-    label: "What we built",
-    body: "The software we shipped, and how it fits the tools the client already used.",
+    // TODO: replace `name`, `body`, and `href` with the real hackathon build.
+    // The `label` is correct as written and should not change.
+    name: "Hackathon build 01",
+    label: "Hackathon build — not a client project",
+    body: "TODO: what it was, what it did, and which event it was built at. Written under time pressure, and worth showing for how it was approached rather than as a finished product.",
+    href: "https://github.com/AVGe0rgiev23",
+    linkLabel: "View on GitHub",
   },
   {
-    label: "The result",
-    body: "The measurable outcome — in real numbers, shared with the client's blessing.",
-  },
-  {
-    label: "How it's delivered",
-    body: "Which model they chose — who owns the software and infrastructure, and who operates it.",
+    // TODO: replace `name`, `body`, and `href` with the real hackathon build.
+    // The `label` is correct as written and should not change.
+    name: "Hackathon build 02",
+    label: "Hackathon build — not a client project",
+    body: "TODO: what it was, what it did, and which event it was built at. Written under time pressure, and worth showing for how it was approached rather than as a finished product.",
+    href: "https://github.com/AVGe0rgiev23",
+    linkLabel: "View on GitHub",
   },
 ];
 
@@ -61,8 +76,8 @@ export function SelectedWork() {
           index="04"
           eyebrow="Selected work"
           headingId="selected-work-heading"
-          title="Case studies are on the way."
-          lede="We'd rather leave these slots honestly empty than fill them with stock photos and invented results. When a client is happy to share a project, it goes here — and every claim in it will be real."
+          title="No client projects to show yet."
+          lede="Here's what I've built instead: my own product and two hackathon builds. None of it is client work, and every card says which is which."
         />
 
         <RevealGroup
@@ -70,64 +85,44 @@ export function SelectedWork() {
           className="mt-16 grid gap-5 md:mt-20 md:grid-cols-3"
           selector=":scope > li"
         >
-          {PLACEHOLDERS.map((item) => (
+          {BUILDS.map((build) => (
             <li
-              key={item.category}
-              className="flex h-full flex-col rounded-xl border border-dashed border-border-strong p-6"
+              key={build.name}
+              className="group flex h-full flex-col rounded-xl border border-border bg-bg-surface p-6 transition-colors duration-[--duration-base] hover:border-border-hover"
             >
-              <div className="flex items-center justify-between gap-3">
-                <span className="font-mono text-eyebrow uppercase text-text-muted">
-                  Case study
-                </span>
-                <span className="rounded-sm border border-border-strong px-2 py-0.5 font-mono text-eyebrow uppercase text-text-muted">
-                  Coming soon
-                </span>
-              </div>
-
-              <div
-                aria-hidden="true"
-                className="mt-6 aspect-[16/10] rounded-md border border-dashed border-border"
-                style={{
-                  backgroundImage:
-                    "repeating-linear-gradient(135deg, rgba(239,235,228,0.035) 0, rgba(239,235,228,0.035) 1px, transparent 1px, transparent 10px)",
-                }}
-              />
-
-              <h3 className="mt-6 text-h4 font-semibold text-text-primary">
-                {item.category}
-              </h3>
-              <p className="mt-2 text-pretty text-small text-text-secondary">
-                {item.body}
+              {/* The label sits above the name, not below it: a visitor should
+                  read what this isn't before they read what it's called. */}
+              <p className="inline-flex self-start rounded-sm border border-border-strong px-2 py-1 font-mono text-eyebrow uppercase text-text-muted">
+                {build.label}
               </p>
+
+              <h3 className="mt-6 text-h3 font-semibold text-text-primary">
+                {build.name}
+              </h3>
+
+              <p className="mt-3 flex-1 text-pretty text-small text-text-secondary">
+                {build.body}
+              </p>
+
+              <a
+                href={build.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={cn(
+                  "mt-6 -mx-2 inline-flex items-center gap-2 self-start rounded-sm px-2 py-1.5 text-small font-medium text-accent transition-colors duration-[--duration-fast] hover:text-accent-hover",
+                  focusRing
+                )}
+              >
+                {build.linkLabel}
+                <span className="sr-only"> — {build.name}</span>
+                <ArrowUpRight
+                  aria-hidden="true"
+                  className="size-4 transition-transform duration-[--duration-fast] group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                />
+              </a>
             </li>
           ))}
         </RevealGroup>
-
-        <Reveal className="mt-16">
-          <p className="font-mono text-eyebrow uppercase text-text-muted">
-            What each one will show
-          </p>
-          <dl className="mt-6 grid gap-x-10 gap-y-8 border-t border-border pt-8 sm:grid-cols-2 lg:grid-cols-4">
-            {ANATOMY.map((step, i) => (
-              <div key={step.label}>
-                <dt className="flex items-baseline gap-3">
-                  <span
-                    aria-hidden="true"
-                    className="tabular font-mono text-eyebrow text-accent"
-                  >
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span className="text-h4 font-semibold text-text-primary">
-                    {step.label}
-                  </span>
-                </dt>
-                <dd className="mt-2 text-pretty text-small text-text-secondary">
-                  {step.body}
-                </dd>
-              </div>
-            ))}
-          </dl>
-        </Reveal>
       </Container>
     </Section>
   );

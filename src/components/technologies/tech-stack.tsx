@@ -78,8 +78,8 @@ export function TechStack() {
           index="01"
           eyebrow="The stack"
           headingId="stack-heading"
-          title="What we build with"
-          lede="A well-supported, widely adopted toolset — the same tooling behind serious software products. Think of it as a toolkit, not a template: we choose the stack per project, and nothing on this list is mandatory."
+          title="What I build with"
+          lede="A well-supported, widely adopted toolset — the same tooling behind serious software products. Think of it as a toolkit, not a template: I choose the stack per project, and nothing on this list is mandatory."
         />
 
         <RevealGroup

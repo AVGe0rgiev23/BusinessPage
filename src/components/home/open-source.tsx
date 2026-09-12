@@ -3,7 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import { cn, focusRing } from "@/lib/utils";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
-import { Reveal, RevealGroup } from "@/components/motion/reveal";
+import { Reveal } from "@/components/motion/reveal";
 import { Eyebrow } from "@/components/layout/section-heading";
 import { Button } from "@/components/ui/button";
 import { GithubIcon } from "@/components/icons/brand-icons";
@@ -15,17 +15,19 @@ import { githubUrl } from "@/lib/site-config";
  * The old version put a 112px GitHub logo in a bordered square with a radial
  * glow behind it, taking up half the section to say nothing the button beneath
  * it didn't already say. It is now a two-column split where the right side
- * carries the three actual points, hairline-ruled.
+ * carries the one claim this section can actually back.
+ *
+ * That right column used to hold three points. Two of them — publishing tools
+ * and libraries, and contributing back upstream — described work that has not
+ * happened yet, which is exactly the kind of claim a visitor can check in about
+ * fifteen seconds. They are gone rather than softened. What is left is the
+ * claim the GitHub link genuinely supports: the code is readable before you
+ * commit to anything. One honest line beats three that invite a fact-check.
  *
  * Sits on the sunken background — the darkest surface on the site — so this and
  * the Connect band beneath it read as a single quieter passage between the
  * argument and the closing FAQ.
  */
-const POINTS = [
-  "We publish tools and libraries we build for our own work.",
-  "We contribute back to the projects our software is built on.",
-  "You can see how we write code before you ever hire us.",
-];
 
 export function OpenSource() {
   return (
@@ -42,7 +44,7 @@ export function OpenSource() {
                 aria-hidden="true"
                 className="tabular font-mono text-eyebrow text-accent"
               >
-                09
+                10
               </span>
               <Eyebrow>Open source</Eyebrow>
             </div>
@@ -51,13 +53,13 @@ export function OpenSource() {
               id="open-source-heading"
               className="mt-7 max-w-[14ch] text-balance text-h2 font-semibold text-text-primary"
             >
-              We build in the open.
+              I build in the open.
             </h2>
 
             <p className="mt-6 max-w-[52ch] text-pretty text-body-lg text-text-secondary">
-              Good engineering doesn&apos;t hide. A lot of our work lives on
-              GitHub — the tools we rely on, the contributions we make, and the
-              standards we hold ourselves to when no one&apos;s watching.
+              Good engineering doesn&apos;t hide. My GitHub is the repositories
+              themselves — the code, the commit history, and the standards I
+              hold myself to when no one&apos;s watching.
             </p>
 
             <Button
@@ -69,7 +71,7 @@ export function OpenSource() {
               className={cn("group mt-9", focusRing)}
             >
               <GithubIcon className="size-5" aria-hidden="true" />
-              View our GitHub
+              View my GitHub
               <ArrowUpRight
                 className="text-text-muted transition-transform duration-[--duration-fast] group-hover/button:translate-x-0.5 group-hover/button:-translate-y-0.5"
                 aria-hidden="true"
@@ -77,20 +79,15 @@ export function OpenSource() {
             </Button>
           </Reveal>
 
-          <RevealGroup
-            as="ul"
-            className="border-t border-border lg:pt-2"
-            selector=":scope > li"
-          >
-            {POINTS.map((point) => (
-              <li
-                key={point}
-                className="border-b border-border py-6 text-pretty text-body text-text-secondary"
-              >
-                {point}
-              </li>
-            ))}
-          </RevealGroup>
+          {/* One statement, not a list. A `<ul>` holding a single `<li>` reads
+              as a list that lost its other items; set as a standalone line
+              between the same hairline rules, it reads as the point of the
+              section. */}
+          <Reveal className="lg:pt-2">
+            <p className="border-y border-border py-8 text-pretty text-body-lg text-text-secondary">
+              You can see how I write code before you ever hire me.
+            </p>
+          </Reveal>
         </div>
       </Container>
     </Section>

@@ -14,31 +14,38 @@ import { Eyebrow } from "@/components/layout/section-heading";
  * No icons and no numbers here. This is the section that has to feel like a
  * person talking, so it is set as plain, well-spaced prose with a copper rule
  * marking each claim.
+ *
+ * Order is argued, not arbitrary. Ownership leads because it is the objection a
+ * buyer actually has about a one-person shop — what happens to my software if
+ * this person disappears — and answering it first buys the attention the rest
+ * of the list needs. "Built with modern AI" is last because it is a statement
+ * about tooling, not about risk, and leading with it made the section read as a
+ * pitch for the technology rather than for the working relationship.
  */
 const REASONS = [
   {
-    title: "Built with modern AI",
-    body: "We use current AI and language-model tooling where it earns its place — to solve real problems, not as a label on the box.",
+    title: "Ownership on your terms",
+    body: "The custom software is yours under the project agreement, and your data stays yours. You decide whether I operate it or you run it yourself.",
   },
   {
     title: "Fully custom software",
     body: "Everything is built for your business specifically. No forcing your process to fit someone else's template.",
   },
   {
-    title: "Ownership on your terms",
-    body: "The custom software is yours under the project agreement, and your data stays yours. You decide whether we operate it or you run it yourself.",
-  },
-  {
     title: "Fast communication",
-    body: "Direct access to the people building your software, and quick, straight answers when you need them.",
+    body: "Direct access to me, the person building your software, and quick, straight answers when you need them.",
   },
   {
     title: "Support, if you want it",
-    body: "We can stay on to maintain and grow what we build — or hand it over properly so your team runs it. Ongoing support is an option, not an obligation.",
+    body: "I can stay on to maintain and grow what I build — or hand it over properly so your team runs it. Ongoing support is an option, not an obligation.",
   },
   {
     title: "Transparent development",
     body: "Clear scope, honest timelines, and visible progress — you always know what you're paying for and why.",
+  },
+  {
+    title: "Built with modern AI",
+    body: "I use current AI and language-model tooling where it earns its place — to solve real problems, not as a label on the box.",
   },
 ];
 
@@ -57,7 +64,7 @@ export function WhyAgility() {
                 aria-hidden="true"
                 className="tabular font-mono text-eyebrow text-accent"
               >
-                08
+                09
               </span>
               <Eyebrow>Why AGility</Eyebrow>
             </div>
@@ -68,8 +75,8 @@ export function WhyAgility() {
               A partner, not just a vendor.
             </h2>
             <p className="mt-6 max-w-[46ch] text-pretty text-body-lg text-text-secondary">
-              We keep it honest. No inflated claims — just the things that
-              genuinely matter when you trust a team to build software your
+              I keep it honest. No inflated claims — just the things that
+              genuinely matter when you trust someone to build software your
               business depends on.
             </p>
           </Reveal>

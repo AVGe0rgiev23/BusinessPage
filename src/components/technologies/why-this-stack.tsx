@@ -11,7 +11,7 @@ const REASONS: Point[] = [
   },
   {
     title: "Portability",
-    body: "Standard, well-understood code and infrastructure rather than a proprietary black box. We use third-party providers like everyone does — the point is that moving off one shouldn't mean a rewrite.",
+    body: "Standard, well-understood code and infrastructure rather than a proprietary black box. I use third-party providers like everyone does — the point is that moving off one shouldn't mean a rewrite.",
   },
   {
     title: "Performance",
@@ -34,8 +34,8 @@ export function WhyThisStack() {
           index="02"
           eyebrow="Why this stack"
           headingId="why-stack-heading"
-          title="Why we build on these tools"
-          lede="We're not attached to any single tool for its own sake. We pick technology that's widely used, actively maintained, and well-documented, because that's what keeps software reliable and affordable to run over time."
+          title="Why I build on these tools"
+          lede="I'm not attached to any single tool for its own sake. I pick technology that's widely used, actively maintained, and well-documented, because that's what keeps software reliable and affordable to run over time."
         />
 
         <PointList items={REASONS} columns={2} className="mt-16 md:mt-20" />
@@ -43,7 +43,7 @@ export function WhyThisStack() {
         <Reveal className="mt-12">
           <p className="max-w-[72ch] text-pretty text-body text-text-secondary">
             None of this makes any one tool universally &ldquo;best.&rdquo; It
-            makes for a dependable default that we adjust whenever a project
+            makes for a dependable default that I adjust whenever a project
             calls for something else — the right stack is always the one that
             fits your goals.
           </p>

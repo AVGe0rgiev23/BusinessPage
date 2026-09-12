@@ -13,11 +13,11 @@ import { SectionHeading } from "@/components/layout/section-heading";
  * models: "fully managed", "client-owned", "hybrid".
  *
  * Deliberate accuracy constraints — do NOT loosen these when editing copy:
- *   - No model is labelled "recommended". The client chooses; we advise.
+ *   - No model is labelled "recommended". The client chooses; AGility advises.
  *   - Software ownership, infrastructure ownership, and operational
  *     responsibility are kept as SEPARATE ideas (see the `owns` / `operates`
- *     rows), because a client can own the software while we operate it, or own
- *     the infrastructure while we maintain what runs on it.
+ *     rows), because a client can own the software while AGility operates it,
+ *     or own the infrastructure while AGility maintains what runs on it.
  *   - Ownership is always framed as "according to the project agreement" —
  *     website copy cannot make the legal guarantee on its own.
  *
@@ -44,22 +44,22 @@ interface Model {
 const MODELS: Model[] = [
   {
     name: "Fully managed",
-    tagline: "You run the business. We run the software.",
-    body: "We build the system and operate it for you — hosting, deployments, monitoring, maintenance, and ongoing improvements. You just use the software, through whatever interface makes sense: an app, a dashboard, email, Slack, or an API.",
+    tagline: "You run the business. I run the software.",
+    body: "I build the system and operate it for you — hosting, deployments, monitoring, maintenance, and ongoing improvements. You just use the software, through whatever interface makes sense: an app, a dashboard, email, Slack, or an API.",
     owns: "AGility operates the production environment on your behalf",
     operates: "AGility",
   },
   {
     name: "Client-owned",
     tagline: "You own and operate it.",
-    body: "We build and deploy the system into infrastructure and accounts you control, then hand over the agreed source code, configuration, and documentation. Your team — or another provider you choose — takes it from there.",
+    body: "I build and deploy the system into infrastructure and accounts you control, then hand over the agreed source code, configuration, and documentation. Your team — or another provider you choose — takes it from there.",
     owns: "You hold the cloud, data, and third-party accounts",
     operates: "Your team, or a provider you appoint",
   },
   {
     name: "Hybrid",
-    tagline: "You own the infrastructure. We keep it running.",
-    body: "Your company owns the environment, the data, and the third-party accounts, while we keep developing, deploying, monitoring, and improving the software inside it. We work with the technical permissions the job needs, and no more.",
+    tagline: "You own the infrastructure. I keep it running.",
+    body: "Your company owns the environment, the data, and the third-party accounts, while I keep developing, deploying, monitoring, and improving the software inside it. I work with the technical permissions the job needs, and no more.",
     owns: "You hold the cloud, data, and third-party accounts",
     operates: "AGility, with authorised access to your environment",
   },
@@ -82,7 +82,7 @@ export function DeliveryModels({
   index,
   eyebrow = "Your software. Your choice.",
   heading = "One build. Three ways to work together.",
-  intro = "We don't force every client into the same delivery model. We can run the system for you, deploy it into infrastructure you control, or manage software running inside your own environment. We'll recommend the approach that fits your technical, operational, and security requirements — but you choose how you want to work with us.",
+  intro = "No client gets forced into the same delivery model as the last one. I can run the system for you, deploy it into infrastructure you control, or manage software running inside your own environment. I'll recommend the approach that fits your technical, operational, and security requirements — but you choose how you want to work.",
   className,
 }: DeliveryModelsProps) {
   const headingId = `${id}-heading`;
@@ -160,12 +160,12 @@ export function DeliveryModels({
 
         <Reveal className="mt-14 border-t border-border pt-8">
           <p className="max-w-[80ch] text-pretty text-body text-text-secondary">
-            In every model, the custom software we build for you is intended to
+            In every model, the custom software I build for you is intended to
             be yours under the project agreement, and your data stays your data.
             What changes is who holds the infrastructure and who keeps it
             running.{" "}
             <span className="text-text-primary">
-              Not sure which fits? We&apos;ll recommend a setup based on your
+              Not sure which fits? I&apos;ll recommend a setup based on your
               technical team, security and compliance requirements, budget, and
               how much you want to manage yourself.
             </span>

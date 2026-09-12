@@ -36,7 +36,7 @@ export function Preparation() {
       <Container>
         <Reveal>
           <div className="flex items-center gap-4">
-            <Eyebrow>Before we meet</Eyebrow>
+            <Eyebrow>Before we talk</Eyebrow>
             <span aria-hidden="true" className="h-px flex-1 bg-border" />
           </div>
           <h2
@@ -46,7 +46,7 @@ export function Preparation() {
             Come as you are
           </h2>
           <p className="mt-5 max-w-[54ch] text-pretty text-body-lg text-text-secondary">
-            A quick read on who this is for and the little that helps us make the
+            A quick read on who this is for and the little that helps make the
             most of your time.
           </p>
         </Reveal>

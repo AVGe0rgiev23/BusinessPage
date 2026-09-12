@@ -21,10 +21,10 @@ export function ContactAside() {
         id="contact-alt-heading"
         className="text-h3 font-semibold text-text-primary"
       >
-        Prefer another way to reach us?
+        Prefer another way to reach me?
       </h3>
       <p className="mt-3 text-body text-text-secondary">
-        Pick whatever&apos;s easiest. Every option reaches the same small team.
+        Pick whatever&apos;s easiest. Every option reaches me directly.
       </p>
 
       {/* Primary alternative: book a consultation */}
@@ -67,7 +67,7 @@ export function ContactAside() {
             </span>
             <span className="min-w-0 flex-1">
               <span className="block text-body font-medium text-text-primary">
-                Email us
+                Email me
               </span>
               <span className="block truncate text-small text-text-secondary">
                 {contactEmail}
@@ -93,7 +93,7 @@ export function ContactAside() {
                 Connect on LinkedIn
               </span>
               <span className="block text-small text-text-secondary">
-                Follow along and message us
+                Follow along and message me
               </span>
             </span>
           </a>

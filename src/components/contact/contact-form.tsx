@@ -44,10 +44,10 @@ function validate(values: Values): ContactFieldErrors {
   }
 
   if (!message) {
-    errors.message = "Please tell us a little about what you need.";
+    errors.message = "Please tell me a little about what you need.";
   } else if (message.length < MIN_MESSAGE_LENGTH) {
     errors.message =
-      "Please add a little more detail so we can help — at least 10 characters.";
+      "Please add a little more detail so I can help — at least 10 characters.";
   }
 
   return errors;
@@ -193,7 +193,7 @@ export function ContactForm() {
           Thanks — your message is on its way
         </h3>
         <p className="mx-auto mt-3 max-w-md text-pretty text-body text-text-secondary">
-          We read every message ourselves and will reply within one business day.
+          I read every message myself and will reply within one business day.
           In the meantime, you&apos;re welcome to book a free consultation.
         </p>
         <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -362,11 +362,11 @@ export function ContactForm() {
         </div>
 
         {/*
-          Preferred working model (optional). Commercially useful — it tells us
+          Preferred working model (optional). Commercially useful — it says
           straight away how the prospect wants to work — but deliberately not
           required, and "Not sure" is a first-class answer. A visitor should
-          never have to understand the delivery models before they can contact
-          us.
+          never have to understand the delivery models before they can get in
+          touch.
         */}
         <div className="grid gap-2">
           <label
@@ -432,7 +432,7 @@ export function ContactForm() {
             value={values.message}
             onChange={(event) => handleChange("message", event.target.value)}
             onBlur={() => handleBlur("message")}
-            placeholder="Tell us what's slowing your team down — the task, how often it happens, and the tools involved. A rough description is plenty."
+            placeholder="Tell me what's slowing your team down — the task, how often it happens, and the tools involved. A rough description is plenty."
             aria-invalid={Boolean(errors.message)}
             aria-describedby={describedBy(
               "contact-message-hint",
@@ -441,7 +441,7 @@ export function ContactForm() {
             className={cn(inputClasses(Boolean(errors.message)), "resize-y")}
           />
           <p id="contact-message-hint" className="text-small text-text-secondary">
-            No pressure and no jargon — we&apos;ll take it from here.
+            No pressure and no jargon — I&apos;ll take it from here.
           </p>
           {errors.message ? (
             <p id="contact-message-error" className="text-small text-destructive">

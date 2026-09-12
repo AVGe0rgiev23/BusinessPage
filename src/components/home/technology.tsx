@@ -47,11 +47,11 @@ export function Technology() {
     <Section id="technology" aria-labelledby="technology-heading">
       <Container>
         <SectionHeading
-          index="07"
-          eyebrow="Our stack"
+          index="08"
+          eyebrow="My stack"
           headingId="technology-heading"
           title="Built on modern, proven engineering."
-          lede="We work with a well-supported, widely adopted stack — the same tooling behind serious software products, chosen for reliability and longevity rather than novelty."
+          lede="I work with a well-supported, widely adopted stack — the same tooling behind serious software products, chosen for reliability and longevity rather than novelty."
         />
 
         <RevealGroup
@@ -86,7 +86,7 @@ export function Technology() {
             href="/technologies"
             className={cn(arrowLink, focusRing)}
           >
-            Explore our technologies
+            Explore the technologies
             <ArrowRight
               className="size-4 transition-transform duration-[--duration-fast] group-hover:translate-x-0.5"
               aria-hidden="true"

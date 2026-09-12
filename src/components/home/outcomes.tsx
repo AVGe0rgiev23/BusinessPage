@@ -52,7 +52,7 @@ export function Outcomes() {
           eyebrow="The outcome"
           headingId="outcomes-heading"
           title="Software that gives you the hours back."
-          lede="We start from the result you want, not the technology. Here's what changes once the manual work is off your team's plate."
+          lede="I start from the result you want, not the technology. Here's what changes once the manual work is off your team's plate."
         />
 
         {/*

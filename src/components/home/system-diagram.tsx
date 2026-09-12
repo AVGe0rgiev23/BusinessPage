@@ -16,7 +16,7 @@ import { duration, ease, prefersReducedMotion } from "@/lib/motion";
  * the real proposition rather than decoration.
  *
  * Explicitly NOT a fake dashboard. No invented metrics, no fabricated charts,
- * no numbers that imply results we cannot evidence. It is a schematic, which is
+ * no numbers that imply results that cannot be evidenced. It is a schematic, which is
  * both more honest and more in keeping with an engineering practice.
  *
  * ── How it is built ──────────────────────────────────────────────────────────

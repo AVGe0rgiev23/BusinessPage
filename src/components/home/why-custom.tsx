@@ -22,7 +22,7 @@ import { SectionHeading } from "@/components/layout/section-heading";
  * claim cannot be traced to existing approved copy, it does not go in the
  * table.
  *
- * The honest caveat ("low-code tools have their place, and we'll tell you when
+ * The honest caveat ("low-code tools have their place, and I'll tell you when
  * one is the right call") is kept directly underneath, where it belongs. It is
  * the most trust-building sentence in the section.
  */
@@ -68,7 +68,7 @@ export function WhyCustom() {
           eyebrow="Custom vs. low-code"
           headingId="why-custom-heading"
           title="Own your software. Don't rent your workflow."
-          lede="We're code-first: the processes your business runs on get built as software, rather than assembled inside a proprietary visual workflow builder. That buys you flexibility, clearer ownership, and room to grow."
+          lede="I'm code-first: the processes your business runs on get built as software, rather than assembled inside a proprietary visual workflow builder. That buys you flexibility, clearer ownership, and room to grow."
         />
 
         <Reveal className="mt-16 md:mt-20">
@@ -142,14 +142,14 @@ export function WhyCustom() {
             table above so the section closes rather than continuing. */}
         <Reveal className="mt-14 grid max-w-5xl gap-x-14 gap-y-5 md:grid-cols-2">
           <p className="text-pretty text-body text-text-secondary">
-            Low-code tools have their place, and we&apos;ll tell you honestly
+            Low-code tools have their place, and I&apos;ll tell you honestly
             when one is the right call — including when it means a smaller
-            project for us. But as a process becomes central to how you make
+            project for me. But as a process becomes central to how you make
             money, owning it tends to pay off.
           </p>
           <p className="text-pretty text-body text-text-secondary">
-            We use third-party services ourselves — cloud hosting, databases, AI
-            providers. Nobody builds without them. The difference is that we
+            I use third-party services myself — cloud hosting, databases, AI
+            providers. Nobody builds without them. The difference is that I
             avoid unnecessary platform lock-in and stick to standard, portable
             technology wherever it&apos;s practical.
           </p>
@@ -158,7 +158,7 @@ export function WhyCustom() {
               href="/services"
               className={cn(arrowLink, focusRing)}
             >
-              How we approach a build
+              How I approach a build
               <ArrowRight
                 className="size-4 transition-transform duration-[--duration-fast] group-hover:translate-x-0.5"
                 aria-hidden="true"
