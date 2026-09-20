@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import * as React from "react";
 import { Link } from "@/i18n/navigation";
 import { animate, stagger } from "animejs";
@@ -23,29 +24,15 @@ import { SectionHeading } from "@/components/layout/section-heading";
  * without touching layout. No width tweening, no reflow, no jank on a long page.
  */
 const STEPS = [
-  {
-    title: "Discovery",
-    body: "I map where the time and money are going, and we agree on what a win looks like before any code is written.",
-  },
-  {
-    title: "Design",
-    body: "I plan the build and how it fits your existing tools, so there are no surprises once it begins.",
-  },
-  {
-    title: "Build",
-    body: "I develop in focused increments, sharing progress along the way so you always know exactly where things stand.",
-  },
-  {
-    title: "Deploy",
-    body: "I launch it using the operating model you've chosen, configure the infrastructure and access, and test against real work.",
-  },
-  {
-    title: "Support",
-    body: "Optional, and shaped to you: I operate the system, maintain it inside your environment, or hand it over to your team.",
-  },
-];
+  { id: "discovery" },
+  { id: "design" },
+  { id: "build" },
+  { id: "deploy" },
+  { id: "support" },
+] as const;
 
 export function ProcessPreview() {
+  const t = useTranslations("home.processPreview");
   const railRef = React.useRef<HTMLDivElement>(null);
   const rootRef = React.useRef<HTMLOListElement>(null);
 
@@ -109,10 +96,10 @@ export function ProcessPreview() {
       <Container>
         <SectionHeading
           index="05"
-          eyebrow="How I work"
+          eyebrow={t("heading.eyebrow")}
           headingId="process-heading"
-          title="A clear path from problem to production."
-          lede="No black boxes. You'll know what's happening at every stage — and why it matters for your business."
+          title={t("heading.title")}
+          lede={t("heading.lede")}
         />
 
         <div className="relative mt-16 md:mt-24">
@@ -139,7 +126,7 @@ export function ProcessPreview() {
           >
             {STEPS.map((step, i) => (
               <li
-                key={step.title}
+                key={step.id}
                 data-step=""
                 className="group relative grid grid-cols-[auto_minmax(0,1fr)] gap-x-5 lg:block"
               >
@@ -160,10 +147,10 @@ export function ProcessPreview() {
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <h3 className="mt-2 text-h4 font-semibold text-text-primary lg:mt-0">
-                    {step.title}
+                    {t(`steps.${step.id}.title`)}
                   </h3>
                   <p className="mt-2 max-w-[46ch] text-pretty text-small text-text-secondary lg:mt-2.5 lg:pr-2">
-                    {step.body}
+                    {t(`steps.${step.id}.body`)}
                   </p>
                 </div>
               </li>
@@ -176,7 +163,7 @@ export function ProcessPreview() {
             href="/process"
             className={cn(arrowLink, focusRing)}
           >
-            See the full process
+            {t("fullProcessLink")}
             <ArrowRight
               className="size-4 transition-transform duration-[--duration-fast] group-hover:translate-x-0.5"
               aria-hidden="true"

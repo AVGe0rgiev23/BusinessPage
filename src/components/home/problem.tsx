@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { RevealGroup } from "@/components/motion/reveal";
@@ -16,33 +17,16 @@ import { SectionHeading } from "@/components/layout/section-heading";
  * instead of traversing a grid.
  */
 const PAINS = [
-  {
-    title: "Hours lost to repetitive tasks",
-    body: "The same manual steps, run again and again — time your team can't spend on the work that actually grows the business.",
-  },
-  {
-    title: "An inbox that never empties",
-    body: "Enquiries, follow-ups, and routine replies handled by hand, one message at a time, while more keep arriving.",
-  },
-  {
-    title: "Leads that go cold",
-    body: "When no one answers fast enough, interested buyers move on. Every slow reply is revenue quietly walking out the door.",
-  },
-  {
-    title: "Copy-pasting between systems",
-    body: "Staff moving the same data between tools that were never built to talk to each other — paid work that produces nothing new.",
-  },
-  {
-    title: "Manual data entry",
-    body: "Typing numbers into spreadsheets and forms by hand: slow, tedious, and one keystroke away from an expensive mistake.",
-  },
-  {
-    title: "Reports assembled by hand",
-    body: "Hours each week pulling figures together into a document that's already out of date by the time it's finished.",
-  },
-];
+  { id: "hoursLostRepetitive" },
+  { id: "inboxNeverEmpties" },
+  { id: "leadsGoCold" },
+  { id: "copyPastingBetween" },
+  { id: "manualDataEntry" },
+  { id: "reportsAssembledHand" },
+] as const;
 
-export function Problem() {
+export async function Problem() {
+  const t = await getTranslations("home.problem");
   return (
     <Section
       id="problem"
@@ -52,16 +36,16 @@ export function Problem() {
       <Container>
         <SectionHeading
           index="01"
-          eyebrow="The problem"
+          eyebrow={t("heading.eyebrow")}
           headingId="problem-heading"
-          title="The busywork is costing you more than you think."
-          lede="Most businesses don't lose money in one big leak — they lose it in a hundred small ones. Repetitive, manual work spread across the week, paid for in salaried hours and missed opportunities."
+          title={t("heading.title")}
+          lede={t("heading.lede")}
         />
 
         <RevealGroup as="ul" className="mt-16 md:mt-20" selector=":scope > li">
           {PAINS.map((pain, i) => (
             <li
-              key={pain.title}
+              key={pain.id}
               className="group relative border-t border-border last:border-b"
             >
               {/*
@@ -83,10 +67,10 @@ export function Problem() {
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <h3 className="text-h4 font-semibold text-text-primary">
-                  {pain.title}
+                  {t(`pains.${pain.id}.title`)}
                 </h3>
                 <p className="text-pretty text-body text-text-secondary">
-                  {pain.body}
+                  {t(`pains.${pain.id}.body`)}
                 </p>
               </div>
             </li>

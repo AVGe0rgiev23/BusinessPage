@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ClientMessages } from "@/i18n/client-messages";
 import { initLocale } from "@/i18n/init-locale";
 import { routeMetadata } from "@/lib/seo";
 import { Hero } from "@/components/home/hero";
@@ -33,12 +34,16 @@ export default async function Home({
   await initLocale(params);
   return (
     <main id="main" tabIndex={-1} className="flex flex-1 flex-col">
-      <Hero />
+      <ClientMessages paths={["home.hero", "home.systemDiagram"]}>
+        <Hero />
+      </ClientMessages>
       <Problem />
       <Outcomes />
       <ServicesPreview />
       <WhyCustom />
-      <ProcessPreview />
+      <ClientMessages paths={["home.processPreview"]}>
+        <ProcessPreview />
+      </ClientMessages>
       <DeliveryModels index="06" />
       <Pricing />
       <Technology />

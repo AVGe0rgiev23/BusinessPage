@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 
 import { focusRing } from "@/lib/utils";
@@ -14,26 +15,25 @@ import { CtaBand } from "@/components/layout/cta-band";
  * deliberately the last thing on the page: the expensive ask comes after the
  * free one, not beside it.
  */
-export function ClosingCta() {
+export async function ClosingCta() {
+  const t = await getTranslations("home.closingCta");
   return (
     <CtaBand
       id="get-started"
-      eyebrow="Get started"
-      title="Ready to get those hours back?"
-      subtitle="Tell me what's slowing your team down. I'll look at where the time and money are going, give you an honest answer on whether custom software is the right fix — and if it is, work out how you'd want it delivered. No pressure, no jargon."
-      primary={{ label: "Book a consultation", href: "/book" }}
-      footnote={
-        <>
-          Prefer to write first? Reach me any time through the{" "}
+      eyebrow={t("eyebrow")}
+      title={t("title")}
+      subtitle={t("subtitle")}
+      primary={{ label: t("cta"), href: "/book" }}
+      footnote={t.rich("footnote", {
+        contact: (chunks) => (
           <Link
             href="/contact"
             className={`rounded-sm font-medium text-accent underline-offset-4 transition-colors hover:text-accent-hover hover:underline ${focusRing}`}
           >
-            contact form
+            {chunks}
           </Link>
-          .
-        </>
-      }
+        ),
+      })}
     />
   );
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import * as React from "react";
 import { animate, stagger, svg } from "animejs";
 
@@ -29,19 +30,19 @@ import { duration, ease, prefersReducedMotion } from "@/lib/motion";
  */
 
 const INPUTS = [
-  { id: "in-0", label: "Inbox" },
-  { id: "in-1", label: "Documents" },
-  { id: "in-2", label: "CRM records" },
-  { id: "in-3", label: "Spreadsheets" },
-  { id: "in-4", label: "Web forms" },
-];
+  { id: "inbox", nodeId: "in-0" },
+  { id: "documents", nodeId: "in-1" },
+  { id: "crmRecords", nodeId: "in-2" },
+  { id: "spreadsheets", nodeId: "in-3" },
+  { id: "webForms", nodeId: "in-4" },
+] as const;
 
 const OUTPUTS = [
-  { id: "out-0", label: "Enquiries answered" },
-  { id: "out-1", label: "Data captured" },
-  { id: "out-2", label: "Systems in sync" },
-  { id: "out-3", label: "Hours returned" },
-];
+  { id: "enquiriesAnswered", nodeId: "out-0" },
+  { id: "dataCaptured", nodeId: "out-1" },
+  { id: "systemsSync", nodeId: "out-2" },
+  { id: "hoursReturned", nodeId: "out-3" },
+] as const;
 
 const SYSTEM_ID = "system";
 
@@ -72,6 +73,7 @@ function anchor(
 }
 
 export function SystemDiagram({ className }: { className?: string }) {
+  const t = useTranslations("home.systemDiagram");
   const containerRef = React.useRef<HTMLDivElement>(null);
   const svgRef = React.useRef<SVGSVGElement>(null);
   const [wires, setWires] = React.useState<Wire[]>([]);
@@ -99,7 +101,7 @@ export function SystemDiagram({ className }: { className?: string }) {
       // Orientation is inferred, not assumed: whichever axis separates the
       // first input from the system is the axis the flow runs along. One code
       // path serves the desktop row and the stacked mobile column.
-      const firstInput = nodeRect(INPUTS[0].id);
+      const firstInput = nodeRect(INPUTS[0].nodeId);
       const horizontal = firstInput
         ? Math.abs(systemRect.left - firstInput.left) >
           Math.abs(systemRect.top - firstInput.top)
@@ -137,11 +139,11 @@ export function SystemDiagram({ className }: { className?: string }) {
         // Wide layout: every input fans into the system, and the system fans
         // back out to every outcome. The convergence is the message.
         for (const input of INPUTS) {
-          const rect = nodeRect(input.id);
+          const rect = nodeRect(input.nodeId);
           if (rect) connect(rect, systemRect, 0);
         }
         for (const output of OUTPUTS) {
-          const rect = nodeRect(output.id);
+          const rect = nodeRect(output.nodeId);
           if (rect) connect(systemRect, rect, 1);
         }
       } else {
@@ -156,9 +158,9 @@ export function SystemDiagram({ className }: { className?: string }) {
           in, this comes out".
         */
         const chain = [
-          ...INPUTS.map((n) => n.id),
+          ...INPUTS.map((n) => n.nodeId),
           SYSTEM_ID,
-          ...OUTPUTS.map((n) => n.id),
+          ...OUTPUTS.map((n) => n.nodeId),
         ];
 
         for (let i = 0; i < chain.length - 1; i++) {
@@ -326,14 +328,14 @@ export function SystemDiagram({ className }: { className?: string }) {
 
         {/* ── Inputs ─────────────────────────────────────────────────────── */}
         <div className="relative z-10 flex flex-col items-center gap-2.5 md:items-end">
-          <Label className="mb-1.5">Manual work</Label>
+          <Label className="mb-1.5">{t("manualWork")}</Label>
           {INPUTS.map((input) => (
             <span
-              key={input.id}
-              data-node={input.id}
+              key={input.nodeId}
+              data-node={input.nodeId}
               className="rounded-md border border-border bg-bg-surface px-3.5 py-2 text-small text-text-secondary"
             >
-              {input.label}
+              {t(`inputs.${input.id}.label`)}
             </span>
           ))}
         </div>
@@ -351,24 +353,24 @@ export function SystemDiagram({ className }: { className?: string }) {
             )}
           >
             <span className="font-mono text-eyebrow uppercase text-accent">
-              Custom software
+              {t("system.eyebrow")}
             </span>
             <span className="font-display text-h4 font-semibold text-text-primary">
-              Built for you
+              {t("system.title")}
             </span>
           </div>
         </div>
 
         {/* ── Outputs ────────────────────────────────────────────────────── */}
         <div className="relative z-10 flex flex-col items-center gap-2.5 md:items-start">
-          <Label className="mb-1.5">Handled automatically</Label>
+          <Label className="mb-1.5">{t("handledAutomatically")}</Label>
           {OUTPUTS.map((output) => (
             <span
-              key={output.id}
-              data-node={output.id}
+              key={output.nodeId}
+              data-node={output.nodeId}
               className="rounded-md border border-border-strong bg-bg-elevated px-3.5 py-2 text-small text-text-primary"
             >
-              {output.label}
+              {t(`outputs.${output.id}.label`)}
             </span>
           ))}
         </div>
@@ -380,10 +382,7 @@ export function SystemDiagram({ className }: { className?: string }) {
         the sole accessible representation — and it is a better one.
       */}
       <figcaption className="sr-only">
-        Diagram: repetitive manual work — the inbox, documents, CRM records,
-        spreadsheets and web forms — flows into custom software built by AGility,
-        which returns answered enquiries, captured data, systems kept in sync,
-        and hours given back to your team.
+        {t("caption")}
       </figcaption>
     </figure>
   );

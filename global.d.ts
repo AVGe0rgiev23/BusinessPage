@@ -1,4 +1,5 @@
 import type common from "./messages/en/common.json";
+import type home from "./messages/en/home.json";
 import type metadata from "./messages/en/metadata.json";
 import type { routing } from "./src/i18n/routing";
 
@@ -6,6 +7,10 @@ import type { routing } from "./src/i18n/routing";
 declare module "next-intl" {
   interface AppConfig {
     Locale: (typeof routing.locales)[number];
-    Messages: { common: typeof common; metadata: typeof metadata };
+    Messages: {
+      common: typeof common;
+      home: typeof home;
+      metadata: typeof metadata;
+    };
   }
 }

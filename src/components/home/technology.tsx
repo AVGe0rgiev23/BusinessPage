@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { ArrowRight } from "lucide-react";
 
@@ -20,38 +21,24 @@ import { SectionHeading } from "@/components/layout/section-heading";
  * information. They are a set of like things.
  */
 const STACK = [
-  {
-    label: "Languages",
-    items: ["TypeScript", "JavaScript", "Python", "SQL"],
-  },
-  {
-    label: "Frameworks & runtime",
-    items: ["React", "Next.js", "Node.js"],
-  },
-  {
-    label: "Data",
-    items: ["PostgreSQL", "Redis", "Vector databases"],
-  },
-  {
-    label: "AI & LLM tooling",
-    items: ["LLM APIs", "RAG pipelines", "Embeddings", "Agent frameworks"],
-  },
-  {
-    label: "Cloud & infrastructure",
-    items: ["Vercel", "AWS", "Docker", "CI/CD"],
-  },
-];
+  { id: "languages", items: ["typescript","javascript","python","sql"] },
+  { id: "frameworksRuntime", items: ["react","nextJs","nodeJs"] },
+  { id: "data", items: ["postgresql","redis","vectorDatabases"] },
+  { id: "aiLlmTooling", items: ["llmApis","ragPipelines","embeddings","agentFrameworks"] },
+  { id: "cloudInfrastructure", items: ["vercel","aws","docker","ciCd"] },
+] as const;
 
-export function Technology() {
+export async function Technology() {
+  const t = await getTranslations("home.technology");
   return (
     <Section id="technology" aria-labelledby="technology-heading">
       <Container>
         <SectionHeading
           index="08"
-          eyebrow="My stack"
+          eyebrow={t("heading.eyebrow")}
           headingId="technology-heading"
-          title="Built on modern, proven engineering."
-          lede="I work with a well-supported, widely adopted stack — the same tooling behind serious software products, chosen for reliability and longevity rather than novelty."
+          title={t("heading.title")}
+          lede={t("heading.lede")}
         />
 
         <RevealGroup
@@ -61,11 +48,11 @@ export function Technology() {
         >
           {STACK.map((group) => (
             <div
-              key={group.label}
+              key={group.id}
               className="grid gap-x-10 gap-y-4 border-b border-border py-7 md:grid-cols-[minmax(0,16rem)_minmax(0,1fr)] md:items-baseline lg:gap-x-16"
             >
               <dt className="font-mono text-eyebrow uppercase text-text-secondary">
-                {group.label}
+                {t(`stack.groups.${group.id}.label`)}
               </dt>
               <dd className="flex flex-wrap gap-2">
                 {group.items.map((item) => (
@@ -73,7 +60,7 @@ export function Technology() {
                     key={item}
                     className="rounded-sm border border-border bg-bg-surface px-2.5 py-1 text-small text-text-primary transition-colors duration-[--duration-fast] hover:border-border-hover"
                   >
-                    {item}
+                    {t(`stack.items.${item}`)}
                   </span>
                 ))}
               </dd>
@@ -86,7 +73,7 @@ export function Technology() {
             href="/technologies"
             className={cn(arrowLink, focusRing)}
           >
-            Explore the technologies
+            {t("exploreAll")}
             <ArrowRight
               className="size-4 transition-transform duration-[--duration-fast] group-hover:translate-x-0.5"
               aria-hidden="true"

@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { ArrowRight } from "lucide-react";
 
@@ -21,31 +22,13 @@ import {
   instead.
 */
 const FAQS = [
-  {
-    q: "How long does a project take?",
-    a: "It depends on the scope. A focused automation can be a matter of weeks; a larger internal tool or custom product takes longer. I work in increments and get something useful into your hands early, rather than disappearing for a quarter.",
-  },
-  {
-    q: "Who owns the software?",
-    a: "The custom software I build specifically for you is intended to be yours under the project agreement, and your data stays your data. Third-party services — cloud hosting, AI providers, and the like — remain subject to their own providers' terms, and who holds those accounts depends on the delivery model you choose.",
-  },
-  {
-    q: "Where does the software run?",
-    a: "That's your call. I can operate the whole system for you as a managed service, deploy it into infrastructure and accounts you control, or keep building and maintaining software that runs inside your own environment. I'll recommend the model that fits your team, budget, and security requirements.",
-  },
-  {
-    q: "What happens after launch?",
-    a: "One of three things, depending on what you want: I keep operating the system for you, I maintain and improve it while your team owns the infrastructure, or I hand it over with the documentation your team needs to run it. Ongoing support is an option, not a requirement.",
-  },
-  {
-    q: "Low-code or custom — which do I need?",
-    a: "It depends on the job, and I'll be honest about it. If an existing tool solves your problem more cheaply and safely, I'll say so. But for processes that are central to how you make money, custom software gives you the ownership, flexibility, and room to grow that a drag-and-drop builder rarely does.",
-  },
-  {
-    q: "Can you work with the tools we already use?",
-    a: "Almost always. A big part of what I do is connecting the systems you already rely on — CRMs, inboxes, spreadsheets, and internal tools — so they finally work together instead of in isolation.",
-  },
-];
+  { id: "longProjectTake" },
+  { id: "whoOwnsSoftware" },
+  { id: "whereSoftwareRun" },
+  { id: "happensAfterLaunch" },
+  { id: "lowCodeCustom" },
+  { id: "workToolsAlready" },
+] as const;
 
 /**
  * FaqPreview.
@@ -55,7 +38,8 @@ const FAQS = [
  * closing CTA, so they get room to breathe and a comfortable reading measure
  * for the answers.
  */
-export function FaqPreview() {
+export async function FaqPreview() {
+  const t = await getTranslations("home.faqPreview");
   return (
     <Section id="faq" aria-labelledby="faq-heading">
       <Container>
@@ -63,10 +47,10 @@ export function FaqPreview() {
           <div className="lg:sticky lg:top-28 lg:self-start">
             <SectionHeading
               index="11"
-              eyebrow="FAQ"
+              eyebrow={t("heading.eyebrow")}
               headingId="faq-heading"
-              title="Questions, answered."
-              lede="The things business owners ask me most before getting started."
+              title={t("heading.title")}
+              lede={t("heading.lede")}
               layout="stacked"
             />
 
@@ -75,7 +59,7 @@ export function FaqPreview() {
                 href="/faq"
                 className={cn(arrowLink, focusRing)}
               >
-                Read all FAQs
+                {t("readAll")}
                 <ArrowRight
                   className="size-4 transition-transform duration-[--duration-fast] group-hover:translate-x-0.5"
                   aria-hidden="true"
@@ -87,11 +71,11 @@ export function FaqPreview() {
           <Reveal>
             <Accordion>
               {FAQS.map((faq) => (
-                <AccordionItem key={faq.q}>
-                  <AccordionTrigger>{faq.q}</AccordionTrigger>
+                <AccordionItem key={faq.id}>
+                  <AccordionTrigger>{t(`items.${faq.id}.q`)}</AccordionTrigger>
                   <AccordionContent>
                     <p className="max-w-[68ch] text-body text-text-secondary">
-                      {faq.a}
+                      {t(`items.${faq.id}.a`)}
                     </p>
                   </AccordionContent>
                 </AccordionItem>

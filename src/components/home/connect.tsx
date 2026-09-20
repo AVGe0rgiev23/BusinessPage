@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import { ArrowUpRight } from "lucide-react";
 
 import { cn, focusRing } from "@/lib/utils";
@@ -19,7 +20,8 @@ import { linkedinUrl } from "@/lib/site-config";
  * minor thing minor treatment is most of what "restraint" means in practice,
  * and the change also gives the page a genuine pause before the FAQ.
  */
-export function Connect() {
+export async function Connect() {
+  const t = await getTranslations("home.connect");
   return (
     <section
       id="connect"
@@ -35,11 +37,9 @@ export function Connect() {
             />
             <p className="max-w-[62ch] text-pretty text-small text-text-secondary">
               <span id="connect-heading" className="text-text-primary">
-                Let&apos;s stay in touch.
+                {t("stayInTouch")}
               </span>{" "}
-              Follow along on LinkedIn for how I think about building software,
-              automating the busywork, and getting real value out of AI — no
-              hype, just what works.
+              {t("body")}
             </p>
           </div>
 
@@ -50,7 +50,7 @@ export function Connect() {
             }
             className={cn("group shrink-0", focusRing)}
           >
-            Connect on LinkedIn
+            {t("button")}
             <ArrowUpRight
               className="text-text-muted transition-transform duration-[--duration-fast] group-hover/button:translate-x-0.5 group-hover/button:-translate-y-0.5"
               aria-hidden="true"
