@@ -1,4 +1,5 @@
 import { initLocale } from "@/i18n/init-locale";
+import { routeMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 
 import { PageHeader } from "@/components/layout/page-header";
@@ -6,17 +7,13 @@ import { ProcessSteps } from "@/components/process/process-steps";
 import { WorkingWithUs } from "@/components/process/working-with-us";
 import { ProcessCta } from "@/components/process/process-cta";
 
-const title = "My Process — How AGility Builds Your Software";
-const description =
-  "See how a project goes from an expensive problem to working software: discovery, scoping, build, launch, and optional ongoing support — with the delivery model you choose and no surprises at any step.";
-
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: {
-    canonical: "/process",
-  },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  return routeMetadata(await initLocale(params), "process");
+}
 
 export default async function ProcessPage({
   params,

@@ -8,7 +8,7 @@ import { Footer } from "@/components/layout/footer";
 import { OrganizationSchema } from "@/components/seo/organization-schema";
 import { initLocale } from "@/i18n/init-locale";
 import { routing } from "@/i18n/routing";
-import { siteDescription, siteTitle, siteUrl } from "@/lib/site-config";
+import { siteUrl } from "@/lib/site-config";
 
 /*
   Three variable faces, latin subset only — one woff2 each, ~103 KB preloaded
@@ -38,31 +38,14 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
-const title = siteTitle;
-const description = siteDescription;
-
+// Only the origin lives here. Every route builds its own title, description,
+// canonical, hreflang alternates and share image in `routeMetadata`
+// (src/lib/seo.ts), because a page-level `openGraph` object replaces a
+// layout-level one wholesale and would drop the image.
 export const metadata: Metadata = {
   // Resolves every relative URL (canonical, OpenGraph/Twitter images, ...)
   // against the site origin. Set NEXT_PUBLIC_SITE_URL for production.
   metadataBase: new URL(siteUrl),
-  title,
-  description,
-  alternates: {
-    canonical: "/",
-  },
-  // Deliberately NO title/description here. Next backfills og:title/og:description
-  // (and twitter:title/description below) from each route's own `title` /
-  // `description`, so subpages get their own values instead of inheriting these
-  // site defaults. Keeping only `type` also means subpages don't need to redefine
-  // `openGraph`, so the file-based `opengraph-image` is inherited on every route
-  // (a per-page `openGraph` object would replace this one wholesale and drop the
-  // image). Verified against the generated <head> for home + a subpage.
-  openGraph: {
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-  },
 };
 
 export function generateStaticParams() {

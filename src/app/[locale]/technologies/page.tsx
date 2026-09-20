@@ -1,4 +1,5 @@
 import { initLocale } from "@/i18n/init-locale";
+import { routeMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 
 import { PageHeader } from "@/components/layout/page-header";
@@ -6,17 +7,13 @@ import { TechStack } from "@/components/technologies/tech-stack";
 import { WhyThisStack } from "@/components/technologies/why-this-stack";
 import { TechnologiesCta } from "@/components/technologies/technologies-cta";
 
-const title = "Technology Stack | AGility";
-const description =
-  "The languages, frameworks, data, AI, background-job, and cloud tools AGility builds with — a proven, widely supported toolkit chosen per project for reliability, performance, and software that stays maintainable long term.";
-
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: {
-    canonical: "/technologies",
-  },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  return routeMetadata(await initLocale(params), "technologies");
+}
 
 export default async function TechnologiesPage({
   params,

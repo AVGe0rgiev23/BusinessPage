@@ -1,4 +1,5 @@
 import { initLocale } from "@/i18n/init-locale";
+import { routeMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 
 import { PageHeader } from "@/components/layout/page-header";
@@ -8,17 +9,13 @@ import { EngineeringPractice } from "@/components/work/engineering-practice";
 import { SelectedWork } from "@/components/work/selected-work";
 import { WorkCta } from "@/components/work/work-cta";
 
-const title = "Work — My Engineering Practice | AGility";
-const description =
-  "No client case studies yet. Instead of inventing them: my own product, two hackathon builds, the code on GitHub, and the engineering standards behind all of it.";
-
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: {
-    canonical: "/work",
-  },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  return routeMetadata(await initLocale(params), "work");
+}
 
 export default async function WorkPage({
   params,

@@ -1,4 +1,5 @@
 import { initLocale } from "@/i18n/init-locale";
+import { routeMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 import { CalendarClock } from "lucide-react";
 
@@ -12,17 +13,13 @@ import { BookingCta, CALENDLY_URL } from "@/components/book/booking-cta";
 const focusRing =
   "outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-bg";
 
-const title = "Book a Consultation — A Free 30-Minute Call with AGility";
-const description =
-  "Book a free, 30-minute consultation. I'll look at where your business is losing time and money and give you an honest answer on whether custom software is worth it.";
-
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: {
-    canonical: "/book",
-  },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  return routeMetadata(await initLocale(params), "book");
+}
 
 const perks = ["About 30 minutes", "Free", "No pressure", "No obligation"];
 

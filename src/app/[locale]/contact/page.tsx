@@ -1,4 +1,5 @@
 import { initLocale } from "@/i18n/init-locale";
+import { routeMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 
 import { Container } from "@/components/layout/container";
@@ -8,17 +9,13 @@ import { Reveal } from "@/components/motion/reveal";
 import { ContactForm } from "@/components/contact/contact-form";
 import { ContactAside } from "@/components/contact/contact-aside";
 
-const title = "Contact AGility — Tell Me What's Slowing You Down";
-const description =
-  "Send me a message about the repetitive work costing your team time and money. I read every message myself and reply within one business day.";
-
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: {
-    canonical: "/contact",
-  },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  return routeMetadata(await initLocale(params), "contact");
+}
 
 export default async function ContactPage({
   params,

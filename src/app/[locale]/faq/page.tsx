@@ -1,4 +1,5 @@
 import { initLocale } from "@/i18n/init-locale";
+import { routeMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 import { Link } from "@/i18n/navigation";
 
@@ -6,17 +7,13 @@ import { PageHeader } from "@/components/layout/page-header";
 import { FaqGroup, type FaqItem } from "@/components/faq/faq-group";
 import { FaqCta } from "@/components/faq/faq-cta";
 
-const title = "FAQ — Pricing, Delivery Models & Ownership | AGility";
-const description =
-  "Straight answers on how AGility works: pricing and infrastructure costs, project timelines, who owns the software, where it runs, who operates it after launch, custom vs low-code, and how I handle security.";
-
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: {
-    canonical: "/faq",
-  },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  return routeMetadata(await initLocale(params), "faq");
+}
 
 const linkClass =
   "rounded-sm font-medium text-accent underline-offset-4 transition-colors hover:text-accent-hover outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-bg";

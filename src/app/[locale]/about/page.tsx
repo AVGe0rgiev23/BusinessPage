@@ -1,4 +1,5 @@
 import { initLocale } from "@/i18n/init-locale";
+import { routeMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 
 import { PageHeader } from "@/components/layout/page-header";
@@ -9,17 +10,13 @@ import { EngineeringInTheOpen } from "@/components/about/engineering-in-the-open
 import { WhoWeServe } from "@/components/about/who-we-serve";
 import { AboutCta } from "@/components/about/about-cta";
 
-const title = "About AGility — Custom Software Built Around Your Business";
-const description =
-  "I build custom software that saves growing businesses time and money, with clear ownership and a delivery model you choose. Here is how I think about building, and what I stand for.";
-
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: {
-    canonical: "/about",
-  },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  return routeMetadata(await initLocale(params), "about");
+}
 
 export default async function AboutPage({
   params,

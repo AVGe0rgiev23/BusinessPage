@@ -1,4 +1,6 @@
+import type { Metadata } from "next";
 import { initLocale } from "@/i18n/init-locale";
+import { routeMetadata } from "@/lib/seo";
 import { Hero } from "@/components/home/hero";
 import { Problem } from "@/components/home/problem";
 import { Outcomes } from "@/components/home/outcomes";
@@ -14,6 +16,14 @@ import { Connect } from "@/components/home/connect";
 import { FaqPreview } from "@/components/home/faq-preview";
 import { Teardown } from "@/components/home/teardown";
 import { ClosingCta } from "@/components/home/closing-cta";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  return routeMetadata(await initLocale(params), "home");
+}
 
 export default async function Home({
   params,
