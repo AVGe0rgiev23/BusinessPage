@@ -25,6 +25,8 @@
 - Contact: the notification email to the owner stays English and carries `Site language: English|Bulgarian`. **Never submit the contact form successfully while testing** (it sends a real email via Resend) unless the owner has said so; exercise validation paths only.
 - The `/work` cards whose body is `TODO: …` are translated 1:1, not invented.
 - Do not commit `.snapshots/`, `.next/`, or `public/__layout-audit.html`.
+- **Stop servers only by port** (the PowerShell one-liner used in the steps below). Never `taskkill /IM node.exe`: Claude Code and the Playwright MCP server are Node processes.
+- Never write files from an inline `node -e` (it stalls on a permission check when nobody is at the terminal); put the code in a script file and run it.
 
 ## File Structure
 
@@ -55,7 +57,7 @@
 ### Task 1: English text-snapshot harness and baseline
 
 **Files:**
-- Create: `scripts/snapshot-text.mjs`
+- Create: `scripts/snapshot-text.mjs`, `scripts/accordion-text.js`, `scripts/accordion-diff.mjs`
 - Modify: `package.json` (devDependency), `.gitignore`
 
 **Interfaces:**
@@ -166,12 +168,16 @@ rm -rf .snapshots/en-before-2 .snapshots/en-tampered
 ```
 Expected: prints `DETERMINISTIC` then `SENSITIVE`.
 
-- [ ] **Step 5: Confirm the baseline contains real copy, then commit**
+- [ ] **Step 5: Capture the closed accordions (the text snapshot cannot see them)**
+
+Closed accordion panels are not in the server HTML — the answers live only in the streamed React payload — so `snapshot-text.mjs` never sees FAQ answers. Capture them in a browser instead. With `pnpm start` running, in Playwright open `/faq` and evaluate the function in `scripts/accordion-text.js`, saving the result as `.snapshots/accordions-en-before-faq.json` (22 items, no missing panels); repeat on `/` for `.snapshots/accordions-en-before-home.json` (6 items). Stop the server by port. `node scripts/accordion-diff.mjs <before> <after>` later compares two captures and must print `ACCORDIONS IDENTICAL`; it exits 1 and prints the difference on any change.
+
+- [ ] **Step 6: Confirm the baseline contains real copy, then commit**
 
 Run: `grep -c "moving data" .snapshots/en-before/home.txt` — Expected: `1`.
 
 ```bash
-git add scripts/snapshot-text.mjs package.json pnpm-lock.yaml .gitignore
+git add scripts/snapshot-text.mjs scripts/accordion-text.js scripts/accordion-diff.mjs package.json pnpm-lock.yaml .gitignore
 git commit -m "chore: add English text-snapshot harness for the i18n refactor
 
 Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>"
@@ -464,7 +470,7 @@ Expected: all 13 tests PASS.
 }
 ```
 
-Add to `package.json` `"scripts"`: `"i18n:check": "node scripts/i18n-check.mjs"` and `"test:i18n": "node --test scripts/"`.
+Add to `package.json` `"scripts"`: `"i18n:check": "node scripts/i18n-check.mjs"` and `"test:i18n": "node --test scripts/i18n-check.test.mjs"`.
 
 Run: `pnpm test:i18n` — Expected: 13 pass.
 
@@ -762,7 +768,7 @@ diff -ru .snapshots/en-before .snapshots/en-task3 && echo "ENGLISH IDENTICAL"
 for p in / /services /bg /bg/services; do curl -s -o /dev/null -w "$p -> %{http_code}\n" "http://localhost:3000$p"; done
 curl -s http://localhost:3000/bg | grep -o '<html[^>]*lang="[a-z]*"' | head -1
 curl -s -o /dev/null -w "/en -> %{http_code} %{redirect_url}\n" http://localhost:3000/en
-taskkill //F //IM node.exe > /dev/null 2>&1 || true
+powershell.exe -NoProfile -Command "Get-NetTCPConnection -LocalPort 3000 -State Listen -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id \$_.OwningProcess -Force }"
 ```
 Expected: `ENGLISH IDENTICAL`; all four paths `200`; the `/bg` page reports `lang="bg"` (its text is still English); `/en` is a redirect to `/` (canonicalising an explicit default-locale prefix — not language detection). Stop the server afterwards.
 
@@ -986,7 +992,7 @@ diff -ru .snapshots/en-before .snapshots/en-task4 && echo "ENGLISH IDENTICAL"
 curl -s http://localhost:3000/services | grep -io '<link rel="alternate"[^>]*>' 
 curl -s http://localhost:3000/bg/services | grep -io '<link rel="canonical"[^>]*>\|property="og:locale" content="[^"]*"'
 curl -s http://localhost:3000/sitemap.xml | grep -c "<loc>"
-taskkill //F //IM node.exe > /dev/null 2>&1 || true
+powershell.exe -NoProfile -Command "Get-NetTCPConnection -LocalPort 3000 -State Listen -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id \$_.OwningProcess -Force }"
 ```
 Expected: `ENGLISH IDENTICAL` (title, description, canonical, og and twitter text all unchanged); `/services` lists alternates for `en`, `bg` and `x-default`; `/bg/services` has canonical `…/bg/services` and `og:locale` `bg_BG`; the sitemap prints `18`.
 
@@ -1009,7 +1015,7 @@ Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>"
 - **R4 — Rich text.** Inline links and highlights use `t.rich("key", { book: (chunks) => <Link href="/book" className={linkClass}>{chunks}</Link> })` with the source string `…<book>book a consultation</book>…`. A highlight span becomes an `<em>…</em>` tag mapped to the same span classes.
 - **R5 — Props.** Copy in prop defaults (e.g. `DeliveryModels`) is removed; callers pass translated strings. Shared component APIs do not change.
 - **R6 — Seed.** After creating `messages/en/<area>.json`, run `cp messages/en/<area>.json messages/bg/<area>.json`, add the area to `AREAS` in `src/i18n/messages.ts`, and add `<area>: typeof <area>` (with its `import type`) to `global.d.ts`.
-- **R7 — Verify.** `pnpm exec tsc --noEmit && pnpm lint && pnpm build`; `node scripts/snapshot-text.mjs --out .snapshots/en-<task>`; `diff -ru <previous snapshot> .snapshots/en-<task>` must print nothing (the previous snapshot is the last one that was clean); `pnpm i18n:check --areas <area>` must exit 0 (the "still identical to English" warning is expected until translation).
+- **R7 — Verify.** `pnpm exec tsc --noEmit && pnpm lint && pnpm build`; `node scripts/snapshot-text.mjs --out .snapshots/en-<task>`; `diff -ru <previous snapshot> .snapshots/en-<task>` must print nothing (the previous snapshot is the last one that was clean); `pnpm i18n:check --areas <area>` must exit 0 (the "still identical to English" warning is expected until translation). For tasks that touch accordion content (`home`, `faq`) also capture the accordions in the browser with `scripts/accordion-text.js` and run `node scripts/accordion-diff.mjs .snapshots/accordions-en-before-<page>.json <new capture>` — it must print `ACCORDIONS IDENTICAL`.
 - **R8 — Commit** once per task, message `feat(i18n): extract <area> copy into catalogs`, with the Co-Authored-By trailer.
 
 ### Task 5: Extract site chrome (nav, footer, skip link) into `common`
@@ -1282,7 +1288,7 @@ Catalog: `"price": "€{low, number}–{high, number}"` for each of `home.pricin
 
 - [ ] **Step 4: Verify and commit (R6, R7, R8)**
 
-Seed `bg/home.json`, add `"home"` to `AREAS` and `global.d.ts`. Snapshot `en-task7`, diff against `en-task6` must print nothing (the home route is the one that changes; all nine must still match). `pnpm i18n:check --areas home` exits 0.
+Seed `bg/home.json`, add `"home"` to `AREAS` and `global.d.ts`. Snapshot `en-task7`, diff against `en-task6` must print nothing (the home route is the one that changes; all nine must still match). `pnpm i18n:check --areas home` exits 0. Capture the home accordions and run the accordion diff against `.snapshots/accordions-en-before-home.json`: `ACCORDIONS IDENTICAL (6 items)`.
 
 ### Task 8: `services` and `shared` (delivery models) areas
 
@@ -1396,7 +1402,7 @@ node -e 'const fs=require("fs");const seen={};for(const l of ["en"])for(const f 
 ```
 For every pair it prints, make the later component read the earlier key (and delete the duplicate entry). If it prints nothing, the copy is genuinely separate and nothing changes.
 
-- [ ] **Step 4: Verify and commit (R6–R8)** — snapshot `en-task13` vs `en-task12` prints nothing (FAQ answers are hidden in accordions but present in the HTML, so they are covered); `pnpm i18n:check --areas faq`.
+- [ ] **Step 4: Verify and commit (R6–R8)** — snapshot `en-task13` vs `en-task12` prints nothing **and** the accordion diff against `.snapshots/accordions-en-before-faq.json` prints `ACCORDIONS IDENTICAL (22 items)` (closed panels are not in the server HTML, so the text snapshot alone cannot see FAQ answers); `pnpm i18n:check --areas faq`.
 
 ### Task 14: `book` and `contact` areas (form, server action, locale-aware validation)
 
@@ -1654,7 +1660,7 @@ pnpm build
 (pnpm start > /tmp/start.log 2>&1 &) ; sleep 6
 curl -s -o /tmp/og-bg.png -w "%{http_code} %{content_type}\n" http://localhost:3000/og/bg
 curl -s -o /tmp/og-en.png -w "%{http_code} %{content_type}\n" http://localhost:3000/og/en
-taskkill //F //IM node.exe > /dev/null 2>&1 || true
+powershell.exe -NoProfile -Command "Get-NetTCPConnection -LocalPort 3000 -State Listen -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id \$_.OwningProcess -Force }"
 ```
 Expected: `200 image/png` twice. Open `/tmp/og-bg.png` (Read tool) and confirm real Cyrillic letters, no empty boxes, nothing clipped; open `/tmp/og-en.png` and confirm it matches the previous English card. If Satori shows boxes, the subset range or the weight mapping is wrong — fix before continuing.
 
@@ -1788,7 +1794,7 @@ Expected: 13 tests pass; lint and types clean; the build prints the strict `i18n
 node scripts/snapshot-text.mjs --out .snapshots/en-final
 diff -ru .snapshots/en-task6 .snapshots/en-final && echo "ENGLISH IDENTICAL"
 ```
-Expected: `ENGLISH IDENTICAL` (`en-task6` is the baseline that already contains the switcher).
+Expected: `ENGLISH IDENTICAL` (`en-task6` is the baseline that already contains the switcher). Then capture the accordions on `/faq` and `/` in the browser and run the accordion diff against both `en-before` captures: `ACCORDIONS IDENTICAL (22 items)` and `(6 items)`.
 
 - [ ] **Step 3: Bulgarian leftovers scan**
 
@@ -1907,7 +1913,7 @@ Evaluate on `/` and on `/bg`: `() => performance.getEntriesByType("resource").fi
 
 ```bash
 rm public/__layout-audit.html
-taskkill //F //IM node.exe > /dev/null 2>&1 || true
+powershell.exe -NoProfile -Command "Get-NetTCPConnection -LocalPort 3000 -State Listen -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id \$_.OwningProcess -Force }"
 git status --short   # only scripts/layout-audit.html (and any string fixes) should appear
 git add scripts/layout-audit.html messages
 git commit -m "test(i18n): add the in-page layout audit and fix findings from the Bulgarian pass"
