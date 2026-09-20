@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 
 import { focusRing } from "@/lib/utils";
 import { CtaBand } from "@/components/layout/cta-band";

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-expressions -- pasted into the browser as a bare function expression */
 // Paste this whole function into the browser's evaluate (Playwright) on a page
 // with accordions (/ and /faq). Closed accordion panels are not in the server
 // HTML, so scripts/snapshot-text.mjs cannot see them; this opens each one in

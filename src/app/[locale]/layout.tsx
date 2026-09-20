@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
 import { Archivo, Instrument_Sans, JetBrains_Mono } from "next/font/google";
-import "./globals.css";
+import { NextIntlClientProvider } from "next-intl";
+import { getTranslations } from "next-intl/server";
+import "../globals.css";
 import { Nav } from "@/components/layout/nav";
 import { Footer } from "@/components/layout/footer";
 import { OrganizationSchema } from "@/components/seo/organization-schema";
+import { initLocale } from "@/i18n/init-locale";
+import { routing } from "@/i18n/routing";
 import { siteDescription, siteTitle, siteUrl } from "@/lib/site-config";
 
 /*
@@ -61,14 +65,23 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
+export default async function RootLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }>) {
+  const locale = await initLocale(params);
+  const t = await getTranslations({ locale, namespace: "common" });
+
   return (
     <html
-      lang="en"
+      lang={locale}
       // The inline script below adds `js-reveal` to this element before React
       // hydrates, so the client's className is intentionally one class longer
       // than the server's. That is the only difference, and it is the whole
@@ -94,16 +107,23 @@ export default function RootLayout({
         />
       </head>
       <body className="flex min-h-full flex-col">
-        <OrganizationSchema />
-        <a
-          href="#main"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-accent focus:px-4 focus:py-2 focus:text-small focus:font-medium focus:text-accent-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-bg"
-        >
-          Skip to content
-        </a>
-        <Nav />
-        <div className="flex flex-1 flex-col">{children}</div>
-        <Footer />
+        {/*
+          next-intl's client `Link` and `usePathname` read the locale from this
+          provider. `messages={{}}` keeps the copy out of the client bundle;
+          components that need strings get their own slice via <ClientMessages>.
+        */}
+        <NextIntlClientProvider messages={{}}>
+          <OrganizationSchema />
+          <a
+            href="#main"
+            className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-accent focus:px-4 focus:py-2 focus:text-small focus:font-medium focus:text-accent-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-bg"
+          >
+            {t("skipToContent")}
+          </a>
+          <Nav />
+          <div className="flex flex-1 flex-col">{children}</div>
+          <Footer />
+        </NextIntlClientProvider>
       </body>
     </html>
   );

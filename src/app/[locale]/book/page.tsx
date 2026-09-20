@@ -1,3 +1,4 @@
+import { initLocale } from "@/i18n/init-locale";
 import type { Metadata } from "next";
 import { CalendarClock } from "lucide-react";
 
@@ -25,7 +26,12 @@ export const metadata: Metadata = {
 
 const perks = ["About 30 minutes", "Free", "No pressure", "No obligation"];
 
-export default function BookPage() {
+export default async function BookPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  await initLocale(params);
   return (
     <main id="main" tabIndex={-1} className="flex flex-1 flex-col">
       <PageHeader

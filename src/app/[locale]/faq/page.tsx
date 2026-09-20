@@ -1,5 +1,6 @@
+import { initLocale } from "@/i18n/init-locale";
 import type { Metadata } from "next";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 
 import { PageHeader } from "@/components/layout/page-header";
 import { FaqGroup, type FaqItem } from "@/components/faq/faq-group";
@@ -310,7 +311,12 @@ const AFTER_LAUNCH: FaqItem[] = [
   },
 ];
 
-export default function FaqPage() {
+export default async function FaqPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  await initLocale(params);
   return (
     <main id="main" tabIndex={-1} className="flex flex-1 flex-col">
       <PageHeader

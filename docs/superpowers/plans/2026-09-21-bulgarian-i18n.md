@@ -501,7 +501,7 @@ Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>"
 
 - [ ] **Step 1: Install next-intl and create the i18n modules**
 
-Run: `pnpm add next-intl`
+Run: `pnpm add next-intl`. pnpm 11 then reports `ERR_PNPM_IGNORED_BUILDS` and writes placeholders into `pnpm-workspace.yaml`; next-intl only needs those build scripts for optional message-extraction features this project does not use, so set `'@parcel/watcher': false` and `'@swc/core': false` under `allowBuilds`, then confirm `pnpm install --frozen-lockfile` exits 0 (Vercel runs the same install).
 
 ```ts
 // src/i18n/routing.ts
@@ -730,6 +730,8 @@ export default async function RootLayout({
   // <html lang={locale} …existing attributes…> … <a href="#main" …>{t("skipToContent")}</a> …
 ```
 
+Wrap everything inside `<body>` in `<NextIntlClientProvider messages={{}}>` (import it from `next-intl`). next-intl's client `Link` and `usePathname` read the locale from it — without it the build fails at prerender inside `usePathname` — and `messages={{}}` keeps copy out of the client bundle (components that need strings get a slice from `<ClientMessages>`).
+
 In each of the nine `page.tsx` files, make the default export `async`, accept `params`, and call `initLocale` first, e.g.:
 
 ```tsx
@@ -756,7 +758,7 @@ Expected: `no next/link left`; nav imports `usePathname` from `@/i18n/navigation
 
 - [ ] **Step 6: Typecheck, lint, build**
 
-Run: `pnpm exec tsc --noEmit && pnpm lint && pnpm build` (timeout 600000ms)
+First delete the stale generated types (`rm -rf .next/types .next/dev/types`; they still point at the old `src/app/...` paths and make `tsc` fail). Run: `pnpm exec tsc --noEmit && pnpm lint && pnpm build` (timeout 600000ms)
 Expected: all pass; the route table lists `/[locale]` and every subpage as SSG with both `/en/…` and `/bg/…` params, plus `/og/[locale]`. If `tsc` reports an API difference from the installed next-intl, adapt to its types — the required behaviour is unchanged: `as-needed` prefix, detection off, English at unprefixed URLs.
 
 - [ ] **Step 7: Prove English is unchanged and smoke-test routing**

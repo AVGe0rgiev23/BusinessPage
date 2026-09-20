@@ -1,3 +1,4 @@
+import { initLocale } from "@/i18n/init-locale";
 import { Hero } from "@/components/home/hero";
 import { Problem } from "@/components/home/problem";
 import { Outcomes } from "@/components/home/outcomes";
@@ -14,7 +15,12 @@ import { FaqPreview } from "@/components/home/faq-preview";
 import { Teardown } from "@/components/home/teardown";
 import { ClosingCta } from "@/components/home/closing-cta";
 
-export default function Home() {
+export default async function Home({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  await initLocale(params);
   return (
     <main id="main" tabIndex={-1} className="flex flex-1 flex-col">
       <Hero />

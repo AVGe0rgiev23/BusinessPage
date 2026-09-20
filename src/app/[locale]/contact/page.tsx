@@ -1,3 +1,4 @@
+import { initLocale } from "@/i18n/init-locale";
 import type { Metadata } from "next";
 
 import { Container } from "@/components/layout/container";
@@ -19,7 +20,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ContactPage() {
+export default async function ContactPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  await initLocale(params);
   return (
     <main id="main" tabIndex={-1} className="flex flex-1 flex-col">
       <PageHeader

@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { createTimeline } from "animejs";
 import { ArrowRight } from "lucide-react";
 

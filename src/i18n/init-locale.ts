@@ -1,0 +1,12 @@
+import { notFound } from "next/navigation";
+import { hasLocale } from "next-intl";
+import { setRequestLocale } from "next-intl/server";
+import { routing, type Locale } from "./routing";
+
+/** Resolve the [locale] param, enable static rendering for it, and return it typed. */
+export async function initLocale(params: Promise<{ locale: string }>): Promise<Locale> {
+  const { locale } = await params;
+  if (!hasLocale(routing.locales, locale)) notFound();
+  setRequestLocale(locale);
+  return locale;
+}

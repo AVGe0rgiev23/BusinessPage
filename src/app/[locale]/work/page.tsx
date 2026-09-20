@@ -1,3 +1,4 @@
+import { initLocale } from "@/i18n/init-locale";
 import type { Metadata } from "next";
 
 import { PageHeader } from "@/components/layout/page-header";
@@ -19,7 +20,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default function WorkPage() {
+export default async function WorkPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  await initLocale(params);
   return (
     <main id="main" tabIndex={-1} className="flex flex-1 flex-col">
       <PageHeader

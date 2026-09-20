@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 
 import { cn, focusRing } from "@/lib/utils";
 import { Container } from "@/components/layout/container";

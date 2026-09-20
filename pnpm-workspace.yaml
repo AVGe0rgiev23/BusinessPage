@@ -1,3 +1,7 @@
 allowBuilds:
+  # Pulled in by next-intl for its optional message-extraction/watch features,
+  # which this project does not use; their install scripts are not needed.
+  '@parcel/watcher': false
+  '@swc/core': false
   sharp: true
   unrs-resolver: true

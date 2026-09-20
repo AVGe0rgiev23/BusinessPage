@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { CheckCircle2, LoaderCircle, Send } from "lucide-react";
 
 import { cn, focusRing } from "@/lib/utils";
@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import {
   submitContactForm,
   type ContactFieldErrors,
-} from "@/app/contact/actions";
+} from "@/app/[locale]/contact/actions";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MIN_MESSAGE_LENGTH = 10;
