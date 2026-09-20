@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/sheet";
 import { Container } from "@/components/layout/container";
 import { Wordmark } from "@/components/layout/brand";
+import { LanguageSwitcher } from "@/components/layout/language-switcher";
 
 // Ordered to follow the buyer's questions: what you build → how you work →
 // what you build with → proof → who you are → objections → get in touch.
@@ -196,6 +197,9 @@ export function Nav() {
         </nav>
 
         <div className="flex items-center gap-2">
+          {/* One instance, visible at every width: between the nav and the CTA
+              on desktop, beside the menu button on mobile. */}
+          <LanguageSwitcher />
           <Button
             size="sm"
             render={<Link href="/book" />}
@@ -270,6 +274,7 @@ export function Nav() {
               </nav>
 
               <div className="mt-auto border-t border-border p-6">
+                <LanguageSwitcher className="mb-4" />
                 <Button
                   size="lg"
                   render={<Link href="/book" onClick={() => setOpen(false)} />}

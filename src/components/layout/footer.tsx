@@ -1,7 +1,9 @@
 import { getTranslations } from "next-intl/server";
 
+import { ClientMessages } from "@/i18n/client-messages";
 import { Link } from "@/i18n/navigation";
 import { cn, focusRing } from "@/lib/utils";
+import { LanguageSwitcher } from "@/components/layout/language-switcher";
 import { Container } from "@/components/layout/container";
 import { Wordmark } from "@/components/layout/brand";
 import { GithubIcon, LinkedinIcon } from "@/components/icons/brand-icons";
@@ -133,9 +135,14 @@ export async function Footer() {
           <p className="font-mono text-eyebrow uppercase text-text-muted">
             {t("footer.rights", { year })}
           </p>
-          <p className="font-mono text-eyebrow uppercase text-text-muted">
-            {t("footer.caption")}
-          </p>
+          <div className="flex items-center gap-6">
+            <p className="font-mono text-eyebrow uppercase text-text-muted">
+              {t("footer.caption")}
+            </p>
+            <ClientMessages paths={["common.language"]}>
+              <LanguageSwitcher />
+            </ClientMessages>
+          </div>
         </div>
       </Container>
     </footer>

@@ -1,5 +1,6 @@
 {
   "skipToContent": "Skip to content",
+  "language": { "label": "Language", "en": "English", "bg": "Български" },
   "brand": { "homeLabel": "AGility — home" },
   "nav": {
     "primary": "Primary",

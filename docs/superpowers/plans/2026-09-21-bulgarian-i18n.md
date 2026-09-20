@@ -513,6 +513,12 @@ export const routing = defineRouting({
   localePrefix: "as-needed",
   // Owner decision: no automatic redirects from browser language or cookie.
   localeDetection: false,
+  // Nothing reads a locale cookie (the URL is the choice), so don't set one.
+  localeCookie: false,
+  // hreflang alternates are emitted once, with absolute URLs, in the page
+  // metadata (src/lib/seo.ts) and the sitemap; a second `Link:` header built
+  // from the request host could disagree with them (e.g. on preview URLs).
+  alternateLinks: false,
 });
 
 export type Locale = (typeof routing.locales)[number];
@@ -772,7 +778,7 @@ curl -s http://localhost:3000/bg | grep -o '<html[^>]*lang="[a-z]*"' | head -1
 curl -s -o /dev/null -w "/en -> %{http_code} %{redirect_url}\n" http://localhost:3000/en
 powershell.exe -NoProfile -Command "Get-NetTCPConnection -LocalPort 3000 -State Listen -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id \$_.OwningProcess -Force }"
 ```
-Expected: `ENGLISH IDENTICAL`; all four paths `200`; the `/bg` page reports `lang="bg"` (its text is still English); `/en` is a redirect to `/` (canonicalising an explicit default-locale prefix — not language detection). Stop the server afterwards.
+Also confirm `curl -sI http://localhost:3000/bg/services` shows **no** `Set-Cookie` and no `Link:` header (next-intl would otherwise set a `NEXT_LOCALE` cookie nothing reads, and a second hreflang header). Expected: `ENGLISH IDENTICAL`; all four paths `200`; the `/bg` page reports `lang="bg"` (its text is still English); `/en` is a redirect to `/` (canonicalising an explicit default-locale prefix — not language detection). Stop the server afterwards.
 
 - [ ] **Step 8: Commit**
 
@@ -1136,8 +1142,9 @@ Add to `common` in `messages/en/common.json` and `messages/bg/common.json`:
 // src/components/layout/language-switcher.tsx
 "use client";
 
+import NextLink from "next/link";
 import { useLocale, useTranslations } from "next-intl";
-import { Link, usePathname } from "@/i18n/navigation";
+import { getPathname, usePathname } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { cn, focusRing } from "@/lib/utils";
 
@@ -1160,9 +1167,10 @@ export function LanguageSwitcher({ className }: { className?: string }) {
           {i > 0 ? (
             <span aria-hidden="true" className="px-1 text-border-hover">|</span>
           ) : null}
-          <Link
-            href={pathname}
-            locale={locale}
+          {/* Public URL (`/services`, `/bg/services`), not next-intl's <Link locale>,
+              which would point English at the redirecting `/en/services`. */}
+          <NextLink
+            href={getPathname({ locale, href: pathname })}
             lang={locale}
             hrefLang={locale}
             aria-label={t(locale)}
@@ -1176,7 +1184,7 @@ export function LanguageSwitcher({ className }: { className?: string }) {
             )}
           >
             {SHORT[locale]}
-          </Link>
+          </NextLink>
         </span>
       ))}
     </div>
