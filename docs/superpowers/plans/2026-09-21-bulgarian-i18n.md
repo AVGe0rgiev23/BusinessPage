@@ -190,7 +190,7 @@ Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>"
 - Modify: `package.json` (scripts)
 
 **Interfaces:**
-- Produces: `checkMessages({ dir, glossary, areas?, strict? }) → { errors, warnings }` where each item is `{ code, where, detail }`. Codes: `MISSING_FILE`, `MISSING_KEY`, `EXTRA_KEY`, `EMPTY`, `PLACEHOLDER_MISMATCH`, `UNTRANSLATED` (an error only when `strict`, otherwise one summary warning), `AVOID_TERM`, `KEY_RULE`, `TYPO_EMDASH`, `TYPO_QUOTE`. Also exports `flatten(obj)` and `tokens(message)`.
+- Produces: `checkMessages({ dir, glossary, areas?, strict? }) → { errors, warnings }` where each item is `{ code, where, detail }`. Codes: `MISSING_FILE`, `MISSING_KEY`, `EXTRA_KEY`, `EMPTY`, `PLACEHOLDER_MISMATCH`, `UNTRANSLATED` (an error only when `strict`, otherwise one summary warning), `AVOID_TERM`, `KEY_RULE`, `TYPO_EMDASH`, `TYPO_QUOTE`. The glossary, key-rule and typography rules apply **only to strings that differ from the English**: a string still equal to the English (an unreplaced seed copy) is reported once, as `UNTRANSLATED`, not once per rule (two extra tests pin this, 15 in total). Also exports `flatten(obj)` and `tokens(message)`.
 - CLI: `pnpm i18n:check [--areas a,b] [--strict] [--dir messages] [--glossary path]`; exit 1 on any error.
 
 - [ ] **Step 1: Write the failing tests**
@@ -429,7 +429,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
 - [ ] **Step 4: Run the tests and confirm they pass**
 
 Run: `node --test scripts/i18n-check.test.mjs`
-Expected: all 13 tests PASS.
+Expected: the first 13 tests PASS (the two seed-copy tests are added in Task 5 when the seeded English copies first trip the rules).
 
 - [ ] **Step 5: Add the frozen glossary and the npm scripts**
 
@@ -472,7 +472,7 @@ Expected: all 13 tests PASS.
 
 Add to `package.json` `"scripts"`: `"i18n:check": "node scripts/i18n-check.mjs"` and `"test:i18n": "node --test scripts/i18n-check.test.mjs"`.
 
-Run: `pnpm test:i18n` — Expected: 13 pass.
+Run: `pnpm test:i18n` — Expected: 13 pass (15 after Task 5).
 
 - [ ] **Step 6: Commit**
 
@@ -1788,7 +1788,7 @@ Add a "Languages" section to `README.md` covering: URLs (`/` English, `/bg` Bulg
 ```bash
 pnpm test:i18n && pnpm lint && pnpm exec tsc --noEmit && pnpm build
 ```
-Expected: 13 tests pass; lint and types clean; the build prints the strict `i18n:check ok (0 errors, 0 warnings)` line and lists 18 prerendered pages plus `/og/en` and `/og/bg`.
+Expected: 15 tests pass; lint and types clean; the build prints the strict `i18n:check ok (0 errors, 0 warnings)` line and lists 18 prerendered pages plus `/og/en` and `/og/bg`.
 
 - [ ] **Step 2: English is text-identical (except the switcher)**
 

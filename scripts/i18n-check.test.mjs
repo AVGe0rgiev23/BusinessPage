@@ -95,3 +95,17 @@ test("--areas limits the check to the named areas", () => {
   const r = run({ home: { a: "A" }, faq: { a: "A" } }, { home: { a: "А" } }, { areas: ["home"] });
   assert.deepEqual(r.errors, []);
 });
+
+test("seeded English copies are reported as untranslated, not as glossary or typography errors", () => {
+  const en = { home: { a: "Fast — and simple", b: "Free work", c: 'He said "hi"' } };
+  const loose = run(en, en);
+  assert.deepEqual(loose.errors, []);
+  assert.equal(loose.warnings[0].code, "UNTRANSLATED");
+  assert.deepEqual(codes(run(en, en, { strict: true })), ["UNTRANSLATED", "UNTRANSLATED", "UNTRANSLATED"]);
+});
+
+test("pinned key rules only apply once the string is translated", () => {
+  const en = { common: { nav: { work: "Work" } } };
+  assert.deepEqual(run(en, en).errors, []);
+  assert.deepEqual(codes(run(en, en, { strict: true })), ["UNTRANSLATED"]);
+});

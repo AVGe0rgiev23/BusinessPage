@@ -6,6 +6,7 @@ import "../globals.css";
 import { Nav } from "@/components/layout/nav";
 import { Footer } from "@/components/layout/footer";
 import { OrganizationSchema } from "@/components/seo/organization-schema";
+import { ClientMessages } from "@/i18n/client-messages";
 import { initLocale } from "@/i18n/init-locale";
 import { routing } from "@/i18n/routing";
 import { siteUrl } from "@/lib/site-config";
@@ -103,7 +104,9 @@ export default async function RootLayout({
           >
             {t("skipToContent")}
           </a>
-          <Nav />
+          <ClientMessages paths={["common"]}>
+            <Nav />
+          </ClientMessages>
           <div className="flex flex-1 flex-col">{children}</div>
           <Footer />
         </NextIntlClientProvider>

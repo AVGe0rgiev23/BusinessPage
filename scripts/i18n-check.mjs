@@ -89,16 +89,21 @@ export function checkMessages({ dir, glossary, areas, strict = false }) {
         untranslated++;
         if (strict) errors.push({ code: "UNTRANSLATED", where, detail: b.slice(0, 60) });
       }
-      for (const term of glossary.terms ?? [])
-        for (const a of term.avoid ?? [])
-          if (containsTerm(b, a)) errors.push({ code: "AVOID_TERM", where, detail: `"${a}" → use "${term.bg}"` });
-      typography(b, where, errors);
+      // Rules about Bulgarian wording only apply to strings that have actually
+      // been translated; a string still equal to the English is reported once,
+      // as UNTRANSLATED (an error under --strict), not once per rule.
+      if (b.trim() !== e.trim()) {
+        for (const term of glossary.terms ?? [])
+          for (const a of term.avoid ?? [])
+            if (containsTerm(b, a)) errors.push({ code: "AVOID_TERM", where, detail: `"${a}" → use "${term.bg}"` });
+        typography(b, where, errors);
+      }
     }
 
     for (const rule of glossary.keyRules ?? []) {
       const [ruleArea, ...rest] = rule.key.split(".");
       const key = rest.join(".");
-      if (ruleArea === area && key in bg && bg[key] !== rule.equals) {
+      if (ruleArea === area && key in bg && bg[key] !== en[key] && bg[key] !== rule.equals) {
         errors.push({ code: "KEY_RULE", where: rule.key, detail: `expected "${rule.equals}", got "${bg[key]}"` });
       }
     }
