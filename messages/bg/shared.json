@@ -1,0 +1,33 @@
+{
+  "deliveryModels": {
+    "models": {
+      "fullyManaged": {
+        "name": "Fully managed",
+        "tagline": "You run the business. I run the software.",
+        "body": "I build the system and operate it for you — hosting, deployments, monitoring, maintenance, and ongoing improvements. You just use the software, through whatever interface makes sense: an app, a dashboard, email, Slack, or an API.",
+        "owns": "AGility operates the production environment on your behalf",
+        "operates": "AGility"
+      },
+      "clientOwned": {
+        "name": "Client-owned",
+        "tagline": "You own and operate it.",
+        "body": "I build and deploy the system into infrastructure and accounts you control, then hand over the agreed source code, configuration, and documentation. Your team — or another provider you choose — takes it from there.",
+        "owns": "You hold the cloud, data, and third-party accounts",
+        "operates": "Your team, or a provider you appoint"
+      },
+      "hybrid": {
+        "name": "Hybrid",
+        "tagline": "You own the infrastructure. I keep it running.",
+        "body": "Your company owns the environment, the data, and the third-party accounts, while I keep developing, deploying, monitoring, and improving the software inside it. I work with the technical permissions the job needs, and no more.",
+        "owns": "You hold the cloud, data, and third-party accounts",
+        "operates": "AGility, with authorised access to your environment"
+      }
+    },
+    "eyebrow": "Your software. Your choice.",
+    "heading": "One build. Three ways to work together.",
+    "intro": "No client gets forced into the same delivery model as the last one. I can run the system for you, deploy it into infrastructure you control, or manage software running inside your own environment. I'll recommend the approach that fits your technical, operational, and security requirements — but you choose how you want to work.",
+    "infrastructureLabel": "Infrastructure & accounts",
+    "runsLabel": "Runs & maintains it",
+    "footer": "In every model, the custom software I build for you is intended to be yours under the project agreement, and your data stays your data. What changes is who holds the infrastructure and who keeps it running. <em>Not sure which fits? I'll recommend a setup based on your technical team, security and compliance requirements, budget, and how much you want to manage yourself.</em>"
+  }
+}

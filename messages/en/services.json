@@ -1,0 +1,116 @@
+{
+  "catalog": {
+    "groups": {
+      "automateRepetitiveWork": {
+        "name": "Automate repetitive work",
+        "blurb": "The copy-paste, the re-typing, the chasing — the work your team does over and over that a computer should be doing instead."
+      },
+      "talkCustomersScale": {
+        "name": "Talk to customers at scale",
+        "blurb": "Answer more people, faster, without adding headcount — and keep a person in the loop for the conversations that need one."
+      },
+      "connectSystems": {
+        "name": "Connect your systems",
+        "blurb": "Stop moving data by hand between the tools you already pay for, and make sure everyone is working from the same, current picture."
+      },
+      "customProducts": {
+        "name": "Custom products",
+        "blurb": "When nothing off-the-shelf fits, I design and build the product itself — and the software I build for you is yours under the project agreement."
+      }
+    },
+    "services": {
+      "emailAutomation": {
+        "title": "Email automation",
+        "body": "Sort, route, and reply to routine email automatically, so messages get answered quickly and nothing slips through the cracks."
+      },
+      "documentProcessing": {
+        "title": "Document processing",
+        "body": "Pull the data out of invoices, contracts, and forms without anyone re-typing it — fewer errors and hours back every week."
+      },
+      "workflowAutomation": {
+        "title": "Workflow automation",
+        "body": "Connect the steps of a process end to end so work moves on its own, instead of waiting on manual handoffs between people and tools."
+      },
+      "internalCompanyTools": {
+        "title": "Internal company tools",
+        "body": "Replace the spreadsheets and manual rituals your team leans on with an app built around exactly how you actually work."
+      },
+      "aiAssistants": {
+        "title": "AI assistants",
+        "body": "A helper that answers questions and takes action against your own data and systems, so customers and staff get answers without waiting on someone."
+      },
+      "aiChatbots": {
+        "title": "AI chatbots",
+        "body": "A conversational front door for your site or product that qualifies leads, guides visitors, and hands off to a person only when it needs to."
+      },
+      "customerSupportSystems": {
+        "title": "Customer-support systems",
+        "body": "Triage, draft, and resolve routine tickets automatically, so your team spends its time on the conversations that genuinely need a human."
+      },
+      "crmIntegrations": {
+        "title": "CRM integrations",
+        "body": "Keep customer records accurate and in sync across every tool you use, so your team stops working from stale or conflicting data."
+      },
+      "apiIntegrations": {
+        "title": "API integrations",
+        "body": "Make the software you already rely on talk to each other cleanly, so data flows automatically instead of being moved by hand."
+      },
+      "aiPoweredDashboards": {
+        "title": "AI-powered dashboards",
+        "body": "Live views of the numbers that matter, with plain-language summaries — so you can see what's happening and act without digging through reports."
+      },
+      "customSaasProducts": {
+        "title": "Custom SaaS products",
+        "body": "A full product built from first idea to launch when existing software can't do what you need — and you want to own the result rather than rent it."
+      },
+      "bespokeAiSolutions": {
+        "title": "Bespoke AI solutions",
+        "body": "Have a problem that doesn't fit a category? I scope and build around it, using AI only where it genuinely earns its place."
+      }
+    },
+    "groupLabel": "Group"
+  },
+  "whyCustomCallout": {
+    "points": {
+      "ownership": {
+        "label": "Ownership",
+        "desc": "The custom software is yours under the project agreement — not rented from a builder you don't control."
+      },
+      "flexibility": {
+        "label": "Flexibility",
+        "desc": "It does exactly what your business needs, not just what a drag-and-drop builder happens to support."
+      },
+      "scalability": {
+        "label": "Scalability",
+        "desc": "It grows with your volume and complexity instead of hitting a platform ceiling."
+      },
+      "noUnnecessaryLock": {
+        "label": "No unnecessary lock-in",
+        "desc": "Standard, portable technology wherever practical — so your core process isn't hostage to one builder's pricing."
+      }
+    },
+    "eyebrow": "Custom vs. off-the-shelf",
+    "title": "Why custom, not off-the-shelf",
+    "first": "I'm code-first: the processes your business runs on get built as software, rather than assembled inside a proprietary visual workflow builder. That buys you flexibility, clearer ownership, and room to grow.",
+    "second": "Off-the-shelf tools and low-code platforms have their place, and I'll tell you honestly when one is the right fit — including when it means a smaller project for me. But as a process becomes central to how you make money, owning it tends to pay off more than renting it from a builder that can change its pricing or shut down.",
+    "third": "I use third-party services myself — cloud hosting, databases, AI providers. The point isn't to avoid them, it's to avoid unnecessary lock-in and keep what I build portable.",
+    "link": "See how I work"
+  },
+  "cta": {
+    "eyebrow": "Get started",
+    "title": "Not sure where to start? That's what the call is for.",
+    "subtitle": "Book a free consultation and I'll look at the repetitive work costing your team the most — then map out what's worth building first. No pressure, no jargon.",
+    "primary": "Book a consultation",
+    "secondary": "Get in touch"
+  },
+  "page": {
+    "eyebrow": "Services",
+    "title": "Software that handles the busywork your team shouldn't be doing.",
+    "subtitle": "Everything below is an example of what I build, not a fixed menu. Every project is designed around your business — your tools, your process, and the specific work you want to stop doing by hand."
+  },
+  "delivery": {
+    "eyebrow": "Delivery",
+    "heading": "How your software is delivered",
+    "intro": "Every project is different, and so is the right operating model. I can run the system for you, deploy it into infrastructure you control, or manage software running inside your own environment — whichever fits how your business works."
+  }
+}

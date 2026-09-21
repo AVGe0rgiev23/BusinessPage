@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import { initLocale } from "@/i18n/init-locale";
 import { routeMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
@@ -22,20 +23,21 @@ export default async function ServicesPage({
   params: Promise<{ locale: string }>;
 }) {
   await initLocale(params);
+  const t = await getTranslations("services");
   return (
     <main id="main" tabIndex={-1} className="flex flex-1 flex-col">
       <PageHeader
-        eyebrow="Services"
-        title="Software that handles the busywork your team shouldn't be doing."
-        subtitle="Everything below is an example of what I build, not a fixed menu. Every project is designed around your business — your tools, your process, and the specific work you want to stop doing by hand."
+        eyebrow={t("page.eyebrow")}
+        title={t("page.title")}
+        subtitle={t("page.subtitle")}
       />
       <ServicesCatalog />
       <WhyCustomCallout />
       <DeliveryModels
         id="delivery"
-        eyebrow="Delivery"
-        heading="How your software is delivered"
-        intro="Every project is different, and so is the right operating model. I can run the system for you, deploy it into infrastructure you control, or manage software running inside your own environment — whichever fits how your business works."
+        eyebrow={t("delivery.eyebrow")}
+        heading={t("delivery.heading")}
+        intro={t("delivery.intro")}
         className="border-t border-border bg-bg-surface"
       />
       <ServicesCta />

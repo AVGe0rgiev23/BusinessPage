@@ -1,6 +1,9 @@
 {
   "skipToContent": "Skip to content",
   "language": { "label": "Language", "en": "English", "bg": "Български" },
+  "cta": {
+    "writeFirst": "Prefer to write first? Reach me any time through the <contact>contact form</contact>."
+  },
   "brand": { "homeLabel": "AGility — home" },
   "nav": {
     "primary": "Primary",

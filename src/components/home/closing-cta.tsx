@@ -1,8 +1,7 @@
 import { getTranslations } from "next-intl/server";
-import { Link } from "@/i18n/navigation";
 
-import { focusRing } from "@/lib/utils";
 import { CtaBand } from "@/components/layout/cta-band";
+import { WriteFirstFootnote } from "@/components/layout/write-first-footnote";
 
 /**
  * ClosingCta — the page's single booking ask.
@@ -24,16 +23,7 @@ export async function ClosingCta() {
       title={t("title")}
       subtitle={t("subtitle")}
       primary={{ label: t("cta"), href: "/book" }}
-      footnote={t.rich("footnote", {
-        contact: (chunks) => (
-          <Link
-            href="/contact"
-            className={`rounded-sm font-medium text-accent underline-offset-4 transition-colors hover:text-accent-hover hover:underline ${focusRing}`}
-          >
-            {chunks}
-          </Link>
-        ),
-      })}
+      footnote={<WriteFirstFootnote />}
     />
   );
 }

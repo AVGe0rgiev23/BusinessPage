@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import { Plus } from "lucide-react";
 
 import { Container } from "@/components/layout/container";
@@ -16,110 +17,29 @@ import { Eyebrow } from "@/components/layout/section-heading";
  * groups needs structure a visitor can hold in their head, and a numbered
  * heading with a rule does that better than four more centred titles.
  */
-interface Service {
-  title: string;
-  body: string;
-}
+/*
+  Structure lives here, words live in the catalog (`services.catalog`):
+    id    — key into `catalog.groups` / `catalog.services`;
+    slug  — the English anchor used for the section's DOM id, kept stable so
+            in-page links and the rendered markup do not change per language.
+*/
+const GROUPS = [
+  { id: "automateRepetitiveWork", slug: "automate-repetitive-work", services: [{ id: "emailAutomation" }, { id: "documentProcessing" }, { id: "workflowAutomation" }, { id: "internalCompanyTools" }] },
+  { id: "talkCustomersScale", slug: "talk-to-customers-at-scale", services: [{ id: "aiAssistants" }, { id: "aiChatbots" }, { id: "customerSupportSystems" }] },
+  { id: "connectSystems", slug: "connect-your-systems", services: [{ id: "crmIntegrations" }, { id: "apiIntegrations" }, { id: "aiPoweredDashboards" }] },
+  { id: "customProducts", slug: "custom-products", services: [{ id: "customSaasProducts" }, { id: "bespokeAiSolutions" }] },
+] as const;
 
-interface ServiceGroup {
-  id: string;
-  name: string;
-  blurb: string;
-  services: Service[];
-}
-
-const GROUPS: ServiceGroup[] = [
-  {
-    id: "automate-repetitive-work",
-    name: "Automate repetitive work",
-    blurb:
-      "The copy-paste, the re-typing, the chasing — the work your team does over and over that a computer should be doing instead.",
-    services: [
-      {
-        title: "Email automation",
-        body: "Sort, route, and reply to routine email automatically, so messages get answered quickly and nothing slips through the cracks.",
-      },
-      {
-        title: "Document processing",
-        body: "Pull the data out of invoices, contracts, and forms without anyone re-typing it — fewer errors and hours back every week.",
-      },
-      {
-        title: "Workflow automation",
-        body: "Connect the steps of a process end to end so work moves on its own, instead of waiting on manual handoffs between people and tools.",
-      },
-      {
-        title: "Internal company tools",
-        body: "Replace the spreadsheets and manual rituals your team leans on with an app built around exactly how you actually work.",
-      },
-    ],
-  },
-  {
-    id: "talk-to-customers-at-scale",
-    name: "Talk to customers at scale",
-    blurb:
-      "Answer more people, faster, without adding headcount — and keep a person in the loop for the conversations that need one.",
-    services: [
-      {
-        title: "AI assistants",
-        body: "A helper that answers questions and takes action against your own data and systems, so customers and staff get answers without waiting on someone.",
-      },
-      {
-        title: "AI chatbots",
-        body: "A conversational front door for your site or product that qualifies leads, guides visitors, and hands off to a person only when it needs to.",
-      },
-      {
-        title: "Customer-support systems",
-        body: "Triage, draft, and resolve routine tickets automatically, so your team spends its time on the conversations that genuinely need a human.",
-      },
-    ],
-  },
-  {
-    id: "connect-your-systems",
-    name: "Connect your systems",
-    blurb:
-      "Stop moving data by hand between the tools you already pay for, and make sure everyone is working from the same, current picture.",
-    services: [
-      {
-        title: "CRM integrations",
-        body: "Keep customer records accurate and in sync across every tool you use, so your team stops working from stale or conflicting data.",
-      },
-      {
-        title: "API integrations",
-        body: "Make the software you already rely on talk to each other cleanly, so data flows automatically instead of being moved by hand.",
-      },
-      {
-        title: "AI-powered dashboards",
-        body: "Live views of the numbers that matter, with plain-language summaries — so you can see what's happening and act without digging through reports.",
-      },
-    ],
-  },
-  {
-    id: "custom-products",
-    name: "Custom products",
-    blurb:
-      "When nothing off-the-shelf fits, I design and build the product itself — and the software I build for you is yours under the project agreement.",
-    services: [
-      {
-        title: "Custom SaaS products",
-        body: "A full product built from first idea to launch when existing software can't do what you need — and you want to own the result rather than rent it.",
-      },
-      {
-        title: "Bespoke AI solutions",
-        body: "Have a problem that doesn't fit a category? I scope and build around it, using AI only where it genuinely earns its place.",
-      },
-    ],
-  },
-];
-
-export function ServicesCatalog() {
+export async function ServicesCatalog() {
+  const t = await getTranslations("services");
   return (
     <Section>
       <Container>
         <div className="flex flex-col gap-20 md:gap-28">
           {GROUPS.map((group, groupIndex) => {
-            const headingId = `${group.id}-heading`;
+            const headingId = `${group.slug}-heading`;
             return (
-              <section key={group.id} aria-labelledby={headingId}>
+              <section key={group.slug} aria-labelledby={headingId}>
                 <Reveal>
                   <div className="flex items-center gap-4">
                     <span
@@ -128,7 +48,7 @@ export function ServicesCatalog() {
                     >
                       {String(groupIndex + 1).padStart(2, "0")}
                     </span>
-                    <Eyebrow>Group</Eyebrow>
+                    <Eyebrow>{t("catalog.groupLabel")}</Eyebrow>
                     <span
                       aria-hidden="true"
                       className="h-px flex-1 bg-border"
@@ -140,10 +60,10 @@ export function ServicesCatalog() {
                       id={headingId}
                       className="max-w-[18ch] text-balance text-h2 font-semibold text-text-primary"
                     >
-                      {group.name}
+                      {t(`catalog.groups.${group.id}.name`)}
                     </h2>
                     <p className="mt-4 max-w-[54ch] text-pretty text-body-lg text-text-secondary lg:mt-0">
-                      {group.blurb}
+                      {t(`catalog.groups.${group.id}.blurb`)}
                     </p>
                   </div>
                 </Reveal>
@@ -158,7 +78,7 @@ export function ServicesCatalog() {
                       i >= group.services.length - (group.services.length % 2 || 2);
                     return (
                       <li
-                        key={service.title}
+                        key={service.id}
                         className={`group/item border-b border-border transition-colors duration-[--duration-fast] last:border-b-0 hover:bg-bg-elevated/50 md:even:border-l ${
                           isLastRow ? "md:border-b-0" : ""
                         } ${
@@ -175,10 +95,10 @@ export function ServicesCatalog() {
                           />
                           <div>
                             <h3 className="text-h4 font-semibold text-text-primary">
-                              {service.title}
+                              {t(`catalog.services.${service.id}.title`)}
                             </h3>
                             <p className="mt-1.5 max-w-[52ch] text-pretty text-small text-text-secondary">
-                              {service.body}
+                              {t(`catalog.services.${service.id}.body`)}
                             </p>
                           </div>
                         </div>
