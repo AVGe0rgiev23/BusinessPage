@@ -1,5 +1,5 @@
 {
-  "keepLatin": ["AGility", "TypeScript", "JavaScript", "Python", "SQL", "React", "Next.js", "Tailwind", "CSS", "Framer", "Motion", "Node.js", "REST", "API", "APIs", "GraphQL", "Webhooks", "Trigger.dev", "PostgreSQL", "Redis", "Vercel", "AWS", "Docker", "CI/CD", "n8n", "OpenAI", "Anthropic", "LLM", "RAG", "CRM", "CRMs", "AI", "SaaS", "Slack", "GitHub", "LinkedIn", "Calendly", "Resend", "LeadGenius"],
+  "keepLatin": ["AGility", "TypeScript", "JavaScript", "Python", "SQL", "React", "Next.js", "Tailwind", "CSS", "Framer", "Motion", "Node.js", "REST", "API", "APIs", "GraphQL", "Webhooks", "Trigger.dev", "PostgreSQL", "Redis", "Vercel", "AWS", "Docker", "CI/CD", "n8n", "OpenAI", "Anthropic", "LLM", "RAG", "CRM", "CRMs", "AI", "SaaS", "Slack", "GitHub", "LinkedIn", "Calendly", "Resend", "LeadGenius", "low-code", "Embeddings"],
   "identicalKeys": ["common.language.en", "common.language.bg"],
   "keyRules": [
     { "key": "common.nav.services", "equals": "Услуги" },
@@ -28,6 +28,10 @@
     { "en": "custom software", "bg": "софтуер по поръчка", "avoid": ["индивидуален софтуер", "персонализиран софтуер", "софтуер по заявка"] },
     { "en": "spreadsheet", "bg": "електронна таблица", "avoid": ["спредшийт", "спредшит"] },
     { "en": "code review", "bg": "ревю на кода", "avoid": ["код ревю", "кодово ревю"] },
-    { "en": "open source", "bg": "отворен код", "avoid": ["опен сорс", "опенсорс"] }
+    { "en": "open source", "bg": "отворен код", "avoid": ["опен сорс", "опенсорс"] },
+    { "en": "framework", "bg": "фреймуърк", "avoid": ["фреймворк", "фреймуорк", "фреймуърки"] },
+    { "en": "pipeline", "bg": "конвейр", "avoid": ["пайплайн", "пайплайни"] },
+    { "en": "chatbot", "bg": "чатбот", "avoid": ["чат бот", "чат-бот", "чат ботове"] },
+    { "en": "repetitive work / tasks", "bg": "повтаряща се работа / повтарящи се задачи", "avoid": ["повторяща се", "повторяющи се", "монотонна работа"] }
   ]
 }

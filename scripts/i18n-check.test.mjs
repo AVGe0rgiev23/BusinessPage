@@ -117,3 +117,9 @@ test("keys that are identical by design are neither untranslated nor allowed to 
   const translated = { common: { language: { bg: "Bulgarian" } } };
   assert.deepEqual(codes(run(en, translated, { strict: true })), ["MUST_MATCH"]);
 });
+
+test("first-person past participles that reveal gender are errors; present and future are fine", () => {
+  const en = { home: { a: "I built it", b: "I would build it", c: "I build it", d: "I will build it" } };
+  const bg = { home: { a: "Съм изградил това", b: "Бих изградила това", c: "Изграждам това", d: "Ще го изградя" } };
+  assert.deepEqual(codes(run(en, bg)), ["GENDERED_FORM", "GENDERED_FORM"]);
+});

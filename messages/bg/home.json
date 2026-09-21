@@ -2,140 +2,140 @@
   "problem": {
     "pains": {
       "hoursLostRepetitive": {
-        "title": "Hours lost to repetitive tasks",
-        "body": "The same manual steps, run again and again — time your team can't spend on the work that actually grows the business."
+        "title": "Часове, загубени в повтарящи се задачи",
+        "body": "Едни и същи ръчни стъпки, изпълнявани отново и отново – време, което екипът ви не може да вложи в работата, която наистина развива бизнеса."
       },
       "inboxNeverEmpties": {
-        "title": "An inbox that never empties",
-        "body": "Enquiries, follow-ups, and routine replies handled by hand, one message at a time, while more keep arriving."
+        "title": "Входяща поща, която никога не се изпразва",
+        "body": "Запитвания, последващи писма и рутинни отговори, обработвани ръчно, съобщение по съобщение, докато пристигат още."
       },
       "leadsGoCold": {
-        "title": "Leads that go cold",
-        "body": "When no one answers fast enough, interested buyers move on. Every slow reply is revenue quietly walking out the door."
+        "title": "Потенциални клиенти, които изстиват",
+        "body": "Когато никой не отговаря достатъчно бързо, заинтересованите купувачи си тръгват. Всеки бавен отговор е приход, който тихо излиза през вратата."
       },
       "copyPastingBetween": {
-        "title": "Copy-pasting between systems",
-        "body": "Staff moving the same data between tools that were never built to talk to each other — paid work that produces nothing new."
+        "title": "Копиране на данни между системи",
+        "body": "Служители, прехвърлящи едни и същи данни между инструменти, които никога не са били създавани да общуват помежду си – платен труд, който не създава нищо ново."
       },
       "manualDataEntry": {
-        "title": "Manual data entry",
-        "body": "Typing numbers into spreadsheets and forms by hand: slow, tedious, and one keystroke away from an expensive mistake."
+        "title": "Ръчно въвеждане на данни",
+        "body": "Ръчно вписване на числа в електронни таблици и формуляри: бавно, досадно и на едно натискане на клавиш от скъпа грешка."
       },
       "reportsAssembledHand": {
-        "title": "Reports assembled by hand",
-        "body": "Hours each week pulling figures together into a document that's already out of date by the time it's finished."
+        "title": "Отчети, съставяни ръчно",
+        "body": "Часове всяка седмица за събиране на числа в документ, който вече е остарял, когато е готов."
       }
     },
     "heading": {
-      "eyebrow": "The problem",
-      "title": "The busywork is costing you more than you think.",
-      "lede": "Most businesses don't lose money in one big leak — they lose it in a hundred small ones. Repetitive, manual work spread across the week, paid for in salaried hours and missed opportunities."
+      "eyebrow": "Проблемът",
+      "title": "Рутинната работа ви струва повече, отколкото си мислите.",
+      "lede": "Повечето бизнеси не губят пари през една голяма пробойна – губят ги през сто малки. Повтаряща се ръчна работа, разпръсната из седмицата и платена със заплатени часове и пропуснати възможности."
     }
   },
   "outcomes": {
     "items": {
       "reclaimedTime": {
-        "title": "Reclaimed time",
-        "body": "The routine work runs on its own, handing your team back hours every week for the things only people can do."
+        "title": "Върнато време",
+        "body": "Рутинната работа върви от само себе си и връща на екипа ви часове всяка седмица за нещата, които могат да правят само хората."
       },
       "lowerOperatingCosts": {
-        "title": "Lower operating costs",
-        "body": "Fewer hours spent on manual tasks means the same output for less — and headroom to grow without growing overhead."
+        "title": "По-ниски оперативни разходи",
+        "body": "По-малко часове за ръчни задачи означава същия резултат на по-ниска цена – и простор за растеж без растящи режийни."
       },
       "fasterExecution": {
-        "title": "Faster execution",
-        "body": "Work that used to wait in a queue happens the moment it's triggered. Quotes, replies, and handoffs stop stalling."
+        "title": "По-бързо изпълнение",
+        "body": "Работата, която чакаше на опашка, се случва в момента, в който бъде задействана. Офертите, отговорите и предаванията вече не се бавят."
       },
       "fewerRepetitiveTasks": {
-        "title": "Fewer repetitive tasks",
-        "body": "The copy-paste, the re-typing, the chasing — handled automatically, consistently, and without anyone having to remember."
+        "title": "По-малко повтарящи се задачи",
+        "body": "Копирането, преписването, напомнянето – всичко се обработва автоматично, последователно и без някой да трябва да помни."
       },
       "betterCustomerExperience": {
-        "title": "A better customer experience",
-        "body": "Faster answers and fewer dropped balls. Customers feel the difference long before they know software is behind it."
+        "title": "По-добро клиентско изживяване",
+        "body": "По-бързи отговори и по-малко пропуски. Клиентите усещат разликата много преди да разберат, че зад нея стои софтуер."
       },
       "higherProductivity": {
-        "title": "Higher productivity",
-        "body": "Your people spend their day on judgement, relationships, and growth instead of shuffling data between screens."
+        "title": "По-висока производителност",
+        "body": "Хората ви прекарват деня в преценка, взаимоотношения и растеж, вместо да прехвърлят данни от екран на екран."
       }
     },
     "heading": {
-      "eyebrow": "The outcome",
-      "title": "Software that gives you the hours back.",
-      "lede": "I start from the result you want, not the technology. Here's what changes once the manual work is off your team's plate."
+      "eyebrow": "Резултатът",
+      "title": "Софтуер, който ви връща часовете.",
+      "lede": "Тръгвам от резултата, който искате, а не от технологията. Ето какво се променя, когато ръчната работа вече не тежи на екипа ви."
     }
   },
   "servicesPreview": {
     "services": {
       "aiAssistants": {
-        "title": "AI assistants",
-        "body": "Purpose-built helpers that answer questions and take action against your own data and tools."
+        "title": "AI асистенти",
+        "body": "Специално създадени помощници, които отговарят на въпроси и действат върху вашите данни и инструменти."
       },
       "chatbots": {
-        "title": "Chatbots",
-        "body": "Conversational front doors for your website or product that qualify, guide, and route."
+        "title": "Чатботове",
+        "body": "Разговорен вход към сайта или продукта ви: разбира какво търсят посетителите, насочва ги и ги препраща към правилния човек."
       },
       "customerSupportSystems": {
-        "title": "Customer-support systems",
-        "body": "Triage, draft, and resolve routine tickets so your team handles only what needs a human."
+        "title": "Системи за клиентска поддръжка",
+        "body": "Подреждат по приоритет, подготвят отговори и решават рутинни заявки, така че екипът ви да поема само онова, което изисква човек."
       },
       "emailAutomation": {
-        "title": "Email automation",
-        "body": "Sort, respond to, and follow up on messages automatically, without letting anything slip."
+        "title": "Автоматизация на имейли",
+        "body": "Съобщенията се сортират, получават отговор и се проследяват автоматично – без нищо да се изплъзва."
       },
       "documentProcessing": {
-        "title": "Document processing",
-        "body": "Pull structured data out of invoices, contracts, and forms — no manual re-keying."
+        "title": "Обработка на документи",
+        "body": "Извличане на структурирани данни от фактури, договори и формуляри – без ръчно въвеждане наново."
       },
       "internalTools": {
-        "title": "Internal tools",
-        "body": "Dashboards and admin apps built around your exact workflow, not a generic template."
+        "title": "Вътрешни инструменти",
+        "body": "Табла и административни приложения, изградени около вашия точен работен процес, а не по общ шаблон."
       },
       "crmIntegrations": {
-        "title": "CRM integrations",
-        "body": "Keep your customer records accurate and in sync across every system you rely on."
+        "title": "Интеграции с CRM",
+        "body": "Клиентските ви записи остават точни и синхронизирани във всички системи, на които разчитате."
       },
       "workflowAutomation": {
-        "title": "Workflow automation",
-        "body": "Connect the steps of a process end to end so work moves without manual handoffs."
+        "title": "Автоматизация на работни процеси",
+        "body": "Стъпките на един процес са свързани от край до край, за да върви работата без ръчно предаване."
       },
       "aiDashboards": {
-        "title": "AI dashboards",
-        "body": "Live views of the numbers that matter, with plain-language summaries you can act on."
+        "title": "AI табла",
+        "body": "Показатели в реално време за числата, които имат значение, с обобщения на разбираем език, въз основа на които можете да действате."
       },
       "apiIntegrations": {
-        "title": "API integrations",
-        "body": "Make the software you already pay for work together, cleanly and reliably."
+        "title": "API интеграции",
+        "body": "Софтуерът, за който вече плащате, започва да работи заедно – чисто и надеждно."
       },
       "customSaas": {
-        "title": "Custom SaaS",
-        "body": "Full products — from first idea to launch — when off-the-shelf software doesn't fit."
+        "title": "SaaS по поръчка",
+        "body": "Цели продукти – от първата идея до пускането – когато готовият софтуер не върши работа."
       }
     },
     "heading": {
-      "eyebrow": "What I build",
-      "title": "Custom-built for the way you work.",
-      "lede": "These are examples, not a fixed menu. Every project is designed around your business — your tools, your process, your goals."
+      "eyebrow": "Какво изграждам",
+      "title": "Изградено по мярка за начина, по който работите.",
+      "lede": "Това са примери, а не фиксирано меню. Всеки проект е проектиран около вашия бизнес – вашите инструменти, вашия процес, вашите цели."
     },
-    "exploreAll": "Explore all services"
+    "exploreAll": "Разгледайте всички услуги"
   },
   "technology": {
     "stack": {
       "groups": {
         "languages": {
-          "label": "Languages"
+          "label": "Езици"
         },
         "frameworksRuntime": {
-          "label": "Frameworks & runtime"
+          "label": "Фреймуърци и среда за изпълнение"
         },
         "data": {
-          "label": "Data"
+          "label": "Данни"
         },
         "aiLlmTooling": {
-          "label": "AI & LLM tooling"
+          "label": "AI и LLM инструменти"
         },
         "cloudInfrastructure": {
-          "label": "Cloud & infrastructure"
+          "label": "Облак и инфраструктура"
         }
       },
       "items": {
@@ -148,11 +148,11 @@
         "nodeJs": "Node.js",
         "postgresql": "PostgreSQL",
         "redis": "Redis",
-        "vectorDatabases": "Vector databases",
-        "llmApis": "LLM APIs",
-        "ragPipelines": "RAG pipelines",
+        "vectorDatabases": "Векторни бази данни",
+        "llmApis": "LLM API",
+        "ragPipelines": "RAG конвейри",
         "embeddings": "Embeddings",
-        "agentFrameworks": "Agent frameworks",
+        "agentFrameworks": "Фреймуърци за агенти",
         "vercel": "Vercel",
         "aws": "AWS",
         "docker": "Docker",
@@ -160,273 +160,273 @@
       }
     },
     "heading": {
-      "eyebrow": "My stack",
-      "title": "Built on modern, proven engineering.",
-      "lede": "I work with a well-supported, widely adopted stack — the same tooling behind serious software products, chosen for reliability and longevity rather than novelty."
+      "eyebrow": "Моят стек",
+      "title": "Изградено върху модерни, доказани технологии.",
+      "lede": "Работя с добре поддържан и широко използван технологичен стек – същите инструменти, които стоят зад сериозните софтуерни продукти, подбрани заради надеждност и дълготрайност, а не заради новост."
     },
-    "exploreAll": "Explore the technologies"
+    "exploreAll": "Разгледайте технологиите"
   },
   "whyAgility": {
     "reasons": {
       "ownershipTerms": {
-        "title": "Ownership on your terms",
-        "body": "The custom software is yours under the project agreement, and your data stays yours. You decide whether I operate it or you run it yourself."
+        "title": "Собственост при ваши условия",
+        "body": "Софтуерът по поръчка е ваш по силата на договора за проекта, а данните ви остават ваши. Вие решавате дали аз да го управлявам, или да го управлявате сами."
       },
       "fullyCustomSoftware": {
-        "title": "Fully custom software",
-        "body": "Everything is built for your business specifically. No forcing your process to fit someone else's template."
+        "title": "Изцяло софтуер по поръчка",
+        "body": "Всичко се изгражда специално за вашия бизнес. Без да нагласяте процеса си по чужд шаблон."
       },
       "fastCommunication": {
-        "title": "Fast communication",
-        "body": "Direct access to me, the person building your software, and quick, straight answers when you need them."
+        "title": "Бърза комуникация",
+        "body": "Директен достъп до мен – човека, който изгражда софтуера ви – и бързи, прями отговори, когато ви трябват."
       },
       "supportIfWant": {
-        "title": "Support, if you want it",
-        "body": "I can stay on to maintain and grow what I build — or hand it over properly so your team runs it. Ongoing support is an option, not an obligation."
+        "title": "Поддръжка, ако я искате",
+        "body": "Мога да остана да поддържам и надграждам изграденото – или да го предам както трябва, за да го управлява вашият екип. Текущата поддръжка е възможност, не задължение."
       },
       "transparentDevelopment": {
-        "title": "Transparent development",
-        "body": "Clear scope, honest timelines, and visible progress — you always know what you're paying for and why."
+        "title": "Прозрачна разработка",
+        "body": "Ясен обхват, честни срокове и видим напредък – винаги знаете за какво плащате и защо."
       },
       "builtModernAi": {
-        "title": "Built with modern AI",
-        "body": "I use current AI and language-model tooling where it earns its place — to solve real problems, not as a label on the box."
+        "title": "Изградено със съвременен AI",
+        "body": "Използвам актуални AI инструменти и езикови модели там, където си заслужават мястото – за решаване на реални проблеми, а не като етикет върху кутията."
       }
     },
-    "eyebrow": "Why AGility",
-    "title": "A partner, not just a vendor.",
-    "lede": "I keep it honest. No inflated claims — just the things that genuinely matter when you trust someone to build software your business depends on."
+    "eyebrow": "Защо AGility",
+    "title": "Партньор, а не просто доставчик.",
+    "lede": "Държа на честността. Без завишени твърдения – само нещата, които наистина имат значение, когато поверявате на някого софтуер, от който зависи бизнесът ви."
   },
   "connect": {
-    "stayInTouch": "Let's stay in touch.",
-    "body": "Follow along on LinkedIn for how I think about building software, automating the busywork, and getting real value out of AI — no hype, just what works.",
-    "button": "Connect on LinkedIn"
+    "stayInTouch": "Да поддържаме връзка.",
+    "body": "Следете ме в LinkedIn – как мисля за изграждането на софтуер, за автоматизирането на рутинната работа и за реалната полза от AI. Без шум, само каквото работи.",
+    "button": "Свържете се в LinkedIn"
   },
   "whyCustom": {
     "dimensions": {
       "ownership": {
-        "dimension": "Ownership",
-        "custom": "Yours under the project agreement.",
-        "lowCode": "A per-seat licence on a builder you don't control."
+        "dimension": "Собственост",
+        "custom": "Ваш по силата на договора за проекта.",
+        "lowCode": "Лиценз на потребител в платформа, която не контролирате."
       },
       "flexibility": {
-        "dimension": "Flexibility",
-        "custom": "Does exactly what your business needs.",
-        "lowCode": "Only what a drag-and-drop builder happens to support."
+        "dimension": "Гъвкавост",
+        "custom": "Прави точно каквото е нужно на бизнеса ви.",
+        "lowCode": "Само каквото случайно поддържа визуалният конструктор."
       },
       "scalability": {
-        "dimension": "Scalability",
-        "custom": "Handles more volume, users, and complexity as you grow.",
-        "lowCode": "Growth eventually meets a platform ceiling."
+        "dimension": "Мащабируемост",
+        "custom": "Справя се с повече обем, потребители и сложност, докато растете.",
+        "lowCode": "Растежът рано или късно опира до таван на платформата."
       },
       "lock": {
-        "dimension": "Lock-in",
-        "custom": "Standard, portable technology wherever it's practical.",
-        "lowCode": "Your core process hinges on one builder's pricing and roadmap."
+        "dimension": "Зависимост от доставчик",
+        "custom": "Стандартна, преносима технология, където е практично.",
+        "lowCode": "Основният ви процес зависи от цените и плановете за развитие на един доставчик."
       },
       "integrations": {
-        "dimension": "Integrations",
-        "custom": "Deep connections to your systems, with real control.",
-        "lowCode": "Whatever the pre-packaged connectors happen to allow."
+        "dimension": "Интеграции",
+        "custom": "Дълбока връзка с вашите системи и реален контрол.",
+        "lowCode": "Каквото позволяват готовите конектори."
       },
       "performance": {
-        "dimension": "Performance",
-        "custom": "Tuned to your workload.",
-        "lowCode": "A general-purpose platform doing everything for everyone."
+        "dimension": "Производителност",
+        "custom": "Настроен за вашето натоварване.",
+        "lowCode": "Универсална платформа, която прави всичко за всички."
       }
     },
     "heading": {
-      "eyebrow": "Custom vs. low-code",
-      "title": "Own your software. Don't rent your workflow."
+      "eyebrow": "По поръчка срещу low-code",
+      "title": "Притежавайте софтуера си. Не наемайте работния си процес."
     },
     "table": {
-      "caption": "Custom software compared with low-code platforms across ownership, flexibility, scalability, lock-in, integrations and performance.",
-      "dimension": "Dimension",
-      "customColumn": "Custom software",
-      "lowCodeColumn": "Low-code platform",
-      "customShort": "Custom",
+      "caption": "Софтуер по поръчка в сравнение с low-code платформи по собственост, гъвкавост, мащабируемост, зависимост от доставчик, интеграции и производителност.",
+      "dimension": "Критерий",
+      "customColumn": "Софтуер по поръчка",
+      "lowCodeColumn": "Low-code платформа",
+      "customShort": "По поръчка",
       "lowCodeShort": "Low-code"
     },
     "caveat": {
-      "first": "Low-code tools have their place, and I'll tell you honestly when one is the right call — including when it means a smaller project for me. But as a process becomes central to how you make money, owning it tends to pay off.",
-      "second": "I use third-party services myself — cloud hosting, databases, AI providers. Nobody builds without them. The difference is that I avoid unnecessary platform lock-in and stick to standard, portable technology wherever it's practical."
+      "first": "Low-code инструментите имат своето място и ще ви кажа честно кога са правилният избор – дори когато това означава по-малък проект за мен. Но когато един процес стане централен за начина, по който печелите, притежаването му обикновено се отплаща.",
+      "second": "И аз използвам услуги на трети страни – облачен хостинг, бази данни, AI доставчици. Без тях никой не изгражда софтуер. Разликата е, че избягвам ненужната зависимост от платформи и залагам на стандартна, преносима технология, където е практично."
     },
-    "approachLink": "How I approach a build"
+    "approachLink": "Как подхождам към разработката"
   },
   "processPreview": {
     "steps": {
       "discovery": {
-        "title": "Discovery",
-        "body": "I map where the time and money are going, and we agree on what a win looks like before any code is written."
+        "title": "Проучване",
+        "body": "Проследявам къде отиват времето и парите и се разбираме какво ще смятаме за успех, преди да е написан код."
       },
       "design": {
-        "title": "Design",
-        "body": "I plan the build and how it fits your existing tools, so there are no surprises once it begins."
+        "title": "Проектиране",
+        "body": "Планирам изграждането и как то се вписва във вашите текущи инструменти, за да няма изненади, когато започне."
       },
       "build": {
-        "title": "Build",
-        "body": "I develop in focused increments, sharing progress along the way so you always know exactly where things stand."
+        "title": "Разработка",
+        "body": "Разработвам на кратки, целенасочени стъпки и споделям напредъка, за да знаете винаги на какъв етап сме."
       },
       "deploy": {
-        "title": "Deploy",
-        "body": "I launch it using the operating model you've chosen, configure the infrastructure and access, and test against real work."
+        "title": "Внедряване",
+        "body": "Пускам системата по избрания от вас модел на предоставяне, настройвам инфраструктурата и достъпа и я тествам с реална работа."
       },
       "support": {
-        "title": "Support",
-        "body": "Optional, and shaped to you: I operate the system, maintain it inside your environment, or hand it over to your team."
+        "title": "Поддръжка",
+        "body": "По желание и по ваша мярка: аз управлявам системата, поддържам я във вашата среда или я предавам на екипа ви."
       }
     },
     "heading": {
-      "eyebrow": "How I work",
-      "title": "A clear path from problem to production.",
-      "lede": "No black boxes. You'll know what's happening at every stage — and why it matters for your business."
+      "eyebrow": "Как работя",
+      "title": "Ясен път от проблема до работещо решение.",
+      "lede": "Без „черни кутии“. Знаете какво се случва на всеки етап – и защо е важно за вашия бизнес."
     },
-    "fullProcessLink": "See the full process"
+    "fullProcessLink": "Вижте целия процес"
   },
   "openSource": {
-    "eyebrow": "Open source",
-    "title": "I build in the open.",
-    "button": "View my GitHub",
-    "statement": "You can see how I write code before you ever hire me."
+    "eyebrow": "Отворен код",
+    "title": "Изграждам открито.",
+    "button": "Моят GitHub",
+    "statement": "Можете да видите как пиша код, още преди да сте ме наели."
   },
   "systemDiagram": {
     "inputs": {
       "inbox": {
-        "label": "Inbox"
+        "label": "Входяща поща"
       },
       "documents": {
-        "label": "Documents"
+        "label": "Документи"
       },
       "crmRecords": {
-        "label": "CRM records"
+        "label": "CRM записи"
       },
       "spreadsheets": {
-        "label": "Spreadsheets"
+        "label": "Електронни таблици"
       },
       "webForms": {
-        "label": "Web forms"
+        "label": "Уеб формуляри"
       }
     },
     "outputs": {
       "enquiriesAnswered": {
-        "label": "Enquiries answered"
+        "label": "Отговорени запитвания"
       },
       "dataCaptured": {
-        "label": "Data captured"
+        "label": "Събрани данни"
       },
       "systemsSync": {
-        "label": "Systems in sync"
+        "label": "Синхронизирани системи"
       },
       "hoursReturned": {
-        "label": "Hours returned"
+        "label": "Върнати часове"
       }
     },
-    "manualWork": "Manual work",
+    "manualWork": "Ръчна работа",
     "system": {
-      "eyebrow": "Custom software",
-      "title": "Built for you"
+      "eyebrow": "Софтуер по поръчка",
+      "title": "Изграден за вас"
     },
-    "handledAutomatically": "Handled automatically",
-    "caption": "Diagram: repetitive manual work — the inbox, documents, CRM records, spreadsheets and web forms — flows into custom software built by AGility, which returns answered enquiries, captured data, systems kept in sync, and hours given back to your team."
+    "handledAutomatically": "Обработва се автоматично",
+    "caption": "Диаграма: повтаряща се ръчна работа – входящата поща, документите, CRM записите, електронните таблици и уеб формулярите – постъпва в софтуер по поръчка, изграден от AGility, който връща отговорени запитвания, събрани данни, синхронизирани системи и часове, върнати на екипа ви."
   },
   "hero": {
-    "eyebrow": "Custom AI & automation",
+    "eyebrow": "AI и автоматизация по поръчка",
     "headline": {
-      "line1": "Your team is",
-      "line2": "moving data",
-      "accent": "by hand."
+      "line1": "Екипът ви",
+      "line2": "пренася данни",
+      "accent": "ръчно."
     },
-    "lede": "Between the CRM, the inbox and the spreadsheet, someone is the connection — re-keying the same rows, chasing the same updates. I build the software that does that part instead, shaped around how your business actually runs, and delivered on terms you choose.",
-    "primaryCta": "Get a free teardown",
-    "secondaryCta": "See how I work",
+    "lede": "Между CRM, входящата поща и електронната таблица връзката е човек – преписва едни и същи редове, проследява едни и същи промени. Изграждам софтуера, който върши тази част вместо него, съобразен с начина, по който всъщност работи бизнесът ви, и предоставен при условия по ваш избор.",
+    "primaryCta": "Безплатен видеоанализ",
+    "secondaryCta": "Вижте как работя",
     "reassurance": {
-      "first": "No obligation",
-      "second": "Honest answers either way"
+      "first": "Без ангажимент",
+      "second": "Честен отговор и в двата случая"
     }
   },
   "pricing": {
     "tiers": {
       "pilot": {
-        "name": "Pilot",
-        "price": "€{low, number}–{high, number}",
-        "basis": "Fixed price",
-        "body": "One narrow process, scoped tightly and shipped. The way to find out whether this works for your business without committing to a full project."
+        "name": "Пилот",
+        "price": "{low, number}–{high, number} €",
+        "basis": "Фиксирана цена",
+        "body": "Един тесен процес, точно ограничен по обхват и пуснат в работа. Начинът да разберете дали това работи за вашия бизнес, без да се ангажирате с цял проект."
       },
       "project": {
-        "name": "Full workflow project",
-        "price": "€{low, number}–{high, number}",
-        "basis": "Fixed price",
-        "body": "A whole workflow built end to end — the systems it touches, the edge cases, the hand-offs. Priced from the agreed scope, so the cost is known before the build starts."
+        "name": "Проект за цял работен процес",
+        "price": "{low, number}–{high, number} €",
+        "basis": "Фиксирана цена",
+        "body": "Цял работен процес, изграден от край до край – системите, които засяга, граничните случаи, предаванията между стъпките. Цената се определя по договорения обхват, така че разходът е известен, преди да започне изграждането."
       },
       "support": {
-        "name": "Ongoing support",
-        "price": "€{low, number}–{high, number}",
-        "basis": "Per month",
-        "body": "Maintenance, improvements, and new features on software already running. An option after a project, never a condition of one."
+        "name": "Текуща поддръжка",
+        "price": "{low, number}–{high, number} €",
+        "basis": "На месец",
+        "body": "Поддръжка, подобрения и нови функции за вече работещ софтуер. Възможност след проекта, никога условие за него."
       }
     },
     "heading": {
-      "eyebrow": "Pricing",
-      "title": "What it costs, before you ask.",
-      "lede": "Real ranges, not a request to get in touch for a quote. Where a project lands inside a band depends on scope, and the exact figure is set out in the proposal before any work starts."
+      "eyebrow": "Цени",
+      "title": "Колко струва – преди да попитате.",
+      "lede": "Реални диапазони, а не покана „свържете се за оферта“. Къде в диапазона попада един проект зависи от обхвата, а точната сума е записана в офертата, преди да започне каквато и да е работа."
     },
     "guarantee": {
-      "label": "The guarantee",
-      "promise": "If it doesn't do what the proposal says it will, you don't pay for it.",
-      "note": "Infrastructure and AI API usage are separate from these figures and depend on the delivery model you choose. Which of them apply to you is written into the proposal, itemised, before you commit."
+      "label": "Гаранцията",
+      "promise": "Ако не прави това, което пише в офертата, не плащате за него.",
+      "note": "Инфраструктурата и използването на AI API не са включени в тези суми и зависят от избрания от вас модел на предоставяне. Кои от тях се отнасят за вас е описано в офертата, поотделно, преди да се ангажирате."
     }
   },
   "faqPreview": {
     "items": {
       "longProjectTake": {
-        "q": "How long does a project take?",
-        "a": "It depends on the scope. A focused automation can be a matter of weeks; a larger internal tool or custom product takes longer. I work in increments and get something useful into your hands early, rather than disappearing for a quarter."
+        "q": "Колко време отнема един проект?",
+        "a": "Зависи от обхвата. Една целенасочена автоматизация може да отнеме седмици; по-голям вътрешен инструмент или продукт по поръчка – повече. Работя на етапи и ви давам нещо полезно рано, вместо да изчезна за цяло тримесечие."
       },
       "whoOwnsSoftware": {
-        "q": "Who owns the software?",
-        "a": "The custom software I build specifically for you is intended to be yours under the project agreement, and your data stays your data. Third-party services — cloud hosting, AI providers, and the like — remain subject to their own providers' terms, and who holds those accounts depends on the delivery model you choose."
+        "q": "Кой притежава софтуера?",
+        "a": "Софтуерът по поръчка, който изграждам специално за вас, е предназначен да бъде ваш по силата на договора за проекта, а данните ви остават ваши. Услугите на трети страни – облачен хостинг, AI доставчици и подобни – си остават подчинени на условията на своите доставчици, а кой държи тези акаунти зависи от избрания от вас модел на предоставяне."
       },
       "whereSoftwareRun": {
-        "q": "Where does the software run?",
-        "a": "That's your call. I can operate the whole system for you as a managed service, deploy it into infrastructure and accounts you control, or keep building and maintaining software that runs inside your own environment. I'll recommend the model that fits your team, budget, and security requirements."
+        "q": "Къде работи софтуерът?",
+        "a": "Решавате вие. Мога да управлявам цялата система вместо вас като услуга с пълно управление, да я внедря в инфраструктура и акаунти, които вие контролирате, или да продължа да изграждам и поддържам софтуер, който работи във вашата собствена среда. Ще препоръчам модела, който пасва на екипа, бюджета и изискванията ви за сигурност."
       },
       "happensAfterLaunch": {
-        "q": "What happens after launch?",
-        "a": "One of three things, depending on what you want: I keep operating the system for you, I maintain and improve it while your team owns the infrastructure, or I hand it over with the documentation your team needs to run it. Ongoing support is an option, not a requirement."
+        "q": "Какво се случва след внедряването?",
+        "a": "Едно от три неща, според това какво искате: продължавам да управлявам системата вместо вас; поддържам я и я подобрявам, докато екипът ви притежава инфраструктурата; или я предавам с документацията, от която екипът ви се нуждае, за да я управлява. Текущата поддръжка е възможност, не изискване."
       },
       "lowCodeCustom": {
-        "q": "Low-code or custom — which do I need?",
-        "a": "It depends on the job, and I'll be honest about it. If an existing tool solves your problem more cheaply and safely, I'll say so. But for processes that are central to how you make money, custom software gives you the ownership, flexibility, and room to grow that a drag-and-drop builder rarely does."
+        "q": "Low-code или софтуер по поръчка – кое ми трябва?",
+        "a": "Зависи от задачата и ще ви кажа честно какво мисля. Ако наличен инструмент решава проблема ви по-евтино и по-сигурно, ще ви го кажа. Но при процеси, които са централни за начина, по който печелите, софтуерът по поръчка ви дава собственост, гъвкавост и простор за растеж – нещо, което визуалният конструктор рядко предлага."
       },
       "workToolsAlready": {
-        "q": "Can you work with the tools we already use?",
-        "a": "Almost always. A big part of what I do is connecting the systems you already rely on — CRMs, inboxes, spreadsheets, and internal tools — so they finally work together instead of in isolation."
+        "q": "Можете ли да работите с инструментите, които вече използваме?",
+        "a": "Почти винаги. Голяма част от работата ми е да свързвам системите, на които вече разчитате – CRM системи, входяща поща, електронни таблици и вътрешни инструменти – така че най-накрая да работят заедно, а не всяка сама за себе си."
       }
     },
     "heading": {
-      "eyebrow": "FAQ",
-      "title": "Questions, answered.",
-      "lede": "The things business owners ask me most before getting started."
+      "eyebrow": "Въпроси",
+      "title": "Въпроси и отговори.",
+      "lede": "Онова, което собствениците на бизнес ме питат най-често, преди да започнем."
     },
-    "readAll": "Read all FAQs"
+    "readAll": "Всички въпроси и отговори"
   },
   "teardown": {
     "terms": {
-      "weeklyLimit": "Three a week — that's the honest limit for one person.",
-      "noCallRequired": "No call required.",
-      "noPitchAttached": "No pitch attached."
+      "weeklyLimit": "Три на седмица – това е честният лимит за един човек.",
+      "noCallRequired": "Без нужда от разговор.",
+      "noPitchAttached": "Без натрапена продажба."
     },
-    "eyebrow": "Free teardown",
-    "title": "Send me the process your team hates most.",
-    "body": "I'll record a free 5-minute screen teardown — where the time goes, what's automatable, what isn't, and what I'd do first. Sometimes the honest answer is “buy an existing tool” — that's a valid outcome.",
-    "button": "Send me the process",
-    "subject": "Teardown request",
-    "opensEmail": "Opens your email to {email}"
+    "eyebrow": "Безплатен видеоанализ",
+    "title": "Изпратете ми процеса, който екипът ви мрази най-много.",
+    "body": "Ще запиша безплатен 5-минутен видеоанализ на екрана – къде отива времето, кое може да се автоматизира, кое не – и с какво ще започна първо. Понякога честният отговор е „купете готов инструмент“ – и това е напълно валиден резултат.",
+    "button": "Изпратете ми процеса",
+    "subject": "Заявка за видеоанализ",
+    "opensEmail": "Отваря имейл към {email}"
   },
   "closingCta": {
-    "eyebrow": "Get started",
-    "title": "Ready to get those hours back?",
-    "subtitle": "Tell me what's slowing your team down. I'll look at where the time and money are going, give you an honest answer on whether custom software is the right fix — and if it is, work out how you'd want it delivered. No pressure, no jargon.",
-    "cta": "Book a consultation"
+    "eyebrow": "Започнете",
+    "title": "Готови ли сте да си върнете тези часове?",
+    "subtitle": "Кажете ми какво забавя екипа ви. Ще погледна къде отиват времето и парите, ще ви дам честен отговор дали софтуерът по поръчка е правилното решение – а ако е, ще изясним как искате да ви бъде предоставен. Без натиск, без жаргон.",
+    "cta": "Запазете консултация"
   }
 }

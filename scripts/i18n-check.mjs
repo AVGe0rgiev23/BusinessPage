@@ -45,6 +45,11 @@ function containsTerm(text, term) {
   return new RegExp(`(?<![\\p{L}\\p{N}])${esc}(?![\\p{L}\\p{N}])`, "iu").test(text);
 }
 
+// «съм направил» / «бих направила»: a first-person past participle tells the
+// reader the author's gender. The site is written around them (present and
+// future tense), so this construction is an error.
+const GENDERED_FORM = /(?<![\p{L}\p{N}])(съм|бих|бях|щях)\s+\p{L}+(?:л|ла)(?![\p{L}\p{N}])/iu;
+
 function typography(text, where, errors) {
   if (text.includes("—")) errors.push({ code: "TYPO_EMDASH", where, detail: "use a spaced en dash ' – '" });
   if (/["”]/.test(text)) errors.push({ code: "TYPO_QUOTE", where, detail: 'use „…“, not " or ”' });
@@ -103,6 +108,9 @@ export function checkMessages({ dir, glossary, areas, strict = false }) {
         for (const term of glossary.terms ?? [])
           for (const a of term.avoid ?? [])
             if (containsTerm(b, a)) errors.push({ code: "AVOID_TERM", where, detail: `"${a}" → use "${term.bg}"` });
+        if (GENDERED_FORM.test(b)) {
+          errors.push({ code: "GENDERED_FORM", where, detail: "first-person past participle reveals gender; use present or future tense" });
+        }
         typography(b, where, errors);
       }
     }
