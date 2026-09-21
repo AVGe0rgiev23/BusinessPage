@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { RevealGroup } from "@/components/motion/reveal";
@@ -13,33 +14,16 @@ import { SectionHeading } from "@/components/layout/section-heading";
  * undifferentiated list twelve items deep.
  */
 const PRACTICES = [
-  {
-    title: "Reviewed, not rushed",
-    body: "Changes are reviewed before they ship. A second set of eyes catches problems while they're still cheap to fix.",
-  },
-  {
-    title: "Tested where it counts",
-    body: "Automated tests cover the parts of your software you can't afford to have break, so updates don't quietly undo what already worked.",
-  },
-  {
-    title: "Handled with care",
-    body: "Least-privilege access, secrets kept out of the code, and your data treated as something to protect — not an afterthought.",
-  },
-  {
-    title: "Documented as I go",
-    body: "What I build comes with the notes to run and change it, so you're never held hostage by one person's memory.",
-  },
-  {
-    title: "Shipped through a pipeline",
-    body: "Automated checks and deploys make releases repeatable and boring — the way releases should be — instead of a manual nail-biter.",
-  },
-  {
-    title: "Measured, then tuned",
-    body: "I check how software actually performs before optimising, and fix the things your users and your bill genuinely feel.",
-  },
-];
+  { id: "reviewedRushed" },
+  { id: "testedWhereCounts" },
+  { id: "handledCare" },
+  { id: "documentedAsGo" },
+  { id: "shippedThroughPipeline" },
+  { id: "measuredThenTuned" },
+] as const;
 
-export function EngineeringPractice() {
+export async function EngineeringPractice() {
+  const t = await getTranslations("work.engineeringPractice");
   return (
     <Section
       id="engineering-practice"
@@ -49,10 +33,10 @@ export function EngineeringPractice() {
       <Container>
         <SectionHeading
           index="03"
-          eyebrow="Engineering practice"
+          eyebrow={t("heading.eyebrow")}
           headingId="engineering-heading"
-          title="The standards behind the software."
-          lede="The difference between software that runs for years and software you regret is mostly invisible — it lives in how it's built. Here's what that looks like on my side."
+          title={t("heading.title")}
+          lede={t("heading.lede")}
         />
 
         <RevealGroup
@@ -61,7 +45,7 @@ export function EngineeringPractice() {
           selector=":scope > li"
         >
           {PRACTICES.map((practice, i) => (
-            <li key={practice.title} className="group border-t border-border pt-5">
+            <li key={practice.id} className="group border-t border-border pt-5">
               <div className="flex items-baseline gap-3">
                 <span
                   aria-hidden="true"
@@ -70,11 +54,11 @@ export function EngineeringPractice() {
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <h3 className="font-mono text-eyebrow uppercase text-text-primary">
-                  {practice.title}
+                  {t(`practices.${practice.id}.title`)}
                 </h3>
               </div>
               <p className="mt-3 max-w-[44ch] text-pretty text-small text-text-secondary">
-                {practice.body}
+                {t(`practices.${practice.id}.body`)}
               </p>
             </li>
           ))}

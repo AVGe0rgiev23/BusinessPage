@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import { initLocale } from "@/i18n/init-locale";
 import { routeMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
@@ -23,12 +24,13 @@ export default async function WorkPage({
   params: Promise<{ locale: string }>;
 }) {
   await initLocale(params);
+  const t = await getTranslations("work");
   return (
     <main id="main" tabIndex={-1} className="flex flex-1 flex-col">
       <PageHeader
-        eyebrow="My work"
-        title="I'd rather show you how I build than fake a portfolio."
-        subtitle="AGility is early, and I'm honest about it. There's no wall of client logos yet — so instead of inventing one, the engineering goes out in the open. Judge it on the work itself."
+        eyebrow={t("page.eyebrow")}
+        title={t("page.title")}
+        subtitle={t("page.subtitle")}
       />
       <Philosophy />
       <GithubProjects />

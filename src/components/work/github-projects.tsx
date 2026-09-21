@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import { ArrowUpRight } from "lucide-react";
 
 import { cn, focusRing } from "@/lib/utils";
@@ -7,7 +8,7 @@ import { Reveal } from "@/components/motion/reveal";
 import { Eyebrow } from "@/components/layout/section-heading";
 import { Button } from "@/components/ui/button";
 import { GithubIcon } from "@/components/icons/brand-icons";
-import { PointList, type Point } from "@/components/shared/point-list";
+import { PointList } from "@/components/shared/point-list";
 import { githubUrl } from "@/lib/site-config";
 
 /*
@@ -20,22 +21,14 @@ import { githubUrl } from "@/lib/site-config";
   What is left is what a GitHub profile genuinely evidences: readable code,
   a commit history, and the standards visible in both.
 */
-const PROOF: Point[] = [
-  {
-    title: "Code you can read",
-    body: "The repositories themselves, not screenshots of them. You can look at how something is actually put together before you decide whether to trust me with yours.",
-  },
-  {
-    title: "History you can check",
-    body: "Commits in order, so you can see how a project was really built rather than how it got described afterwards.",
-  },
-  {
-    title: "Standards I hold",
-    body: "How I structure, document, and review code, out in the open. Not a claim in a pitch deck — something you can go and check for yourself.",
-  },
-];
+const PROOF = [
+  { id: "codeRead" },
+  { id: "historyCheck" },
+  { id: "standardsHold" },
+] as const;
 
-export function GithubProjects() {
+export async function GithubProjects() {
+  const t = await getTranslations("work.githubProjects");
   return (
     <Section
       id="open-source"
@@ -52,20 +45,18 @@ export function GithubProjects() {
               >
                 02
               </span>
-              <Eyebrow>Open source</Eyebrow>
+              <Eyebrow>{t("eyebrow")}</Eyebrow>
             </div>
 
             <h2
               id="open-source-heading"
               className="mt-7 max-w-[16ch] text-balance text-h2 font-semibold text-text-primary"
             >
-              See how I build before you ever hire me.
+              {t("title")}
             </h2>
 
             <p className="mt-6 max-w-[52ch] text-pretty text-body-lg text-text-secondary">
-              Good engineering doesn&apos;t hide. My GitHub is the repositories
-              themselves — the code, the commit history, and the standards I
-              hold myself to when no one&apos;s watching.
+              {t("body")}
             </p>
 
             <Button
@@ -77,7 +68,7 @@ export function GithubProjects() {
               className={cn("group mt-9", focusRing)}
             >
               <GithubIcon className="size-5" aria-hidden="true" />
-              View my GitHub
+              {t("button")}
               <ArrowUpRight
                 className="text-text-muted transition-transform duration-[--duration-fast] group-hover/button:translate-x-0.5 group-hover/button:-translate-y-0.5"
                 aria-hidden="true"
@@ -85,7 +76,13 @@ export function GithubProjects() {
             </Button>
           </Reveal>
 
-          <PointList items={PROOF} className="lg:pt-1" />
+          <PointList
+            items={PROOF.map((point) => ({
+              title: t(`proof.${point.id}.title`),
+              body: t(`proof.${point.id}.body`),
+            }))}
+            className="lg:pt-1"
+          />
         </div>
       </Container>
     </Section>
