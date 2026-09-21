@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import { initLocale } from "@/i18n/init-locale";
 import { routeMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
@@ -21,12 +22,13 @@ export default async function TechnologiesPage({
   params: Promise<{ locale: string }>;
 }) {
   await initLocale(params);
+  const t = await getTranslations("technologies");
   return (
     <main id="main" tabIndex={-1} className="flex flex-1 flex-col">
       <PageHeader
-        eyebrow="Technologies"
-        title="Built on proven tools — so your software stays reliable, fast, and maintainable."
-        subtitle="I work with a well-supported, widely adopted stack — the same tooling behind serious software products. I choose it for reliability and longevity rather than novelty, and I pick the parts that fit each project rather than running every job through the same template."
+        eyebrow={t("page.eyebrow")}
+        title={t("page.title")}
+        subtitle={t("page.subtitle")}
       />
       <TechStack />
       <WhyThisStack />

@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { RevealGroup } from "@/components/motion/reveal";
@@ -11,75 +12,33 @@ import { SectionHeading } from "@/components/layout/section-heading";
  * version in the same shape, so this reads as the full reference rather than a
  * different page's take on the same facts.
  */
-interface StackGroup {
-  label: string;
-  items: string[];
-}
+/*
+  Each group is an id (its label lives in `technologies.stack.groups`) and a list
+  of tool ids. Tool names are catalog entries too (`technologies.stack.items`),
+  so proper names stay exactly as written and prose-like items can be translated.
+*/
+const STACK = [
+  { id: "languages", items: ["typescript","javascript","python","sql"] },
+  { id: "frontend", items: ["react","nextJs","tailwindCss","framerMotion"] },
+  { id: "backendApis", items: ["nodeJs","restApis","graphql","webhooks"] },
+  { id: "backgroundJobsWorkflow", items: ["triggerDev","queues","scheduledJobs","retriesConcurrencyControls","backgroundWorkers"] },
+  { id: "dataStorage", items: ["postgresql","redis","vectorDatabases","objectStorage"] },
+  { id: "aiLlmTooling", items: ["llmApis","ragPipelines","embeddings","vectorSearch","agents","functionCalling"] },
+  { id: "infrastructureCloud", items: ["vercel","aws","docker","ciCd","edgeFunctions"] },
+  { id: "integrations", items: ["crms","payments","emailMessaging","calendars","thirdPartyApis"] },
+] as const;
 
-const STACK: StackGroup[] = [
-  {
-    label: "Languages",
-    items: ["TypeScript", "JavaScript", "Python", "SQL"],
-  },
-  {
-    label: "Frontend",
-    items: ["React", "Next.js", "Tailwind CSS", "Framer Motion"],
-  },
-  {
-    label: "Backend & APIs",
-    items: ["Node.js", "REST APIs", "GraphQL", "Webhooks"],
-  },
-  {
-    label: "Background jobs & workflow infrastructure",
-    items: [
-      "Trigger.dev",
-      "Queues",
-      "Scheduled jobs",
-      "Retries & concurrency controls",
-      "Background workers",
-    ],
-  },
-  {
-    label: "Data & storage",
-    items: ["PostgreSQL", "Redis", "Vector databases", "Object storage"],
-  },
-  {
-    label: "AI & LLM tooling",
-    items: [
-      "LLM APIs",
-      "RAG pipelines",
-      "Embeddings",
-      "Vector search",
-      "Agents",
-      "Function calling",
-    ],
-  },
-  {
-    label: "Infrastructure & cloud",
-    items: ["Vercel", "AWS", "Docker", "CI/CD", "Edge functions"],
-  },
-  {
-    label: "Integrations",
-    items: [
-      "CRMs",
-      "Payments",
-      "Email & messaging",
-      "Calendars",
-      "Third-party APIs",
-    ],
-  },
-];
-
-export function TechStack() {
+export async function TechStack() {
+  const t = await getTranslations("technologies.stack");
   return (
     <Section id="stack" aria-labelledby="stack-heading">
       <Container>
         <SectionHeading
           index="01"
-          eyebrow="The stack"
+          eyebrow={t("heading.eyebrow")}
           headingId="stack-heading"
-          title="What I build with"
-          lede="A well-supported, widely adopted toolset — the same tooling behind serious software products. Think of it as a toolkit, not a template: I choose the stack per project, and nothing on this list is mandatory."
+          title={t("heading.title")}
+          lede={t("heading.lede")}
         />
 
         <RevealGroup
@@ -89,11 +48,11 @@ export function TechStack() {
         >
           {STACK.map((group) => (
             <div
-              key={group.label}
+              key={group.id}
               className="grid gap-x-10 gap-y-4 border-b border-border py-7 md:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] md:items-baseline lg:gap-x-16"
             >
               <dt className="max-w-[26ch] font-mono text-eyebrow uppercase text-text-secondary">
-                {group.label}
+                {t(`groups.${group.id}.label`)}
               </dt>
               <dd className="flex flex-wrap gap-2">
                 {group.items.map((item) => (
@@ -101,7 +60,7 @@ export function TechStack() {
                     key={item}
                     className="rounded-sm border border-border bg-bg-surface px-2.5 py-1 text-small text-text-primary transition-colors duration-[--duration-fast] hover:border-border-hover"
                   >
-                    {item}
+                    {t(`items.${item}`)}
                   </span>
                 ))}
               </dd>
