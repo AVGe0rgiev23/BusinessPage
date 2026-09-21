@@ -2,83 +2,83 @@
   "steps": {
     "items": {
       "discovery": {
-        "title": "Discovery",
-        "lead": "I sit down with you to find the expensive problem — where the hours disappear, where money quietly leaks, where growth keeps stalling. I map how the work actually flows today, and we settle on what a win looks like in real numbers before anyone writes a line of code.",
-        "deliverable": "A clear, written picture of the problem, the opportunity, and the outcome you’re aiming for — yours to keep whether or not the build goes ahead.",
-        "transparency": "You define what success means up front, so the project is never measured against a moving target."
+        "title": "Проучване",
+        "lead": "Сядам с вас, за да открием скъпия проблем – къде изчезват часовете, къде тихо изтичат пари, къде растежът непрекъснато засяда. Очертавам как всъщност тече работата днес и се разбираме как изглежда успехът в реални числа, преди някой да е написал ред код.",
+        "deliverable": "Ясна, писмена картина на проблема, на възможността и на резултата, към който се стремите – ваша, независимо дали изграждането ще продължи.",
+        "transparency": "Вие определяте предварително какво означава успех, така че проектът никога не се измерва спрямо движеща се цел."
       },
       "scopingDesign": {
-        "title": "Scoping & design",
-        "lead": "I turn the problem into a concrete plan: what gets built, how it fits the tools you already use, what it will cost, and how long it will take. This is also where the delivery model gets settled — run by me, run by you, or a hybrid — so the architecture is designed for it from the start rather than retrofitted later.",
-        "deliverable": "A scope, a timeline, an agreed operating model, and a clear picture of what “done” means, so you can decide with full information and no surprises.",
-        "transparency": "You approve the plan and the price before the build starts. No open-ended invoices, no scope quietly creeping in later."
+        "title": "Обхват и проектиране",
+        "lead": "Превръщам проблема в конкретен план: какво се изгражда, как се вписва в инструментите, които вече използвате, колко ще струва и колко време ще отнеме. Тук се уточнява и моделът на предоставяне – управление от мен, от вас или хибриден – така че архитектурата да е проектирана за него от самото начало, а не преправяна по-късно.",
+        "deliverable": "Обхват, срокове, договорен модел на предоставяне и ясна представа какво означава „готово“, за да решавате с пълна информация и без изненади.",
+        "transparency": "Одобрявате плана и цената, преди да започне изграждането. Без неопределени фактури, без обхват, който тихомълком се разширява по-късно."
       },
       "build": {
-        "title": "Build",
-        "lead": "I develop in short, focused increments and put working software in front of you as it takes shape — not months of silence followed by one big reveal.",
-        "deliverable": "Regular, visible progress you can actually try, plus the chance to steer while changes are still cheap and easy to make.",
-        "transparency": "You have a direct line to the person writing the code and a live view of where the project stands at any moment."
+        "title": "Разработка",
+        "lead": "Разработвам на къси, целенасочени стъпки и ви показвам работещ софтуер, докато той добива форма – не месеци мълчание, последвани от едно голямо разкритие.",
+        "deliverable": "Редовен, видим напредък, който можете реално да изпробвате, плюс възможност да насочвате, докато промените са още евтини и лесни.",
+        "transparency": "Имате пряка връзка с човека, който пише кода, и жива картина на състоянието на проекта във всеки момент."
       },
       "deploy": {
-        "title": "Deploy",
-        "lead": "I deploy the system using the operating model you’ve chosen — fully managed by me, into infrastructure you own, or a hybrid of the two. I configure the infrastructure, integrations, monitoring, and access it needs, test it against real work rather than a demo, and make sure everyone knows how it runs.",
-        "deliverable": "A launch that doesn’t disrupt the business, running where you decided it should run, with your people trained and the software already earning its keep.",
-        "transparency": "You know exactly what’s changing, when it goes live, who holds which accounts and access, and how to reach me the moment anything needs attention."
+        "title": "Внедряване",
+        "lead": "Внедрявам системата по избрания от вас модел на предоставяне – с пълно управление от мен, в инфраструктура, която притежавате, или хибриден вариант. Настройвам инфраструктурата, интеграциите, наблюдението и достъпа, от които се нуждае, тествам я с реална работа, а не с демонстрация, и се убеждавам, че всеки знае как работи.",
+        "deliverable": "Пускане, което не нарушава работата на бизнеса, на мястото, което вие сте решили, с обучени хора и софтуер, който вече се отплаща.",
+        "transparency": "Знаете точно какво се променя, кога тръгва на живо, кой какви акаунти и достъп държи и как да се свържете с мен в момента, в който нещо изисква внимание."
       },
       "supportIterate": {
-        "title": "Support & iterate",
-        "lead": "Ongoing support is optional, and it takes whichever form suits you. I can operate the system for you, keep maintaining and improving it while your team owns the infrastructure, or hand it over so your team runs it independently. The first version is a starting point, not the finish line.",
-        "deliverable": "Either software that keeps pace with your business, maintained by someone who already knows your systems inside out — or a clean handover with the documentation your team needs to run it without me.",
-        "transparency": "Ongoing, honest communication about what’s worth building next — and, just as often, what isn’t."
+        "title": "Поддръжка и надграждане",
+        "lead": "Текущата поддръжка е по желание и приема формата, която ви подхожда. Мога да управлявам системата вместо вас, да продължа да я поддържам и подобрявам, докато екипът ви притежава инфраструктурата, или да я предам, за да я управлява екипът ви самостоятелно. Първата версия е начална точка, не финал.",
+        "deliverable": "Или софтуер, който върви в крак с бизнеса ви, поддържан от човек, който вече познава системите ви до дъно – или чисто предаване с документацията, от която екипът ви се нуждае, за да я управлява без мен.",
+        "transparency": "Постоянна, честна комуникация за това какво си струва да се изгради следващо – и също толкова често какво не си струва."
       }
     },
     "heading": {
-      "eyebrow": "The path",
-      "title": "From an expensive problem to working software.",
-      "lede": "No black boxes. Five clear stages, each with a purpose you can point to — so from the first call to long after launch, you always know what's happening and why."
+      "eyebrow": "Пътят",
+      "title": "От скъп проблем до работещ софтуер.",
+      "lede": "Без „черни кутии“. Пет ясни етапа, всеки с цел, която можете да посочите – така че от първия разговор до дълго след пускането винаги знаете какво се случва и защо."
     },
     "labels": {
-      "deliverable": "What you walk away with",
-      "transparency": "How you stay in the loop"
+      "deliverable": "С какво оставате",
+      "transparency": "Как сте в течение"
     },
-    "stepLabel": "Step {number}"
+    "stepLabel": "Етап {number}"
   },
   "workingWithUs": {
     "pillars": {
       "fastCommunication": {
-        "title": "Fast communication",
-        "body": "You talk to the person building your software, not a layer of account managers relaying messages. Quick replies, straight answers, and a channel that stays open the whole way through."
+        "title": "Бърза комуникация",
+        "body": "Говорите с човека, който изгражда софтуера ви, а не с прослойка от акаунт мениджъри, които предават съобщения. Бърза обратна връзка, прями отговори и канал, който остава отворен през целия път."
       },
       "transparentDevelopment": {
-        "title": "Transparent development",
-        "body": "Clear scope, honest timelines, and progress you can see as it happens. You always know what you’re paying for, what it’s doing, and where the project stands this week — not a vague reassurance that it’s going fine."
+        "title": "Прозрачна разработка",
+        "body": "Ясен обхват, честни срокове и напредък, който виждате в момента, в който се случва. Винаги знаете за какво плащате, какво прави то и докъде е стигнал проектът тази седмица – а не неясно уверение, че всичко е наред."
       },
       "supportTerms": {
-        "title": "Support on your terms",
-        "body": "I don’t disappear at launch — but I don’t insist on staying, either. I can maintain, refine, and extend what I built for as long as it’s useful to you, or hand it over cleanly so your team runs it. Support is an option you choose, not a condition of working with me."
+        "title": "Поддръжка при ваши условия",
+        "body": "Не изчезвам след пускането – но и не настоявам да остана. Мога да поддържам, дооформям и разширявам изграденото, докато ви е полезно, или да го предам чисто, за да го управлява екипът ви. Поддръжката е възможност, която избирате, а не условие за работа с мен."
       },
       "ownershipTerms": {
-        "title": "Ownership on your terms",
-        "body": "The custom software I build for you is yours under the project agreement, and your data stays yours. You decide how much I operate: I can run the system, maintain it inside infrastructure you own, or hand it over entirely. I build with portability in mind, so moving on is always a real option — I’d just rather earn the reason to stay."
+        "title": "Собственост при ваши условия",
+        "body": "Софтуерът по поръчка, който изграждам за вас, е ваш по силата на договора за проекта, а данните ви остават ваши. Вие решавате колко да управлявам аз: мога да управлявам системата, да я поддържам в инфраструктура, която притежавате, или да я предам изцяло. Изграждам с мисъл за преносимост, така че преминаването към друг доставчик винаги е реална възможност – просто предпочитам да заслужа причината да остана."
       }
     },
     "heading": {
-      "eyebrow": "Working together",
-      "title": "What working with me is actually like.",
-      "lede": "The process above is the shape of a project. This is how it feels to be in one — the standards I hold myself to when you trust me to build software your business depends on."
+      "eyebrow": "Работата заедно",
+      "title": "Как всъщност изглежда работата с мен.",
+      "lede": "Процесът по-горе е скелетът на един проект. Ето как е да сте част от такъв проект – стандартите, които спазвам, когато ми се доверявате да изградя софтуер, от който зависи бизнесът ви."
     }
   },
   "page": {
-    "eyebrow": "Process",
-    "title": "You’ll always know exactly where your project stands.",
-    "subtitle": "Great software shouldn’t come with mystery. I work in clear, predictable stages — so from the first conversation to long after launch, there are no black boxes and no surprises."
+    "eyebrow": "Процес",
+    "title": "Винаги ще знаете точно докъде е стигнал проектът ви.",
+    "subtitle": "Добрият софтуер не бива да идва с мистерия. Работя на ясни, предвидими етапи – така че от първия разговор до дълго след пускането няма „черни кутии“ и няма изненади."
   },
   "cta": {
-    "eyebrow": "Get started",
-    "title": "See exactly how I'd approach your project.",
-    "subtitle": "Book a free consultation and I'll walk you through what the first steps would look like for your business — the problem worth solving, the plan to solve it, and what it would take. No pressure, no jargon.",
-    "primary": "Book a consultation",
-    "secondary": "Get in touch",
-    "footnote": "Still weighing it up? Read more about <about>how I think and what I stand for</about>."
+    "eyebrow": "Започнете",
+    "title": "Вижте точно как ще подходя към проекта ви.",
+    "subtitle": "Запазете безплатна консултация и ще ви покажа как биха изглеждали първите стъпки за вашия бизнес – проблемът, който си струва да се реши, планът за решаването му и какво ще е нужно. Без натиск, без жаргон.",
+    "primary": "Запазете консултация",
+    "secondary": "Свържете се с мен",
+    "footnote": "Още се колебаете? Прочетете повече за <about>начина ми на мислене и за нещата, които отстоявам</about>."
   }
 }
