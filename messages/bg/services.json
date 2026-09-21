@@ -2,114 +2,114 @@
   "catalog": {
     "groups": {
       "automateRepetitiveWork": {
-        "name": "Automate repetitive work",
-        "blurb": "The copy-paste, the re-typing, the chasing — the work your team does over and over that a computer should be doing instead."
+        "name": "Автоматизирайте повтарящата се работа",
+        "blurb": "Копирането, преписването, напомнянето – работата, която екипът ви върши отново и отново и която трябва да върши компютър."
       },
       "talkCustomersScale": {
-        "name": "Talk to customers at scale",
-        "blurb": "Answer more people, faster, without adding headcount — and keep a person in the loop for the conversations that need one."
+        "name": "Общувайте с клиентите в голям мащаб",
+        "blurb": "Отговаряйте на повече хора, по-бързо, без да наемате допълнителен персонал – и оставете човек в процеса за разговорите, които имат нужда от такъв."
       },
       "connectSystems": {
-        "name": "Connect your systems",
-        "blurb": "Stop moving data by hand between the tools you already pay for, and make sure everyone is working from the same, current picture."
+        "name": "Свържете системите си",
+        "blurb": "Спрете да пренасяте данни на ръка между инструментите, за които вече плащате, и се уверете, че всички работят със същата, актуална картина."
       },
       "customProducts": {
-        "name": "Custom products",
-        "blurb": "When nothing off-the-shelf fits, I design and build the product itself — and the software I build for you is yours under the project agreement."
+        "name": "Продукти по поръчка",
+        "blurb": "Когато нищо от готовото не пасва, проектирам и изграждам самия продукт – а софтуерът, който изграждам за вас, е ваш по силата на договора за проекта."
       }
     },
     "services": {
       "emailAutomation": {
-        "title": "Email automation",
-        "body": "Sort, route, and reply to routine email automatically, so messages get answered quickly and nothing slips through the cracks."
+        "title": "Автоматизация на имейли",
+        "body": "Автоматично сортиране, разпределяне и отговаряне на рутинни имейли, така че съобщенията да получават бърз отговор и нищо да не се изплъзва."
       },
       "documentProcessing": {
-        "title": "Document processing",
-        "body": "Pull the data out of invoices, contracts, and forms without anyone re-typing it — fewer errors and hours back every week."
+        "title": "Обработка на документи",
+        "body": "Извличане на данните от фактури, договори и формуляри, без някой да ги преписва – по-малко грешки и върнати часове всяка седмица."
       },
       "workflowAutomation": {
-        "title": "Workflow automation",
-        "body": "Connect the steps of a process end to end so work moves on its own, instead of waiting on manual handoffs between people and tools."
+        "title": "Автоматизация на работни процеси",
+        "body": "Свързване на стъпките на един процес от край до край, така че работата да върви сама, вместо да чака ръчно предаване между хора и инструменти."
       },
       "internalCompanyTools": {
-        "title": "Internal company tools",
-        "body": "Replace the spreadsheets and manual rituals your team leans on with an app built around exactly how you actually work."
+        "title": "Вътрешни фирмени инструменти",
+        "body": "Заменете електронните таблици и ръчните ритуали, на които разчита екипът ви, с приложение, изградено точно около начина, по който наистина работите."
       },
       "aiAssistants": {
-        "title": "AI assistants",
-        "body": "A helper that answers questions and takes action against your own data and systems, so customers and staff get answers without waiting on someone."
+        "title": "AI асистенти",
+        "body": "Помощник, който отговаря на въпроси и действа върху вашите собствени данни и системи, така че клиентите и служителите да получават отговори, без да чакат някого."
       },
       "aiChatbots": {
-        "title": "AI chatbots",
-        "body": "A conversational front door for your site or product that qualifies leads, guides visitors, and hands off to a person only when it needs to."
+        "title": "AI чатботове",
+        "body": "Разговорен вход към сайта или продукта ви, който отсява подходящите потенциални клиенти, насочва посетителите и предава на човек само когато е необходимо."
       },
       "customerSupportSystems": {
-        "title": "Customer-support systems",
-        "body": "Triage, draft, and resolve routine tickets automatically, so your team spends its time on the conversations that genuinely need a human."
+        "title": "Системи за клиентска поддръжка",
+        "body": "Автоматично подреждане по приоритет, подготвяне на отговори и решаване на рутинни заявки, така че екипът ви да отделя времето си на разговорите, които наистина изискват човек."
       },
       "crmIntegrations": {
-        "title": "CRM integrations",
-        "body": "Keep customer records accurate and in sync across every tool you use, so your team stops working from stale or conflicting data."
+        "title": "Интеграции с CRM",
+        "body": "Клиентските записи остават точни и синхронизирани във всички инструменти, които използвате, така че екипът ви да не работи с остарели или противоречиви данни."
       },
       "apiIntegrations": {
-        "title": "API integrations",
-        "body": "Make the software you already rely on talk to each other cleanly, so data flows automatically instead of being moved by hand."
+        "title": "API интеграции",
+        "body": "Чиста връзка между софтуера, на който вече разчитате, така че данните да текат автоматично, вместо да се пренасят на ръка."
       },
       "aiPoweredDashboards": {
-        "title": "AI-powered dashboards",
-        "body": "Live views of the numbers that matter, with plain-language summaries — so you can see what's happening and act without digging through reports."
+        "title": "AI табла",
+        "body": "Показатели в реално време за числата, които имат значение, с обобщения на разбираем език – за да виждате какво се случва и да действате, без да ровите в отчети."
       },
       "customSaasProducts": {
-        "title": "Custom SaaS products",
-        "body": "A full product built from first idea to launch when existing software can't do what you need — and you want to own the result rather than rent it."
+        "title": "SaaS продукти по поръчка",
+        "body": "Цял продукт, изграден от първата идея до пускането, когато наличният софтуер не може да прави това, от което се нуждаете – и искате да притежавате резултата, а не да го наемате."
       },
       "bespokeAiSolutions": {
-        "title": "Bespoke AI solutions",
-        "body": "Have a problem that doesn't fit a category? I scope and build around it, using AI only where it genuinely earns its place."
+        "title": "AI решения по поръчка",
+        "body": "Имате проблем, който не се вмества в категория? Определям обхвата и изграждам решение около него, като използвам AI само там, където наистина си заслужава."
       }
     },
-    "groupLabel": "Group"
+    "groupLabel": "Група"
   },
   "whyCustomCallout": {
     "points": {
       "ownership": {
-        "label": "Ownership",
-        "desc": "The custom software is yours under the project agreement — not rented from a builder you don't control."
+        "label": "Собственост",
+        "desc": "Софтуерът по поръчка е ваш по силата на договора за проекта – не е нает от платформа, която не контролирате."
       },
       "flexibility": {
-        "label": "Flexibility",
-        "desc": "It does exactly what your business needs, not just what a drag-and-drop builder happens to support."
+        "label": "Гъвкавост",
+        "desc": "Прави точно каквото е нужно на бизнеса ви, а не само каквото случайно поддържа визуалният конструктор."
       },
       "scalability": {
-        "label": "Scalability",
-        "desc": "It grows with your volume and complexity instead of hitting a platform ceiling."
+        "label": "Мащабируемост",
+        "desc": "Расте заедно с обема и сложността ви, вместо да опира до таван на платформата."
       },
       "noUnnecessaryLock": {
-        "label": "No unnecessary lock-in",
-        "desc": "Standard, portable technology wherever practical — so your core process isn't hostage to one builder's pricing."
+        "label": "Без ненужна зависимост",
+        "desc": "Стандартна, преносима технология, където е практично – така че основният ви процес да не е заложник на цените на един доставчик."
       }
     },
-    "eyebrow": "Custom vs. off-the-shelf",
-    "title": "Why custom, not off-the-shelf",
-    "second": "Off-the-shelf tools and low-code platforms have their place, and I'll tell you honestly when one is the right fit — including when it means a smaller project for me. But as a process becomes central to how you make money, owning it tends to pay off more than renting it from a builder that can change its pricing or shut down.",
-    "third": "I use third-party services myself — cloud hosting, databases, AI providers. The point isn't to avoid them, it's to avoid unnecessary lock-in and keep what I build portable.",
-    "link": "See how I work"
+    "eyebrow": "По поръчка срещу готово",
+    "title": "Защо по поръчка, а не готово решение",
+    "second": "Готовите инструменти и low-code платформите имат своето място и ще ви кажа честно кога са правилният избор – дори когато това означава по-малък проект за мен. Но когато един процес стане централен за начина, по който печелите, притежаването му обикновено се отплаща повече от наемането му от платформа, която може да смени цените си или да спре да работи.",
+    "third": "И аз използвам услуги на трети страни – облачен хостинг, бази данни, AI доставчици. Идеята не е да ги избягвам, а да избягвам ненужната зависимост и да запазя изграденото преносимо.",
+    "link": "Вижте как работя"
   },
   "cta": {
-    "eyebrow": "Get started",
-    "title": "Not sure where to start? That's what the call is for.",
-    "subtitle": "Book a free consultation and I'll look at the repetitive work costing your team the most — then map out what's worth building first. No pressure, no jargon.",
-    "primary": "Book a consultation",
-    "secondary": "Get in touch"
+    "eyebrow": "Започнете",
+    "title": "Не сте сигурни откъде да започнете? Затова е разговорът.",
+    "subtitle": "Запазете безплатна консултация и ще погледна повтарящата се работа, която струва най-много на екипа ви – после ще очертаем какво си струва да се изгради първо. Без натиск, без жаргон.",
+    "primary": "Запазете консултация",
+    "secondary": "Свържете се с мен"
   },
   "page": {
-    "eyebrow": "Services",
-    "title": "Software that handles the busywork your team shouldn't be doing.",
-    "subtitle": "Everything below is an example of what I build, not a fixed menu. Every project is designed around your business — your tools, your process, and the specific work you want to stop doing by hand."
+    "eyebrow": "Услуги",
+    "title": "Софтуер, който поема рутинната работа, която екипът ви не бива да върши.",
+    "subtitle": "Всичко по-долу е пример за това, което изграждам, а не фиксирано меню. Всеки проект е проектиран около вашия бизнес – вашите инструменти, вашия процес и конкретната работа, която искате да спрете да вършите на ръка."
   },
   "delivery": {
-    "eyebrow": "Delivery",
-    "heading": "How your software is delivered",
-    "intro": "Every project is different, and so is the right operating model. I can run the system for you, deploy it into infrastructure you control, or manage software running inside your own environment — whichever fits how your business works."
+    "eyebrow": "Предоставяне",
+    "heading": "Как се предоставя софтуерът ви",
+    "intro": "Всеки проект е различен и правилният модел на предоставяне също. Мога да управлявам системата вместо вас, да я внедря в инфраструктура, която вие контролирате, или да поддържам софтуер, работещ във вашата собствена среда – както пасва на начина, по който работи бизнесът ви."
   }
 }
