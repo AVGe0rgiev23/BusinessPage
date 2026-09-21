@@ -2,65 +2,65 @@
   "expectations": {
     "items": {
       "thirtyMinutes": {
-        "title": "30 minutes over Zoom",
-        "body": "A focused call at a time that suits you. Camera optional — whatever you're comfortable with."
+        "title": "30 минути по Zoom",
+        "body": "Целенасочен разговор в час, който ви е удобен. Камерата е по желание – както ви е удобно."
       },
       "freeNoObligation": {
-        "title": "Free, with no obligation",
-        "body": "No invoice and no commitment. If I'm not the right fit, I'll say so and point you elsewhere."
+        "title": "Безплатно и без ангажимент",
+        "body": "Без фактура и без ангажимент. Ако не съм подходящият избор, ще ви го кажа и ще ви насоча другаде."
       },
       "whereLosingTime": {
-        "title": "A look at where you're losing time and money",
-        "body": "Walk me through the workflow that frustrates you most. I'll dig into what it's really costing you."
+        "title": "Поглед към това къде губите време и пари",
+        "body": "Разкажете ми стъпка по стъпка за работния процес, който ви дразни най-много. Ще проуча какво ви струва в действителност."
       },
       "honestAnswer": {
-        "title": "An honest answer on whether custom software is worth it",
-        "body": "Sometimes the right move is a small fix — or nothing at all. I'll tell you straight, either way."
+        "title": "Честен отговор дали софтуерът по поръчка си струва",
+        "body": "Понякога правилният ход е малка поправка – или нищо. Ще ви кажа направо, така или иначе."
       }
     },
-    "eyebrow": "The call",
-    "title": "What to expect on the call",
-    "lede": "It's a conversation, not a pitch. Here's exactly how the 30 minutes go."
+    "eyebrow": "Разговорът",
+    "title": "Какво да очаквате от разговора",
+    "lede": "Това е разговор, а не презентация за продажба. Ето точно как протичат 30-те минути."
   },
   "preparation": {
     "columns": {
       "whoItsFor": {
-        "title": "Who it's for"
+        "title": "За кого е"
       },
       "howToPrepare": {
-        "title": "How to prepare"
+        "title": "Как да се подготвите"
       }
     },
     "items": {
-      "growingBusinessesBuried": "Growing businesses buried in repetitive, manual work",
-      "teamsCopyPasting": "Teams copy-pasting between tools, inboxes, and spreadsheets",
-      "ownersWhoSuspect": "Owners who suspect software could help but aren't sure where to start",
-      "nothingFormalNo": "Nothing formal — no slides or documents needed",
-      "thinkOneTask": "Think of the one task your team dreads most",
-      "bringAnyTools": "Bring any tools or numbers you already track (optional)"
+      "growingBusinessesBuried": "Бизнеси в растеж, затрупани с повтаряща се ръчна работа",
+      "teamsCopyPasting": "Екипи, които копират данни между инструменти, пощи и електронни таблици",
+      "ownersWhoSuspect": "Собственици, които подозират, че софтуер би помогнал, но не знаят откъде да започнат",
+      "nothingFormalNo": "Нищо официално – не са нужни слайдове или документи",
+      "thinkOneTask": "Помислете за задачата, която екипът ви мрази най-много",
+      "bringAnyTools": "Донесете инструменти или числа, които вече следите (по желание)"
     },
-    "eyebrow": "Before we talk",
-    "title": "Come as you are",
-    "lede": "A quick read on who this is for and the little that helps make the most of your time."
+    "eyebrow": "Преди да поговорим",
+    "title": "Елате както сте",
+    "lede": "Кратко обяснение за кого е това и малкото, което помага да се възползвате максимално от времето си."
   },
   "page": {
-    "eyebrow": "Book a consultation",
-    "title": "Book a free 30-minute consultation.",
-    "subtitle": "I'll look at where your business is losing time and money — and give you an honest answer on whether custom software is worth it. No pressure, no obligation, no jargon.",
-    "cta": "Book a consultation"
+    "eyebrow": "Запазете консултация",
+    "title": "Запазете безплатна 30-минутна консултация.",
+    "subtitle": "Ще погледна къде бизнесът ви губи време и пари – и ще ви дам честен отговор дали софтуерът по поръчка си струва. Без натиск, без ангажимент, без жаргон.",
+    "cta": "Запазете консултация"
   },
   "perks": {
-    "about30Minutes": "About 30 minutes",
-    "free": "Free",
-    "noPressure": "No pressure",
-    "noObligation": "No obligation"
+    "about30Minutes": "Около 30 минути",
+    "free": "Безплатно",
+    "noPressure": "Без натиск",
+    "noObligation": "Без ангажимент"
   },
   "bookingCta": {
-    "eyebrow": "Book your call",
-    "title": "Pick a time that works for you",
-    "subtitle": "Choose a free 30-minute slot and we'll talk through where your business is losing time — and whether custom software is worth it. No pressure, no obligation.",
-    "primary": "Book a consultation",
-    "secondary": "Send a message instead",
-    "footnote": "Rather not book yet? Ask me anything through the <contact>contact form</contact>."
+    "eyebrow": "Запазете разговора си",
+    "title": "Изберете удобен за вас час",
+    "subtitle": "Изберете безплатен 30-минутен час и ще обсъдим къде бизнесът ви губи време – и дали софтуерът по поръчка си струва. Без натиск, без ангажимент.",
+    "primary": "Запазете консултация",
+    "secondary": "Изпратете съобщение вместо това",
+    "footnote": "Още не сте готови да запазите час? Попитайте ме каквото и да е през <contact>формата за контакт</contact>."
   }
 }
