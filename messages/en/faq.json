@@ -1,0 +1,162 @@
+{
+  "page": {
+    "eyebrow": "FAQ",
+    "title": "The questions I hear most, answered plainly.",
+    "subtitle": "How pricing works, how long things take, who owns what, where the software runs, and what happens after launch — no jargon, no fine print. If your question isn't here, just ask."
+  },
+  "groups": {
+    "workingTogether": {
+      "eyebrow": "Working together",
+      "heading": "Working together"
+    },
+    "pricingTimelines": {
+      "eyebrow": "Pricing & timelines",
+      "heading": "Pricing, costs and timelines"
+    },
+    "deliveryOwnership": {
+      "eyebrow": "Delivery & ownership",
+      "heading": "Delivery, ownership and infrastructure"
+    },
+    "afterLaunch": {
+      "eyebrow": "After launch",
+      "heading": "After launch, support and security"
+    }
+  },
+  "items": {
+    "kindBusinessesWork": {
+      "q": "What kind of businesses do you work with?",
+      "a": "Small and growing companies with repetitive, manual work — the kind where people spend hours copy-pasting between systems, chasing updates, re-keying the same data, or answering the same questions. I'm based in Europe and work with clients worldwide."
+    },
+    "buildCustomSoftware": {
+      "q": "Do you build custom software, or use low-code tools like n8n?",
+      "a": {
+        "p1": "I'm code-first. For the processes a business actually runs on, I build custom software rather than assembling it inside a proprietary visual workflow builder — that's what gives you flexibility, clearer ownership, and room to grow.",
+        "p2": "That said, I'm not ideological about it. If an existing tool — including a low-code one — solves your problem more cheaply, more simply, or more safely, I'll tell you, even when it means a smaller project for me. I use third-party services myself; nobody builds without them. What I avoid is making a core business process depend on a platform you can't move off."
+      }
+    },
+    "workToolsSystems": {
+      "q": "Can you work with the tools and systems we already use?",
+      "a": "Almost always. A big part of what I do is connecting the systems you already rely on — your CRM, inbox, spreadsheets, and internal tools — so they finally work together instead of in isolation. I fit around your stack rather than asking you to rip it out."
+    },
+    "technicalProblem": {
+      "q": "We're not technical — is that a problem?",
+      "a": "Not at all. Most of the people I work with run a business, not an engineering team. I handle the technical side and explain everything in plain language, so you always understand what you're paying for and why it matters. And if owning cloud infrastructure sounds like a headache you don't need, that's exactly what the fully managed option is for."
+    },
+    "alreadyHaveHouse": {
+      "q": "What if we already have an in-house developer or technical team?",
+      "a": "Then you're in a good position. I can work alongside your team — taking on something they don't have time for, building in an area they don't specialise in, or handing over cleanly for them to own. I'll follow your conventions and review process where you have them. The goal is to make your setup better, not to build a parallel one only I understand."
+    },
+    "getStarted": {
+      "q": "How do we get started?",
+      "a": {
+        "p1": "It runs in five steps: a free consultation, then discovery, then a scope, then a proposal, then the build. The consultation is a short conversation about where your business is losing time — and an honest answer on whether custom software is the right fix. Discovery maps how the work flows today and what a win would actually be worth. From there I scope the build, set out how it should be delivered and operated, and put a proposal in front of you. Nothing gets built until you've approved that.",
+        "p2": "You can <book>book a consultation</book> or <contact>send me a message</contact> whenever you're ready."
+      }
+    },
+    "pricingWork": {
+      "q": "How does pricing work?",
+      "a": {
+        "p1": "The bands are published on the <pricing>home page</pricing>: a pilot is {pilot} at a fixed price, a full workflow project is {project} at a fixed price, and ongoing support runs {support} a month. Where a project lands inside a band depends on its scope.",
+        "p2": "Infrastructure and AI API usage sit outside those figures and depend on the delivery model you choose. Whichever of them apply to you is itemised in the proposal before any work starts — and if it doesn't do what the proposal says it will, you don't pay for it."
+      }
+    },
+    "chargeFixedPrice": {
+      "q": "Do you charge a fixed price or by the hour?",
+      "a": "For a defined project with a settled scope, a fixed price is the default so the cost is predictable from day one. Ongoing work — maintenance, improvements, new features, or operating the system on your behalf — doesn't fit a one-off number, so that's set up as a recurring arrangement instead. I'll recommend whichever suits the work and explain why."
+    },
+    "whoPaysInfrastructure": {
+      "q": "Who pays for infrastructure and AI API usage?",
+      "a": {
+        "p1": "It depends on the delivery model and what's agreed in the project. If you hold the accounts — the client-owned and hybrid models — those costs are billed to you directly by the providers, which also means you can see exactly what you're spending.",
+        "p2": "If I operate the system for you, infrastructure and API usage may be included in the fee or accounted for separately, depending on how predictable that usage is. AI API costs in particular scale with volume, so I'd rather be explicit about them up front than fold them into a number that stops making sense once you grow."
+      }
+    },
+    "longProjectTake": {
+      "q": "How long does a project take?",
+      "a": "It depends on the scope, and I'd rather not invent a universal number. A focused automation — one workflow, a couple of systems — can be a matter of weeks. A larger internal tool, a customer-facing product, or anything touching several systems takes longer. Whatever the size, I work in increments and put something usable in front of you early, instead of disappearing for a quarter."
+    },
+    "consultationReallyFree": {
+      "q": "Is the consultation really free?",
+      "a": "Yes. The first consultation costs nothing and carries no obligation. It's a genuine conversation about your business — and if custom software isn't the right move for you, I'll tell you that too."
+    },
+    "sureExactlyNeed": {
+      "q": "What if we're not sure exactly what we need yet?",
+      "a": "That's normal, and it's exactly what discovery is for. You bring the problem — the thing that's slow, costly, or frustrating — and I help shape it into a clear plan before anyone commits to a build. Plenty of good projects start as \"this bit of our week is a mess\"."
+    },
+    "whereSoftwareRun": {
+      "q": "Where does the software run?",
+      "a": {
+        "intro": "That's your call. There are three models, and I'll recommend one based on your technical team, security requirements, budget, and how much you want to manage yourself:",
+        "outro": "None of these is the “right” one in general — only for you. It gets settled during scoping, so the system is designed for it from the start.",
+        "managed": {
+          "label": "Fully managed.",
+          "text": "I operate the production system on your behalf — hosting, deployments, monitoring, and maintenance. You just use the software."
+        },
+        "clientOwned": {
+          "label": "Client-owned.",
+          "text": "I build and deploy into infrastructure and accounts you control, then hand over the agreed source code, configuration, and documentation for your team or another provider to run."
+        },
+        "hybrid": {
+          "label": "Hybrid.",
+          "text": "You own the environment and the accounts; I keep developing, deploying, monitoring, and improving the software inside them with authorised access."
+        }
+      }
+    },
+    "whoOwnsSoftware": {
+      "q": "Who owns the software?",
+      "a": {
+        "p1": "Three things get tangled together here, so I keep them separate. The custom software I build specifically for you is intended to be yours under the project agreement. Your business data is yours. Third-party services — cloud hosting, AI providers, payment processors — remain subject to their own providers' terms, and who holds those accounts depends on the delivery model you choose.",
+        "p2": "The exact ownership, licensing, access, and hand-off terms belong in the project agreement rather than in a sentence on a website. What I can say plainly is that I build with ownership and portability in mind, and I'll put the specifics in writing before you commit."
+      }
+    },
+    "useExistingOpenai": {
+      "q": "Can you use our existing OpenAI, Anthropic, CRM, or cloud accounts?",
+      "a": "Yes, where it's technically appropriate — and it's often the better choice. Building against accounts you already hold keeps billing transparent, keeps the data under your own contracts with those providers, and means nothing needs migrating if you later change how the work is arranged."
+    },
+    "workInsideCloud": {
+      "q": "Can you work inside our cloud environment?",
+      "a": "Yes, where it's technically appropriate. Under the client-owned and hybrid models I deploy into your AWS, Vercel, or other cloud environment. You grant the technical permissions needed to build, deploy, monitor, and maintain the system — scoped to the work rather than blanket administrative control — and you can review or revoke them."
+    },
+    "ownTriggerDev": {
+      "q": "Can we own the Trigger.dev project?",
+      "a": {
+        "p1": "Yes. Where a project uses Trigger.dev — a code-first platform for long-running background tasks and AI workflows, with retries, queues, concurrency controls, scheduling, and observability built in — the client-owned and hybrid models mean your company creates and owns the organisation and project, and I work inside it with the access I need.",
+        "p2": "Worth knowing: Trigger.dev Cloud runs tasks on Trigger.dev's own managed infrastructure, and there is also a self-hosted option. The two are not identical in every respect, so which one fits is something to work through during scoping — alongside whether the project needs that kind of background-job infrastructure at all."
+      }
+    },
+    "agilityManageTrigger": {
+      "q": "Can AGility manage our Trigger.dev environment?",
+      "a": "Yes. Under a managed or hybrid arrangement I handle the tasks, deployments, monitoring, retries, and concurrency settings on your behalf, working with the permissions the job requires rather than ownership of your account. If you've chosen a model where you hold the organisation, you keep holding it."
+    },
+    "happensAfterLaunch": {
+      "q": "What happens after launch?",
+      "a": "One of three things, depending on what you want. I can keep operating the system for you. I can maintain and improve it while your team owns the infrastructure. Or I can hand it over — the agreed source code, deployment configuration, and documentation — for your team to run independently. Ongoing support is an option you choose, not a condition of working with me."
+    },
+    "stopWorkingAgility": {
+      "q": "Can we stop working with AGility?",
+      "a": {
+        "p1": "Yes. I build with portability in mind precisely so that leaving is a real option rather than something I can hold over you: standard technology, documented setup, and the agreed deliverables.",
+        "p2": "In practice, how a wind-down runs depends on the model you chose and the terms in the project agreement — if I'm operating infrastructure on your behalf, there's a transition to plan rather than a switch to flip, and third-party services have their own arrangements. I'd far rather agree all of that up front, while everyone's happy, than improvise it later."
+      }
+    },
+    "wantAnotherDeveloper": {
+      "q": "What if we want another developer to take over?",
+      "a": "That's a reasonable thing to want, and properly documented software transitions fine. Your new team gets the agreed deliverables — source code, deployment configuration, and setup and environment documentation — and credentials are re-provisioned under the appropriate owner's control rather than passed around informally. I'll answer their questions during the handover. Software only one person can run is an engineering failure, not a retention strategy."
+    },
+    "handleSecurity": {
+      "q": "How do you handle security?",
+      "a": {
+        "p1": "Carefully, and honestly. I don't hold formal certifications like SOC 2 or ISO 27001, and I won't claim compliance I haven't been audited for.",
+        "p2": "What I do practise: least-privilege access, scoped to the work and removed when it's no longer needed; secrets kept out of source control and managed properly; encryption in transit; and collecting only the data a system genuinely needs. If your requirements mean the system has to run inside your own infrastructure, under your own accounts, that's exactly what the client-owned and hybrid models are for.",
+        "p3": "The third-party providers I build on carry their own security responsibilities and publish their own certifications. I'm happy to walk through which providers a project would involve and what that means for you."
+      }
+    }
+  },
+  "cta": {
+    "eyebrow": "Still have questions?",
+    "title": "The quickest answer is a conversation.",
+    "subtitle": "If your question isn't here, ask me directly. Book a free consultation and I'll talk through your situation — no jargon, no pressure to commit.",
+    "primary": "Book a consultation",
+    "secondary": "Ask me anything"
+  }
+}

@@ -237,8 +237,7 @@
     },
     "heading": {
       "eyebrow": "Custom vs. low-code",
-      "title": "Own your software. Don't rent your workflow.",
-      "lede": "I'm code-first: the processes your business runs on get built as software, rather than assembled inside a proprietary visual workflow builder. That buys you flexibility, clearer ownership, and room to grow."
+      "title": "Own your software. Don't rent your workflow."
     },
     "table": {
       "caption": "Custom software compared with low-code platforms across ownership, flexibility, scalability, lock-in, integrations and performance.",
@@ -287,7 +286,6 @@
   "openSource": {
     "eyebrow": "Open source",
     "title": "I build in the open.",
-    "body": "Good engineering doesn't hide. My GitHub is the repositories themselves — the code, the commit history, and the standards I hold myself to when no one's watching.",
     "button": "View my GitHub",
     "statement": "You can see how I write code before you ever hire me."
   },

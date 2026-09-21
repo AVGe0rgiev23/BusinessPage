@@ -29,6 +29,7 @@ const PROOF = [
 
 export async function GithubProjects() {
   const t = await getTranslations("work.githubProjects");
+  const shared = await getTranslations("shared");
   return (
     <Section
       id="open-source"
@@ -56,7 +57,7 @@ export async function GithubProjects() {
             </h2>
 
             <p className="mt-6 max-w-[52ch] text-pretty text-body-lg text-text-secondary">
-              {t("body")}
+              {shared("githubIntro")}
             </p>
 
             <Button

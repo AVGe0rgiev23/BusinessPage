@@ -91,7 +91,6 @@
     },
     "eyebrow": "Custom vs. off-the-shelf",
     "title": "Why custom, not off-the-shelf",
-    "first": "I'm code-first: the processes your business runs on get built as software, rather than assembled inside a proprietary visual workflow builder. That buys you flexibility, clearer ownership, and room to grow.",
     "second": "Off-the-shelf tools and low-code platforms have their place, and I'll tell you honestly when one is the right fit — including when it means a smaller project for me. But as a process becomes central to how you make money, owning it tends to pay off more than renting it from a builder that can change its pricing or shut down.",
     "third": "I use third-party services myself — cloud hosting, databases, AI providers. The point isn't to avoid them, it's to avoid unnecessary lock-in and keep what I build portable.",
     "link": "See how I work"

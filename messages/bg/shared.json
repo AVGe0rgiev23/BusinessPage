@@ -29,5 +29,7 @@
     "infrastructureLabel": "Infrastructure & accounts",
     "runsLabel": "Runs & maintains it",
     "footer": "In every model, the custom software I build for you is intended to be yours under the project agreement, and your data stays your data. What changes is who holds the infrastructure and who keeps it running. <em>Not sure which fits? I'll recommend a setup based on your technical team, security and compliance requirements, budget, and how much you want to manage yourself.</em>"
-  }
+  },
+  "codeFirst": "I'm code-first: the processes your business runs on get built as software, rather than assembled inside a proprietary visual workflow builder. That buys you flexibility, clearer ownership, and room to grow.",
+  "githubIntro": "Good engineering doesn't hide. My GitHub is the repositories themselves — the code, the commit history, and the standards I hold myself to when no one's watching."
 }

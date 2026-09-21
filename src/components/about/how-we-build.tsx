@@ -20,6 +20,7 @@ const PRINCIPLES = [
 
 export async function HowWeBuild() {
   const t = await getTranslations("about.howWeBuild");
+  const shared = await getTranslations("shared");
   return (
     <Section id="how-we-build" aria-labelledby="how-we-build-heading">
       <Container>
@@ -43,7 +44,7 @@ export async function HowWeBuild() {
             </h2>
 
             <p className="mt-6 max-w-[52ch] text-pretty text-body-lg text-text-secondary">
-              {t("first")}
+              {shared("codeFirst")}
             </p>
             <p className="mt-4 max-w-[52ch] text-pretty text-body text-text-secondary">
               {t("second")}

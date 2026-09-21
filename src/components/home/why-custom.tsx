@@ -38,6 +38,7 @@ const DIMENSIONS = [
 
 export async function WhyCustom() {
   const t = await getTranslations("home.whyCustom");
+  const shared = await getTranslations("shared");
   return (
     <Section id="why-custom" aria-labelledby="why-custom-heading">
       <Container>
@@ -46,7 +47,7 @@ export async function WhyCustom() {
           eyebrow={t("heading.eyebrow")}
           headingId="why-custom-heading"
           title={t("heading.title")}
-          lede={t("heading.lede")}
+          lede={shared("codeFirst")}
         />
 
         <Reveal className="mt-16 md:mt-20">

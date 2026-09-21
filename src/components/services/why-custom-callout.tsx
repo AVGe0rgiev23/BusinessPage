@@ -26,6 +26,7 @@ const POINTS = [
 
 export async function WhyCustomCallout() {
   const t = await getTranslations("services");
+  const shared = await getTranslations("shared");
   return (
     <Section aria-labelledby="why-custom-heading">
       <Container>
@@ -44,7 +45,7 @@ export async function WhyCustomCallout() {
             </h2>
 
             <p className="mt-6 max-w-[54ch] text-pretty text-body-lg text-text-secondary">
-              {t("whyCustomCallout.first")}
+              {shared("codeFirst")}
             </p>
             <p className="mt-4 max-w-[54ch] text-pretty text-body text-text-secondary">
               {t("whyCustomCallout.second")}
