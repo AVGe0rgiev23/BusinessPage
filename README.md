@@ -39,9 +39,56 @@ don't use it everywhere or the variety collapses again.
 ```bash
 pnpm install
 pnpm dev      # start the dev server at http://localhost:3000
-pnpm build    # production build
+pnpm build    # i18n check, then the production build
 pnpm lint     # eslint
+pnpm i18n:check   # English/Bulgarian catalogs: parity, glossary, house rules
+pnpm test:i18n    # tests for the checker itself
 ```
+
+## Languages
+
+The site is bilingual: English at `/`, `/services`, … and Bulgarian at `/bg`,
+`/bg/services`, …. There is deliberately **no automatic redirect** by browser
+language or cookie: the visitor chooses with the **EN | БГ** switcher, and the
+URL is the choice. It is built with [next-intl](https://next-intl.dev)
+(`localePrefix: "as-needed"`, `src/proxy.ts`, `src/i18n/`), with every route under
+`src/app/[locale]/`.
+
+**Where the words live.** `messages/{en,bg}/<area>.json`, one file per area
+(`home`, `services`, `faq`, …). English is the source and Bulgarian mirrors it key
+for key. Components ask for text by key (`useTranslations("home.hero")`); nothing
+visible is hard-coded. Client components receive only the slice they need through
+`<ClientMessages paths={[…]}>`.
+
+**Editing copy.** Change the English and the Bulgarian in the same commit.
+`pnpm i18n:check` runs first in `pnpm build`, so a mismatch cannot deploy. It fails
+on missing or extra keys, changed placeholders (`{year}`) or rich-text tags
+(`<contact>`), empty or untranslated strings, and the Bulgarian house rules:
+glossary terms, typography (`„…“`, a spaced en dash, no em dash), the polite
+«вие», and first-person past participles that would reveal the author's gender.
+
+**Bulgarian voice.** Polite lowercase «вие»; present and future tense so nothing
+reveals the author's gender; and the frozen glossary in `messages/glossary.json`
+(«видеоанализ», «Проекти», «модел на предоставяне», «Проучване», …), where every
+term lists the variants that are not allowed. Add new recurring terms there and the
+checker enforces them.
+
+**Also per language.** Titles and descriptions, canonical and `hreflang` links,
+`og:locale`, the sitemap (18 URLs with alternates), JSON-LD `inLanguage`, and the
+share image (`/og/en`, `/og/bg`; the Bulgarian one embeds Source Sans 3 from
+`assets/fonts/`, because Satori's default font has no Cyrillic). Contact-form
+validation follows the visitor's language. The notification email to the owner
+stays in English and carries a `Site language:` line.
+
+**Typography.** `html:lang(bg)` in `globals.css` swaps the display and body faces
+to Source Sans 3; English pages still download only Archivo, Instrument Sans and
+JetBrains Mono (Latin). The wordmark stays Archivo. Source Sans 3's cursive-style
+Bulgarian letterforms (m-shaped «т», u-shaped «и») are switched off with
+`font-feature-settings: "locl" 0`; delete that line to use them. Bulgarian-only
+spacing goes through the `lang-bg:` Tailwind variant.
+
+**Open items.** The two hackathon cards on Projects still carry «TODO:» copy in
+both languages; search `messages/` for `TODO`.
 
 ## Deployment
 
@@ -75,7 +122,10 @@ vercel env ls                    # configured env vars
 
 ## Project structure
 
-- `src/app` — App Router routes, root layout, global styles, favicon (`icon.svg`)
+- `src/app/[locale]` — every page and the root layout (English at `/`, Bulgarian under `/bg`); `src/app` also holds global styles, favicon (`icon.svg`), the sitemap and `og/[locale]`
+- `src/i18n` — routing, navigation helpers, message loading, `ClientMessages`
+- `messages` — the English and Bulgarian catalogs and `glossary.json`
+- `scripts` — `i18n-check.mjs` (and its tests) plus the English-regression tools (`snapshot-text.mjs`, `accordion-diff.mjs`)
 - `src/components/layout` — shared primitives: `Container`, `Section`, `SectionHeading`, `Nav`, `Footer`, `CtaBand`, `PageHeader`
 - `src/components/shared` — cross-page content blocks: `PointList`, `DeliveryModels`
 - `src/components/motion` — `Reveal` / `RevealGroup` scroll-entrance primitives

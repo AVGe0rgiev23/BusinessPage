@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node scripts/i18n-check.mjs --strict && next build",
     "start": "next start",
     "lint": "eslint",
-    "i18n:check": "node scripts/i18n-check.mjs",
+    "i18n:check": "node scripts/i18n-check.mjs --strict",
     "test:i18n": "node --test scripts/i18n-check.test.mjs"
   },
   "dependencies": {
