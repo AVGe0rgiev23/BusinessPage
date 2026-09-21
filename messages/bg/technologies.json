@@ -2,28 +2,28 @@
   "stack": {
     "groups": {
       "languages": {
-        "label": "Languages"
+        "label": "Езици"
       },
       "frontend": {
-        "label": "Frontend"
+        "label": "Потребителски интерфейс"
       },
       "backendApis": {
-        "label": "Backend & APIs"
+        "label": "Сървърна част и API"
       },
       "backgroundJobsWorkflow": {
-        "label": "Background jobs & workflow infrastructure"
+        "label": "Фонови задачи и инфраструктура за работни процеси"
       },
       "dataStorage": {
-        "label": "Data & storage"
+        "label": "Данни и съхранение"
       },
       "aiLlmTooling": {
-        "label": "AI & LLM tooling"
+        "label": "AI и LLM инструменти"
       },
       "infrastructureCloud": {
-        "label": "Infrastructure & cloud"
+        "label": "Инфраструктура и облак"
       },
       "integrations": {
-        "label": "Integrations"
+        "label": "Интеграции"
       }
     },
     "items": {
@@ -36,77 +36,77 @@
       "tailwindCss": "Tailwind CSS",
       "framerMotion": "Framer Motion",
       "nodeJs": "Node.js",
-      "restApis": "REST APIs",
+      "restApis": "REST API",
       "graphql": "GraphQL",
       "webhooks": "Webhooks",
       "triggerDev": "Trigger.dev",
-      "queues": "Queues",
-      "scheduledJobs": "Scheduled jobs",
-      "retriesConcurrencyControls": "Retries & concurrency controls",
-      "backgroundWorkers": "Background workers",
+      "queues": "Опашки",
+      "scheduledJobs": "Планирани задачи",
+      "retriesConcurrencyControls": "Повторни опити и контрол на паралелността",
+      "backgroundWorkers": "Фонови процеси",
       "postgresql": "PostgreSQL",
       "redis": "Redis",
-      "vectorDatabases": "Vector databases",
-      "objectStorage": "Object storage",
-      "llmApis": "LLM APIs",
-      "ragPipelines": "RAG pipelines",
+      "vectorDatabases": "Векторни бази данни",
+      "objectStorage": "Обектно хранилище",
+      "llmApis": "LLM API",
+      "ragPipelines": "RAG конвейри",
       "embeddings": "Embeddings",
-      "vectorSearch": "Vector search",
-      "agents": "Agents",
-      "functionCalling": "Function calling",
+      "vectorSearch": "Векторно търсене",
+      "agents": "Агенти",
+      "functionCalling": "Извикване на функции",
       "vercel": "Vercel",
       "aws": "AWS",
       "docker": "Docker",
       "ciCd": "CI/CD",
-      "edgeFunctions": "Edge functions",
-      "crms": "CRMs",
-      "payments": "Payments",
-      "emailMessaging": "Email & messaging",
-      "calendars": "Calendars",
-      "thirdPartyApis": "Third-party APIs"
+      "edgeFunctions": "Edge функции",
+      "crms": "CRM системи",
+      "payments": "Плащания",
+      "emailMessaging": "Имейл и съобщения",
+      "calendars": "Календари",
+      "thirdPartyApis": "API на трети страни"
     },
     "heading": {
-      "eyebrow": "The stack",
-      "title": "What I build with",
-      "lede": "A well-supported, widely adopted toolset — the same tooling behind serious software products. Think of it as a toolkit, not a template: I choose the stack per project, and nothing on this list is mandatory."
+      "eyebrow": "Стекът",
+      "title": "С какво изграждам",
+      "lede": "Добре поддържан, широко използван набор от инструменти – същите, които стоят зад сериозните софтуерни продукти. Гледайте на него като на кутия с инструменти, а не като на шаблон: подбирам стека за всеки проект и нищо от този списък не е задължително."
     }
   },
   "whyThisStack": {
     "reasons": {
       "reliability": {
-        "title": "Reliability",
-        "body": "Proven, widely adopted tools have fewer surprises, better support, and a large community that has already solved the hard problems."
+        "title": "Надеждност",
+        "body": "Доказаните, широко използвани инструменти имат по-малко изненади, по-добра поддръжка и голяма общност, която вече е решила трудните проблеми."
       },
       "portability": {
-        "title": "Portability",
-        "body": "Standard, well-understood code and infrastructure rather than a proprietary black box. I use third-party providers like everyone does — the point is that moving off one shouldn't mean a rewrite."
+        "title": "Преносимост",
+        "body": "Стандартен, добре разбираем код и инфраструктура, а не затворена „черна кутия“. Използвам доставчици на трети страни като всички – идеята е, че преминаването от един към друг не бива да означава пренаписване."
       },
       "performance": {
-        "title": "Performance",
-        "body": "Software tuned to your workload runs faster and costs less to operate than a general-purpose platform doing everything for everyone."
+        "title": "Производителност",
+        "body": "Софтуерът, настроен за вашето натоварване, работи по-бързо и струва по-малко за поддържане от универсална платформа, която прави всичко за всички."
       },
       "longTermMaintainability": {
-        "title": "Long-term maintainability",
-        "body": "Popular, well-documented tools are straightforward for any competent engineer to pick up later, so your software stays maintainable long after launch."
+        "title": "Дългосрочна поддържаемост",
+        "body": "Популярните, добре документирани инструменти са лесни за поемане от всеки компетентен инженер по-късно, така че софтуерът ви остава поддържаем дълго след пускането."
       }
     },
     "heading": {
-      "eyebrow": "Why this stack",
-      "title": "Why I build on these tools",
-      "lede": "I'm not attached to any single tool for its own sake. I pick technology that's widely used, actively maintained, and well-documented, because that's what keeps software reliable and affordable to run over time."
+      "eyebrow": "Защо този стек",
+      "title": "Защо изграждам върху тези инструменти",
+      "lede": "Не се придържам към нито един инструмент заради самия него. Избирам технологии, които са широко използвани, активно поддържани и добре документирани, защото това държи софтуера надежден и достъпен за поддържане с времето."
     },
-    "closing": "None of this makes any one tool universally “best.” It makes for a dependable default that I adjust whenever a project calls for something else — the right stack is always the one that fits your goals."
+    "closing": "Нищо от това не прави един инструмент универсално „най-добър“. Това създава надеждна основа по подразбиране, която променям, щом проектът изисква нещо друго – правилният стек е винаги този, който пасва на целите ви."
   },
   "page": {
-    "eyebrow": "Technologies",
-    "title": "Built on proven tools — so your software stays reliable, fast, and maintainable.",
-    "subtitle": "I work with a well-supported, widely adopted stack — the same tooling behind serious software products. I choose it for reliability and longevity rather than novelty, and I pick the parts that fit each project rather than running every job through the same template."
+    "eyebrow": "Технологии",
+    "title": "Изградено върху доказани инструменти – за да остане софтуерът ви надежден, бърз и поддържаем.",
+    "subtitle": "Работя с добре поддържан и широко използван стек – същите инструменти, които стоят зад сериозните софтуерни продукти. Избирам го заради надеждност и дълготрайност, а не заради новост, и подбирам частите, които пасват на всеки проект, вместо да прекарвам всяка задача през един и същ шаблон."
   },
   "cta": {
-    "eyebrow": "Get started",
-    "title": "Want to talk through the right approach for your project?",
-    "subtitle": "Book a free consultation and I'll walk through what to build, how it fits the systems you already run, and the stack that makes sense for your goals. Plain language, no jargon.",
-    "primary": "Book a consultation",
-    "secondary": "Get in touch"
+    "eyebrow": "Започнете",
+    "title": "Искате ли да обсъдим правилния подход за вашия проект?",
+    "subtitle": "Запазете безплатна консултация и ще обсъдим какво да се изгради, как се вписва в системите, които вече използвате, и кой стек има смисъл за целите ви. На разбираем език, без жаргон.",
+    "primary": "Запазете консултация",
+    "secondary": "Свържете се с мен"
   }
 }
