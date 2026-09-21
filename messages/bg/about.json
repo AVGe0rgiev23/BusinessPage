@@ -1,120 +1,120 @@
 {
   "mission": {
     "outcomes": {
-      "saveTime": "Save time",
-      "cutCosts": "Cut costs",
-      "scaleFaster": "Scale faster"
+      "saveTime": "Спестете време",
+      "cutCosts": "Намалете разходите",
+      "scaleFaster": "Растете по-бързо"
     },
-    "eyebrow": "My mission",
-    "title": "I sell outcomes, not software.",
-    "first": "Businesses don't wake up wanting “AI” or “automation.” They wake up thinking we're wasting hours, we're drowning in email, our leads aren't getting answered, we're paying good people to copy and paste. AGility exists to fix that. The technology is simply how I do it.",
-    "second": "So I start from the result: the hours you get back, the costs you stop paying, the speed you gain on the work that actually makes you money. If a project can't be tied to one of those, it isn't worth building — and I'll tell you so plainly, even when it means talking myself out of work."
+    "eyebrow": "Моята мисия",
+    "title": "Продавам резултати, а не софтуер.",
+    "first": "Бизнесите не се събуждат с желание за „AI“ или „автоматизация“. Те се събуждат с мисълта, че губим часове, че се давим в имейли, че на потенциалните ни клиенти не се отговаря, че плащаме на добри хора да копират и поставят. AGility съществува, за да оправи това. Технологията е просто начинът, по който го правя.",
+    "second": "Затова тръгвам от резултата: часовете, които си връщате, разходите, които спирате да плащате, скоростта, която печелите в работата, която всъщност ви носи пари. Ако един проект не може да бъде свързан с нещо от това, не си струва да се изгражда – и ще ви го кажа направо, дори когато това означава да си отказвам работа."
   },
   "howWeBuild": {
     "principles": {
       "builtAroundProcess": {
-        "title": "Built around your process",
-        "body": "Off-the-shelf tools make you bend how you work to fit their assumptions. I do the opposite — shaping the software to the way you already run, then removing the friction you’d learned to live with."
+        "title": "Изградено около вашия процес",
+        "body": "Готовите инструменти ви карат да огъвате начина си на работа, за да пасне на техните допускания. Аз правя обратното – оформям софтуера по начина, по който вече работите, и премахвам триенето, с което сте се научили да живеете."
       },
       "ownershipDefinedClearly": {
-        "title": "Ownership, defined clearly",
-        "body": "The custom software I build for you is yours under the project agreement, and your data stays yours. Third-party services keep their own providers’ terms — and I’m precise about which is which instead of hand-waving at it."
+        "title": "Ясно определена собственост",
+        "body": "Софтуерът по поръчка, който изграждам за вас, е ваш по силата на договора за проекта, а данните ви остават ваши. Услугите на трети страни запазват условията на своите доставчици – и казвам точно кое какво е, вместо да го замазвам."
       },
       "growsAsGrow": {
-        "title": "Grows as you grow",
-        "body": "Custom software has room to handle more volume, more users, and more complexity — instead of hitting the ceiling a general-purpose builder puts on everyone."
+        "title": "Расте заедно с вас",
+        "body": "Софтуерът по поръчка има простор да поеме повече обем, повече потребители и повече сложност – вместо да опре в тавана, който универсалният конструктор налага на всички."
       },
       "portableDesign": {
-        "title": "Portable by design",
-        "body": "I build with ownership and portability in mind, on standard technology wherever practical — so you’re never forced to depend on AGility, or on any one platform, to keep your business running."
+        "title": "Преносим по замисъл",
+        "body": "Изграждам с мисъл за собственост и преносимост, върху стандартна технология, където е практично – така че никога да не сте принудени да зависите от AGility или от някоя платформа, за да върви бизнесът ви."
       }
     },
-    "eyebrow": "How I build",
-    "title": "I build around how your business actually runs.",
-    "second": "Low-code tools are genuinely useful, and when one is the right answer I'll say so. But the more a process matters to your business, the more it pays to own it outright — rather than rent it from a platform that can change its rules, its pricing, or its availability overnight.",
-    "third": "And you decide how much of it I operate. Some clients want the whole system run for them so they never think about it again; others want it deployed into their own cloud and handed over; plenty want something in between. I'll recommend a model — you pick one."
+    "eyebrow": "Как изграждам",
+    "title": "Изграждам около начина, по който всъщност работи бизнесът ви.",
+    "second": "Low-code инструментите са наистина полезни и когато един от тях е правилният отговор, ще го кажа. Но колкото по-важен е един процес за бизнеса ви, толкова повече се отплаща да го притежавате изцяло – вместо да го наемате от платформа, която може за една нощ да промени правилата, цените или наличността си.",
+    "third": "А колко от него да управлявам аз, решавате вие. Някои клиенти искат цялата система да се управлява вместо тях, за да не мислят повече за нея; други я искат внедрена в собствения им облак и предадена; много искат нещо по средата. Ще препоръчам модел – вие избирате."
   },
   "principles": {
     "items": {
       "fastCommunication": {
-        "title": "Fast communication",
-        "body": "The best software comes from a tight loop between the people who understand the business and the person writing the code. So that loop stays short: you talk to me directly, and you get straight answers quickly."
+        "title": "Бърза комуникация",
+        "body": "Най-добрият софтуер идва от тясна връзка между хората, които разбират бизнеса, и човека, който пише кода. Затова тази връзка остава къса: говорите директно с мен и получавате бързо прями отговори."
       },
       "transparentDevelopment": {
-        "title": "Transparent development",
-        "body": "Trust is earned by being seen, not by asking for it. I keep scope, timelines, and progress in the open, so you always know what you’re paying for and why — no inflated claims, no black boxes."
+        "title": "Прозрачна разработка",
+        "body": "Доверието се печели с откритост, а не с искане. Държа обхвата, сроковете и напредъка на показ, така че винаги да знаете за какво плащате и защо – без завишени твърдения, без „черни кутии“."
       },
       "longTermSupport": {
-        "title": "Long-term support",
-        "body": "Software isn’t finished at launch; that’s where it starts earning. I’ll maintain and grow what I build for as long as you want me to, because my reputation lives in how it performs a year later, not on demo day — and if you’d rather run it yourself, I hand it over properly."
+        "title": "Дългосрочна поддръжка",
+        "body": "Софтуерът не е завършен при пускането – оттам започва да се отплаща. Ще поддържам и развивам изграденото толкова дълго, колкото искате, защото репутацията ми живее в това как се представя година по-късно, а не в деня на демонстрацията – а ако предпочитате да го управлявате сами, го предавам както трябва."
       },
       "ownershipTerms": {
-        "title": "Ownership on your terms",
-        "body": "Ownership is a right, not an upsell. The custom software is yours under the project agreement and your data stays yours — and you choose how much I operate on your behalf. Holding myself to that keeps me honest about earning the work rather than trapping it."
+        "title": "Собственост при ваши условия",
+        "body": "Собствеността е право, а не допълнителна продажба. Софтуерът по поръчка е ваш по силата на договора за проекта, а данните ви остават ваши – и вие избирате колко да управлявам от ваше име. Спазването на това ме кара да заслужавам работата, а не да я държа в клопка."
       }
     },
     "heading": {
-      "eyebrow": "What I stand for",
-      "title": "The promises I actually keep.",
-      "lede": "I'd rather earn trust with a handful of things I genuinely do than a page of claims. These four are the ones I hold myself to, on every project."
+      "eyebrow": "За какво се застъпвам",
+      "title": "Обещанията, които наистина спазвам.",
+      "lede": "Предпочитам да печеля доверие с шепа неща, които наистина правя, отколкото със страница твърдения. Ето четирите, към които се придържам във всеки проект."
     }
   },
   "whoWeServe": {
     "audience": {
       "smallMidSized": {
-        "title": "Small & mid-sized businesses",
-        "body": "Big enough to feel the cost of manual work, small enough that a week of reclaimed hours changes what you can take on."
+        "title": "Малки и средни фирми",
+        "body": "Достатъчно големи, за да усещат цената на ръчната работа, и достатъчно малки, че една седмица върнати часове променя какво можете да поемете."
       },
       "growingCompanies": {
-        "title": "Growing companies",
-        "body": "Scaling faster than your tools, where the workarounds that got you here are quietly becoming the thing holding you back."
+        "title": "Компании в растеж",
+        "body": "Растете по-бързо от инструментите си, а обходните решения, които са ви довели дотук, тихомълком стават онова, което ви задържа."
       },
       "repetitiveWorkflows": {
-        "title": "Repetitive workflows",
-        "body": "Wherever the same steps get done by hand over and over — the busywork that’s ready to be handed off to software."
+        "title": "Повтарящи се работни процеси",
+        "body": "Навсякъде, където едни и същи стъпки се вършат на ръка отново и отново – рутинната работа, която е готова да бъде предадена на софтуер."
       }
     },
     "heading": {
-      "eyebrow": "Who I serve",
-      "title": "Built for growing businesses, wherever you are.",
-      "lede": "I work best with businesses that have real, repetitive work to hand off. I'm based in Europe and work with clients worldwide."
+      "eyebrow": "Кого обслужвам",
+      "title": "Изградено за бизнеси в растеж, където и да сте.",
+      "lede": "Работя най-добре с бизнеси, които имат реална, повтаряща се работа за предаване. Намирам се в Европа и работя с клиенти по целия свят."
     },
     "behind": {
-      "title": "Who's behind it",
-      "body": "AGility is one person. You work directly with me — the same person who writes your software and answers when you have a question. No account managers, no handoffs, and no one to pass you along to."
+      "title": "Кой стои зад него",
+      "body": "AGility е един човек. Работите директно с мен – същия човек, който пише софтуера ви и отговаря, когато имате въпрос. Без акаунт мениджъри, без предавания и без някой, на когото да ви прехвърля."
     }
   },
   "engineeringInTheOpen": {
     "points": {
       "judgeWorkPitch": {
-        "title": "Judge the work, not the pitch",
-        "body": "You can read how I write code before you ever sign anything. That’s a fairer basis for a decision than a polished sales deck."
+        "title": "Съдете работата, а не презентацията",
+        "body": "Можете да прочетете как пиша код, преди да подпишете каквото и да е. Това е по-справедлива основа за решение от лъскава продажбена презентация."
       },
       "codeDescription": {
-        "title": "The code, not a description of it",
-        "body": "Repositories rather than screenshots, so you can look at how something is actually put together instead of taking my word for it."
+        "title": "Кодът, а не описание на кода",
+        "body": "Хранилища с код, а не снимки на екрана, за да видите как всъщност е устроено нещо, вместо да ми вярвате на думата."
       },
       "historyCheck": {
-        "title": "History you can check",
-        "body": "Commits in order, showing how a project really got built — not how it got described once it was finished."
+        "title": "История, която можете да проверите",
+        "body": "Промените по ред, показващи как проектът наистина е бил изграден – а не как е бил описан, след като е приключил."
       }
     },
-    "eyebrow": "In the open",
-    "title": "See how I work before you hire me.",
-    "body": "I can't point you at fake five-star reviews, and I wouldn't want to. What I can point you at is GitHub — the code itself, the commit history, and the standards I hold to when no one's watching.",
-    "button": "View my GitHub"
+    "eyebrow": "На открито",
+    "title": "Вижте как работя, преди да ме наемете.",
+    "body": "Не мога да ви покажа фалшиви петзвездни отзиви и не желая да го правя. Мога да ви покажа GitHub – самия код, историята на промените и стандартите, които спазвам, когато никой не гледа.",
+    "button": "Моят GitHub"
   },
   "page": {
-    "eyebrow": "About",
-    "title": "I build software that pays for itself.",
-    "subtitle": "AGility is one person with a simple belief: technology should earn its keep. I start from the time and money a business is losing, and build exactly what it takes to win it back — and nothing it doesn’t."
+    "eyebrow": "За мен",
+    "title": "Изграждам софтуер, който сам се изплаща.",
+    "subtitle": "AGility е един човек с проста вяра: технологията трябва да се отплаща. Тръгвам от времето и парите, които бизнесът губи, и изграждам точно каквото е нужно, за да ги върне – и нищо повече."
   },
   "cta": {
-    "eyebrow": "Get started",
-    "title": "If that's how you'd want it built, let's talk.",
-    "subtitle": "Book a free consultation and I'll look at where your business is losing time and money — and whether custom software is the right way to win it back. Honest answers either way.",
-    "primary": "Book a consultation",
-    "secondary": "Get in touch",
-    "footnote": "Curious how a project runs? See <process>the full process</process>."
+    "eyebrow": "Започнете",
+    "title": "Ако така искате да бъде изградено, да поговорим.",
+    "subtitle": "Запазете безплатна консултация и ще погледна къде бизнесът ви губи време и пари – и дали софтуерът по поръчка е правилният начин да ги върнете. Честни отговори и в двата случая.",
+    "primary": "Запазете консултация",
+    "secondary": "Свържете се с мен",
+    "footnote": "Любопитно ви е как върви един проект? Вижте <process>целия процес</process>."
   }
 }
