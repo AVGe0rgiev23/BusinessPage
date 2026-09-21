@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { Reveal, RevealGroup } from "@/components/motion/reveal";
@@ -11,9 +12,10 @@ import { Eyebrow } from "@/components/layout/section-heading";
  * the one place where the company gets to simply say what it thinks, and
  * chopping that into cards would undercut it.
  */
-const OUTCOMES = ["Save time", "Cut costs", "Scale faster"];
+const OUTCOMES = ["saveTime", "cutCosts", "scaleFaster"] as const;
 
-export function Mission() {
+export async function Mission() {
+  const t = await getTranslations("about.mission");
   return (
     <Section id="mission" aria-labelledby="mission-heading">
       <Container>
@@ -25,7 +27,7 @@ export function Mission() {
             >
               01
             </span>
-            <Eyebrow>My mission</Eyebrow>
+            <Eyebrow>{t("eyebrow")}</Eyebrow>
             <span aria-hidden="true" className="h-px flex-1 bg-border" />
           </div>
 
@@ -33,23 +35,15 @@ export function Mission() {
             id="mission-heading"
             className="mt-7 max-w-[16ch] text-balance text-h2 font-semibold text-text-primary"
           >
-            I sell outcomes, not software.
+            {t("title")}
           </h2>
 
           <div className="mt-7 flex flex-col gap-5 text-pretty text-body-lg text-text-secondary">
             <p>
-              Businesses don&apos;t wake up wanting &ldquo;AI&rdquo; or
-              &ldquo;automation.&rdquo; They wake up thinking we&apos;re wasting
-              hours, we&apos;re drowning in email, our leads aren&apos;t getting
-              answered, we&apos;re paying good people to copy and paste. AGility
-              exists to fix that. The technology is simply how I do it.
+              {t("first")}
             </p>
             <p>
-              So I start from the result: the hours you get back, the costs you
-              stop paying, the speed you gain on the work that actually makes
-              you money. If a project can&apos;t be tied to one of those, it
-              isn&apos;t worth building — and I&apos;ll tell you so plainly,
-              even when it means talking myself out of work.
+              {t("second")}
             </p>
           </div>
         </Reveal>
@@ -77,7 +71,7 @@ export function Mission() {
                 {String(i + 1).padStart(2, "0")}
               </span>
               <p className="mt-3 text-h3 font-semibold text-text-primary">
-                {outcome}
+                {t(`outcomes.${outcome}`)}
               </p>
             </li>
           ))}

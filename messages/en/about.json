@@ -1,0 +1,121 @@
+{
+  "mission": {
+    "outcomes": {
+      "saveTime": "Save time",
+      "cutCosts": "Cut costs",
+      "scaleFaster": "Scale faster"
+    },
+    "eyebrow": "My mission",
+    "title": "I sell outcomes, not software.",
+    "first": "Businesses don't wake up wanting “AI” or “automation.” They wake up thinking we're wasting hours, we're drowning in email, our leads aren't getting answered, we're paying good people to copy and paste. AGility exists to fix that. The technology is simply how I do it.",
+    "second": "So I start from the result: the hours you get back, the costs you stop paying, the speed you gain on the work that actually makes you money. If a project can't be tied to one of those, it isn't worth building — and I'll tell you so plainly, even when it means talking myself out of work."
+  },
+  "howWeBuild": {
+    "principles": {
+      "builtAroundProcess": {
+        "title": "Built around your process",
+        "body": "Off-the-shelf tools make you bend how you work to fit their assumptions. I do the opposite — shaping the software to the way you already run, then removing the friction you’d learned to live with."
+      },
+      "ownershipDefinedClearly": {
+        "title": "Ownership, defined clearly",
+        "body": "The custom software I build for you is yours under the project agreement, and your data stays yours. Third-party services keep their own providers’ terms — and I’m precise about which is which instead of hand-waving at it."
+      },
+      "growsAsGrow": {
+        "title": "Grows as you grow",
+        "body": "Custom software has room to handle more volume, more users, and more complexity — instead of hitting the ceiling a general-purpose builder puts on everyone."
+      },
+      "portableDesign": {
+        "title": "Portable by design",
+        "body": "I build with ownership and portability in mind, on standard technology wherever practical — so you’re never forced to depend on AGility, or on any one platform, to keep your business running."
+      }
+    },
+    "eyebrow": "How I build",
+    "title": "I build around how your business actually runs.",
+    "first": "I'm code-first: the processes your business runs on get built as software, rather than assembled inside a proprietary visual workflow builder. That buys you flexibility, clearer ownership, and room to grow.",
+    "second": "Low-code tools are genuinely useful, and when one is the right answer I'll say so. But the more a process matters to your business, the more it pays to own it outright — rather than rent it from a platform that can change its rules, its pricing, or its availability overnight.",
+    "third": "And you decide how much of it I operate. Some clients want the whole system run for them so they never think about it again; others want it deployed into their own cloud and handed over; plenty want something in between. I'll recommend a model — you pick one."
+  },
+  "principles": {
+    "items": {
+      "fastCommunication": {
+        "title": "Fast communication",
+        "body": "The best software comes from a tight loop between the people who understand the business and the person writing the code. So that loop stays short: you talk to me directly, and you get straight answers quickly."
+      },
+      "transparentDevelopment": {
+        "title": "Transparent development",
+        "body": "Trust is earned by being seen, not by asking for it. I keep scope, timelines, and progress in the open, so you always know what you’re paying for and why — no inflated claims, no black boxes."
+      },
+      "longTermSupport": {
+        "title": "Long-term support",
+        "body": "Software isn’t finished at launch; that’s where it starts earning. I’ll maintain and grow what I build for as long as you want me to, because my reputation lives in how it performs a year later, not on demo day — and if you’d rather run it yourself, I hand it over properly."
+      },
+      "ownershipTerms": {
+        "title": "Ownership on your terms",
+        "body": "Ownership is a right, not an upsell. The custom software is yours under the project agreement and your data stays yours — and you choose how much I operate on your behalf. Holding myself to that keeps me honest about earning the work rather than trapping it."
+      }
+    },
+    "heading": {
+      "eyebrow": "What I stand for",
+      "title": "The promises I actually keep.",
+      "lede": "I'd rather earn trust with a handful of things I genuinely do than a page of claims. These four are the ones I hold myself to, on every project."
+    }
+  },
+  "whoWeServe": {
+    "audience": {
+      "smallMidSized": {
+        "title": "Small & mid-sized businesses",
+        "body": "Big enough to feel the cost of manual work, small enough that a week of reclaimed hours changes what you can take on."
+      },
+      "growingCompanies": {
+        "title": "Growing companies",
+        "body": "Scaling faster than your tools, where the workarounds that got you here are quietly becoming the thing holding you back."
+      },
+      "repetitiveWorkflows": {
+        "title": "Repetitive workflows",
+        "body": "Wherever the same steps get done by hand over and over — the busywork that’s ready to be handed off to software."
+      }
+    },
+    "heading": {
+      "eyebrow": "Who I serve",
+      "title": "Built for growing businesses, wherever you are.",
+      "lede": "I work best with businesses that have real, repetitive work to hand off. I'm based in Europe and work with clients worldwide."
+    },
+    "behind": {
+      "title": "Who's behind it",
+      "body": "AGility is one person. You work directly with me — the same person who writes your software and answers when you have a question. No account managers, no handoffs, and no one to pass you along to."
+    }
+  },
+  "engineeringInTheOpen": {
+    "points": {
+      "judgeWorkPitch": {
+        "title": "Judge the work, not the pitch",
+        "body": "You can read how I write code before you ever sign anything. That’s a fairer basis for a decision than a polished sales deck."
+      },
+      "codeDescription": {
+        "title": "The code, not a description of it",
+        "body": "Repositories rather than screenshots, so you can look at how something is actually put together instead of taking my word for it."
+      },
+      "historyCheck": {
+        "title": "History you can check",
+        "body": "Commits in order, showing how a project really got built — not how it got described once it was finished."
+      }
+    },
+    "eyebrow": "In the open",
+    "title": "See how I work before you hire me.",
+    "body": "I can't point you at fake five-star reviews, and I wouldn't want to. What I can point you at is GitHub — the code itself, the commit history, and the standards I hold to when no one's watching.",
+    "button": "View my GitHub"
+  },
+  "page": {
+    "eyebrow": "About",
+    "title": "I build software that pays for itself.",
+    "subtitle": "AGility is one person with a simple belief: technology should earn its keep. I start from the time and money a business is losing, and build exactly what it takes to win it back — and nothing it doesn’t."
+  },
+  "cta": {
+    "eyebrow": "Get started",
+    "title": "If that's how you'd want it built, let's talk.",
+    "subtitle": "Book a free consultation and I'll look at where your business is losing time and money — and whether custom software is the right way to win it back. Honest answers either way.",
+    "primary": "Book a consultation",
+    "secondary": "Get in touch",
+    "footnote": "Curious how a project runs? See <process>the full process</process>."
+  }
+}

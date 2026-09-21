@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import { initLocale } from "@/i18n/init-locale";
 import { routeMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
@@ -24,12 +25,13 @@ export default async function AboutPage({
   params: Promise<{ locale: string }>;
 }) {
   await initLocale(params);
+  const t = await getTranslations("about");
   return (
     <main id="main" tabIndex={-1} className="flex flex-1 flex-col">
       <PageHeader
-        eyebrow="About"
-        title="I build software that pays for itself."
-        subtitle="AGility is one person with a simple belief: technology should earn its keep. I start from the time and money a business is losing, and build exactly what it takes to win it back — and nothing it doesn’t."
+        eyebrow={t("page.eyebrow")}
+        title={t("page.title")}
+        subtitle={t("page.subtitle")}
       />
       <Mission />
       <HowWeBuild />

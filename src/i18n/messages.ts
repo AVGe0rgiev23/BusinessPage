@@ -1,7 +1,7 @@
 import type { Locale } from "./routing";
 
 /** Top-level namespaces; each is messages/<locale>/<area>.json. Grows as areas are extracted. */
-export const AREAS = ["common", "metadata", "home", "services", "shared", "process", "technologies", "work"] as const;
+export const AREAS = ["common", "metadata", "home", "services", "shared", "process", "technologies", "work", "about"] as const;
 export type Messages = Record<string, unknown>;
 
 export async function loadMessages(locale: Locale): Promise<Messages> {

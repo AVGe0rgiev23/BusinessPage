@@ -1,8 +1,9 @@
+import { getTranslations } from "next-intl/server";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { Reveal } from "@/components/motion/reveal";
 import { SectionHeading } from "@/components/layout/section-heading";
-import { PointList, type Point } from "@/components/shared/point-list";
+import { PointList } from "@/components/shared/point-list";
 
 /**
  * WhoWeServe — the audience AGility is built for (SMBs and growing companies
@@ -14,22 +15,14 @@ import { PointList, type Point } from "@/components/shared/point-list";
  * words — it used to say "a small, hands-on team", which was the single most
  * misleading sentence on the site.
  */
-const AUDIENCE: Point[] = [
-  {
-    title: "Small & mid-sized businesses",
-    body: "Big enough to feel the cost of manual work, small enough that a week of reclaimed hours changes what you can take on.",
-  },
-  {
-    title: "Growing companies",
-    body: "Scaling faster than your tools, where the workarounds that got you here are quietly becoming the thing holding you back.",
-  },
-  {
-    title: "Repetitive workflows",
-    body: "Wherever the same steps get done by hand over and over — the busywork that’s ready to be handed off to software.",
-  },
-];
+const AUDIENCE = [
+  { id: "smallMidSized" },
+  { id: "growingCompanies" },
+  { id: "repetitiveWorkflows" },
+] as const;
 
-export function WhoWeServe() {
+export async function WhoWeServe() {
+  const t = await getTranslations("about.whoWeServe");
   return (
     <Section
       id="who-we-serve"
@@ -39,13 +32,19 @@ export function WhoWeServe() {
       <Container>
         <SectionHeading
           index="05"
-          eyebrow="Who I serve"
+          eyebrow={t("heading.eyebrow")}
           headingId="who-we-serve-heading"
-          title="Built for growing businesses, wherever you are."
-          lede="I work best with businesses that have real, repetitive work to hand off. I'm based in Europe and work with clients worldwide."
+          title={t("heading.title")}
+          lede={t("heading.lede")}
         />
 
-        <PointList items={AUDIENCE} className="mt-16 md:mt-20" />
+        <PointList
+          items={AUDIENCE.map((audience) => ({
+            title: t(`audience.${audience.id}.title`),
+            body: t(`audience.${audience.id}.body`),
+          }))}
+          className="mt-16 md:mt-20"
+        />
 
         {/*
           Who is behind it — one person, stated plainly. NO fabricated names,
@@ -56,12 +55,10 @@ export function WhoWeServe() {
         <Reveal className="mt-16">
           <div className="grid gap-6 rounded-xl border border-border bg-bg p-8 md:grid-cols-[minmax(0,14rem)_minmax(0,1fr)] md:gap-12 md:p-10">
             <h3 className="text-h3 font-semibold text-text-primary">
-              Who&apos;s behind it
+              {t("behind.title")}
             </h3>
             <p className="max-w-[58ch] text-pretty text-body-lg text-text-secondary">
-              AGility is one person. You work directly with me — the same person
-              who writes your software and answers when you have a question. No
-              account managers, no handoffs, and no one to pass you along to.
+              {t("behind.body")}
             </p>
           </div>
         </Reveal>
