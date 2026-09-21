@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { ArrowRight, CalendarClock, Clock, Mail, ShieldCheck } from "lucide-react";
 
@@ -9,22 +10,23 @@ const focusRing =
   "outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-bg";
 
 const reassurances = [
-  { icon: Clock, label: "Replies within one business day" },
-  { icon: ShieldCheck, label: "Free consultation — no pressure, ever" },
-  { icon: Mail, label: "Plain-spoken answers, no jargon" },
-];
+  { id: "replies", icon: Clock },
+  { id: "free", icon: ShieldCheck },
+  { id: "plain", icon: Mail },
+] as const;
 
-export function ContactAside() {
+export async function ContactAside() {
+  const t = await getTranslations("contact");
   return (
     <div className="rounded-xl border border-border bg-bg-surface p-6 md:p-8">
       <h3
         id="contact-alt-heading"
         className="text-h3 font-semibold text-text-primary"
       >
-        Prefer another way to reach me?
+        {t("aside.title")}
       </h3>
       <p className="mt-3 text-body text-text-secondary">
-        Pick whatever&apos;s easiest. Every option reaches me directly.
+        {t("aside.lede")}
       </p>
 
       {/* Primary alternative: book a consultation */}
@@ -40,10 +42,10 @@ export function ContactAside() {
         </span>
         <span className="min-w-0 flex-1">
           <span className="block text-body font-medium text-text-primary">
-            Book a consultation
+            {t("aside.book.title")}
           </span>
           <span className="block text-small text-text-secondary">
-            Grab a free 30-minute call
+            {t("aside.book.subtitle")}
           </span>
         </span>
         <ArrowRight
@@ -67,7 +69,7 @@ export function ContactAside() {
             </span>
             <span className="min-w-0 flex-1">
               <span className="block text-body font-medium text-text-primary">
-                Email me
+                {t("aside.email.title")}
               </span>
               <span className="block truncate text-small text-text-secondary">
                 {contactEmail}
@@ -90,10 +92,10 @@ export function ContactAside() {
             </span>
             <span className="min-w-0 flex-1">
               <span className="block text-body font-medium text-text-primary">
-                Connect on LinkedIn
+                {t("aside.linkedin.title")}
               </span>
               <span className="block text-small text-text-secondary">
-                Follow along and message me
+                {t("aside.linkedin.subtitle")}
               </span>
             </span>
           </a>
@@ -102,10 +104,10 @@ export function ContactAside() {
 
       {/* Reassurance */}
       <ul className="mt-6 grid gap-3 border-t border-border pt-6">
-        {reassurances.map(({ icon: Icon, label }) => (
-          <li key={label} className="flex items-center gap-3 text-small text-text-secondary">
+        {reassurances.map(({ id, icon: Icon }) => (
+          <li key={id} className="flex items-center gap-3 text-small text-text-secondary">
             <Icon aria-hidden="true" className="size-4 shrink-0 text-accent" />
-            {label}
+            {t(`aside.reassurances.${id}`)}
           </li>
         ))}
       </ul>

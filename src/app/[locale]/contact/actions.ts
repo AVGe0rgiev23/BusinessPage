@@ -1,8 +1,11 @@
 "use server";
 
+import { hasLocale } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { Resend } from "resend";
 
-import { workingModelLabel } from "@/lib/contact-options";
+import { routing, type Locale } from "@/i18n/routing";
+import { isWorkingModel } from "@/lib/contact-options";
 
 /**
  * Contact form Server Action.
@@ -13,6 +16,12 @@ import { workingModelLabel } from "@/lib/contact-options";
  * address and can only be delivered to the email on the Resend account itself —
  * see CONTACT_INBOX below. Once a real sending domain is verified with Resend,
  * switch RESEND_FROM to an address on that domain.
+ *
+ * Two languages are involved and they are deliberately separate. Messages shown
+ * to the *visitor* (validation errors, the send failure) are in the language of
+ * the site version they used, which the form sends along as `locale`. The email
+ * to the *owner* is always English, plus a line saying which version it came
+ * from, so it reads the same however the visitor wrote in.
  */
 
 const RESEND_FROM = "AGility <onboarding@resend.dev>";
@@ -53,6 +62,14 @@ export async function submitContactForm(
     return { ok: true };
   }
 
+  // The visitor's language. Never trusted: anything that is not one of our
+  // locales falls back to the default rather than selecting arbitrary messages.
+  const rawLocale = String(formData.get("locale") ?? "");
+  const locale: Locale = hasLocale(routing.locales, rawLocale)
+    ? rawLocale
+    : routing.defaultLocale;
+  const t = await getTranslations({ locale, namespace: "contact.errors" });
+
   // Collect + normalise. Company is optional; reading it here (rather than as a
   // separate variable) keeps it part of the validated payload without going unused.
   const submission = {
@@ -64,45 +81,46 @@ export async function submitContactForm(
 
   // Optional, and never trusted: the submitted value is resolved against the
   // canonical option list rather than echoed into the email, so an unexpected
-  // value simply reads as "not answered" instead of arriving as free text.
-  const workingModel = workingModelLabel(
-    String(formData.get("workingModel") ?? "").trim()
-  );
+  // value simply reads as "not answered" instead of arriving as free text. The
+  // label that goes into the email is the English one, whatever the visitor saw.
+  const chosenModel = String(formData.get("workingModel") ?? "").trim();
+  const owner = await getTranslations({ locale: "en", namespace: "contact.form" });
+  const workingModel = isWorkingModel(chosenModel)
+    ? owner(`workingModels.${chosenModel}.label`)
+    : null;
 
   const fieldErrors: ContactFieldErrors = {};
 
   if (!submission.name) {
-    fieldErrors.name = "Please enter your name.";
+    fieldErrors.name = t("name.required");
   } else if (submission.name.length > MAX_NAME_LENGTH) {
-    fieldErrors.name = "Please keep your name under 100 characters.";
+    fieldErrors.name = t("name.tooLong", { max: MAX_NAME_LENGTH });
   }
 
   if (!submission.email) {
-    fieldErrors.email = "Please enter your email address.";
+    fieldErrors.email = t("email.required");
   } else if (submission.email.length > MAX_EMAIL_LENGTH) {
-    fieldErrors.email = "Please keep your email under 254 characters.";
+    fieldErrors.email = t("email.tooLong", { max: MAX_EMAIL_LENGTH });
   } else if (!EMAIL_PATTERN.test(submission.email)) {
-    fieldErrors.email = "Please enter a valid email address.";
+    fieldErrors.email = t("email.invalid");
   }
 
   if (submission.company.length > MAX_COMPANY_LENGTH) {
-    fieldErrors.company = "Please keep your company name under 100 characters.";
+    fieldErrors.company = t("company.tooLong", { max: MAX_COMPANY_LENGTH });
   }
 
   if (!submission.message) {
-    fieldErrors.message = "Please tell me a little about what you need.";
+    fieldErrors.message = t("message.required");
   } else if (submission.message.length < MIN_MESSAGE_LENGTH) {
-    fieldErrors.message =
-      "Please add a little more detail so I can help — at least 10 characters.";
+    fieldErrors.message = t("message.tooShort", { min: MIN_MESSAGE_LENGTH });
   } else if (submission.message.length > MAX_MESSAGE_LENGTH) {
-    fieldErrors.message =
-      "Please keep your message under 5,000 characters.";
+    fieldErrors.message = t("message.tooLong", { max: MAX_MESSAGE_LENGTH });
   }
 
   if (Object.keys(fieldErrors).length > 0) {
     return {
       ok: false,
-      formError: "Please fix the highlighted fields and try again.",
+      formError: t("form"),
       fieldErrors,
     };
   }
@@ -121,6 +139,7 @@ export async function submitContactForm(
       `Email: ${submission.email}`,
       submission.company ? `Company: ${submission.company}` : null,
       workingModel ? `Preferred working model: ${workingModel}` : null,
+      `Site language: ${locale === "bg" ? "Bulgarian" : "English"}`,
       "",
       submission.message,
     ]
@@ -131,8 +150,7 @@ export async function submitContactForm(
   if (error) {
     return {
       ok: false,
-      formError:
-        "Something went wrong sending your message. Please try again, or email me directly.",
+      formError: t("send"),
       fieldErrors: {},
     };
   }

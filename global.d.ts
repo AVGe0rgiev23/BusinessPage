@@ -1,6 +1,7 @@
 import type about from "./messages/en/about.json";
 import type book from "./messages/en/book.json";
 import type common from "./messages/en/common.json";
+import type contact from "./messages/en/contact.json";
 import type faq from "./messages/en/faq.json";
 import type home from "./messages/en/home.json";
 import type metadata from "./messages/en/metadata.json";
@@ -19,6 +20,7 @@ declare module "next-intl" {
       about: typeof about;
       book: typeof book;
       common: typeof common;
+      contact: typeof contact;
       faq: typeof faq;
       home: typeof home;
       metadata: typeof metadata;

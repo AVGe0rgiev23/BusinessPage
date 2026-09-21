@@ -1,0 +1,100 @@
+{
+  "form": {
+    "workingModels": {
+      "unsure": {
+        "label": "Not sure — recommend one"
+      },
+      "managed": {
+        "label": "Fully managed by AGility"
+      },
+      "client-owned": {
+        "label": "Client-owned infrastructure"
+      },
+      "hybrid": {
+        "label": "Hybrid — client-owned infrastructure + AGility management"
+      },
+      "handoff": {
+        "label": "One-time hand-off"
+      }
+    },
+    "name": {
+      "label": "Name"
+    },
+    "email": {
+      "label": "Email"
+    },
+    "company": {
+      "label": "Company"
+    },
+    "workingModel": {
+      "label": "Preferred working model",
+      "hint": "How would you like the software run once it's built? If you're not sure, leave it — recommending one is part of the conversation."
+    },
+    "message": {
+      "label": "Message",
+      "hint": "No pressure and no jargon — I'll take it from here.",
+      "placeholder": "Tell me what's slowing your team down — the task, how often it happens, and the tools involved. A rough description is plenty."
+    },
+    "optional": "(optional)",
+    "required": " (required)",
+    "select": "Select one…",
+    "sending": "Sending…",
+    "send": "Send message",
+    "honeypot": "Company website (leave this field blank)",
+    "success": {
+      "title": "Thanks — your message is on its way",
+      "body": "I read every message myself and will reply within one business day. In the meantime, you're welcome to book a free consultation.",
+      "book": "Book a consultation",
+      "another": "Send another message"
+    },
+    "requiredNote": "Fields marked <required>*</required> are required."
+  },
+  "page": {
+    "eyebrow": "Contact",
+    "title": "Tell me where your time is going.",
+    "subtitle": "Describe the work that's slowing your team down. I'll read it myself and reply within one business day — no jargon, no sales script, no pressure.",
+    "formTitle": "Send me a message",
+    "formLede": "A few details are all I need to point you in the right direction. Everything you send stays between us."
+  },
+  "aside": {
+    "title": "Prefer another way to reach me?",
+    "lede": "Pick whatever's easiest. Every option reaches me directly.",
+    "book": {
+      "title": "Book a consultation",
+      "subtitle": "Grab a free 30-minute call"
+    },
+    "email": {
+      "title": "Email me"
+    },
+    "linkedin": {
+      "title": "Connect on LinkedIn",
+      "subtitle": "Follow along and message me"
+    },
+    "reassurances": {
+      "replies": "Replies within one business day",
+      "free": "Free consultation — no pressure, ever",
+      "plain": "Plain-spoken answers, no jargon"
+    }
+  },
+  "errors": {
+    "name": {
+      "required": "Please enter your name.",
+      "tooLong": "Please keep your name under {max, number} characters."
+    },
+    "email": {
+      "required": "Please enter your email address.",
+      "tooLong": "Please keep your email under {max, number} characters.",
+      "invalid": "Please enter a valid email address."
+    },
+    "company": {
+      "tooLong": "Please keep your company name under {max, number} characters."
+    },
+    "message": {
+      "required": "Please tell me a little about what you need.",
+      "tooShort": "Please add a little more detail so I can help — at least {min, number} characters.",
+      "tooLong": "Please keep your message under {max, number} characters."
+    },
+    "form": "Please fix the highlighted fields and try again.",
+    "send": "Something went wrong sending your message. Please try again, or email me directly."
+  }
+}

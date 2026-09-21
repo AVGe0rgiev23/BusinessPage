@@ -1,3 +1,5 @@
+import { getTranslations } from "next-intl/server";
+import { ClientMessages } from "@/i18n/client-messages";
 import { initLocale } from "@/i18n/init-locale";
 import { routeMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
@@ -23,12 +25,13 @@ export default async function ContactPage({
   params: Promise<{ locale: string }>;
 }) {
   await initLocale(params);
+  const t = await getTranslations("contact");
   return (
     <main id="main" tabIndex={-1} className="flex flex-1 flex-col">
       <PageHeader
-        eyebrow="Contact"
-        title="Tell me where your time is going."
-        subtitle="Describe the work that's slowing your team down. I'll read it myself and reply within one business day — no jargon, no sales script, no pressure."
+        eyebrow={t("page.eyebrow")}
+        title={t("page.title")}
+        subtitle={t("page.subtitle")}
       />
 
       <Section aria-labelledby="contact-heading" className="pt-0">
@@ -41,14 +44,15 @@ export default async function ContactPage({
                   id="contact-heading"
                   className="text-h2 font-semibold text-text-primary"
                 >
-                  Send me a message
+                  {t("page.formTitle")}
                 </h2>
                 <p className="mt-4 max-w-[52ch] text-pretty text-body-lg text-text-secondary">
-                  A few details are all I need to point you in the right
-                  direction. Everything you send stays between us.
+                  {t("page.formLede")}
                 </p>
                 <div className="mt-8">
-                  <ContactForm />
+                  <ClientMessages paths={["contact.form", "contact.errors"]}>
+                    <ContactForm />
+                  </ClientMessages>
                 </div>
               </Reveal>
             </div>

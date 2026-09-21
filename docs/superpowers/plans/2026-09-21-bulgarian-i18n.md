@@ -25,7 +25,7 @@
 - Contact: the notification email to the owner stays English and carries `Site language: English|Bulgarian`. **Never submit the contact form successfully while testing** (it sends a real email via Resend) unless the owner has said so; exercise validation paths only.
 - The `/work` cards whose body is `TODO: …` are translated 1:1, not invented.
 - Do not commit `.snapshots/`, `.next/`, or `public/__layout-audit.html`.
-- **Stop servers only by port** (the PowerShell one-liner used in the steps below). Never `taskkill /IM node.exe`: Claude Code and the Playwright MCP server are Node processes.
+- **Stop servers by port, and only `node` processes** (the PowerShell one-liner used in the steps below). Never `taskkill /IM node.exe` (Claude Code and the Playwright MCP server are Node processes), and never stop a listener you did not start: other software can also listen on port 3000 (a VPN routing service did on this machine).
 - Never write files from an inline `node -e` (it stalls on a permission check when nobody is at the terminal); put the code in a script file and run it.
 
 ## File Structure
@@ -764,7 +764,7 @@ Expected: `no next/link left`; nav imports `usePathname` from `@/i18n/navigation
 
 - [ ] **Step 6: Typecheck, lint, build**
 
-First delete the stale generated types (`rm -rf .next/types .next/dev/types`; they still point at the old `src/app/...` paths and make `tsc` fail). Run: `pnpm exec tsc --noEmit && pnpm lint && pnpm build` (timeout 600000ms)
+First delete the stale generated types and TypeScript's incremental cache (`rm -rf .next/types .next/dev/types && rm -f tsconfig.tsbuildinfo`; the types still point at the old `src/app/...` paths and make `tsc` fail, and the cache keeps describing an old catalog shape after a JSON file changes). Do the same whenever a catalog's shape changes. Run: `pnpm exec tsc --noEmit && pnpm lint && pnpm build` (timeout 600000ms)
 Expected: all pass; the route table lists `/[locale]` and every subpage as SSG with both `/en/…` and `/bg/…` params, plus `/og/[locale]`. If `tsc` reports an API difference from the installed next-intl, adapt to its types — the required behaviour is unchanged: `as-needed` prefix, detection off, English at unprefixed URLs.
 
 - [ ] **Step 7: Prove English is unchanged and smoke-test routing**
@@ -776,7 +776,7 @@ diff -ru .snapshots/en-before .snapshots/en-task3 && echo "ENGLISH IDENTICAL"
 for p in / /services /bg /bg/services; do curl -s -o /dev/null -w "$p -> %{http_code}\n" "http://localhost:3000$p"; done
 curl -s http://localhost:3000/bg | grep -o '<html[^>]*lang="[a-z]*"' | head -1
 curl -s -o /dev/null -w "/en -> %{http_code} %{redirect_url}\n" http://localhost:3000/en
-powershell.exe -NoProfile -Command "Get-NetTCPConnection -LocalPort 3000 -State Listen -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id \$_.OwningProcess -Force }"
+powershell.exe -NoProfile -Command "Get-NetTCPConnection -LocalPort 3000 -State Listen -ErrorAction SilentlyContinue | ForEach-Object { \$p = Get-Process -Id \$_.OwningProcess -ErrorAction SilentlyContinue; if (\$p -and \$p.ProcessName -eq 'node') { Stop-Process -Id \$p.Id -Force } }"
 ```
 Also confirm `curl -sI http://localhost:3000/bg/services` shows **no** `Set-Cookie` and no `Link:` header (next-intl would otherwise set a `NEXT_LOCALE` cookie nothing reads, and a second hreflang header). Expected: `ENGLISH IDENTICAL`; all four paths `200`; the `/bg` page reports `lang="bg"` (its text is still English); `/en` is a redirect to `/` (canonicalising an explicit default-locale prefix — not language detection). Stop the server afterwards.
 
@@ -1000,7 +1000,7 @@ diff -ru .snapshots/en-before .snapshots/en-task4 && echo "ENGLISH IDENTICAL"
 curl -s http://localhost:3000/services | grep -io '<link rel="alternate"[^>]*>' 
 curl -s http://localhost:3000/bg/services | grep -io '<link rel="canonical"[^>]*>\|property="og:locale" content="[^"]*"'
 curl -s http://localhost:3000/sitemap.xml | grep -c "<loc>"
-powershell.exe -NoProfile -Command "Get-NetTCPConnection -LocalPort 3000 -State Listen -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id \$_.OwningProcess -Force }"
+powershell.exe -NoProfile -Command "Get-NetTCPConnection -LocalPort 3000 -State Listen -ErrorAction SilentlyContinue | ForEach-Object { \$p = Get-Process -Id \$_.OwningProcess -ErrorAction SilentlyContinue; if (\$p -and \$p.ProcessName -eq 'node') { Stop-Process -Id \$p.Id -Force } }"
 ```
 Expected: `ENGLISH IDENTICAL` (title, description, canonical, og and twitter text all unchanged); `/services` lists alternates for `en`, `bg` and `x-default`; `/bg/services` has canonical `…/bg/services` and `og:locale` `bg_BG`; the sitemap prints `18`.
 
@@ -1670,7 +1670,7 @@ pnpm build
 (pnpm start > /tmp/start.log 2>&1 &) ; sleep 6
 curl -s -o /tmp/og-bg.png -w "%{http_code} %{content_type}\n" http://localhost:3000/og/bg
 curl -s -o /tmp/og-en.png -w "%{http_code} %{content_type}\n" http://localhost:3000/og/en
-powershell.exe -NoProfile -Command "Get-NetTCPConnection -LocalPort 3000 -State Listen -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id \$_.OwningProcess -Force }"
+powershell.exe -NoProfile -Command "Get-NetTCPConnection -LocalPort 3000 -State Listen -ErrorAction SilentlyContinue | ForEach-Object { \$p = Get-Process -Id \$_.OwningProcess -ErrorAction SilentlyContinue; if (\$p -and \$p.ProcessName -eq 'node') { Stop-Process -Id \$p.Id -Force } }"
 ```
 Expected: `200 image/png` twice. Open `/tmp/og-bg.png` (Read tool) and confirm real Cyrillic letters, no empty boxes, nothing clipped; open `/tmp/og-en.png` and confirm it matches the previous English card. If Satori shows boxes, the subset range or the weight mapping is wrong — fix before continuing.
 
@@ -1923,7 +1923,7 @@ Evaluate on `/` and on `/bg`: `() => performance.getEntriesByType("resource").fi
 
 ```bash
 rm public/__layout-audit.html
-powershell.exe -NoProfile -Command "Get-NetTCPConnection -LocalPort 3000 -State Listen -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id \$_.OwningProcess -Force }"
+powershell.exe -NoProfile -Command "Get-NetTCPConnection -LocalPort 3000 -State Listen -ErrorAction SilentlyContinue | ForEach-Object { \$p = Get-Process -Id \$_.OwningProcess -ErrorAction SilentlyContinue; if (\$p -and \$p.ProcessName -eq 'node') { Stop-Process -Id \$p.Id -Force } }"
 git status --short   # only scripts/layout-audit.html (and any string fixes) should appear
 git add scripts/layout-audit.html messages
 git commit -m "test(i18n): add the in-page layout audit and fix findings from the Bulgarian pass"
