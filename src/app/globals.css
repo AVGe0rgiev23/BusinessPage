@@ -247,6 +247,18 @@ html:lang(bg) {
   --face-sans: var(--font-source-sans);
 
   /*
+    Source Sans 3 ships the Bulgarian *cursive-style* letterforms — m-shaped «т»,
+    u-shaped «и», n-shaped «п», k-shaped «к», so «Контакти» reads «Kohmakmu» —
+    and applies them to upright text whenever the language is `bg`. Those are
+    handwriting and italic shapes; nearly every Bulgarian website, bank and book
+    sets upright text with the standard forms, and those are what readers scan
+    fastest. Turning `locl` off keeps `lang="bg"` (screen readers, search
+    engines, spell-check) but shapes the letters the way readers expect. To use
+    the Bulgarian forms instead, delete this one declaration.
+  */
+  font-feature-settings: "locl" 0;
+
+  /*
     The display tokens were tuned for Latin. Cyrillic is set from many vertical
     stems (и н п ш щ м) that crowd at -0.04em, and it has taller marks — the
     breve on «Й», the tails on «Щ Ц Д» — that collide at 0.95 leading. Values
@@ -259,6 +271,13 @@ html:lang(bg) {
   --text-h2--letter-spacing: -0.016em;
   --text-h2--line-height: 1.12;
   --text-h3--letter-spacing: -0.008em;
+
+  /*
+    Mono labels wrap onto two lines far more often in Bulgarian («ФРЕЙМУЪРЦИ И
+    СРЕДА ЗА ИЗПЪЛНЕНИЕ», «ЗАВИСИМОСТ ОТ ДОСТАВЧИК»); at the Latin line-height of
+    1 the lines touch.
+  */
+  --text-eyebrow--line-height: 1.35;
 }
 
 /*

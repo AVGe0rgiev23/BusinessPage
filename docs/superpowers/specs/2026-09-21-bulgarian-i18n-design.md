@@ -168,6 +168,16 @@ Evidence (16 families screened, four rendered in Chromium against real tokens): 
 and Instrument Sans have no Cyrillic; most popular Cyrillic fonts lack Bulgarian
 letterforms (`BGR` `locl`) and would silently show Russian-style shapes under `lang="bg"`.
 
+> **Decision changed during the build.** Rendering showed that Source Sans 3's `BGR` forms
+> are the *cursive-style* shapes (m-shaped «т», u-shaped «и», n-shaped «п», k-shaped «к»:
+> «Контакти» reads «Kohmakmu»), and it applies them to **upright** text. Nearly every
+> Bulgarian website, bank and book sets upright text with the standard forms, so the site
+> turns `locl` off (`font-feature-settings: "locl" 0` on `html:lang(bg)`), which keeps
+> `lang="bg"` for screen readers and search. The "Russian-style shapes" worry above
+> therefore does not apply, and Source Sans 3 stays for the reasons below (fit and
+> Latin + Cyrillic coverage). To use the Bulgarian forms instead, delete that one line
+> in `globals.css`.
+
 - **Bulgarian family: Source Sans 3**, one family for headings (600) and body (400/500),
   `wght` axis only, Latin **and** Cyrillic subsets (so `CRM`, `API`, `AI` inside Bulgarian
   sentences share a typeface). It is the only screened candidate whose hero headline

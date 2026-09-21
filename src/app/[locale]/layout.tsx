@@ -50,10 +50,11 @@ const jetbrainsMono = JetBrains_Mono({
   through `html:lang(bg)` in globals.css. `preload: false` keeps English pages
   from even hinting at it.
 
-  Archivo and Instrument Sans have no Cyrillic; Source Sans 3 does, with the
-  Bulgarian letterforms. It replaces both for Bulgarian (headings 600, body
-  400/500), `wght` axis only, Latin and Cyrillic so that `CRM` or `API` inside a
-  Bulgarian sentence is set in the same typeface.
+  Archivo and Instrument Sans have no Cyrillic; Source Sans 3 does. It replaces
+  both for Bulgarian (headings 600, body 400/500), `wght` axis only, Latin and
+  Cyrillic so that `CRM` or `API` inside a Bulgarian sentence is set in the same
+  typeface. (Its Bulgarian-specific letterforms are switched off in globals.css:
+  they are the cursive shapes, and readers expect the standard upright ones.)
 
   JetBrains Mono needs nothing extra: next/font already declares its Cyrillic
   subset as a unicode-range face, fetched only when Cyrillic mono text is
