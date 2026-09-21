@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import { initLocale } from "@/i18n/init-locale";
 import { routeMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
@@ -21,12 +22,13 @@ export default async function ProcessPage({
   params: Promise<{ locale: string }>;
 }) {
   await initLocale(params);
+  const t = await getTranslations("process");
   return (
     <main id="main" tabIndex={-1} className="flex flex-1 flex-col">
       <PageHeader
-        eyebrow="Process"
-        title="You’ll always know exactly where your project stands."
-        subtitle="Great software shouldn’t come with mystery. I work in clear, predictable stages — so from the first conversation to long after launch, there are no black boxes and no surprises."
+        eyebrow={t("page.eyebrow")}
+        title={t("page.title")}
+        subtitle={t("page.subtitle")}
       />
       <ProcessSteps />
       <WorkingWithUs />

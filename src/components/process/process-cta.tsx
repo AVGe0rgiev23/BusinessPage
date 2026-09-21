@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 
 import { focusRing } from "@/lib/utils";
@@ -8,27 +9,26 @@ import { CtaBand } from "@/components/layout/cta-band";
  * around the shared `CtaBand` with Process-specific copy, funnelling to `/book`
  * (primary) and `/contact` (secondary). Server Component.
  */
-export function ProcessCta() {
+export async function ProcessCta() {
+  const t = await getTranslations("process");
   return (
     <CtaBand
       id="get-started"
-      eyebrow="Get started"
-      title="See exactly how I'd approach your project."
-      subtitle="Book a free consultation and I'll walk you through what the first steps would look like for your business — the problem worth solving, the plan to solve it, and what it would take. No pressure, no jargon."
-      primary={{ label: "Book a consultation", href: "/book" }}
-      secondary={{ label: "Get in touch", href: "/contact", icon: true }}
-      footnote={
-        <>
-          Still weighing it up? Read more about{" "}
+      eyebrow={t("cta.eyebrow")}
+      title={t("cta.title")}
+      subtitle={t("cta.subtitle")}
+      primary={{ label: t("cta.primary"), href: "/book" }}
+      secondary={{ label: t("cta.secondary"), href: "/contact", icon: true }}
+      footnote={t.rich("cta.footnote", {
+        about: (chunks) => (
           <Link
             href="/about"
             className={`rounded-sm font-medium text-accent underline-offset-4 transition-colors hover:text-accent-hover hover:underline ${focusRing}`}
           >
-            how I think and what I stand for
+            {chunks}
           </Link>
-          .
-        </>
-      }
+        ),
+      })}
     />
   );
 }
