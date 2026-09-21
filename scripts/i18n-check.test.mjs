@@ -123,3 +123,9 @@ test("first-person past participles that reveal gender are errors; present and f
   const bg = { home: { a: "Съм изградил това", b: "Бих изградила това", c: "Изграждам това", d: "Ще го изградя" } };
   assert.deepEqual(codes(run(en, bg)), ["GENDERED_FORM", "GENDERED_FORM"]);
 });
+
+test("the informal «ти» is an error; the polite «вие» and its forms are fine", () => {
+  const en = { home: { a: "Your team", b: "Tell me", c: "Thank you" } };
+  const bg = { home: { a: "Твоят екип", b: "Кажи ми какво ти трябва", c: "Благодаря ви, вашият екип" } };
+  assert.deepEqual(codes(run(en, bg)), ["INFORMAL_ADDRESS", "INFORMAL_ADDRESS"]);
+});

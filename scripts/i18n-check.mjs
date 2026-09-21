@@ -50,6 +50,10 @@ function containsTerm(text, term) {
 // future tense), so this construction is an error.
 const GENDERED_FORM = /(?<![\p{L}\p{N}])(съм|бих|бях|щях)\s+\p{L}+(?:л|ла)(?![\p{L}\p{N}])/iu;
 
+// The site addresses the reader with the polite, lowercase «вие». The informal
+// «ти» pronouns are unambiguous, so their presence is an error.
+const INFORMAL_ADDRESS = /(?<![\p{L}\p{N}])(ти|теб|тебе|твой|твоя|твоят|твоята|твоето|твоите)(?![\p{L}\p{N}])/iu;
+
 function typography(text, where, errors) {
   if (text.includes("—")) errors.push({ code: "TYPO_EMDASH", where, detail: "use a spaced en dash ' – '" });
   if (/["”]/.test(text)) errors.push({ code: "TYPO_QUOTE", where, detail: 'use „…“, not " or ”' });
@@ -110,6 +114,9 @@ export function checkMessages({ dir, glossary, areas, strict = false }) {
             if (containsTerm(b, a)) errors.push({ code: "AVOID_TERM", where, detail: `"${a}" → use "${term.bg}"` });
         if (GENDERED_FORM.test(b)) {
           errors.push({ code: "GENDERED_FORM", where, detail: "first-person past participle reveals gender; use present or future tense" });
+        }
+        if (INFORMAL_ADDRESS.test(b)) {
+          errors.push({ code: "INFORMAL_ADDRESS", where, detail: "use the polite «вие» form, not «ти»" });
         }
         typography(b, where, errors);
       }

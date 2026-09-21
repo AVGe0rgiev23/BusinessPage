@@ -1,5 +1,5 @@
 {
-  "keepLatin": ["AGility", "TypeScript", "JavaScript", "Python", "SQL", "React", "Next.js", "Tailwind", "CSS", "Framer", "Motion", "Node.js", "REST", "API", "APIs", "GraphQL", "Webhooks", "Trigger.dev", "PostgreSQL", "Redis", "Vercel", "AWS", "Docker", "CI/CD", "n8n", "OpenAI", "Anthropic", "LLM", "RAG", "CRM", "CRMs", "AI", "SaaS", "Slack", "GitHub", "LinkedIn", "Calendly", "Resend", "LeadGenius", "low-code", "Embeddings"],
+  "keepLatin": ["AGility", "TypeScript", "JavaScript", "Python", "SQL", "React", "Next.js", "Tailwind", "CSS", "Framer", "Motion", "Node.js", "REST", "API", "APIs", "GraphQL", "Webhooks", "Trigger.dev", "PostgreSQL", "Redis", "Vercel", "AWS", "Docker", "CI/CD", "n8n", "OpenAI", "Anthropic", "LLM", "RAG", "CRM", "CRMs", "AI", "SaaS", "Slack", "GitHub", "LinkedIn", "Calendly", "Resend", "LeadGenius", "low-code", "Embeddings", "Zoom"],
   "identicalKeys": ["common.language.en", "common.language.bg"],
   "keyRules": [
     { "key": "common.nav.services", "equals": "Услуги" },
