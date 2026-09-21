@@ -1,39 +1,39 @@
 {
-  "skipToContent": "Skip to content",
-  "language": { "label": "Language", "en": "English", "bg": "Български" },
+  "skipToContent": "Към съдържанието",
+  "language": { "label": "Език", "en": "English", "bg": "Български" },
   "cta": {
-    "writeFirst": "Prefer to write first? Reach me any time through the <contact>contact form</contact>."
+    "writeFirst": "Предпочитате първо да ми пишете? Свържете се с мен по всяко време през <contact>формата за контакт</contact>."
   },
-  "brand": { "homeLabel": "AGility — home" },
+  "brand": { "homeLabel": "AGility – начало" },
   "nav": {
-    "primary": "Primary",
-    "mobile": "Mobile",
-    "openMenu": "Open menu",
-    "close": "Close",
-    "services": "Services",
-    "process": "Process",
-    "technologies": "Technologies",
-    "work": "Work",
-    "about": "About",
-    "faq": "FAQ",
-    "contact": "Contact",
-    "cta": "Book a consultation"
+    "primary": "Основна навигация",
+    "mobile": "Мобилна навигация",
+    "openMenu": "Отваряне на менюто",
+    "close": "Затваряне",
+    "services": "Услуги",
+    "process": "Процес",
+    "technologies": "Технологии",
+    "work": "Проекти",
+    "about": "За мен",
+    "faq": "Въпроси",
+    "contact": "Контакти",
+    "cta": "Запазете консултация"
   },
   "footer": {
-    "tagline": "Custom software and AI automation that reclaims the hours lost to repetitive work and cuts operating costs — delivered the way you choose to run it.",
-    "groups": { "company": "Company", "services": "Services", "getStarted": "Get started" },
+    "tagline": "Софтуер по поръчка и AI автоматизация, които връщат часовете, губени в повтаряща се работа, и намаляват оперативните разходи – предоставени така, както решите да ги управлявате.",
+    "groups": { "company": "Компания", "services": "Услуги", "getStarted": "Започнете" },
     "links": {
-      "about": "About",
-      "process": "Process",
-      "work": "Work",
-      "services": "Services",
-      "technologies": "Technologies",
-      "faq": "FAQ",
-      "contact": "Contact",
-      "book": "Book a consultation"
+      "about": "За мен",
+      "process": "Процес",
+      "work": "Проекти",
+      "services": "Услуги",
+      "technologies": "Технологии",
+      "faq": "Въпроси",
+      "contact": "Контакти",
+      "book": "Запазете консултация"
     },
-    "socials": { "github": "AGility on GitHub", "linkedin": "AGility on LinkedIn" },
-    "rights": "© {year} AGility. All rights reserved.",
-    "caption": "Custom software & AI automation"
+    "socials": { "github": "AGility в GitHub", "linkedin": "AGility в LinkedIn" },
+    "rights": "© {year} AGility. Всички права запазени.",
+    "caption": "Софтуер по поръчка и AI автоматизация"
   }
 }

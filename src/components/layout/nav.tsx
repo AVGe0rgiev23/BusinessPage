@@ -182,7 +182,10 @@ export function Nav() {
                   onFocus={() => moveIndicator(link.href)}
                   onBlur={() => moveIndicator(activeHref)}
                   className={cn(
-                    "rounded-sm px-3 py-5 text-small transition-colors duration-[--duration-micro]",
+                    // `whitespace-nowrap`: a two-word label («За мен») must never
+                    // wrap onto two lines. Bulgarian labels are wider, so between
+                    // `lg` and `xl` the row only fits with tighter link padding.
+                    "whitespace-nowrap rounded-sm px-3 py-5 text-small transition-colors duration-[--duration-micro] lang-bg:max-xl:px-2",
                     focusRing,
                     isActive
                       ? "text-text-primary"

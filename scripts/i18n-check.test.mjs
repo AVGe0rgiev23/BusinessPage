@@ -18,6 +18,7 @@ function fixture(en, bg) {
 const glossary = {
   keepLatin: ["AGility", "CRM", "Next.js"],
   keyRules: [{ key: "common.nav.work", equals: "Проекти" }],
+  identicalKeys: ["common.language.bg"],
   terms: [{ en: "workflow", bg: "работен процес", avoid: ["работен поток"] }],
 };
 const run = (en, bg, extra = {}) => checkMessages({ dir: fixture(en, bg), glossary, ...extra });
@@ -108,4 +109,11 @@ test("pinned key rules only apply once the string is translated", () => {
   const en = { common: { nav: { work: "Work" } } };
   assert.deepEqual(run(en, en).errors, []);
   assert.deepEqual(codes(run(en, en, { strict: true })), ["UNTRANSLATED"]);
+});
+
+test("keys that are identical by design are neither untranslated nor allowed to change", () => {
+  const en = { common: { language: { bg: "Български" } } };
+  assert.deepEqual(run(en, en, { strict: true }).errors, []);
+  const translated = { common: { language: { bg: "Bulgarian" } } };
+  assert.deepEqual(codes(run(en, translated, { strict: true })), ["MUST_MATCH"]);
 });

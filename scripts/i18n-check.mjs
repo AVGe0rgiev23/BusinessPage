@@ -57,6 +57,9 @@ export function checkMessages({ dir, glossary, areas, strict = false }) {
   const errors = [];
   const warnings = [];
   const keep = new Set((glossary.keepLatin ?? []).map((w) => w.toLowerCase()));
+  // Strings that are the same in every language on purpose — each language's
+  // name for itself. They are not "untranslated", and translating one is a bug.
+  const identical = new Set(glossary.identicalKeys ?? []);
   const listAreas = (loc) =>
     existsSync(join(dir, loc))
       ? readdirSync(join(dir, loc)).filter((f) => f.endsWith(".json")).map((f) => basename(f, ".json")).sort()
@@ -82,6 +85,10 @@ export function checkMessages({ dir, glossary, areas, strict = false }) {
       const where = `${area}.${k}`;
       const e = en[k];
       if (!b.trim()) { errors.push({ code: "EMPTY", where, detail: "" }); continue; }
+      if (identical.has(where)) {
+        if (b.trim() !== e.trim()) errors.push({ code: "MUST_MATCH", where, detail: `must stay "${e}", got "${b}"` });
+        continue;
+      }
       if (tokens(e).join("|") !== tokens(b).join("|")) {
         errors.push({ code: "PLACEHOLDER_MISMATCH", where, detail: `en [${tokens(e)}] vs bg [${tokens(b)}]` });
       }

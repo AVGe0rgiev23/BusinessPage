@@ -29,6 +29,14 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
+  Bulgarian-only styling hook: `lang-bg:px-2` applies to descendants of an
+  element in Bulgarian (the `<html lang>`). Bulgarian labels run longer than the
+  English ones, so a few tight spots need their own spacing without changing
+  how the English site is laid out.
+*/
+@custom-variant lang-bg (&:where(:lang(bg) *));
+
+/*
   shadcn semantic tokens → mapped to the palette defined in `:root`.
   These drive every shadcn/ui component (button, sheet, badge, accordion, ...).
 */
