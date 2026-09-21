@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import { initLocale } from "@/i18n/init-locale";
 import { routeMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
@@ -21,7 +22,7 @@ export async function generateMetadata({
   return routeMetadata(await initLocale(params), "book");
 }
 
-const perks = ["About 30 minutes", "Free", "No pressure", "No obligation"];
+const perks = ["about30Minutes", "free", "noPressure", "noObligation"] as const;
 
 export default async function BookPage({
   params,
@@ -29,12 +30,13 @@ export default async function BookPage({
   params: Promise<{ locale: string }>;
 }) {
   await initLocale(params);
+  const t = await getTranslations("book");
   return (
     <main id="main" tabIndex={-1} className="flex flex-1 flex-col">
       <PageHeader
-        eyebrow="Book a consultation"
-        title="Book a free 30-minute consultation."
-        subtitle="I'll look at where your business is losing time and money — and give you an honest answer on whether custom software is worth it. No pressure, no obligation, no jargon."
+        eyebrow={t("page.eyebrow")}
+        title={t("page.title")}
+        subtitle={t("page.subtitle")}
       >
         <div className="flex flex-col items-start gap-7">
           <Button
@@ -45,7 +47,7 @@ export default async function BookPage({
             className={cn("group", focusRing)}
           >
             <CalendarClock aria-hidden="true" />
-            Book a consultation
+            {t("page.cta")}
           </Button>
           {/* The four terms of the offer, set as a monospace run rather than
               pills — it reads as a specification line, not four more badges. */}
@@ -57,7 +59,7 @@ export default async function BookPage({
                     /
                   </span>
                 ) : null}
-                {perk}
+                {t(`perks.${perk}`)}
               </li>
             ))}
           </ul>

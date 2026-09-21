@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 
 import { focusRing } from "@/lib/utils";
@@ -6,27 +7,26 @@ import { CtaBand } from "@/components/layout/cta-band";
 
 export const CALENDLY_URL = calendlyUrl;
 
-export function BookingCta() {
+export async function BookingCta() {
+  const t = await getTranslations("book");
   return (
     <CtaBand
       id="book-now"
-      eyebrow="Book your call"
-      title="Pick a time that works for you"
-      subtitle="Choose a free 30-minute slot and we'll talk through where your business is losing time — and whether custom software is worth it. No pressure, no obligation."
-      primary={{ label: "Book a consultation", href: CALENDLY_URL }}
-      secondary={{ label: "Send a message instead", href: "/contact" }}
-      footnote={
-        <>
-          Rather not book yet? Ask me anything through the{" "}
+      eyebrow={t("bookingCta.eyebrow")}
+      title={t("bookingCta.title")}
+      subtitle={t("bookingCta.subtitle")}
+      primary={{ label: t("bookingCta.primary"), href: CALENDLY_URL }}
+      secondary={{ label: t("bookingCta.secondary"), href: "/contact" }}
+      footnote={t.rich("bookingCta.footnote", {
+        contact: (chunks) => (
           <Link
             href="/contact"
             className={`rounded-sm font-medium text-accent underline-offset-4 transition-colors hover:text-accent-hover hover:underline ${focusRing}`}
           >
-            contact form
+            {chunks}
           </Link>
-          .
-        </>
-      }
+        ),
+      })}
     />
   );
 }

@@ -1,4 +1,5 @@
 import type about from "./messages/en/about.json";
+import type book from "./messages/en/book.json";
 import type common from "./messages/en/common.json";
 import type faq from "./messages/en/faq.json";
 import type home from "./messages/en/home.json";
@@ -16,6 +17,7 @@ declare module "next-intl" {
     Locale: (typeof routing.locales)[number];
     Messages: {
       about: typeof about;
+      book: typeof book;
       common: typeof common;
       faq: typeof faq;
       home: typeof home;
