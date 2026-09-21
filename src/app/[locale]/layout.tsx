@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
-import { Archivo, Instrument_Sans, JetBrains_Mono } from "next/font/google";
+import {
+  Archivo,
+  Instrument_Sans,
+  JetBrains_Mono,
+  Source_Sans_3,
+} from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import "../globals.css";
@@ -39,6 +44,30 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
+/*
+  Bulgarian only. English pages must not pay for it: browsers fetch a font file
+  only when text on the page uses it, and Source Sans 3 is reachable only
+  through `html:lang(bg)` in globals.css. `preload: false` keeps English pages
+  from even hinting at it.
+
+  Archivo and Instrument Sans have no Cyrillic; Source Sans 3 does, with the
+  Bulgarian letterforms. It replaces both for Bulgarian (headings 600, body
+  400/500), `wght` axis only, Latin and Cyrillic so that `CRM` or `API` inside a
+  Bulgarian sentence is set in the same typeface.
+
+  JetBrains Mono needs nothing extra: next/font already declares its Cyrillic
+  subset as a unicode-range face, fetched only when Cyrillic mono text is
+  rendered. (A second JetBrains_Mono instance would define the same @font-face
+  rules twice, so the browser would pick the copy that is not preloaded and
+  download the Latin file twice.)
+*/
+const sourceSans = Source_Sans_3({
+  variable: "--font-source-sans",
+  subsets: ["latin", "cyrillic"],
+  display: "swap",
+  preload: false,
+});
+
 // Only the origin lives here. Every route builds its own title, description,
 // canonical, hreflang alternates and share image in `routeMetadata`
 // (src/lib/seo.ts), because a page-level `openGraph` object replaces a
@@ -72,7 +101,7 @@ export default async function RootLayout({
       // point of the script — suppress the warning rather than give up the
       // no-JS fallback.
       suppressHydrationWarning
-      className={`${archivo.variable} ${instrumentSans.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      className={`${archivo.variable} ${instrumentSans.variable} ${jetbrainsMono.variable} ${sourceSans.variable} h-full antialiased`}
     >
       <head>
         {/*

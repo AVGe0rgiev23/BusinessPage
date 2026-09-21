@@ -35,9 +35,13 @@ export function BrandMark({ className }: { className?: string }) {
 /**
  * Wordmark — mark plus name, used in the nav and footer.
  *
- * "AG" is set in the display face at full weight and "ility" a step lighter.
+ * "AG" is set in Archivo at full weight and "ility" a step lighter.
  * It is a small thing, but it turns a plain text logo into something that looks
  * drawn, and it quietly reinforces the initials the company is named for.
+ *
+ * The face is pinned to Archivo (`var(--font-archivo)`) rather than the
+ * `font-display` token: on Bulgarian pages that token points at Source Sans 3
+ * (Archivo has no Cyrillic), and the brand must not change with the language.
  */
 export function Wordmark({ className }: { className?: string }) {
   return (
@@ -45,7 +49,12 @@ export function Wordmark({ className }: { className?: string }) {
       <span className="size-[1.375rem] text-accent">
         <BrandMark />
       </span>
-      <span className="font-display text-[1.0625rem] leading-none tracking-[-0.02em] text-text-primary">
+      <span
+        className="text-[1.0625rem] leading-none tracking-[-0.02em] text-text-primary"
+        style={{
+          fontFamily: "var(--font-archivo), ui-sans-serif, system-ui, sans-serif",
+        }}
+      >
         <span className="font-bold">AG</span>
         <span className="font-medium">ility</span>
       </span>

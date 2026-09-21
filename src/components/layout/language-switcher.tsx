@@ -46,6 +46,8 @@ export function LanguageSwitcher({ className }: { className?: string }) {
             aria-current={locale === current ? "true" : undefined}
             className={cn(
               "rounded-sm px-1.5 py-2 transition-colors duration-[--duration-fast]",
+              // The Cyrillic label must not pull in a Cyrillic web font on English pages.
+              locale === "bg" && "switcher-cyrillic",
               focusRing,
               locale === current
                 ? "text-text-primary"
