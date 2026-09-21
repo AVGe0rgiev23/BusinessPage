@@ -51,7 +51,7 @@ test("reports a missing file", () => {
 test("reports placeholder and tag mismatches", () => {
   const r = run(
     { home: { a: "Pay {low}", b: "<book>x</book>" } },
-    { home: { a: "Платете", b: "<contact>x</contact>" } },
+    { home: { a: "Платете", b: "<contact>текст</contact>" } },
   );
   assert.deepEqual(codes(r), ["PLACEHOLDER_MISMATCH", "PLACEHOLDER_MISMATCH"]);
 });
@@ -122,6 +122,14 @@ test("first-person past participles that reveal gender are errors; present and f
   const en = { home: { a: "I built it", b: "I would build it", c: "I build it", d: "I will build it" } };
   const bg = { home: { a: "Съм изградил това", b: "Бих изградила това", c: "Изграждам това", d: "Ще го изградя" } };
   assert.deepEqual(codes(run(en, bg)), ["GENDERED_FORM", "GENDERED_FORM"]);
+});
+
+test("an English word left in a Bulgarian sentence is an error; kept names and tokens are fine", () => {
+  const en = { home: { a: "Fast delivery", b: "Book on <contact>Zoom</contact> in {year}", c: "Run in CRM and Next.js" } };
+  const bg = { home: { a: "Бърза delivery", b: "Запазете в <contact>Zoom</contact> през {year}", c: "Пуснете в CRM и Next.js" } };
+  // "delivery" and "Zoom" are not on this fixture's keep list; CRM and Next.js are,
+  // and the {year} placeholder and <contact> tag are not words.
+  assert.deepEqual(codes(run(en, bg)), ["LATIN_WORD", "LATIN_WORD"]);
 });
 
 test("the informal «ти» is an error; the polite «вие» and its forms are fine", () => {

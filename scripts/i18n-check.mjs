@@ -54,6 +54,22 @@ const GENDERED_FORM = /(?<![\p{L}\p{N}])(съм|бих|бях|щях)\s+\p{L}+(?
 // «ти» pronouns are unambiguous, so their presence is an error.
 const INFORMAL_ADDRESS = /(?<![\p{L}\p{N}])(ти|теб|тебе|твой|твоя|твоят|твоята|твоето|твоите)(?![\p{L}\p{N}])/iu;
 
+// An English word left inside a Bulgarian sentence usually means the string was
+// only half translated. Product names, protocols and acronyms are on the
+// glossary's keepLatin list; anything else in Latin letters is an error.
+function latinLeftovers(text, keep) {
+  const stripped = text.replace(/\{[^}]*\}/g, " ").replace(/<\/?[A-Za-z][\w-]*\s*\/?>/g, " ");
+  const found = [];
+  for (const word of stripped.match(/[A-Za-z][A-Za-z0-9.+#/_-]*/g) ?? []) {
+    const clean = word.replace(/^[.\-/]+|[.\-/]+$/g, "");
+    if (!clean || keep.has(clean.toLowerCase())) continue;
+    // compound names such as "CI/CD" or "low-code" whose parts are all kept
+    if (clean.split(/[/-]/).every((part) => !part || keep.has(part.toLowerCase()))) continue;
+    found.push(clean);
+  }
+  return found;
+}
+
 function typography(text, where, errors) {
   if (text.includes("—")) errors.push({ code: "TYPO_EMDASH", where, detail: "use a spaced en dash ' – '" });
   if (/["”]/.test(text)) errors.push({ code: "TYPO_QUOTE", where, detail: 'use „…“, not " or ”' });
@@ -117,6 +133,9 @@ export function checkMessages({ dir, glossary, areas, strict = false }) {
         }
         if (INFORMAL_ADDRESS.test(b)) {
           errors.push({ code: "INFORMAL_ADDRESS", where, detail: "use the polite «вие» form, not «ти»" });
+        }
+        for (const word of latinLeftovers(b, keep)) {
+          errors.push({ code: "LATIN_WORD", where, detail: `"${word}" is in Latin letters and not on the keepLatin list` });
         }
         typography(b, where, errors);
       }
