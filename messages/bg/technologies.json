@@ -49,7 +49,7 @@
       "vectorDatabases": "Векторни бази данни",
       "objectStorage": "Обектно хранилище",
       "llmApis": "LLM API",
-      "ragPipelines": "RAG конвейри",
+      "ragPipelines": "RAG конвейери",
       "embeddings": "Embeddings",
       "vectorSearch": "Векторно търсене",
       "agents": "Агенти",
