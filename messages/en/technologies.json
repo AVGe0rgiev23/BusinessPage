@@ -1,0 +1,112 @@
+{
+  "stack": {
+    "groups": {
+      "languages": {
+        "label": "Languages"
+      },
+      "frontend": {
+        "label": "Frontend"
+      },
+      "backendApis": {
+        "label": "Backend & APIs"
+      },
+      "backgroundJobsWorkflow": {
+        "label": "Background jobs & workflow infrastructure"
+      },
+      "dataStorage": {
+        "label": "Data & storage"
+      },
+      "aiLlmTooling": {
+        "label": "AI & LLM tooling"
+      },
+      "infrastructureCloud": {
+        "label": "Infrastructure & cloud"
+      },
+      "integrations": {
+        "label": "Integrations"
+      }
+    },
+    "items": {
+      "typescript": "TypeScript",
+      "javascript": "JavaScript",
+      "python": "Python",
+      "sql": "SQL",
+      "react": "React",
+      "nextJs": "Next.js",
+      "tailwindCss": "Tailwind CSS",
+      "framerMotion": "Framer Motion",
+      "nodeJs": "Node.js",
+      "restApis": "REST APIs",
+      "graphql": "GraphQL",
+      "webhooks": "Webhooks",
+      "triggerDev": "Trigger.dev",
+      "queues": "Queues",
+      "scheduledJobs": "Scheduled jobs",
+      "retriesConcurrencyControls": "Retries & concurrency controls",
+      "backgroundWorkers": "Background workers",
+      "postgresql": "PostgreSQL",
+      "redis": "Redis",
+      "vectorDatabases": "Vector databases",
+      "objectStorage": "Object storage",
+      "llmApis": "LLM APIs",
+      "ragPipelines": "RAG pipelines",
+      "embeddings": "Embeddings",
+      "vectorSearch": "Vector search",
+      "agents": "Agents",
+      "functionCalling": "Function calling",
+      "vercel": "Vercel",
+      "aws": "AWS",
+      "docker": "Docker",
+      "ciCd": "CI/CD",
+      "edgeFunctions": "Edge functions",
+      "crms": "CRMs",
+      "payments": "Payments",
+      "emailMessaging": "Email & messaging",
+      "calendars": "Calendars",
+      "thirdPartyApis": "Third-party APIs"
+    },
+    "heading": {
+      "eyebrow": "The stack",
+      "title": "What I build with",
+      "lede": "A well-supported, widely adopted toolset — the same tooling behind serious software products. Think of it as a toolkit, not a template: I choose the stack per project, and nothing on this list is mandatory."
+    }
+  },
+  "whyThisStack": {
+    "reasons": {
+      "reliability": {
+        "title": "Reliability",
+        "body": "Proven, widely adopted tools have fewer surprises, better support, and a large community that has already solved the hard problems."
+      },
+      "portability": {
+        "title": "Portability",
+        "body": "Standard, well-understood code and infrastructure rather than a proprietary black box. I use third-party providers like everyone does — the point is that moving off one shouldn't mean a rewrite."
+      },
+      "performance": {
+        "title": "Performance",
+        "body": "Software tuned to your workload runs faster and costs less to operate than a general-purpose platform doing everything for everyone."
+      },
+      "longTermMaintainability": {
+        "title": "Long-term maintainability",
+        "body": "Popular, well-documented tools are straightforward for any competent engineer to pick up later, so your software stays maintainable long after launch."
+      }
+    },
+    "heading": {
+      "eyebrow": "Why this stack",
+      "title": "Why I build on these tools",
+      "lede": "I'm not attached to any single tool for its own sake. I pick technology that's widely used, actively maintained, and well-documented, because that's what keeps software reliable and affordable to run over time."
+    },
+    "closing": "None of this makes any one tool universally “best.” It makes for a dependable default that I adjust whenever a project calls for something else — the right stack is always the one that fits your goals."
+  },
+  "page": {
+    "eyebrow": "Technologies",
+    "title": "Built on proven tools — so your software stays reliable, fast, and maintainable.",
+    "subtitle": "I work with a well-supported, widely adopted stack — the same tooling behind serious software products. I choose it for reliability and longevity rather than novelty, and I pick the parts that fit each project rather than running every job through the same template."
+  },
+  "cta": {
+    "eyebrow": "Get started",
+    "title": "Want to talk through the right approach for your project?",
+    "subtitle": "Book a free consultation and I'll walk through what to build, how it fits the systems you already run, and the stack that makes sense for your goals. Plain language, no jargon.",
+    "primary": "Book a consultation",
+    "secondary": "Get in touch"
+  }
+}

@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import { ArrowUpRight } from "lucide-react";
 
 import { cn, focusRing } from "@/lib/utils";
@@ -30,16 +31,11 @@ import { contactEmail } from "@/lib/site-config";
  * infrastructure to maintain for no gain, and a pre-filled subject line gets
  * the enquiry into the inbox already labelled.
  */
-const SUBJECT = "Teardown request";
+const TERMS = ["weeklyLimit", "noCallRequired", "noPitchAttached"] as const;
 
-const TERMS = [
-  "Three a week — that's the honest limit for one person.",
-  "No call required.",
-  "No pitch attached.",
-];
-
-export function Teardown() {
-  const href = `mailto:${contactEmail}?subject=${encodeURIComponent(SUBJECT)}`;
+export async function Teardown() {
+  const t = await getTranslations("home.teardown");
+  const href = `mailto:${contactEmail}?subject=${encodeURIComponent(t("subject"))}`;
 
   return (
     <Section
@@ -51,7 +47,7 @@ export function Teardown() {
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-24">
           <Reveal>
             <div className="flex items-center gap-4">
-              <Eyebrow className="text-accent">Free teardown</Eyebrow>
+              <Eyebrow className="text-accent">{t("eyebrow")}</Eyebrow>
               <span aria-hidden="true" className="h-px flex-1 bg-border" />
             </div>
 
@@ -59,14 +55,11 @@ export function Teardown() {
               id="teardown-heading"
               className="mt-7 max-w-[20ch] text-balance text-h2 font-semibold text-text-primary"
             >
-              Send me the process your team hates most.
+              {t("title")}
             </h2>
 
             <p className="mt-6 max-w-[56ch] text-pretty text-body-lg text-text-secondary">
-              I&apos;ll record a free 5-minute screen teardown — where the time
-              goes, what&apos;s automatable, what isn&apos;t, and what I&apos;d
-              do first. Sometimes the honest answer is &ldquo;buy an existing
-              tool&rdquo; — that&apos;s a valid outcome.
+              {t("body")}
             </p>
 
             <Button
@@ -74,7 +67,7 @@ export function Teardown() {
               render={<a href={href} />}
               className={cn("group mt-9", focusRing)}
             >
-              Send me the process
+              {t("button")}
               <ArrowUpRight
                 className="transition-transform duration-[--duration-fast] group-hover/button:translate-x-0.5 group-hover/button:-translate-y-0.5"
                 aria-hidden="true"
@@ -82,7 +75,7 @@ export function Teardown() {
             </Button>
 
             <p className="mt-5 font-mono text-eyebrow uppercase text-text-muted">
-              Opens your email to {contactEmail}
+              {t("opensEmail", { email: contactEmail })}
             </p>
           </Reveal>
 
@@ -95,7 +88,7 @@ export function Teardown() {
                   key={term}
                   className="border-b border-border py-6 text-pretty text-body text-text-secondary"
                 >
-                  {term}
+                  {t(`terms.${term}`)}
                 </li>
               ))}
             </ul>

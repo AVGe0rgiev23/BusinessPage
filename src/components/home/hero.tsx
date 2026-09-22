@@ -1,7 +1,8 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import * as React from "react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { createTimeline } from "animejs";
 import { ArrowRight } from "lucide-react";
 
@@ -34,6 +35,7 @@ import { SystemDiagram } from "@/components/home/system-diagram";
  * this column. Keep each line at or under that or the headline will overflow.
  */
 export function Hero() {
+  const t = useTranslations("home.hero");
   const rootRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
@@ -143,7 +145,7 @@ export function Hero() {
                 aria-hidden="true"
                 className="size-1.5 rounded-full bg-accent"
               />
-              Custom AI &amp; automation
+              {t("eyebrow")}
             </p>
 
             <h1
@@ -152,9 +154,9 @@ export function Hero() {
               data-reveal=""
               className="mt-7 text-display font-semibold text-text-primary"
             >
-              <span className="block">Your team is</span>
-              <span className="block">moving data</span>
-              <span className="block text-accent">by hand.</span>
+              <span className="block">{t("headline.line1")}</span>
+              <span className="block">{t("headline.line2")}</span>
+              <span className="block text-accent">{t("headline.accent")}</span>
             </h1>
 
             <p
@@ -162,10 +164,7 @@ export function Hero() {
               data-reveal=""
               className="mt-8 max-w-[52ch] text-pretty text-body-lg text-text-secondary"
             >
-              Between the CRM, the inbox and the spreadsheet, someone is the
-              connection — re-keying the same rows, chasing the same updates. I
-              build the software that does that part instead, shaped around how
-              your business actually runs, and delivered on terms you choose.
+              {t("lede")}
             </p>
 
             <div
@@ -182,7 +181,7 @@ export function Hero() {
                 render={<a href="#teardown" />}
                 className={cn("group", focusRing)}
               >
-                Get a free teardown
+                {t("primaryCta")}
                 <ArrowRight
                   aria-hidden="true"
                   className="transition-transform duration-[--duration-fast] group-hover/button:translate-x-0.5"
@@ -194,7 +193,7 @@ export function Hero() {
                 render={<Link href="/process" />}
                 className={focusRing}
               >
-                See how I work
+                {t("secondaryCta")}
               </Button>
             </div>
 
@@ -220,11 +219,11 @@ export function Hero() {
               data-reveal=""
               className="mt-7 font-mono text-eyebrow uppercase leading-relaxed text-text-muted"
             >
-              No obligation
+              {t("reassurance.first")}
               <span aria-hidden="true" className="px-2.5 text-border-hover">
                 /
               </span>
-              Honest answers either way
+              {t("reassurance.second")}
             </p>
           </div>
 

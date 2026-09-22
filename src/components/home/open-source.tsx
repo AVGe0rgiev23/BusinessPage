@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import { ArrowUpRight } from "lucide-react";
 
 import { cn, focusRing } from "@/lib/utils";
@@ -29,7 +30,9 @@ import { githubUrl } from "@/lib/site-config";
  * argument and the closing FAQ.
  */
 
-export function OpenSource() {
+export async function OpenSource() {
+  const t = await getTranslations("home.openSource");
+  const shared = await getTranslations("shared");
   return (
     <Section
       id="open-source"
@@ -46,20 +49,18 @@ export function OpenSource() {
               >
                 10
               </span>
-              <Eyebrow>Open source</Eyebrow>
+              <Eyebrow>{t("eyebrow")}</Eyebrow>
             </div>
 
             <h2
               id="open-source-heading"
               className="mt-7 max-w-[14ch] text-balance text-h2 font-semibold text-text-primary"
             >
-              I build in the open.
+              {t("title")}
             </h2>
 
             <p className="mt-6 max-w-[52ch] text-pretty text-body-lg text-text-secondary">
-              Good engineering doesn&apos;t hide. My GitHub is the repositories
-              themselves — the code, the commit history, and the standards I
-              hold myself to when no one&apos;s watching.
+              {shared("githubIntro")}
             </p>
 
             <Button
@@ -71,7 +72,7 @@ export function OpenSource() {
               className={cn("group mt-9", focusRing)}
             >
               <GithubIcon className="size-5" aria-hidden="true" />
-              View my GitHub
+              {t("button")}
               <ArrowUpRight
                 className="text-text-muted transition-transform duration-[--duration-fast] group-hover/button:translate-x-0.5 group-hover/button:-translate-y-0.5"
                 aria-hidden="true"
@@ -85,7 +86,7 @@ export function OpenSource() {
               section. */}
           <Reveal className="lg:pt-2">
             <p className="border-y border-border py-8 text-pretty text-body-lg text-text-secondary">
-              You can see how I write code before you ever hire me.
+              {t("statement")}
             </p>
           </Reveal>
         </div>

@@ -1,6 +1,9 @@
-import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 
+import { ClientMessages } from "@/i18n/client-messages";
+import { Link } from "@/i18n/navigation";
 import { cn, focusRing } from "@/lib/utils";
+import { LanguageSwitcher } from "@/components/layout/language-switcher";
 import { Container } from "@/components/layout/container";
 import { Wordmark } from "@/components/layout/brand";
 import { GithubIcon, LinkedinIcon } from "@/components/icons/brand-icons";
@@ -8,34 +11,34 @@ import { contactEmail, githubUrl, linkedinUrl } from "@/lib/site-config";
 
 const FOOTER_SECTIONS = [
   {
-    title: "Company",
+    id: "company",
     links: [
-      { label: "About", href: "/about" },
-      { label: "Process", href: "/process" },
-      { label: "Work", href: "/work" },
+      { key: "about", href: "/about" },
+      { key: "process", href: "/process" },
+      { key: "work", href: "/work" },
     ],
   },
   {
-    title: "Services",
+    id: "services",
     links: [
-      { label: "Services", href: "/services" },
-      { label: "Technologies", href: "/technologies" },
-      { label: "FAQ", href: "/faq" },
+      { key: "services", href: "/services" },
+      { key: "technologies", href: "/technologies" },
+      { key: "faq", href: "/faq" },
     ],
   },
   {
-    title: "Get started",
+    id: "getStarted",
     links: [
-      { label: "Contact", href: "/contact" },
-      { label: "Book a consultation", href: "/book" },
+      { key: "contact", href: "/contact" },
+      { key: "book", href: "/book" },
     ],
   },
-];
+] as const;
 
 const SOCIALS = [
-  { href: githubUrl, label: "AGility on GitHub", Icon: GithubIcon },
-  { href: linkedinUrl, label: "AGility on LinkedIn", Icon: LinkedinIcon },
-];
+  { key: "github", href: githubUrl, Icon: GithubIcon },
+  { key: "linkedin", href: linkedinUrl, Icon: LinkedinIcon },
+] as const;
 
 /**
  * Footer.
@@ -46,7 +49,8 @@ const SOCIALS = [
  * someone who scrolled this far and wants to email should not have to navigate
  * to find out how.
  */
-export function Footer() {
+export async function Footer() {
+  const t = await getTranslations("common");
   const year = new Date().getFullYear();
 
   return (
@@ -56,15 +60,13 @@ export function Footer() {
           <div>
             <Link
               href="/"
-              aria-label="AGility — home"
+              aria-label={t("brand.homeLabel")}
               className={cn("inline-block rounded-sm", focusRing)}
             >
               <Wordmark />
             </Link>
             <p className="mt-6 max-w-[38ch] text-pretty text-small text-text-secondary">
-              Custom software and AI automation that reclaims the hours lost to
-              repetitive work and cuts operating costs — delivered the way you
-              choose to run it.
+              {t("footer.tagline")}
             </p>
 
             <a
@@ -78,13 +80,13 @@ export function Footer() {
             </a>
 
             <div className="mt-7 flex items-center gap-2">
-              {SOCIALS.map(({ href, label, Icon }) => (
+              {SOCIALS.map(({ key, href, Icon }) => (
                 <a
                   key={href}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={label}
+                  aria-label={t(`footer.socials.${key}`)}
                   className={cn(
                     "inline-flex size-9 items-center justify-center rounded-md border border-border text-text-muted transition-colors duration-[--duration-fast] hover:border-border-hover hover:text-text-primary",
                     focusRing
@@ -98,9 +100,9 @@ export function Footer() {
 
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
             {FOOTER_SECTIONS.map((section) => (
-              <div key={section.title}>
+              <div key={section.id}>
                 <h2 className="font-mono text-eyebrow uppercase text-text-muted">
-                  {section.title}
+                  {t(`footer.groups.${section.id}`)}
                 </h2>
                 {/*
                   `-mx-2 px-2 py-1.5` lifts each link's hit area from a 20px
@@ -119,7 +121,7 @@ export function Footer() {
                           focusRing
                         )}
                       >
-                        {link.label}
+                        {t(`footer.links.${link.key}`)}
                       </Link>
                     </li>
                   ))}
@@ -131,11 +133,16 @@ export function Footer() {
 
         <div className="mt-16 flex flex-col gap-2 border-t border-border pt-8 sm:flex-row sm:items-center sm:justify-between">
           <p className="font-mono text-eyebrow uppercase text-text-muted">
-            &copy; {year} AGility. All rights reserved.
+            {t("footer.rights", { year })}
           </p>
-          <p className="font-mono text-eyebrow uppercase text-text-muted">
-            Custom software &amp; AI automation
-          </p>
+          <div className="flex items-center gap-6">
+            <p className="font-mono text-eyebrow uppercase text-text-muted">
+              {t("footer.caption")}
+            </p>
+            <ClientMessages paths={["common.language"]}>
+              <LanguageSwitcher />
+            </ClientMessages>
+          </div>
         </div>
       </Container>
     </footer>

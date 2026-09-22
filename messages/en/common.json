@@ -1,0 +1,39 @@
+{
+  "skipToContent": "Skip to content",
+  "language": { "label": "Language", "en": "English", "bg": "Български" },
+  "cta": {
+    "writeFirst": "Prefer to write first? Reach me any time through the <contact>contact form</contact>."
+  },
+  "brand": { "homeLabel": "AGility — home" },
+  "nav": {
+    "primary": "Primary",
+    "mobile": "Mobile",
+    "openMenu": "Open menu",
+    "close": "Close",
+    "services": "Services",
+    "process": "Process",
+    "technologies": "Technologies",
+    "work": "Work",
+    "about": "About",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "cta": "Book a consultation"
+  },
+  "footer": {
+    "tagline": "Custom software and AI automation that reclaims the hours lost to repetitive work and cuts operating costs — delivered the way you choose to run it.",
+    "groups": { "company": "Company", "services": "Services", "getStarted": "Get started" },
+    "links": {
+      "about": "About",
+      "process": "Process",
+      "work": "Work",
+      "services": "Services",
+      "technologies": "Technologies",
+      "faq": "FAQ",
+      "contact": "Contact",
+      "book": "Book a consultation"
+    },
+    "socials": { "github": "AGility on GitHub", "linkedin": "AGility on LinkedIn" },
+    "rights": "© {year} AGility. All rights reserved.",
+    "caption": "Custom software & AI automation"
+  }
+}

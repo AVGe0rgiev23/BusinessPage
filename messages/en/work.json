@@ -1,0 +1,127 @@
+{
+  "philosophy": {
+    "principles": {
+      "startProblem": {
+        "title": "Start with the problem",
+        "body": "Every project begins with what's actually costing you — the hours lost, the errors, the bottleneck. The technology is chosen to fit that, never the other way around."
+      },
+      "ownershipPoint": {
+        "title": "Ownership you can point to",
+        "body": "I design projects so you keep appropriate ownership and control of your software, your data, and your infrastructure, according to the delivery model you choose — and I'm precise about which is which."
+      },
+      "shipSmallIncrements": {
+        "title": "Ship in small increments",
+        "body": "You see working software early and often, so you can steer the direction while it's still cheap to change — not after the budget is spent."
+      },
+      "codeBuiltRead": {
+        "title": "Code built to be read",
+        "body": "Clear, documented, tested code that the next engineer — me or yours — can pick up and extend without starting over."
+      },
+      "honestDefault": {
+        "title": "Honest by default",
+        "body": "Straight answers on scope, timelines, and trade-offs — including the times a simpler, cheaper tool is the right call for you."
+      },
+      "closeCommunication": {
+        "title": "Close communication",
+        "body": "You talk directly to the person writing your software, and you get quick, plain-spoken answers when something comes up."
+      }
+    },
+    "heading": {
+      "eyebrow": "How I build",
+      "title": "The principles behind every build.",
+      "lede": "There's no wall of client logos yet — AGility is early, and I won't pretend otherwise. What I can show you is exactly how I work, so you can judge me on the things that decide whether software is worth trusting."
+    }
+  },
+  "engineeringPractice": {
+    "practices": {
+      "reviewedRushed": {
+        "title": "Reviewed, not rushed",
+        "body": "Changes are reviewed before they ship. A second set of eyes catches problems while they're still cheap to fix."
+      },
+      "testedWhereCounts": {
+        "title": "Tested where it counts",
+        "body": "Automated tests cover the parts of your software you can't afford to have break, so updates don't quietly undo what already worked."
+      },
+      "handledCare": {
+        "title": "Handled with care",
+        "body": "Least-privilege access, secrets kept out of the code, and your data treated as something to protect — not an afterthought."
+      },
+      "documentedAsGo": {
+        "title": "Documented as I go",
+        "body": "What I build comes with the notes to run and change it, so you're never held hostage by one person's memory."
+      },
+      "shippedThroughPipeline": {
+        "title": "Shipped through a pipeline",
+        "body": "Automated checks and deploys make releases repeatable and boring — the way releases should be — instead of a manual nail-biter."
+      },
+      "measuredThenTuned": {
+        "title": "Measured, then tuned",
+        "body": "I check how software actually performs before optimising, and fix the things your users and your bill genuinely feel."
+      }
+    },
+    "heading": {
+      "eyebrow": "Engineering practice",
+      "title": "The standards behind the software.",
+      "lede": "The difference between software that runs for years and software you regret is mostly invisible — it lives in how it's built. Here's what that looks like on my side."
+    }
+  },
+  "githubProjects": {
+    "proof": {
+      "codeRead": {
+        "title": "Code you can read",
+        "body": "The repositories themselves, not screenshots of them. You can look at how something is actually put together before you decide whether to trust me with yours."
+      },
+      "historyCheck": {
+        "title": "History you can check",
+        "body": "Commits in order, so you can see how a project was really built rather than how it got described afterwards."
+      },
+      "standardsHold": {
+        "title": "Standards I hold",
+        "body": "How I structure, document, and review code, out in the open. Not a claim in a pitch deck — something you can go and check for yourself."
+      }
+    },
+    "eyebrow": "Open source",
+    "title": "See how I build before you ever hire me.",
+    "button": "View my GitHub"
+  },
+  "selectedWork": {
+    "builds": {
+      "leadgenius": {
+        "name": "LeadGenius",
+        "label": "Self-built — not client work",
+        "body": "My own product, built and maintained end to end — the same stack, review, and testing standards I would bring to a client project. It exists because I wanted it to exist, not because anyone commissioned it.",
+        "linkLabel": "View on GitHub"
+      },
+      "hackathonBuild01": {
+        "name": "Hackathon build 01",
+        "label": "Hackathon build — not a client project",
+        "body": "TODO: what it was, what it did, and which event it was built at. Written under time pressure, and worth showing for how it was approached rather than as a finished product.",
+        "linkLabel": "View on GitHub"
+      },
+      "hackathonBuild02": {
+        "name": "Hackathon build 02",
+        "label": "Hackathon build — not a client project",
+        "body": "TODO: what it was, what it did, and which event it was built at. Written under time pressure, and worth showing for how it was approached rather than as a finished product.",
+        "linkLabel": "View on GitHub"
+      }
+    },
+    "heading": {
+      "eyebrow": "Selected work",
+      "title": "No client projects to show yet.",
+      "lede": "Here's what I've built instead: my own product and two hackathon builds. None of it is client work, and every card says which is which."
+    },
+    "linkSuffix": " — {name}"
+  },
+  "page": {
+    "eyebrow": "My work",
+    "title": "I'd rather show you how I build than fake a portfolio.",
+    "subtitle": "AGility is early, and I'm honest about it. There's no wall of client logos yet — so instead of inventing one, the engineering goes out in the open. Judge it on the work itself."
+  },
+  "cta": {
+    "eyebrow": "Start a project",
+    "title": "Judge me by the work, then let's talk.",
+    "subtitle": "Until the case studies land, everything you need to weigh me up is already public — how I build, what I ship, and the standards I hold. Look at the work, then bring me the problem that's costing you time.",
+    "primary": "Book a consultation",
+    "secondary": "Tell me about your project"
+  }
+}

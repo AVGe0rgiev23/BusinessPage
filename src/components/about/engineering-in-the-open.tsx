@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import { ArrowUpRight } from "lucide-react";
 
 import { cn, focusRing } from "@/lib/utils";
@@ -7,7 +8,7 @@ import { Reveal } from "@/components/motion/reveal";
 import { Eyebrow } from "@/components/layout/section-heading";
 import { Button } from "@/components/ui/button";
 import { GithubIcon } from "@/components/icons/brand-icons";
-import { PointList, type Point } from "@/components/shared/point-list";
+import { PointList } from "@/components/shared/point-list";
 import { githubUrl } from "@/lib/site-config";
 
 /**
@@ -24,22 +25,14 @@ import { githubUrl } from "@/lib/site-config";
  * it occupied half the section to communicate "GitHub" — which the button below
  * it already said, in words.
  */
-const POINTS: Point[] = [
-  {
-    title: "Judge the work, not the pitch",
-    body: "You can read how I write code before you ever sign anything. That’s a fairer basis for a decision than a polished sales deck.",
-  },
-  {
-    title: "The code, not a description of it",
-    body: "Repositories rather than screenshots, so you can look at how something is actually put together instead of taking my word for it.",
-  },
-  {
-    title: "History you can check",
-    body: "Commits in order, showing how a project really got built — not how it got described once it was finished.",
-  },
-];
+const POINTS = [
+  { id: "judgeWorkPitch" },
+  { id: "codeDescription" },
+  { id: "historyCheck" },
+] as const;
 
-export function EngineeringInTheOpen() {
+export async function EngineeringInTheOpen() {
+  const t = await getTranslations("about.engineeringInTheOpen");
   return (
     <Section
       id="in-the-open"
@@ -56,21 +49,18 @@ export function EngineeringInTheOpen() {
               >
                 04
               </span>
-              <Eyebrow>In the open</Eyebrow>
+              <Eyebrow>{t("eyebrow")}</Eyebrow>
             </div>
 
             <h2
               id="in-the-open-heading"
               className="mt-7 max-w-[16ch] text-balance text-h2 font-semibold text-text-primary"
             >
-              See how I work before you hire me.
+              {t("title")}
             </h2>
 
             <p className="mt-6 max-w-[52ch] text-pretty text-body-lg text-text-secondary">
-              I can&apos;t point you at fake five-star reviews, and I
-              wouldn&apos;t want to. What I can point you at is GitHub — the
-              code itself, the commit history, and the standards I hold to when
-              no one&apos;s watching.
+              {t("body")}
             </p>
 
             <Button
@@ -82,7 +72,7 @@ export function EngineeringInTheOpen() {
               className={cn("group mt-9", focusRing)}
             >
               <GithubIcon className="size-5" aria-hidden="true" />
-              View my GitHub
+              {t("button")}
               <ArrowUpRight
                 className="text-text-muted transition-transform duration-[--duration-fast] group-hover/button:translate-x-0.5 group-hover/button:-translate-y-0.5"
                 aria-hidden="true"
@@ -90,7 +80,13 @@ export function EngineeringInTheOpen() {
             </Button>
           </Reveal>
 
-          <PointList items={POINTS} className="lg:pt-1" />
+          <PointList
+            items={POINTS.map((point) => ({
+              title: t(`points.${point.id}.title`),
+              body: t(`points.${point.id}.body`),
+            }))}
+            className="lg:pt-1"
+          />
         </div>
       </Container>
     </Section>

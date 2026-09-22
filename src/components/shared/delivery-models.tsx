@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import { cn } from "@/lib/utils";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
@@ -31,39 +32,17 @@ import { SectionHeading } from "@/components/layout/section-heading";
  * Server Component. Renders `<h2>` + `<h3>` per model, so it must sit on a page
  * that already has its own `<h1>`.
  */
-interface Model {
-  name: string;
-  tagline: string;
-  body: string;
-  /** Who holds the infrastructure and third-party accounts. */
-  owns: string;
-  /** Who runs, monitors, and maintains it day to day. */
-  operates: string;
-}
-
-const MODELS: Model[] = [
-  {
-    name: "Fully managed",
-    tagline: "You run the business. I run the software.",
-    body: "I build the system and operate it for you — hosting, deployments, monitoring, maintenance, and ongoing improvements. You just use the software, through whatever interface makes sense: an app, a dashboard, email, Slack, or an API.",
-    owns: "AGility operates the production environment on your behalf",
-    operates: "AGility",
-  },
-  {
-    name: "Client-owned",
-    tagline: "You own and operate it.",
-    body: "I build and deploy the system into infrastructure and accounts you control, then hand over the agreed source code, configuration, and documentation. Your team — or another provider you choose — takes it from there.",
-    owns: "You hold the cloud, data, and third-party accounts",
-    operates: "Your team, or a provider you appoint",
-  },
-  {
-    name: "Hybrid",
-    tagline: "You own the infrastructure. I keep it running.",
-    body: "Your company owns the environment, the data, and the third-party accounts, while I keep developing, deploying, monitoring, and improving the software inside it. I work with the technical permissions the job needs, and no more.",
-    owns: "You hold the cloud, data, and third-party accounts",
-    operates: "AGility, with authorised access to your environment",
-  },
-];
+/*
+  The copy for each model lives in the catalog (`shared.deliveryModels.models`).
+  Each has a name, a tagline and a body, plus two deliberately separate facts:
+    owns      — who holds the infrastructure and third-party accounts;
+    operates  — who runs, monitors, and maintains it day to day.
+*/
+const MODELS = [
+  { id: "fullyManaged" },
+  { id: "clientOwned" },
+  { id: "hybrid" },
+] as const;
 
 interface DeliveryModelsProps {
   /** Section landmark id; the labelling `<h2>` gets `${id}-heading`. */
@@ -77,14 +56,15 @@ interface DeliveryModelsProps {
   className?: string;
 }
 
-export function DeliveryModels({
+export async function DeliveryModels({
   id = "delivery-models",
   index,
-  eyebrow = "Your software. Your choice.",
-  heading = "One build. Three ways to work together.",
-  intro = "No client gets forced into the same delivery model as the last one. I can run the system for you, deploy it into infrastructure you control, or manage software running inside your own environment. I'll recommend the approach that fits your technical, operational, and security requirements — but you choose how you want to work.",
+  eyebrow,
+  heading,
+  intro,
   className,
 }: DeliveryModelsProps) {
+  const t = await getTranslations("shared.deliveryModels");
   const headingId = `${id}-heading`;
 
   return (
@@ -92,10 +72,10 @@ export function DeliveryModels({
       <Container>
         <SectionHeading
           index={index}
-          eyebrow={eyebrow}
+          eyebrow={eyebrow ?? t("eyebrow")}
           headingId={headingId}
-          title={heading}
-          lede={intro}
+          title={heading ?? t("heading")}
+          lede={intro ?? t("intro")}
         />
 
         <RevealGroup
@@ -109,7 +89,7 @@ export function DeliveryModels({
         >
           {MODELS.map((model, i) => (
             <li
-              key={model.name}
+              key={model.id}
               className={cn(
                 "group border-t border-border pt-8",
                 "lg:row-span-4 lg:grid lg:grid-rows-subgrid lg:gap-y-7 lg:pr-8",
@@ -121,15 +101,15 @@ export function DeliveryModels({
             >
               <div>
                 <h3 className="text-h3 font-semibold text-text-primary">
-                  {model.name}
+                  {t(`models.${model.id}.name`)}
                 </h3>
                 <p className="mt-2 text-body font-medium text-accent">
-                  {model.tagline}
+                  {t(`models.${model.id}.tagline`)}
                 </p>
               </div>
 
               <p className="mt-4 text-pretty text-body text-text-secondary lg:mt-0">
-                {model.body}
+                {t(`models.${model.id}.body`)}
               </p>
 
               {/*
@@ -139,19 +119,19 @@ export function DeliveryModels({
               */}
               <dl className="mt-6 border-t border-border pt-5 lg:mt-0">
                 <dt className="font-mono text-eyebrow uppercase text-text-muted">
-                  Infrastructure &amp; accounts
+                  {t("infrastructureLabel")}
                 </dt>
                 <dd className="mt-2 text-small text-text-secondary">
-                  {model.owns}
+                  {t(`models.${model.id}.owns`)}
                 </dd>
               </dl>
 
               <dl className="mt-5 lg:mt-0">
                 <dt className="font-mono text-eyebrow uppercase text-text-muted">
-                  Runs &amp; maintains it
+                  {t("runsLabel")}
                 </dt>
                 <dd className="mt-2 text-small text-text-secondary">
-                  {model.operates}
+                  {t(`models.${model.id}.operates`)}
                 </dd>
               </dl>
             </li>
@@ -160,15 +140,11 @@ export function DeliveryModels({
 
         <Reveal className="mt-14 border-t border-border pt-8">
           <p className="max-w-[80ch] text-pretty text-body text-text-secondary">
-            In every model, the custom software I build for you is intended to
-            be yours under the project agreement, and your data stays your data.
-            What changes is who holds the infrastructure and who keeps it
-            running.{" "}
-            <span className="text-text-primary">
-              Not sure which fits? I&apos;ll recommend a setup based on your
-              technical team, security and compliance requirements, budget, and
-              how much you want to manage yourself.
-            </span>
+            {t.rich("footer", {
+              em: (chunks) => (
+                <span className="text-text-primary">{chunks}</span>
+              ),
+            })}
           </p>
         </Reveal>
       </Container>

@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import { cn } from "@/lib/utils";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
@@ -17,42 +18,25 @@ import { SectionHeading } from "@/components/layout/section-heading";
  * to "Reclaimed time" is decoration pretending to be information.
  */
 const OUTCOMES = [
-  {
-    title: "Reclaimed time",
-    body: "The routine work runs on its own, handing your team back hours every week for the things only people can do.",
-  },
-  {
-    title: "Lower operating costs",
-    body: "Fewer hours spent on manual tasks means the same output for less — and headroom to grow without growing overhead.",
-  },
-  {
-    title: "Faster execution",
-    body: "Work that used to wait in a queue happens the moment it's triggered. Quotes, replies, and handoffs stop stalling.",
-  },
-  {
-    title: "Fewer repetitive tasks",
-    body: "The copy-paste, the re-typing, the chasing — handled automatically, consistently, and without anyone having to remember.",
-  },
-  {
-    title: "A better customer experience",
-    body: "Faster answers and fewer dropped balls. Customers feel the difference long before they know software is behind it.",
-  },
-  {
-    title: "Higher productivity",
-    body: "Your people spend their day on judgement, relationships, and growth instead of shuffling data between screens.",
-  },
-];
+  { id: "reclaimedTime" },
+  { id: "lowerOperatingCosts" },
+  { id: "fasterExecution" },
+  { id: "fewerRepetitiveTasks" },
+  { id: "betterCustomerExperience" },
+  { id: "higherProductivity" },
+] as const;
 
-export function Outcomes() {
+export async function Outcomes() {
+  const t = await getTranslations("home.outcomes");
   return (
     <Section id="outcomes" aria-labelledby="outcomes-heading">
       <Container>
         <SectionHeading
           index="02"
-          eyebrow="The outcome"
+          eyebrow={t("heading.eyebrow")}
           headingId="outcomes-heading"
-          title="Software that gives you the hours back."
-          lede="I start from the result you want, not the technology. Here's what changes once the manual work is off your team's plate."
+          title={t("heading.title")}
+          lede={t("heading.lede")}
         />
 
         {/*
@@ -67,7 +51,7 @@ export function Outcomes() {
         >
           {OUTCOMES.map((outcome, i) => (
             <li
-              key={outcome.title}
+              key={outcome.id}
               className={cn(
                 "group relative border-b border-border py-9",
                 /*
@@ -92,10 +76,10 @@ export function Outcomes() {
                 {String(i + 1).padStart(2, "0")}
               </span>
               <h3 className="mt-5 text-h4 font-semibold text-text-primary">
-                {outcome.title}
+                {t(`items.${outcome.id}.title`)}
               </h3>
               <p className="mt-2.5 max-w-[42ch] text-pretty text-body text-text-secondary">
-                {outcome.body}
+                {t(`items.${outcome.id}.body`)}
               </p>
             </li>
           ))}

@@ -1,0 +1,37 @@
+{
+  "keepLatin": ["AGility", "TypeScript", "JavaScript", "Python", "SQL", "React", "Next.js", "Tailwind", "CSS", "Framer", "Motion", "Node.js", "REST", "API", "APIs", "GraphQL", "Webhooks", "Trigger.dev", "PostgreSQL", "Redis", "Vercel", "AWS", "Docker", "CI/CD", "n8n", "OpenAI", "Anthropic", "LLM", "RAG", "CRM", "CRMs", "AI", "SaaS", "Slack", "GitHub", "LinkedIn", "Calendly", "Resend", "LeadGenius", "low-code", "Embeddings", "Zoom", "TODO", "Cloud", "SOC", "ISO", "Edge"],
+  "identicalKeys": ["common.language.en", "common.language.bg"],
+  "keyRules": [
+    { "key": "common.nav.services", "equals": "Услуги" },
+    { "key": "common.nav.process", "equals": "Процес" },
+    { "key": "common.nav.technologies", "equals": "Технологии" },
+    { "key": "common.nav.work", "equals": "Проекти" },
+    { "key": "common.nav.about", "equals": "За мен" },
+    { "key": "common.nav.faq", "equals": "Въпроси" },
+    { "key": "common.nav.contact", "equals": "Контакти" },
+    { "key": "home.teardown.subject", "equals": "Заявка за видеоанализ" }
+  ],
+  "terms": [
+    { "en": "workflow", "bg": "работен процес", "avoid": ["работен поток", "работни потоци", "воркфлоу", "уъркфлоу"] },
+    { "en": "video teardown", "bg": "видеоанализ", "avoid": ["анализ на видео", "видеоревю", "видео ревю", "видео анализ", "тийрдаун", "teardown"] },
+    { "en": "proposal / quote", "bg": "оферта", "avoid": ["котировка"] },
+    { "en": "discovery", "bg": "проучване", "avoid": ["дискавъри", "discovery"] },
+    { "en": "deploy / implementation", "bg": "внедряване", "avoid": ["деплой", "деплойване", "деплойнат", "разгръщане"] },
+    { "en": "delivery model", "bg": "модел на предоставяне", "avoid": ["модел на доставка", "модел на доставяне", "модел за предоставяне"] },
+    { "en": "fully managed", "bg": "пълно управление", "avoid": ["мениджиран", "мениджърски модел"] },
+    { "en": "dashboard", "bg": "табло", "avoid": ["дашборд", "дашборди"] },
+    { "en": "lead", "bg": "потенциален клиент", "avoid": ["лийд", "лийдове", "лидове"] },
+    { "en": "ticket", "bg": "заявка", "avoid": ["тикет", "тикети"] },
+    { "en": "repository", "bg": "хранилище с код", "avoid": ["репозитори", "репозиторий", "репозитории", "репозиторита"] },
+    { "en": "source code", "bg": "изходен код", "avoid": ["сорс код", "сорс кода"] },
+    { "en": "email", "bg": "имейл", "avoid": ["е-мейл", "емейл", "e-mail", "е-поща"] },
+    { "en": "custom software", "bg": "софтуер по поръчка", "avoid": ["индивидуален софтуер", "персонализиран софтуер", "софтуер по заявка"] },
+    { "en": "spreadsheet", "bg": "електронна таблица", "avoid": ["спредшийт", "спредшит"] },
+    { "en": "code review", "bg": "ревю на кода", "avoid": ["код ревю", "кодово ревю"] },
+    { "en": "open source", "bg": "отворен код", "avoid": ["опен сорс", "опенсорс"] },
+    { "en": "framework", "bg": "фреймуърк", "avoid": ["фреймворк", "фреймуорк", "фреймуърки"] },
+    { "en": "pipeline", "bg": "конвейер", "avoid": ["пайплайн", "пайплайни", "конвейр", "конвейри"] },
+    { "en": "chatbot", "bg": "чатбот", "avoid": ["чат бот", "чат-бот", "чат ботове"] },
+    { "en": "repetitive work / tasks", "bg": "повтаряща се работа / повтарящи се задачи", "avoid": ["повторяща се", "повторяющи се", "монотонна работа"] }
+  ]
+}

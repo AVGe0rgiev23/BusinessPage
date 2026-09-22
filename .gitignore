@@ -45,3 +45,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Text snapshots used to prove the i18n refactor changed nothing
+.snapshots/

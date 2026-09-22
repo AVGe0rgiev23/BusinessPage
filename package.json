@@ -4,9 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node scripts/i18n-check.mjs --strict && next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "i18n:check": "node scripts/i18n-check.mjs --strict",
+    "test:i18n": "node --test scripts/i18n-check.test.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",
@@ -15,6 +17,7 @@
     "clsx": "^2.1.1",
     "lucide-react": "^1.26.0",
     "next": "16.2.11",
+    "next-intl": "^4.14.5",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "resend": "^6.18.0",
@@ -28,6 +31,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.11",
+    "node-html-parser": "^9.0.4",
     "shadcn": "^4.16.2",
     "tailwindcss": "^4",
     "typescript": "^5"

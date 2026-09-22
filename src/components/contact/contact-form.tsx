@@ -1,7 +1,8 @@
 "use client";
 
+import { useLocale, useTranslations } from "next-intl";
 import * as React from "react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { CheckCircle2, LoaderCircle, Send } from "lucide-react";
 
 import { cn, focusRing } from "@/lib/utils";
@@ -10,7 +11,7 @@ import { Button } from "@/components/ui/button";
 import {
   submitContactForm,
   type ContactFieldErrors,
-} from "@/app/contact/actions";
+} from "@/app/[locale]/contact/actions";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MIN_MESSAGE_LENGTH = 10;
@@ -26,28 +27,29 @@ const INITIAL_VALUES: Values = {
   message: "",
 };
 
+type Translator = ReturnType<typeof useTranslations<"contact">>;
+
 /** Mirror of the server-side validation so the user gets instant feedback. */
-function validate(values: Values): ContactFieldErrors {
+function validate(values: Values, t: Translator): ContactFieldErrors {
   const errors: ContactFieldErrors = {};
   const name = values.name.trim();
   const email = values.email.trim();
   const message = values.message.trim();
 
   if (!name) {
-    errors.name = "Please enter your name.";
+    errors.name = t("errors.name.required");
   }
 
   if (!email) {
-    errors.email = "Please enter your email address.";
+    errors.email = t("errors.email.required");
   } else if (!EMAIL_PATTERN.test(email)) {
-    errors.email = "Please enter a valid email address.";
+    errors.email = t("errors.email.invalid");
   }
 
   if (!message) {
-    errors.message = "Please tell me a little about what you need.";
+    errors.message = t("errors.message.required");
   } else if (message.length < MIN_MESSAGE_LENGTH) {
-    errors.message =
-      "Please add a little more detail so I can help — at least 10 characters.";
+    errors.message = t("errors.message.tooShort", { min: MIN_MESSAGE_LENGTH });
   }
 
   return errors;
@@ -81,6 +83,8 @@ function inputClasses(hasError: boolean) {
 }
 
 export function ContactForm() {
+  const t = useTranslations("contact");
+  const locale = useLocale();
   const [values, setValues] = React.useState<Values>(INITIAL_VALUES);
   const [errors, setErrors] = React.useState<ContactFieldErrors>({});
   const [submitAttempted, setSubmitAttempted] = React.useState(false);
@@ -116,18 +120,18 @@ export function ContactForm() {
     setValues(next);
     // Once the user has tried to submit, re-validate live so fixed fields clear.
     if (submitAttempted) {
-      const nextErrors = validate(next);
+      const nextErrors = validate(next, t);
       setErrors(nextErrors);
       setFormError(
         Object.keys(nextErrors).length > 0
-          ? "Please fix the highlighted fields and try again."
+          ? t("errors.form")
           : null
       );
     }
   }
 
   function handleBlur(field: keyof ContactFieldErrors) {
-    const nextErrors = validate(values);
+    const nextErrors = validate(values, t);
     setErrors((prev) => ({ ...prev, [field]: nextErrors[field] }));
   }
 
@@ -135,11 +139,11 @@ export function ContactForm() {
     event.preventDefault();
     setSubmitAttempted(true);
 
-    const nextErrors = validate(values);
+    const nextErrors = validate(values, t);
     setErrors(nextErrors);
 
     if (Object.keys(nextErrors).length > 0) {
-      setFormError("Please fix the highlighted fields and try again.");
+      setFormError(t("errors.form"));
       focusFirstError(nextErrors);
       return;
     }
@@ -152,6 +156,9 @@ export function ContactForm() {
     formData.set("company", values.company.trim());
     formData.set("workingModel", values.workingModel);
     formData.set("message", values.message.trim());
+    // The Server Action answers in this language and tells the owner which
+    // version of the site the message came from.
+    formData.set("locale", locale);
     // Honeypot: empty for real users; a value here means the Server Action
     // silently drops the submission.
     formData.set("company_website", honeypotRef.current?.value ?? "");
@@ -190,11 +197,10 @@ export function ContactForm() {
           <CheckCircle2 aria-hidden="true" className="size-6" />
         </span>
         <h3 className="mt-5 text-h3 font-semibold text-text-primary">
-          Thanks — your message is on its way
+          {t("form.success.title")}
         </h3>
         <p className="mx-auto mt-3 max-w-md text-pretty text-body text-text-secondary">
-          I read every message myself and will reply within one business day.
-          In the meantime, you&apos;re welcome to book a free consultation.
+          {t("form.success.body")}
         </p>
         <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <Button
@@ -204,7 +210,7 @@ export function ContactForm() {
               focusRing
             )}
           >
-            Book a consultation
+            {t("form.success.book")}
           </Button>
           <Button
             variant="secondary"
@@ -215,7 +221,7 @@ export function ContactForm() {
               focusRing
             )}
           >
-            Send another message
+            {t("form.success.another")}
           </Button>
         </div>
       </div>
@@ -241,7 +247,7 @@ export function ContactForm() {
         className="pointer-events-none absolute -left-[9999px] top-0 h-0 w-0 overflow-hidden"
       >
         <label htmlFor="contact-company-website">
-          Company website (leave this field blank)
+          {t("form.honeypot")}
         </label>
         <input
           ref={honeypotRef}
@@ -254,11 +260,13 @@ export function ContactForm() {
       </div>
 
       <p className="text-small text-text-secondary">
-        Fields marked{" "}
-        <span className="text-accent" aria-hidden="true">
-          *
-        </span>{" "}
-        are required.
+        {t.rich("form.requiredNote", {
+          required: (chunks) => (
+            <span className="text-accent" aria-hidden="true">
+              {chunks}
+            </span>
+          ),
+        })}
       </p>
 
       {/* Form-level status: announces the overall error after a failed submit. */}
@@ -280,11 +288,11 @@ export function ContactForm() {
             htmlFor="contact-name"
             className="text-small font-medium text-text-primary"
           >
-            Name{" "}
+            {t("form.name.label")}{" "}
             <span className="text-accent" aria-hidden="true">
               *
             </span>
-            <span className="sr-only"> (required)</span>
+            <span className="sr-only">{t("form.required")}</span>
           </label>
           <input
             ref={nameRef}
@@ -313,11 +321,11 @@ export function ContactForm() {
             htmlFor="contact-email"
             className="text-small font-medium text-text-primary"
           >
-            Email{" "}
+            {t("form.email.label")}{" "}
             <span className="text-accent" aria-hidden="true">
               *
             </span>
-            <span className="sr-only"> (required)</span>
+            <span className="sr-only">{t("form.required")}</span>
           </label>
           <input
             ref={emailRef}
@@ -347,8 +355,8 @@ export function ContactForm() {
             htmlFor="contact-company"
             className="text-small font-medium text-text-primary"
           >
-            Company{" "}
-            <span className="font-normal text-text-secondary">(optional)</span>
+            {t("form.company.label")}{" "}
+            <span className="font-normal text-text-secondary">{t("form.optional")}</span>
           </label>
           <input
             id="contact-company"
@@ -373,8 +381,8 @@ export function ContactForm() {
             htmlFor="contact-working-model"
             className="text-small font-medium text-text-primary"
           >
-            Preferred working model{" "}
-            <span className="font-normal text-text-secondary">(optional)</span>
+            {t("form.workingModel.label")}{" "}
+            <span className="font-normal text-text-secondary">{t("form.optional")}</span>
           </label>
           <select
             id="contact-working-model"
@@ -394,10 +402,10 @@ export function ContactForm() {
               backgroundPosition: "right 0.875rem center",
             }}
           >
-            <option value="">Select one…</option>
+            <option value="">{t("form.select")}</option>
             {WORKING_MODELS.map((model) => (
-              <option key={model.value} value={model.value}>
-                {model.label}
+              <option key={model} value={model}>
+                {t(`form.workingModels.${model}.label`)}
               </option>
             ))}
           </select>
@@ -405,9 +413,7 @@ export function ContactForm() {
             id="contact-working-model-hint"
             className="text-small text-text-secondary"
           >
-            How would you like the software run once it&apos;s built? If
-            you&apos;re not sure, leave it — recommending one is part of the
-            conversation.
+            {t("form.workingModel.hint")}
           </p>
         </div>
 
@@ -417,11 +423,11 @@ export function ContactForm() {
             htmlFor="contact-message"
             className="text-small font-medium text-text-primary"
           >
-            Message{" "}
+            {t("form.message.label")}{" "}
             <span className="text-accent" aria-hidden="true">
               *
             </span>
-            <span className="sr-only"> (required)</span>
+            <span className="sr-only">{t("form.required")}</span>
           </label>
           <textarea
             ref={messageRef}
@@ -432,7 +438,7 @@ export function ContactForm() {
             value={values.message}
             onChange={(event) => handleChange("message", event.target.value)}
             onBlur={() => handleBlur("message")}
-            placeholder="Tell me what's slowing your team down — the task, how often it happens, and the tools involved. A rough description is plenty."
+            placeholder={t("form.message.placeholder")}
             aria-invalid={Boolean(errors.message)}
             aria-describedby={describedBy(
               "contact-message-hint",
@@ -441,7 +447,7 @@ export function ContactForm() {
             className={cn(inputClasses(Boolean(errors.message)), "resize-y")}
           />
           <p id="contact-message-hint" className="text-small text-text-secondary">
-            No pressure and no jargon — I&apos;ll take it from here.
+            {t("form.message.hint")}
           </p>
           {errors.message ? (
             <p id="contact-message-error" className="text-small text-destructive">
@@ -462,12 +468,12 @@ export function ContactForm() {
           {isPending ? (
             <>
               <LoaderCircle aria-hidden="true" className="animate-spin" />
-              Sending…
+              {t("form.sending")}
             </>
           ) : (
             <>
               <Send aria-hidden="true" />
-              Send message
+              {t("form.send")}
             </>
           )}
         </Button>

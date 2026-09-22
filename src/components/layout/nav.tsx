@@ -1,8 +1,8 @@
 "use client";
 
 import * as React from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
+import { Link, usePathname } from "@/i18n/navigation";
 import { animate } from "animejs";
 import { Menu, ArrowRight } from "lucide-react";
 
@@ -18,18 +18,19 @@ import {
 } from "@/components/ui/sheet";
 import { Container } from "@/components/layout/container";
 import { Wordmark } from "@/components/layout/brand";
+import { LanguageSwitcher } from "@/components/layout/language-switcher";
 
 // Ordered to follow the buyer's questions: what you build → how you work →
 // what you build with → proof → who you are → objections → get in touch.
 const NAV_LINKS = [
-  { label: "Services", href: "/services" },
-  { label: "Process", href: "/process" },
-  { label: "Technologies", href: "/technologies" },
-  { label: "Work", href: "/work" },
-  { label: "About", href: "/about" },
-  { label: "FAQ", href: "/faq" },
-  { label: "Contact", href: "/contact" },
-];
+  { key: "services", href: "/services" },
+  { key: "process", href: "/process" },
+  { key: "technologies", href: "/technologies" },
+  { key: "work", href: "/work" },
+  { key: "about", href: "/about" },
+  { key: "faq", href: "/faq" },
+  { key: "contact", href: "/contact" },
+] as const;
 
 /**
  * Nav — scroll-aware primary navigation.
@@ -46,6 +47,7 @@ const NAV_LINKS = [
  * is not a hover-only affordance.
  */
 export function Nav() {
+  const t = useTranslations("common");
   const [open, setOpen] = React.useState(false);
   const [scrolled, setScrolled] = React.useState(false);
   const pathname = usePathname();
@@ -141,7 +143,7 @@ export function Nav() {
       >
         <Link
           href="/"
-          aria-label="AGility — home"
+          aria-label={t("brand.homeLabel")}
           className={cn("shrink-0 rounded-sm", focusRing)}
         >
           <Wordmark />
@@ -153,7 +155,7 @@ export function Nav() {
           `md` breakpoint left them cramped against the button.
         */}
         <nav
-          aria-label="Primary"
+          aria-label={t("nav.primary")}
           className="hidden lg:block"
           onMouseLeave={() => moveIndicator(activeHref)}
         >
@@ -180,14 +182,17 @@ export function Nav() {
                   onFocus={() => moveIndicator(link.href)}
                   onBlur={() => moveIndicator(activeHref)}
                   className={cn(
-                    "rounded-sm px-3 py-5 text-small transition-colors duration-[--duration-micro]",
+                    // `whitespace-nowrap`: a two-word label («За мен») must never
+                    // wrap onto two lines. Bulgarian labels are wider, so between
+                    // `lg` and `xl` the row only fits with tighter link padding.
+                    "whitespace-nowrap rounded-sm px-3 py-5 text-small transition-colors duration-[--duration-micro] lang-bg:max-xl:px-2",
                     focusRing,
                     isActive
                       ? "text-text-primary"
                       : "text-text-secondary hover:text-text-primary"
                   )}
                 >
-                  {link.label}
+                  {t(`nav.${link.key}`)}
                 </Link>
               );
             })}
@@ -195,12 +200,15 @@ export function Nav() {
         </nav>
 
         <div className="flex items-center gap-2">
+          {/* One instance, visible at every width: between the nav and the CTA
+              on desktop, beside the menu button on mobile. */}
+          <LanguageSwitcher />
           <Button
             size="sm"
             render={<Link href="/book" />}
             className={cn("hidden shrink-0 lg:inline-flex", focusRing)}
           >
-            Book a consultation
+            {t("nav.cta")}
           </Button>
 
           {/* Mobile / tablet menu */}
@@ -210,7 +218,7 @@ export function Nav() {
                 <Button
                   variant="ghost"
                   size="icon"
-                  aria-label="Open menu"
+                  aria-label={t("nav.openMenu")}
                   aria-expanded={open}
                   className={cn("lg:hidden", focusRing)}
                 />
@@ -221,6 +229,7 @@ export function Nav() {
 
             <SheetContent
               side="right"
+              closeLabel={t("nav.close")}
               className="gap-0 border-l-border bg-bg p-0"
             >
               <SheetHeader className="border-b border-border px-6 py-5">
@@ -234,7 +243,7 @@ export function Nav() {
                 contents rather than a stack of buttons, which keeps it in the
                 same visual language as the rest of the site.
               */}
-              <nav aria-label="Mobile" className="flex flex-col px-3 py-3">
+              <nav aria-label={t("nav.mobile")} className="flex flex-col px-3 py-3">
                 {NAV_LINKS.map((link, i) => {
                   const isActive = activeHref === link.href;
                   return (
@@ -261,19 +270,20 @@ export function Nav() {
                       >
                         {String(i + 1).padStart(2, "0")}
                       </span>
-                      {link.label}
+                      {t(`nav.${link.key}`)}
                     </Link>
                   );
                 })}
               </nav>
 
               <div className="mt-auto border-t border-border p-6">
+                <LanguageSwitcher className="mb-4" />
                 <Button
                   size="lg"
                   render={<Link href="/book" onClick={() => setOpen(false)} />}
                   className={cn("group w-full", focusRing)}
                 >
-                  Book a consultation
+                  {t("nav.cta")}
                   <ArrowRight
                     aria-hidden="true"
                     className="transition-transform duration-[--duration-fast] group-hover/button:translate-x-0.5"

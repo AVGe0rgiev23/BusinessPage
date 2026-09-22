@@ -1,0 +1,66 @@
+{
+  "expectations": {
+    "items": {
+      "thirtyMinutes": {
+        "title": "30 minutes over Zoom",
+        "body": "A focused call at a time that suits you. Camera optional — whatever you're comfortable with."
+      },
+      "freeNoObligation": {
+        "title": "Free, with no obligation",
+        "body": "No invoice and no commitment. If I'm not the right fit, I'll say so and point you elsewhere."
+      },
+      "whereLosingTime": {
+        "title": "A look at where you're losing time and money",
+        "body": "Walk me through the workflow that frustrates you most. I'll dig into what it's really costing you."
+      },
+      "honestAnswer": {
+        "title": "An honest answer on whether custom software is worth it",
+        "body": "Sometimes the right move is a small fix — or nothing at all. I'll tell you straight, either way."
+      }
+    },
+    "eyebrow": "The call",
+    "title": "What to expect on the call",
+    "lede": "It's a conversation, not a pitch. Here's exactly how the 30 minutes go."
+  },
+  "preparation": {
+    "columns": {
+      "whoItsFor": {
+        "title": "Who it's for"
+      },
+      "howToPrepare": {
+        "title": "How to prepare"
+      }
+    },
+    "items": {
+      "growingBusinessesBuried": "Growing businesses buried in repetitive, manual work",
+      "teamsCopyPasting": "Teams copy-pasting between tools, inboxes, and spreadsheets",
+      "ownersWhoSuspect": "Owners who suspect software could help but aren't sure where to start",
+      "nothingFormalNo": "Nothing formal — no slides or documents needed",
+      "thinkOneTask": "Think of the one task your team dreads most",
+      "bringAnyTools": "Bring any tools or numbers you already track (optional)"
+    },
+    "eyebrow": "Before we talk",
+    "title": "Come as you are",
+    "lede": "A quick read on who this is for and the little that helps make the most of your time."
+  },
+  "page": {
+    "eyebrow": "Book a consultation",
+    "title": "Book a free 30-minute consultation.",
+    "subtitle": "I'll look at where your business is losing time and money — and give you an honest answer on whether custom software is worth it. No pressure, no obligation, no jargon.",
+    "cta": "Book a consultation"
+  },
+  "perks": {
+    "about30Minutes": "About 30 minutes",
+    "free": "Free",
+    "noPressure": "No pressure",
+    "noObligation": "No obligation"
+  },
+  "bookingCta": {
+    "eyebrow": "Book your call",
+    "title": "Pick a time that works for you",
+    "subtitle": "Choose a free 30-minute slot and we'll talk through where your business is losing time — and whether custom software is worth it. No pressure, no obligation.",
+    "primary": "Book a consultation",
+    "secondary": "Send a message instead",
+    "footnote": "Rather not book yet? Ask me anything through the <contact>contact form</contact>."
+  }
+}

@@ -1,0 +1,432 @@
+{
+  "problem": {
+    "pains": {
+      "hoursLostRepetitive": {
+        "title": "Hours lost to repetitive tasks",
+        "body": "The same manual steps, run again and again — time your team can't spend on the work that actually grows the business."
+      },
+      "inboxNeverEmpties": {
+        "title": "An inbox that never empties",
+        "body": "Enquiries, follow-ups, and routine replies handled by hand, one message at a time, while more keep arriving."
+      },
+      "leadsGoCold": {
+        "title": "Leads that go cold",
+        "body": "When no one answers fast enough, interested buyers move on. Every slow reply is revenue quietly walking out the door."
+      },
+      "copyPastingBetween": {
+        "title": "Copy-pasting between systems",
+        "body": "Staff moving the same data between tools that were never built to talk to each other — paid work that produces nothing new."
+      },
+      "manualDataEntry": {
+        "title": "Manual data entry",
+        "body": "Typing numbers into spreadsheets and forms by hand: slow, tedious, and one keystroke away from an expensive mistake."
+      },
+      "reportsAssembledHand": {
+        "title": "Reports assembled by hand",
+        "body": "Hours each week pulling figures together into a document that's already out of date by the time it's finished."
+      }
+    },
+    "heading": {
+      "eyebrow": "The problem",
+      "title": "The busywork is costing you more than you think.",
+      "lede": "Most businesses don't lose money in one big leak — they lose it in a hundred small ones. Repetitive, manual work spread across the week, paid for in salaried hours and missed opportunities."
+    }
+  },
+  "outcomes": {
+    "items": {
+      "reclaimedTime": {
+        "title": "Reclaimed time",
+        "body": "The routine work runs on its own, handing your team back hours every week for the things only people can do."
+      },
+      "lowerOperatingCosts": {
+        "title": "Lower operating costs",
+        "body": "Fewer hours spent on manual tasks means the same output for less — and headroom to grow without growing overhead."
+      },
+      "fasterExecution": {
+        "title": "Faster execution",
+        "body": "Work that used to wait in a queue happens the moment it's triggered. Quotes, replies, and handoffs stop stalling."
+      },
+      "fewerRepetitiveTasks": {
+        "title": "Fewer repetitive tasks",
+        "body": "The copy-paste, the re-typing, the chasing — handled automatically, consistently, and without anyone having to remember."
+      },
+      "betterCustomerExperience": {
+        "title": "A better customer experience",
+        "body": "Faster answers and fewer dropped balls. Customers feel the difference long before they know software is behind it."
+      },
+      "higherProductivity": {
+        "title": "Higher productivity",
+        "body": "Your people spend their day on judgement, relationships, and growth instead of shuffling data between screens."
+      }
+    },
+    "heading": {
+      "eyebrow": "The outcome",
+      "title": "Software that gives you the hours back.",
+      "lede": "I start from the result you want, not the technology. Here's what changes once the manual work is off your team's plate."
+    }
+  },
+  "servicesPreview": {
+    "services": {
+      "aiAssistants": {
+        "title": "AI assistants",
+        "body": "Purpose-built helpers that answer questions and take action against your own data and tools."
+      },
+      "chatbots": {
+        "title": "Chatbots",
+        "body": "Conversational front doors for your website or product that qualify, guide, and route."
+      },
+      "customerSupportSystems": {
+        "title": "Customer-support systems",
+        "body": "Triage, draft, and resolve routine tickets so your team handles only what needs a human."
+      },
+      "emailAutomation": {
+        "title": "Email automation",
+        "body": "Sort, respond to, and follow up on messages automatically, without letting anything slip."
+      },
+      "documentProcessing": {
+        "title": "Document processing",
+        "body": "Pull structured data out of invoices, contracts, and forms — no manual re-keying."
+      },
+      "internalTools": {
+        "title": "Internal tools",
+        "body": "Dashboards and admin apps built around your exact workflow, not a generic template."
+      },
+      "crmIntegrations": {
+        "title": "CRM integrations",
+        "body": "Keep your customer records accurate and in sync across every system you rely on."
+      },
+      "workflowAutomation": {
+        "title": "Workflow automation",
+        "body": "Connect the steps of a process end to end so work moves without manual handoffs."
+      },
+      "aiDashboards": {
+        "title": "AI dashboards",
+        "body": "Live views of the numbers that matter, with plain-language summaries you can act on."
+      },
+      "apiIntegrations": {
+        "title": "API integrations",
+        "body": "Make the software you already pay for work together, cleanly and reliably."
+      },
+      "customSaas": {
+        "title": "Custom SaaS",
+        "body": "Full products — from first idea to launch — when off-the-shelf software doesn't fit."
+      }
+    },
+    "heading": {
+      "eyebrow": "What I build",
+      "title": "Custom-built for the way you work.",
+      "lede": "These are examples, not a fixed menu. Every project is designed around your business — your tools, your process, your goals."
+    },
+    "exploreAll": "Explore all services"
+  },
+  "technology": {
+    "stack": {
+      "groups": {
+        "languages": {
+          "label": "Languages"
+        },
+        "frameworksRuntime": {
+          "label": "Frameworks & runtime"
+        },
+        "data": {
+          "label": "Data"
+        },
+        "aiLlmTooling": {
+          "label": "AI & LLM tooling"
+        },
+        "cloudInfrastructure": {
+          "label": "Cloud & infrastructure"
+        }
+      },
+      "items": {
+        "typescript": "TypeScript",
+        "javascript": "JavaScript",
+        "python": "Python",
+        "sql": "SQL",
+        "react": "React",
+        "nextJs": "Next.js",
+        "nodeJs": "Node.js",
+        "postgresql": "PostgreSQL",
+        "redis": "Redis",
+        "vectorDatabases": "Vector databases",
+        "llmApis": "LLM APIs",
+        "ragPipelines": "RAG pipelines",
+        "embeddings": "Embeddings",
+        "agentFrameworks": "Agent frameworks",
+        "vercel": "Vercel",
+        "aws": "AWS",
+        "docker": "Docker",
+        "ciCd": "CI/CD"
+      }
+    },
+    "heading": {
+      "eyebrow": "My stack",
+      "title": "Built on modern, proven engineering.",
+      "lede": "I work with a well-supported, widely adopted stack — the same tooling behind serious software products, chosen for reliability and longevity rather than novelty."
+    },
+    "exploreAll": "Explore the technologies"
+  },
+  "whyAgility": {
+    "reasons": {
+      "ownershipTerms": {
+        "title": "Ownership on your terms",
+        "body": "The custom software is yours under the project agreement, and your data stays yours. You decide whether I operate it or you run it yourself."
+      },
+      "fullyCustomSoftware": {
+        "title": "Fully custom software",
+        "body": "Everything is built for your business specifically. No forcing your process to fit someone else's template."
+      },
+      "fastCommunication": {
+        "title": "Fast communication",
+        "body": "Direct access to me, the person building your software, and quick, straight answers when you need them."
+      },
+      "supportIfWant": {
+        "title": "Support, if you want it",
+        "body": "I can stay on to maintain and grow what I build — or hand it over properly so your team runs it. Ongoing support is an option, not an obligation."
+      },
+      "transparentDevelopment": {
+        "title": "Transparent development",
+        "body": "Clear scope, honest timelines, and visible progress — you always know what you're paying for and why."
+      },
+      "builtModernAi": {
+        "title": "Built with modern AI",
+        "body": "I use current AI and language-model tooling where it earns its place — to solve real problems, not as a label on the box."
+      }
+    },
+    "eyebrow": "Why AGility",
+    "title": "A partner, not just a vendor.",
+    "lede": "I keep it honest. No inflated claims — just the things that genuinely matter when you trust someone to build software your business depends on."
+  },
+  "connect": {
+    "stayInTouch": "Let's stay in touch.",
+    "body": "Follow along on LinkedIn for how I think about building software, automating the busywork, and getting real value out of AI — no hype, just what works.",
+    "button": "Connect on LinkedIn"
+  },
+  "whyCustom": {
+    "dimensions": {
+      "ownership": {
+        "dimension": "Ownership",
+        "custom": "Yours under the project agreement.",
+        "lowCode": "A per-seat licence on a builder you don't control."
+      },
+      "flexibility": {
+        "dimension": "Flexibility",
+        "custom": "Does exactly what your business needs.",
+        "lowCode": "Only what a drag-and-drop builder happens to support."
+      },
+      "scalability": {
+        "dimension": "Scalability",
+        "custom": "Handles more volume, users, and complexity as you grow.",
+        "lowCode": "Growth eventually meets a platform ceiling."
+      },
+      "lock": {
+        "dimension": "Lock-in",
+        "custom": "Standard, portable technology wherever it's practical.",
+        "lowCode": "Your core process hinges on one builder's pricing and roadmap."
+      },
+      "integrations": {
+        "dimension": "Integrations",
+        "custom": "Deep connections to your systems, with real control.",
+        "lowCode": "Whatever the pre-packaged connectors happen to allow."
+      },
+      "performance": {
+        "dimension": "Performance",
+        "custom": "Tuned to your workload.",
+        "lowCode": "A general-purpose platform doing everything for everyone."
+      }
+    },
+    "heading": {
+      "eyebrow": "Custom vs. low-code",
+      "title": "Own your software. Don't rent your workflow."
+    },
+    "table": {
+      "caption": "Custom software compared with low-code platforms across ownership, flexibility, scalability, lock-in, integrations and performance.",
+      "dimension": "Dimension",
+      "customColumn": "Custom software",
+      "lowCodeColumn": "Low-code platform",
+      "customShort": "Custom",
+      "lowCodeShort": "Low-code"
+    },
+    "caveat": {
+      "first": "Low-code tools have their place, and I'll tell you honestly when one is the right call — including when it means a smaller project for me. But as a process becomes central to how you make money, owning it tends to pay off.",
+      "second": "I use third-party services myself — cloud hosting, databases, AI providers. Nobody builds without them. The difference is that I avoid unnecessary platform lock-in and stick to standard, portable technology wherever it's practical."
+    },
+    "approachLink": "How I approach a build"
+  },
+  "processPreview": {
+    "steps": {
+      "discovery": {
+        "title": "Discovery",
+        "body": "I map where the time and money are going, and we agree on what a win looks like before any code is written."
+      },
+      "design": {
+        "title": "Design",
+        "body": "I plan the build and how it fits your existing tools, so there are no surprises once it begins."
+      },
+      "build": {
+        "title": "Build",
+        "body": "I develop in focused increments, sharing progress along the way so you always know exactly where things stand."
+      },
+      "deploy": {
+        "title": "Deploy",
+        "body": "I launch it using the operating model you've chosen, configure the infrastructure and access, and test against real work."
+      },
+      "support": {
+        "title": "Support",
+        "body": "Optional, and shaped to you: I operate the system, maintain it inside your environment, or hand it over to your team."
+      }
+    },
+    "heading": {
+      "eyebrow": "How I work",
+      "title": "A clear path from problem to production.",
+      "lede": "No black boxes. You'll know what's happening at every stage — and why it matters for your business."
+    },
+    "fullProcessLink": "See the full process"
+  },
+  "openSource": {
+    "eyebrow": "Open source",
+    "title": "I build in the open.",
+    "button": "View my GitHub",
+    "statement": "You can see how I write code before you ever hire me."
+  },
+  "systemDiagram": {
+    "inputs": {
+      "inbox": {
+        "label": "Inbox"
+      },
+      "documents": {
+        "label": "Documents"
+      },
+      "crmRecords": {
+        "label": "CRM records"
+      },
+      "spreadsheets": {
+        "label": "Spreadsheets"
+      },
+      "webForms": {
+        "label": "Web forms"
+      }
+    },
+    "outputs": {
+      "enquiriesAnswered": {
+        "label": "Enquiries answered"
+      },
+      "dataCaptured": {
+        "label": "Data captured"
+      },
+      "systemsSync": {
+        "label": "Systems in sync"
+      },
+      "hoursReturned": {
+        "label": "Hours returned"
+      }
+    },
+    "manualWork": "Manual work",
+    "system": {
+      "eyebrow": "Custom software",
+      "title": "Built for you"
+    },
+    "handledAutomatically": "Handled automatically",
+    "caption": "Diagram: repetitive manual work — the inbox, documents, CRM records, spreadsheets and web forms — flows into custom software built by AGility, which returns answered enquiries, captured data, systems kept in sync, and hours given back to your team."
+  },
+  "hero": {
+    "eyebrow": "Custom AI & automation",
+    "headline": {
+      "line1": "Your team is",
+      "line2": "moving data",
+      "accent": "by hand."
+    },
+    "lede": "Between the CRM, the inbox and the spreadsheet, someone is the connection — re-keying the same rows, chasing the same updates. I build the software that does that part instead, shaped around how your business actually runs, and delivered on terms you choose.",
+    "primaryCta": "Get a free teardown",
+    "secondaryCta": "See how I work",
+    "reassurance": {
+      "first": "No obligation",
+      "second": "Honest answers either way"
+    }
+  },
+  "pricing": {
+    "tiers": {
+      "pilot": {
+        "name": "Pilot",
+        "price": "€{low, number}–{high, number}",
+        "basis": "Fixed price",
+        "body": "One narrow process, scoped tightly and shipped. The way to find out whether this works for your business without committing to a full project."
+      },
+      "project": {
+        "name": "Full workflow project",
+        "price": "€{low, number}–{high, number}",
+        "basis": "Fixed price",
+        "body": "A whole workflow built end to end — the systems it touches, the edge cases, the hand-offs. Priced from the agreed scope, so the cost is known before the build starts."
+      },
+      "support": {
+        "name": "Ongoing support",
+        "price": "€{low, number}–{high, number}",
+        "basis": "Per month",
+        "body": "Maintenance, improvements, and new features on software already running. An option after a project, never a condition of one."
+      }
+    },
+    "heading": {
+      "eyebrow": "Pricing",
+      "title": "What it costs, before you ask.",
+      "lede": "Real ranges, not a request to get in touch for a quote. Where a project lands inside a band depends on scope, and the exact figure is set out in the proposal before any work starts."
+    },
+    "guarantee": {
+      "label": "The guarantee",
+      "promise": "If it doesn't do what the proposal says it will, you don't pay for it.",
+      "note": "Infrastructure and AI API usage are separate from these figures and depend on the delivery model you choose. Which of them apply to you is written into the proposal, itemised, before you commit."
+    }
+  },
+  "faqPreview": {
+    "items": {
+      "longProjectTake": {
+        "q": "How long does a project take?",
+        "a": "It depends on the scope. A focused automation can be a matter of weeks; a larger internal tool or custom product takes longer. I work in increments and get something useful into your hands early, rather than disappearing for a quarter."
+      },
+      "whoOwnsSoftware": {
+        "q": "Who owns the software?",
+        "a": "The custom software I build specifically for you is intended to be yours under the project agreement, and your data stays your data. Third-party services — cloud hosting, AI providers, and the like — remain subject to their own providers' terms, and who holds those accounts depends on the delivery model you choose."
+      },
+      "whereSoftwareRun": {
+        "q": "Where does the software run?",
+        "a": "That's your call. I can operate the whole system for you as a managed service, deploy it into infrastructure and accounts you control, or keep building and maintaining software that runs inside your own environment. I'll recommend the model that fits your team, budget, and security requirements."
+      },
+      "happensAfterLaunch": {
+        "q": "What happens after launch?",
+        "a": "One of three things, depending on what you want: I keep operating the system for you, I maintain and improve it while your team owns the infrastructure, or I hand it over with the documentation your team needs to run it. Ongoing support is an option, not a requirement."
+      },
+      "lowCodeCustom": {
+        "q": "Low-code or custom — which do I need?",
+        "a": "It depends on the job, and I'll be honest about it. If an existing tool solves your problem more cheaply and safely, I'll say so. But for processes that are central to how you make money, custom software gives you the ownership, flexibility, and room to grow that a drag-and-drop builder rarely does."
+      },
+      "workToolsAlready": {
+        "q": "Can you work with the tools we already use?",
+        "a": "Almost always. A big part of what I do is connecting the systems you already rely on — CRMs, inboxes, spreadsheets, and internal tools — so they finally work together instead of in isolation."
+      }
+    },
+    "heading": {
+      "eyebrow": "FAQ",
+      "title": "Questions, answered.",
+      "lede": "The things business owners ask me most before getting started."
+    },
+    "readAll": "Read all FAQs"
+  },
+  "teardown": {
+    "terms": {
+      "weeklyLimit": "Three a week — that's the honest limit for one person.",
+      "noCallRequired": "No call required.",
+      "noPitchAttached": "No pitch attached."
+    },
+    "eyebrow": "Free teardown",
+    "title": "Send me the process your team hates most.",
+    "body": "I'll record a free 5-minute screen teardown — where the time goes, what's automatable, what isn't, and what I'd do first. Sometimes the honest answer is “buy an existing tool” — that's a valid outcome.",
+    "button": "Send me the process",
+    "subject": "Teardown request",
+    "opensEmail": "Opens your email to {email}"
+  },
+  "closingCta": {
+    "eyebrow": "Get started",
+    "title": "Ready to get those hours back?",
+    "subtitle": "Tell me what's slowing your team down. I'll look at where the time and money are going, give you an honest answer on whether custom software is the right fix — and if it is, work out how you'd want it delivered. No pressure, no jargon.",
+    "cta": "Book a consultation"
+  }
+}

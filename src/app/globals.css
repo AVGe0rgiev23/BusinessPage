@@ -29,6 +29,14 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
+  Bulgarian-only styling hook: `lang-bg:px-2` applies to descendants of an
+  element in Bulgarian (the `<html lang>`). Bulgarian labels run longer than the
+  English ones, so a few tight spots need their own spacing without changing
+  how the English site is laid out.
+*/
+@custom-variant lang-bg (&:where(:lang(bg) *));
+
+/*
   shadcn semantic tokens → mapped to the palette defined in `:root`.
   These drive every shadcn/ui component (button, sheet, badge, accordion, ...).
 */
@@ -65,8 +73,8 @@
       JetBrains Mono  labels, eyebrows, numerals, diagram annotation. The
                       "ledger" half of the concept.
   */
-  --font-display: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
-  --font-sans: var(--font-instrument-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--face-display), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--face-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, monospace;
 
   /*
@@ -220,6 +228,79 @@
   --input: rgba(239, 235, 228, 0.12);
   --ring: #e08e43;
   --radius: 0.375rem;
+}
+
+/*
+  Faces are indirected so the Bulgarian pages can swap them: Archivo and
+  Instrument Sans have no Cyrillic. Source Sans 3 has it, and — checked against
+  what Google serves — carries the Bulgarian letterforms (the `BGR` language
+  system) that `lang="bg"` switches on. The wordmark pins `var(--font-archivo)`
+  directly, so the brand looks the same in both languages.
+*/
+:root {
+  --face-display: var(--font-archivo);
+  --face-sans: var(--font-instrument-sans);
+}
+
+html:lang(bg) {
+  --face-display: var(--font-source-sans);
+  --face-sans: var(--font-source-sans);
+
+  /*
+    Source Sans 3 ships the Bulgarian *cursive-style* letterforms — m-shaped «т»,
+    u-shaped «и», n-shaped «п», k-shaped «к», so «Контакти» reads «Kohmakmu» —
+    and applies them to upright text whenever the language is `bg`. Those are
+    handwriting and italic shapes; nearly every Bulgarian website, bank and book
+    sets upright text with the standard forms, and those are what readers scan
+    fastest. Turning `locl` off keeps `lang="bg"` (screen readers, search
+    engines, spell-check) but shapes the letters the way readers expect. To use
+    the Bulgarian forms instead, delete this one declaration.
+  */
+  font-feature-settings: "locl" 0;
+
+  /*
+    The display tokens were tuned for Latin. Cyrillic is set from many vertical
+    stems (и н п ш щ м) that crowd at -0.04em, and it has taller marks — the
+    breve on «Й», the tails on «Щ Ц Д» — that collide at 0.95 leading. Values
+    are tuned against a «Щ Й Ц Д» stress heading (see the layout audit).
+  */
+  --text-display--letter-spacing: -0.025em;
+  --text-display--line-height: 1.02;
+  --text-h1--letter-spacing: -0.02em;
+  --text-h1--line-height: 1.06;
+  --text-h2--letter-spacing: -0.016em;
+  --text-h2--line-height: 1.12;
+  --text-h3--letter-spacing: -0.008em;
+
+  /*
+    Mono labels wrap onto two lines far more often in Bulgarian («ФРЕЙМУЪРЦИ И
+    СРЕДА ЗА ИЗПЪЛНЕНИЕ», «ЗАВИСИМОСТ ОТ ДОСТАВЧИК»); at the Latin line-height of
+    1 the lines touch.
+  */
+  --text-eyebrow--line-height: 1.35;
+}
+
+/*
+  The «БГ» label of the language switcher is the only Cyrillic on an English
+  page. Set in JetBrains Mono it would make every English page fetch that font's
+  Cyrillic subset for two letters, so on English it uses the system monospace;
+  on Bulgarian pages, where that subset is loaded anyway, it matches the rest.
+*/
+.switcher-cyrillic {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+html:lang(bg) .switcher-cyrillic {
+  font-family: var(--font-mono);
+}
+
+/* The 0.004em body tracking was chosen for Instrument Sans. */
+html:lang(bg) body {
+  letter-spacing: 0;
+}
+
+/* Safety net for long Bulgarian words on narrow screens. No auto-hyphenation. */
+html:lang(bg) :is(h1, h2, h3, h4) {
+  overflow-wrap: break-word;
 }
 
 @layer base {

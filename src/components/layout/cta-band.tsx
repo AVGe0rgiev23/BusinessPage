@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { ArrowRight, Send } from "lucide-react";
 
 import { cn, focusRing } from "@/lib/utils";
@@ -56,7 +56,7 @@ export function CtaBand({
   footnote,
 }: CtaBandProps) {
   const headingId = `${id}-heading`;
-  // Internal routes use next/link; anything else (an external Calendly URL or
+  // Internal routes use the locale-aware Link; anything else (an external Calendly URL or
   // the "#" placeholder) renders as a plain anchor.
   const primaryIsExternal = !primary.href.startsWith("/");
 

@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { Reveal, RevealGroup } from "@/components/motion/reveal";
@@ -23,33 +24,16 @@ import { Eyebrow } from "@/components/layout/section-heading";
  * pitch for the technology rather than for the working relationship.
  */
 const REASONS = [
-  {
-    title: "Ownership on your terms",
-    body: "The custom software is yours under the project agreement, and your data stays yours. You decide whether I operate it or you run it yourself.",
-  },
-  {
-    title: "Fully custom software",
-    body: "Everything is built for your business specifically. No forcing your process to fit someone else's template.",
-  },
-  {
-    title: "Fast communication",
-    body: "Direct access to me, the person building your software, and quick, straight answers when you need them.",
-  },
-  {
-    title: "Support, if you want it",
-    body: "I can stay on to maintain and grow what I build — or hand it over properly so your team runs it. Ongoing support is an option, not an obligation.",
-  },
-  {
-    title: "Transparent development",
-    body: "Clear scope, honest timelines, and visible progress — you always know what you're paying for and why.",
-  },
-  {
-    title: "Built with modern AI",
-    body: "I use current AI and language-model tooling where it earns its place — to solve real problems, not as a label on the box.",
-  },
-];
+  { id: "ownershipTerms" },
+  { id: "fullyCustomSoftware" },
+  { id: "fastCommunication" },
+  { id: "supportIfWant" },
+  { id: "transparentDevelopment" },
+  { id: "builtModernAi" },
+] as const;
 
-export function WhyAgility() {
+export async function WhyAgility() {
+  const t = await getTranslations("home.whyAgility");
   return (
     <Section
       id="why-agility"
@@ -66,25 +50,23 @@ export function WhyAgility() {
               >
                 09
               </span>
-              <Eyebrow>Why AGility</Eyebrow>
+              <Eyebrow>{t("eyebrow")}</Eyebrow>
             </div>
             <h2
               id="why-agility-heading"
               className="mt-7 text-balance text-h2 font-semibold text-text-primary"
             >
-              A partner, not just a vendor.
+              {t("title")}
             </h2>
             <p className="mt-6 max-w-[46ch] text-pretty text-body-lg text-text-secondary">
-              I keep it honest. No inflated claims — just the things that
-              genuinely matter when you trust someone to build software your
-              business depends on.
+              {t("lede")}
             </p>
           </Reveal>
 
           <RevealGroup as="ul" className="grid" selector=":scope > li">
             {REASONS.map((reason) => (
               <li
-                key={reason.title}
+                key={reason.id}
                 className="group border-t border-border py-8 first:border-t-0 first:pt-0 lg:py-9"
               >
                 <div className="flex gap-5">
@@ -96,10 +78,10 @@ export function WhyAgility() {
                   />
                   <div>
                     <h3 className="text-h3 font-semibold text-text-primary">
-                      {reason.title}
+                      {t(`reasons.${reason.id}.title`)}
                     </h3>
                     <p className="mt-2.5 max-w-[54ch] text-pretty text-body text-text-secondary">
-                      {reason.body}
+                      {t(`reasons.${reason.id}.body`)}
                     </p>
                   </div>
                 </div>
