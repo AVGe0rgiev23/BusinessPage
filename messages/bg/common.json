@@ -30,7 +30,8 @@
       "technologies": "Технологии",
       "faq": "Въпроси",
       "contact": "Контакти",
-      "book": "Запазете консултация"
+      "book": "Запазете консултация",
+      "privacy": "Поверителност"
     },
     "socials": { "github": "AGility в GitHub", "linkedin": "AGility в LinkedIn" },
     "rights": "© {year} AGility. Всички права запазени.",

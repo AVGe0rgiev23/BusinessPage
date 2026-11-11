@@ -17,8 +17,8 @@ import { SectionHeading } from "@/components/layout/section-heading";
  * showing actual built things is both shorter and more convincing.
  *
  * ── The labels are the load-bearing part ────────────────────────────────────
- * Every item here is either the operator's own product or a hackathon build.
- * None of it is client work, and each card says so on its face — in the UI, as
+ * Every item here is the operator's own product. None of it is client work,
+ * and each card says so on its face — in the UI, as
  * a badge, not in a caption, a tooltip, or a footnote below the grid. A visitor
  * who scans the grid and reads nothing else must still come away knowing these
  * were not commissioned. Do not move these labels into small print, and do not
@@ -27,24 +27,16 @@ import { SectionHeading } from "@/components/layout/section-heading";
 /*
   The words for each build (`name`, `label`, `body`, `linkLabel`) live in the
   catalog (`work.selectedWork.builds`). Notes for whoever fills them in:
-    label     — rendered as a badge and says what this is NOT, first. It is
-                correct as written for all three and must not change.
+    label     — rendered as a badge and says what this is NOT, first. Every
+                card carries one.
     linkLabel — names the destination so it isn't a bare "view project".
 
-  TODO (LeadGenius): expand its body with what it actually does and who it is
-  for. The current copy is true but deliberately says nothing about the product,
-  because the operator has not supplied those details yet.
-  TODO (both hackathon builds): replace `name` and `body` in the catalog with the
-  real build (what it was, what it did, which event), in every language.
-  TODO (all three): replace each `href` with the real repository or live demo.
-  They point at the GitHub profile while the repos are private; a card must not
-  ship with a link that 404s or that implies a public repo exists when it does
-  not.
+  Each `href` is a public live demo or public repository. A card must not ship
+  with a link that 404s or that implies a public repo exists when it does not.
 */
 const BUILDS = [
-  { id: "leadgenius", href: "https://github.com/AVGe0rgiev23" },
-  { id: "hackathonBuild01", href: "https://github.com/AVGe0rgiev23" },
-  { id: "hackathonBuild02", href: "https://github.com/AVGe0rgiev23" },
+  { id: "supportai", href: "https://supportai-beta.vercel.app" },
+  { id: "leadgenius", href: "https://github.com/AVGe0rgiev23/AI-Consulting" },
 ] as const;
 
 export async function SelectedWork() {
@@ -62,7 +54,7 @@ export async function SelectedWork() {
 
         <RevealGroup
           as="ul"
-          className="mt-16 grid gap-5 md:mt-20 md:grid-cols-3"
+          className="mt-16 grid gap-5 md:mt-20 md:grid-cols-2"
           selector=":scope > li"
         >
           {BUILDS.map((build) => (

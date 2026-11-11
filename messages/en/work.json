@@ -86,29 +86,23 @@
   },
   "selectedWork": {
     "builds": {
+      "supportai": {
+        "name": "SupportAI",
+        "label": "Self-built — not client work",
+        "body": "A support assistant for business websites. It reads the site and the documents you give it, answers visitors' questions around the clock, and hands anything it can't answer with confidence to a person instead of guessing. My own product, built and run end to end.",
+        "linkLabel": "Try the live demo"
+      },
       "leadgenius": {
         "name": "LeadGenius",
         "label": "Self-built — not client work",
-        "body": "My own product, built and maintained end to end — the same stack, review, and testing standards I would bring to a client project. It exists because I wanted it to exist, not because anyone commissioned it.",
-        "linkLabel": "View on GitHub"
-      },
-      "hackathonBuild01": {
-        "name": "Hackathon build 01",
-        "label": "Hackathon build — not a client project",
-        "body": "TODO: what it was, what it did, and which event it was built at. Written under time pressure, and worth showing for how it was approached rather than as a finished product.",
-        "linkLabel": "View on GitHub"
-      },
-      "hackathonBuild02": {
-        "name": "Hackathon build 02",
-        "label": "Hackathon build — not a client project",
-        "body": "TODO: what it was, what it did, and which event it was built at. Written under time pressure, and worth showing for how it was approached rather than as a finished product.",
+        "body": "An outreach research tool. For each company on a list it reads the website, finds a likely problem worth raising, and drafts a personalised outreach sequence — which waits for a person to approve it before anything is sent. My own product, not commissioned by anyone.",
         "linkLabel": "View on GitHub"
       }
     },
     "heading": {
       "eyebrow": "Selected work",
       "title": "No client projects to show yet.",
-      "lede": "Here's what I've built instead: my own product and two hackathon builds. None of it is client work, and every card says which is which."
+      "lede": "Here's what I've built instead: two products of my own. Neither is client work, and every card says so."
     },
     "linkSuffix": " — {name}"
   },

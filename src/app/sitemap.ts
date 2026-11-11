@@ -7,7 +7,8 @@ import { siteUrl } from "@/lib/site-config";
 type Freq = MetadataRoute.Sitemap[number]["changeFrequency"];
 
 // Home + the two conversion pages (book / contact) rank highest; static
-// informational pages (technologies / faq) rank lowest.
+// informational pages (technologies / faq) rank lowest, the privacy notice
+// lowest of all.
 const WEIGHT: Record<RouteKey, { changeFrequency: Freq; priority: number }> = {
   home: { changeFrequency: "monthly", priority: 1.0 },
   services: { changeFrequency: "monthly", priority: 0.9 },
@@ -18,11 +19,12 @@ const WEIGHT: Record<RouteKey, { changeFrequency: Freq; priority: number }> = {
   work: { changeFrequency: "yearly", priority: 0.7 },
   technologies: { changeFrequency: "yearly", priority: 0.6 },
   faq: { changeFrequency: "yearly", priority: 0.5 },
+  privacy: { changeFrequency: "yearly", priority: 0.3 },
 };
 
 const absolute = (path: string) => `${siteUrl}${path === "/" ? "" : path}`;
 
-/** 9 routes × 2 languages = 18 URLs, each listing its language alternates. */
+/** 10 routes × 2 languages = 20 URLs, each listing its language alternates. */
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
 

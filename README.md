@@ -74,7 +74,7 @@ term lists the variants that are not allowed. Add new recurring terms there and 
 checker enforces them.
 
 **Also per language.** Titles and descriptions, canonical and `hreflang` links,
-`og:locale`, the sitemap (18 URLs with alternates), JSON-LD `inLanguage`, and the
+`og:locale`, the sitemap (20 URLs with alternates), JSON-LD `inLanguage`, and the
 share image (`/og/en`, `/og/bg`; the Bulgarian one embeds Source Sans 3 from
 `assets/fonts/`, because Satori's default font has no Cyrillic). Contact-form
 validation follows the visitor's language. The notification email to the owner
@@ -86,9 +86,6 @@ JetBrains Mono (Latin). The wordmark stays Archivo. Source Sans 3's cursive-styl
 Bulgarian letterforms (m-shaped «т», u-shaped «и») are switched off with
 `font-feature-settings: "locl" 0`; delete that line to use them. Bulgarian-only
 spacing goes through the `lang-bg:` Tailwind variant.
-
-**Open items.** The two hackathon cards on Projects still carry «TODO:» copy in
-both languages; search `messages/` for `TODO`.
 
 ## Deployment
 

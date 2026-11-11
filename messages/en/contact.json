@@ -47,7 +47,8 @@
       "book": "Book a consultation",
       "another": "Send another message"
     },
-    "requiredNote": "Fields marked <required>*</required> are required."
+    "requiredNote": "Fields marked <required>*</required> are required.",
+    "privacyNote": "I use these details only to reply to you. <privacy>How your data is handled</privacy>"
   },
   "page": {
     "eyebrow": "Contact",

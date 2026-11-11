@@ -132,9 +132,20 @@ export async function Footer() {
         </div>
 
         <div className="mt-16 flex flex-col gap-2 border-t border-border pt-8 sm:flex-row sm:items-center sm:justify-between">
-          <p className="font-mono text-eyebrow uppercase text-text-muted">
-            {t("footer.rights", { year })}
-          </p>
+          <div className="flex items-center gap-6">
+            <p className="font-mono text-eyebrow uppercase text-text-muted">
+              {t("footer.rights", { year })}
+            </p>
+            <Link
+              href="/privacy"
+              className={cn(
+                "-mx-2 rounded-sm px-2 py-1.5 font-mono text-eyebrow uppercase text-text-muted transition-colors duration-[--duration-fast] hover:text-text-primary",
+                focusRing
+              )}
+            >
+              {t("footer.links.privacy")}
+            </Link>
+          </div>
           <div className="flex items-center gap-6">
             <p className="font-mono text-eyebrow uppercase text-text-muted">
               {t("footer.caption")}

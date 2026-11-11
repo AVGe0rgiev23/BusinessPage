@@ -1,0 +1,63 @@
+{
+  "page": {
+    "eyebrow": "Privacy",
+    "title": "How your details are handled.",
+    "subtitle": "This site sets no cookies and runs no analytics or tracking. The only personal data it collects is what you choose to send through the contact form — here is exactly what happens to it.",
+    "updated": "Last updated: 11 November 2026"
+  },
+  "sections": {
+    "controller": {
+      "heading": "Who is responsible",
+      "p1": "AGility is run by Alex Georgiev, who decides how the data described here is used and is responsible for it (the data controller under the GDPR). For anything about your data, email <mail>{email}</mail>."
+    },
+    "collected": {
+      "heading": "What the contact form collects",
+      "lead": "When you send a message, the form collects:",
+      "items": {
+        "name": "your name;",
+        "email": "your email address;",
+        "company": "your company name, if you add it;",
+        "workingModel": "your preferred working model, if you pick one;",
+        "message": "your message;",
+        "language": "which language version of the site you used."
+      },
+      "p1": "Nothing else is collected. Like any website, the hosting provider records technical data such as IP addresses in its server logs to keep the site running and secure."
+    },
+    "purpose": {
+      "heading": "Why it is collected",
+      "p1": "To read your message and reply to it, and, if we decide to work together, to prepare and discuss an offer. Your details are not used for newsletters or marketing, and are never sold or shared with anyone other than the services listed below.",
+      "p2": "The legal basis is your own request: you contact me and I take the steps you asked for before any agreement (Article 6(1)(b) GDPR), together with my legitimate interest in answering messages sent to me (Article 6(1)(f) GDPR)."
+    },
+    "processors": {
+      "heading": "Where it is processed",
+      "lead": "Your message passes through these services, each of which handles it only to provide its service:",
+      "items": {
+        "vercel": "Vercel — hosts this website and runs the code that receives the form;",
+        "resend": "Resend — delivers the form submission to my inbox as an email;",
+        "google": "Google (Gmail) — the email inbox where your message is received and kept."
+      },
+      "p1": "These providers may process data in the United States. Such transfers rely on the safeguards the GDPR requires, such as the European Commission's standard contractual clauses or the EU–US Data Privacy Framework."
+    },
+    "retention": {
+      "heading": "How long it is kept",
+      "p1": "Your message stays in my inbox for as long as we are in conversation. If no work comes of it, I delete it within 12 months of our last contact. If we do work together, it is kept with the project's records for as long as the law requires for contracts and accounting. Resend keeps its own delivery records for a limited period under its own policy.",
+      "p2": "You can ask me to delete your message sooner at any time."
+    },
+    "rights": {
+      "heading": "Your rights",
+      "lead": "Under the GDPR you can:",
+      "items": {
+        "access": "get a copy of the data I hold about you;",
+        "correct": "have it corrected if it is wrong;",
+        "delete": "have it deleted;",
+        "object": "object to, or restrict, how it is used."
+      },
+      "p1": "To use any of these rights, email <mail>{email}</mail>. I will answer within one month.",
+      "p2": "If you think your data has been mishandled, you can complain to the Bulgarian Commission for Personal Data Protection (КЗЛД) at <cpdp>cpdp.bg</cpdp>."
+    },
+    "changes": {
+      "heading": "Changes to this notice",
+      "p1": "If this notice changes, the new version is published on this page with a new date."
+    }
+  }
+}

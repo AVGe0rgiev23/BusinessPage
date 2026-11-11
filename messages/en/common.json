@@ -30,7 +30,8 @@
       "technologies": "Technologies",
       "faq": "FAQ",
       "contact": "Contact",
-      "book": "Book a consultation"
+      "book": "Book a consultation",
+      "privacy": "Privacy"
     },
     "socials": { "github": "AGility on GitHub", "linkedin": "AGility on LinkedIn" },
     "rights": "© {year} AGility. All rights reserved.",

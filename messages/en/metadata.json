@@ -17,7 +17,7 @@
   },
   "work": {
     "title": "Work — My Engineering Practice | AGility",
-    "description": "No client case studies yet. Instead of inventing them: my own product, two hackathon builds, the code on GitHub, and the engineering standards behind all of it."
+    "description": "No client case studies yet. Instead of inventing them: two products I built myself, the code on GitHub, and the engineering standards behind all of it."
   },
   "about": {
     "title": "About AGility — Custom Software Built Around Your Business",
@@ -34,6 +34,10 @@
   "contact": {
     "title": "Contact AGility — Tell Me What's Slowing You Down",
     "description": "Send me a message about the repetitive work costing your team time and money. I read every message myself and reply within one business day."
+  },
+  "privacy": {
+    "title": "Privacy Notice | AGility",
+    "description": "What the AGility contact form collects, why, where it is processed, how long it is kept, and your rights under the GDPR."
   },
   "og": {
     "alt": "AGility — Custom software & AI automation. Save time. Cut costs. Scale faster.",

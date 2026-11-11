@@ -5,6 +5,7 @@ import type contact from "./messages/en/contact.json";
 import type faq from "./messages/en/faq.json";
 import type home from "./messages/en/home.json";
 import type metadata from "./messages/en/metadata.json";
+import type privacy from "./messages/en/privacy.json";
 import type process from "./messages/en/process.json";
 import type services from "./messages/en/services.json";
 import type shared from "./messages/en/shared.json";
@@ -24,6 +25,7 @@ declare module "next-intl" {
       faq: typeof faq;
       home: typeof home;
       metadata: typeof metadata;
+      privacy: typeof privacy;
       process: typeof process;
       services: typeof services;
       shared: typeof shared;

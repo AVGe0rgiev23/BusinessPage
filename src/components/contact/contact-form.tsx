@@ -457,7 +457,7 @@ export function ContactForm() {
         </div>
       </div>
 
-      <div className="mt-7">
+      <div className="mt-7 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
         <Button
           type="submit"
           size="lg"
@@ -477,6 +477,21 @@ export function ContactForm() {
             </>
           )}
         </Button>
+        <p className="text-pretty text-small text-text-secondary">
+          {t.rich("form.privacyNote", {
+            privacy: (chunks) => (
+              <Link
+                href="/privacy"
+                className={cn(
+                  "rounded-sm font-medium text-accent underline-offset-4 transition-colors duration-[--duration-fast] hover:text-accent-hover hover:underline",
+                  focusRing
+                )}
+              >
+                {chunks}
+              </Link>
+            ),
+          })}
+        </p>
       </div>
     </form>
   );
