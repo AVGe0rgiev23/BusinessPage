@@ -67,6 +67,9 @@
     "email": {
       "title": "Пишете ми на имейл"
     },
+    "phone": {
+      "title": "Обадете ми се"
+    },
     "linkedin": {
       "title": "Свържете се в LinkedIn",
       "subtitle": "Следете ме и ми пишете"

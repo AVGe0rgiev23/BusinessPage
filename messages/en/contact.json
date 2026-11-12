@@ -67,6 +67,9 @@
     "email": {
       "title": "Email me"
     },
+    "phone": {
+      "title": "Call me"
+    },
     "linkedin": {
       "title": "Connect on LinkedIn",
       "subtitle": "Follow along and message me"

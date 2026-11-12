@@ -1,10 +1,15 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { ArrowRight, CalendarClock, Clock, Mail, ShieldCheck } from "lucide-react";
+import { ArrowRight, CalendarClock, Clock, Mail, Phone, ShieldCheck } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { LinkedinIcon } from "@/components/icons/brand-icons";
-import { contactEmail, linkedinUrl } from "@/lib/site-config";
+import {
+  contactEmail,
+  contactPhone,
+  contactPhoneHref,
+  linkedinUrl,
+} from "@/lib/site-config";
 
 const focusRing =
   "outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-bg";
@@ -54,7 +59,7 @@ export async function ContactAside() {
         />
       </Link>
 
-      {/* Email + LinkedIn */}
+      {/* Email + phone + LinkedIn */}
       <ul className="mt-4 grid gap-3">
         <li>
           <a
@@ -73,6 +78,27 @@ export async function ContactAside() {
               </span>
               <span className="block truncate text-small text-text-secondary">
                 {contactEmail}
+              </span>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            href={contactPhoneHref}
+            className={cn(
+              "group flex items-center gap-4 rounded-md border border-border bg-bg p-4 transition-colors duration-[--duration-fast] hover:border-border-hover hover:bg-bg-elevated",
+              focusRing
+            )}
+          >
+            <span className="flex size-10 shrink-0 items-center justify-center rounded-md bg-bg-elevated text-text-muted">
+              <Phone aria-hidden="true" className="size-5" />
+            </span>
+            <span className="min-w-0 flex-1">
+              <span className="block text-body font-medium text-text-primary">
+                {t("aside.phone.title")}
+              </span>
+              <span className="block text-small text-text-secondary tabular">
+                {contactPhone}
               </span>
             </span>
           </a>

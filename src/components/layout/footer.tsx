@@ -7,7 +7,13 @@ import { LanguageSwitcher } from "@/components/layout/language-switcher";
 import { Container } from "@/components/layout/container";
 import { Wordmark } from "@/components/layout/brand";
 import { GithubIcon, LinkedinIcon } from "@/components/icons/brand-icons";
-import { contactEmail, githubUrl, linkedinUrl } from "@/lib/site-config";
+import {
+  contactEmail,
+  contactPhone,
+  contactPhoneHref,
+  githubUrl,
+  linkedinUrl,
+} from "@/lib/site-config";
 
 const FOOTER_SECTIONS = [
   {
@@ -78,6 +84,16 @@ export async function Footer() {
             >
               {contactEmail}
             </a>
+            <br />
+            <a
+              href={contactPhoneHref}
+              className={cn(
+                "-ml-2 inline-block rounded-sm px-2 py-1.5 font-mono text-small text-text-primary underline-offset-4 transition-colors hover:text-accent hover:underline",
+                focusRing
+              )}
+            >
+              {contactPhone}
+            </a>
 
             <div className="mt-7 flex items-center gap-2">
               {SOCIALS.map(({ key, href, Icon }) => (
@@ -136,12 +152,12 @@ export async function Footer() {
             <p className="font-mono text-eyebrow uppercase text-text-muted">
               {t("footer.rights", { year })}
             </p>
+            {/* Plain string, not `cn()`: tailwind-merge reads the custom
+                `text-eyebrow` size as a colour and drops it in favour of
+                `text-text-muted`. */}
             <Link
               href="/privacy"
-              className={cn(
-                "-mx-2 rounded-sm px-2 py-1.5 font-mono text-eyebrow uppercase text-text-muted transition-colors duration-[--duration-fast] hover:text-text-primary",
-                focusRing
-              )}
+              className={`-mx-2 rounded-sm px-2 py-1.5 font-mono text-eyebrow uppercase text-text-muted transition-colors duration-[--duration-fast] hover:text-text-primary ${focusRing}`}
             >
               {t("footer.links.privacy")}
             </Link>

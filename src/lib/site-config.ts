@@ -29,6 +29,10 @@ export const siteName = "AGility";
 export const contactEmail =
   process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "avgeorgiev25@gmail.com";
 
+/** Shown as written; dialled from the `tel:` form (no spaces). */
+export const contactPhone = "+359 89 739 7355";
+export const contactPhoneHref = "tel:+359897397355";
+
 export const githubUrl = "https://github.com/AVGe0rgiev23";
 
 export const linkedinUrl =

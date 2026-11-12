@@ -1,6 +1,13 @@
 import { getLocale, getTranslations } from "next-intl/server";
 
-import { githubUrl, linkedinUrl, siteName, siteUrl } from "@/lib/site-config";
+import {
+  contactEmail,
+  contactPhone,
+  githubUrl,
+  linkedinUrl,
+  siteName,
+  siteUrl,
+} from "@/lib/site-config";
 
 /**
  * Structured data (schema.org / JSON-LD), rendered once in the root layout so
@@ -17,6 +24,8 @@ export async function OrganizationSchema() {
     name: siteName,
     url: siteUrl,
     description: t("home.description"),
+    email: contactEmail,
+    telephone: contactPhone.replace(/\s+/g, ""),
     sameAs: [githubUrl, linkedinUrl],
   };
   const website = {
