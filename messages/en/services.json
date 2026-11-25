@@ -69,13 +69,15 @@
       }
     },
     "groupLabel": "Group",
-    "priceNote": "“From” prices are for the simplest useful version; your exact price is fixed in the proposal after a free call. The monthly amount covers hosting and AI. The linked projects are my own builds, not client work — open them to see the work, or try the live ones.",
+    "priceNote": "“From” prices are for the simplest useful version; your exact price is fixed in the proposal after a free call. Smaller services have one yearly fee for hosting and AI and no monthly bills. Larger ones have a monthly care plan: hosting and AI, monitoring, fixing anything that breaks and a little time for small changes. The linked projects are my own builds, not client work — open them to see the work, or try the live ones.",
     "price": {
       "from": "From €{setup, number}",
       "fromPerConnection": "From €{setup, number} per connection",
-      "monthly": "+ €{monthly, number}/month",
-      "monthlyDocuments": "+ €{monthly, number}/month for up to {count, number} documents",
-      "monthlyInProposal": "Monthly cost in the proposal"
+      "yearly": "+ €{amount, number}/year for hosting and AI",
+      "yearlyDocuments": "+ €{amount, number}/year for up to {count, number} documents a month",
+      "monthly": "+ €{amount, number}/month for hosting and AI",
+      "care": "+ €{amount, number}/month care plan",
+      "careFrom": "+ from €{amount, number}/month care plan"
     },
     "proof": {
       "live": "Try it: {name}",

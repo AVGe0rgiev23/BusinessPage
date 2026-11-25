@@ -64,7 +64,7 @@ const PROOF: Record<ServiceId, readonly Proof[]> = {
   bespokeAiSolutions: [LEADGENIUS_CODE],
 };
 
-/** Up to 1,000 documents a month on the document-processing fee. */
+/** Up to 1,000 documents a month on the document-processing yearly fee. */
 const DOCUMENTS_PER_MONTH = 1000;
 
 export async function ServicesCatalog() {
@@ -76,12 +76,18 @@ export async function ServicesCatalog() {
       ? t("catalog.price.fromPerConnection", { setup: p.setup })
       : t("catalog.price.from", { setup: p.setup });
   };
-  const monthlyPrice = (id: ServiceId) => {
+  const runningFee = (id: ServiceId) => {
     const p = SERVICE_PRICES[id];
-    if (p.monthly === null) return t("catalog.price.monthlyInProposal");
-    return "per" in p && p.per === "documents"
-      ? t("catalog.price.monthlyDocuments", { monthly: p.monthly, count: DOCUMENTS_PER_MONTH })
-      : t("catalog.price.monthly", { monthly: p.monthly });
+    const { fee } = p;
+    if (fee.kind === "yearly") {
+      return "per" in p && p.per === "documents"
+        ? t("catalog.price.yearlyDocuments", { amount: fee.amount, count: DOCUMENTS_PER_MONTH })
+        : t("catalog.price.yearly", { amount: fee.amount });
+    }
+    if (fee.kind === "monthly") return t("catalog.price.monthly", { amount: fee.amount });
+    return "from" in fee
+      ? t("catalog.price.careFrom", { amount: fee.amount })
+      : t("catalog.price.care", { amount: fee.amount });
   };
 
   return (
@@ -159,7 +165,7 @@ export async function ServicesCatalog() {
                             </p>
                             <p className="mt-4 font-mono text-small text-text-primary">
                               {setupPrice(service.id)}
-                              <span className="text-text-muted"> · {monthlyPrice(service.id)}</span>
+                              <span className="text-text-muted"> · {runningFee(service.id)}</span>
                             </p>
                             {PROOF[service.id].length > 0 ? (
                               <ul className="mt-2 flex flex-wrap gap-x-4">
