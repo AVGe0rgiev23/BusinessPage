@@ -68,7 +68,19 @@
         "body": "Have a problem that doesn't fit a category? I scope and build around it, using AI only where it genuinely earns its place."
       }
     },
-    "groupLabel": "Group"
+    "groupLabel": "Group",
+    "priceNote": "“From” prices are for the simplest useful version; your exact price is fixed in the proposal after a free call. The monthly amount covers hosting and AI. The linked projects are my own builds, not client work — open them to see the work, or try the live ones.",
+    "price": {
+      "from": "From €{setup, number}",
+      "fromPerConnection": "From €{setup, number} per connection",
+      "monthly": "+ €{monthly, number}/month",
+      "monthlyDocuments": "+ €{monthly, number}/month for up to {count, number} documents",
+      "monthlyInProposal": "Monthly cost in the proposal"
+    },
+    "proof": {
+      "live": "Try it: {name}",
+      "code": "See the code: {name}"
+    }
   },
   "whyCustomCallout": {
     "points": {

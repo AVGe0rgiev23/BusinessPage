@@ -1,6 +1,8 @@
 import { getTranslations } from "next-intl/server";
-import { Plus } from "lucide-react";
+import { ArrowUpRight, Plus } from "lucide-react";
 
+import { cn, focusRing } from "@/lib/utils";
+import { SERVICE_PRICES, type ServiceId } from "@/lib/pricing";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { Reveal, RevealGroup } from "@/components/motion/reveal";
@@ -30,12 +32,67 @@ const GROUPS = [
   { id: "customProducts", slug: "custom-products", services: [{ id: "customSaasProducts" }, { id: "bespokeAiSolutions" }] },
 ] as const;
 
+/*
+  Proof: a project of the operator's own that shows the service working, as a
+  live demo to try or a public repository to read. Like the Work page, none of
+  it is client work, and the price note above the catalog says so. A service
+  with no public proof yet shows no link rather than a weak one, and a link
+  must never point at something private or unfinished-looking (Istra Luxe
+  stays off until its owner agrees to be shown).
+*/
+type Proof = { name: string; href: string; kind: "live" | "code" };
+
+const SUPPORTAI_LIVE: Proof = { name: "SupportAI", href: "https://supportai-beta.vercel.app", kind: "live" };
+const SUPPORTAI_CODE: Proof = { name: "SupportAI", href: "https://github.com/AVGe0rgiev23/AIsupport", kind: "code" };
+const LEADGENIUS_CODE: Proof = { name: "LeadGenius", href: "https://github.com/AVGe0rgiev23/AI-Consulting", kind: "code" };
+
+const PROOF: Record<ServiceId, readonly Proof[]> = {
+  emailAutomation: [LEADGENIUS_CODE],
+  documentProcessing: [],
+  workflowAutomation: [SUPPORTAI_CODE],
+  internalCompanyTools: [{ name: "AGility OS", href: "https://github.com/AVGe0rgiev23/AGility-system-", kind: "code" }],
+  aiAssistants: [SUPPORTAI_LIVE],
+  aiChatbots: [
+    SUPPORTAI_LIVE,
+    { name: "Alpine Gear chatbot", href: "https://github.com/AVGe0rgiev23/AI-Chat-Bot---Demo-version-", kind: "code" },
+  ],
+  customerSupportSystems: [SUPPORTAI_LIVE],
+  crmIntegrations: [],
+  apiIntegrations: [LEADGENIUS_CODE],
+  aiPoweredDashboards: [{ name: "AI Data Analyst", href: "https://github.com/AVGe0rgiev23/ai-data-analyst", kind: "code" }],
+  customSaasProducts: [SUPPORTAI_CODE],
+  bespokeAiSolutions: [LEADGENIUS_CODE],
+};
+
+/** Up to 1,000 documents a month on the document-processing fee. */
+const DOCUMENTS_PER_MONTH = 1000;
+
 export async function ServicesCatalog() {
   const t = await getTranslations("services");
+
+  const setupPrice = (id: ServiceId) => {
+    const p = SERVICE_PRICES[id];
+    return "per" in p && p.per === "connection"
+      ? t("catalog.price.fromPerConnection", { setup: p.setup })
+      : t("catalog.price.from", { setup: p.setup });
+  };
+  const monthlyPrice = (id: ServiceId) => {
+    const p = SERVICE_PRICES[id];
+    if (p.monthly === null) return t("catalog.price.monthlyInProposal");
+    return "per" in p && p.per === "documents"
+      ? t("catalog.price.monthlyDocuments", { monthly: p.monthly, count: DOCUMENTS_PER_MONTH })
+      : t("catalog.price.monthly", { monthly: p.monthly });
+  };
+
   return (
     <Section>
       <Container>
-        <div className="flex flex-col gap-20 md:gap-28">
+        <Reveal>
+          <p className="max-w-[72ch] text-pretty text-small text-text-secondary">
+            {t("catalog.priceNote")}
+          </p>
+        </Reveal>
+        <div className="mt-16 flex flex-col gap-20 md:mt-20 md:gap-28">
           {GROUPS.map((group, groupIndex) => {
             const headingId = `${group.slug}-heading`;
             return (
@@ -100,6 +157,32 @@ export async function ServicesCatalog() {
                             <p className="mt-1.5 max-w-[52ch] text-pretty text-small text-text-secondary">
                               {t(`catalog.services.${service.id}.body`)}
                             </p>
+                            <p className="mt-4 font-mono text-small text-text-primary">
+                              {setupPrice(service.id)}
+                              <span className="text-text-muted"> · {monthlyPrice(service.id)}</span>
+                            </p>
+                            {PROOF[service.id].length > 0 ? (
+                              <ul className="mt-2 flex flex-wrap gap-x-4">
+                                {PROOF[service.id].map((proof) => (
+                                  <li key={proof.href}>
+                                    <a
+                                      href={proof.href}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      className={cn(
+                                        "-mx-2 inline-flex items-center gap-1.5 rounded-sm px-2 py-1.5 text-small font-medium text-accent transition-colors duration-[--duration-fast] hover:text-accent-hover",
+                                        focusRing
+                                      )}
+                                    >
+                                      {proof.kind === "live"
+                                        ? t("catalog.proof.live", { name: proof.name })
+                                        : t("catalog.proof.code", { name: proof.name })}
+                                      <ArrowUpRight aria-hidden="true" className="size-3.5" />
+                                    </a>
+                                  </li>
+                                ))}
+                              </ul>
+                            ) : null}
                           </div>
                         </div>
                       </li>
